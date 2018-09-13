@@ -1,0 +1,70 @@
+//
+//  AttendanceServices.swift
+//  companion
+//
+//  Created by Yves Songolo on 9/13/18.
+//  Copyright © 2018 Yves Songolo. All rights reserved.
+//
+
+import Foundation
+struct AttendanceServices{
+    /// method to create a new attendance
+    static func create(completion: @escaping (Attendance?) ->()){
+        
+        isAttendanceExist { (exist) in
+            switch exist{
+            case true: completion(nil)
+            case false:
+                let attendance = Attendance(Date().toString(), Date().timeToString(), "")
+                post(attendance, completion: { (error, att) in
+                    guard error != nil else {return completion(att)}
+                    return completion(nil)
+                })
+            }
+        }
+    }
+    static func show(completion: @escaping([Attendance]?)->()){
+        fetchAllAttendance { (attendance) in
+            if let attendance = attendance{
+                return completion(attendance)
+            }
+            else{
+                return completion(nil)
+            }
+        }
+    }
+    /// method to check if today attendance was already made
+    private static func isAttendanceExist(completion: @escaping (Bool)-> ()){
+        getTodayAttendance { (attendance) in
+            if attendance != nil{
+                return completion(true)
+            }
+            else{
+                return completion(false)
+            }
+        }
+    }
+    /// method to post attendance
+    private static func post(_ attendance: Attendance, completion: @escaping(Error?,Attendance?)->()){
+       
+    }
+    /// method to get today attendance
+    private static func getTodayAttendance(completion: @escaping (Attendance?)->()){
+        /// for test purpose
+        let attendance = Attendance(Date().toString(), Date().timeToString(), "")
+        return completion(attendance)
+    }
+    /// method to fetch all attendances
+    private static func fetchAllAttendance(completion: @escaping ([Attendance]?)->()){
+        let attendance = Attendance(Date().toString(), Date().timeToString(), "")
+        var att = [Attendance]()
+        att.append(attendance)
+        return completion(att)
+    }
+}
+
+
+
+
+
+
