@@ -21,7 +21,9 @@ class ViewController: UIViewController {
         beaconManager.delegate = self
         self.view.alpha = 0.5
         AttendanceServices.show { (att) in
-            print(att?.first?.date)
+            guard let att = att else{return}
+           print(att)
+            
         }
     }
 }

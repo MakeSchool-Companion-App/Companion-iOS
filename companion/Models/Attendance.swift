@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Attendance: Decodable{
+class Attendance: Codable{
     var date: String
     var entry: String
     var exit: String
@@ -16,5 +16,8 @@ class Attendance: Decodable{
         self.date = date
         self.entry = entry
         self.exit = exit
+    }
+    func toBody() -> Data{
+        return try! JSONEncoder().encode(self)
     }
 }

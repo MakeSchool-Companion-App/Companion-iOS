@@ -16,13 +16,15 @@ struct AttendanceServices{
             case true: completion(nil)
             case false:
                 let attendance = Attendance(Date().toString(), Date().timeToString(), "")
-                post(attendance, completion: { (error, att) in
+                post(attendance, completion: { (att, error) in
                     guard error != nil else {return completion(att)}
                     return completion(nil)
                 })
             }
         }
     }
+    
+    /// method to retrieve all attendance
     static func show(completion: @escaping([Attendance]?)->()){
         fetchAllAttendance { (attendance) in
             if let attendance = attendance{
@@ -45,8 +47,17 @@ struct AttendanceServices{
         }
     }
     /// method to post attendance
-    private static func post(_ attendance: Attendance, completion: @escaping(Error?,Attendance?)->()){
-       
+    private static func post(_ attendance: Attendance, completion: @escaping(Attendance?, Error?)->()){
+        
+        NetworkManager.network(.postAttendance, .post, attendance.toBody()) { (att,err) in
+            if let value = att {
+                let attendance = value as! Attendance
+                completion(attendance,nil)
+            }
+            else{
+                completion(nil,err)
+            }
+        }
     }
     /// method to get today attendance
     private static func getTodayAttendance(completion: @escaping (Attendance?)->()){
