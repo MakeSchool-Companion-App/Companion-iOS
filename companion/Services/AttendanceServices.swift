@@ -62,8 +62,20 @@ struct AttendanceServices{
     /// method to get today attendance
     private static func getTodayAttendance(completion: @escaping (Attendance?)->()){
         /// for test purpose
-        let attendance = Attendance(Date().toString(), Date().timeToString(), "")
-        return completion(attendance)
+//        let attendance = Attendance(Date().toString(), Date().timeToString(), "")
+//        return completion(attendance)
+        
+        NetworkManager.network(.getAttendance, .get) { (attendance, err) in
+            guard let value = attendance else {return completion(nil)}
+            let attendance = value as! Attendance
+            if attendance.date == Date().toString(){
+               return completion(attendance)
+            }
+            else{
+                return completion(nil)
+            }
+           
+        }
     }
     /// method to fetch all attendances
     private static func fetchAllAttendance(completion: @escaping ([Attendance]?)->()){
