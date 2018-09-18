@@ -7,7 +7,7 @@ target 'companion' do
 
   # Pods for companion
 
-    pod 'iBeaconManager'
+pod 'iBeaconManager', '0.1.0'
 
   target 'companionTests' do
     inherit! :search_paths

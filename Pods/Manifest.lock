@@ -2,7 +2,7 @@ PODS:
   - iBeaconManager (0.1.0)
 
 DEPENDENCIES:
-  - iBeaconManager
+  - iBeaconManager (= 0.1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -11,6 +11,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   iBeaconManager: 24b93a45f18271574877074faa64eacb4ad6349e
 
-PODFILE CHECKSUM: 850b2bd85fb4b264d6a2a38303b8d3e866086c07
+PODFILE CHECKSUM: b5a22b051af0408bc77bdbc7c52f5f8a967ebd76
 
 COCOAPODS: 1.5.3
