@@ -46,6 +46,8 @@ struct NetworkManager{
             case .postUser:
                 let user = try! JSONDecoder().decode(User.self, from: data)
                 completion(user, nil)
+                
+                
             }
         }
         task.resume()
