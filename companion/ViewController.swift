@@ -25,19 +25,14 @@ class ViewController: UIViewController {
            print(att)
             
         }
-       
     }
-    
 }
 extension ViewController: BeaconManagerDelegate{
     func beaconManager(sender: BeaconManager, isInBeaconRange region: CLRegion) {
         print("inside beacon range")
         self.view.backgroundColor = UIColor.green
         
-        let att = Attendance(Date().toString(), Date().timeToString(), "")
-        AttendanceServices.create { (att) in
-            <#code#>
-        }
+       
     }
     
     func beaconManager(sender: BeaconManager, isNotInBeaconRange region: CLRegion) {
