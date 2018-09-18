@@ -36,7 +36,7 @@ struct AttendanceServices{
         }
     }
     /// method to check if today attendance was already made
-    private static func isAttendanceExist(completion: @escaping (Bool)-> ()){
+    static func isAttendanceExist(completion: @escaping (Bool)-> ()){
         getTodayAttendance { (attendance) in
             if attendance != nil{
                 return completion(true)
