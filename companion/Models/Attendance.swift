@@ -8,16 +8,23 @@
 
 import Foundation
 class Attendance: Codable{
-    var date: String
-    var entry: String
-    var exit: String
+    var event_time: String
+    var event: String
+    var beacon_id: String
+    var user_id: String
     
-    init(_ date: String, _ entry: String, _ exit: String){
-        self.date = date
-        self.entry = entry
-        self.exit = exit
+    init(_ event_time: String, event: EventType, beaconId: String){
+        self.event_time = event_time
+        self.beacon_id = beaconId
+        self.event = event.rawValue
+        self.user_id = User.current.id
     }
     func toBody() -> Data{
         return try! JSONEncoder().encode(self)
     }
+}
+
+enum EventType: String{
+    case onEntry = "Entry"
+    case onExit = "Exit"
 }

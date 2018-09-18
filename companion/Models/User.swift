@@ -8,9 +8,13 @@
 
 import Foundation
 struct User: Codable{
-    var firstName: String
-    var lastName: String
-    var id: String
-    var token: String
-    var attendance: [Attendance]
+    var first_name: String
+    var last_name: String
+    var user_id: String
+    var token: String?
+    var image_url: String?
+    
+   
+    static var current: User!
 }
+
