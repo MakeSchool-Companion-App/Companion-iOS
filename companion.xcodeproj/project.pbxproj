@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BEA2141A19200E05465 /* AppDelegate.swift */; };
-		20AC1BED2141A19200E05465 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BEC2141A19200E05465 /* ViewController.swift */; };
 		20AC1BF02141A19200E05465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BEE2141A19200E05465 /* Main.storyboard */; };
 		20AC1BF22141A19200E05465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BF12141A19200E05465 /* Assets.xcassets */; };
 		20AC1BF52141A19200E05465 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BF32141A19200E05465 /* LaunchScreen.storyboard */; };
 		20AC1C002141A19200E05465 /* companionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BFF2141A19200E05465 /* companionTests.swift */; };
+		80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80074E2B2149BE7800AA684C /* ScanBeaconController.swift */; };
+		80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80074E2E2149CA6900AA684C /* UIView+Extension.swift */; };
+		800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BBE7C214C29BD006E96CC /* BeaconView.swift */; };
+		802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806D9214CCE19009CC42B /* LogHistoryController.swift */; };
+		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +32,6 @@
 /* Begin PBXFileReference section */
 		20AC1BE72141A19200E05465 /* companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = companion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AC1BEA2141A19200E05465 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20AC1BEC2141A19200E05465 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20AC1BEF2141A19200E05465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20AC1BF12141A19200E05465 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20AC1BF42141A19200E05465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,11 @@
 		20AC1BFB2141A19200E05465 /* companionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = companionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AC1BFF2141A19200E05465 /* companionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companionTests.swift; sourceTree = "<group>"; };
 		20AC1C012141A19200E05465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80074E2B2149BE7800AA684C /* ScanBeaconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBeaconController.swift; sourceTree = "<group>"; };
+		80074E2E2149CA6900AA684C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		800BBE7C214C29BD006E96CC /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
+		802806D9214CCE19009CC42B /* LogHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryController.swift; sourceTree = "<group>"; };
+		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +85,12 @@
 		20AC1BE92141A19200E05465 /* companion */ = {
 			isa = PBXGroup;
 			children = (
-				20AC1BEA2141A19200E05465 /* AppDelegate.swift */,
-				20AC1BEC2141A19200E05465 /* ViewController.swift */,
-				20AC1BEE2141A19200E05465 /* Main.storyboard */,
+				80FE0BEB214E481200459A64 /* Support Files */,
+				80FE0BEA214E47F500459A64 /* Storyboards */,
+				800BBE7B214C298A006E96CC /* Views */,
+				80074E2D2149CA2700AA684C /* Extensions */,
+				80074E272149BD2500AA684C /* Controllers */,
 				20AC1BF12141A19200E05465 /* Assets.xcassets */,
-				20AC1BF32141A19200E05465 /* LaunchScreen.storyboard */,
-				20AC1BF62141A19200E05465 /* Info.plist */,
 			);
 			path = companion;
 			sourceTree = "<group>";
@@ -94,6 +102,50 @@
 				20AC1C012141A19200E05465 /* Info.plist */,
 			);
 			path = companionTests;
+			sourceTree = "<group>";
+		};
+		80074E272149BD2500AA684C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
+				802806D9214CCE19009CC42B /* LogHistoryController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		80074E2D2149CA2700AA684C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80074E2E2149CA6900AA684C /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		800BBE7B214C298A006E96CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				800BBE7C214C29BD006E96CC /* BeaconView.swift */,
+				802806DB214CD020009CC42B /* LogHistoryCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80FE0BEA214E47F500459A64 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				20AC1BEE2141A19200E05465 /* Main.storyboard */,
+				20AC1BF32141A19200E05465 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		80FE0BEB214E481200459A64 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				20AC1BEA2141A19200E05465 /* AppDelegate.swift */,
+				20AC1BF62141A19200E05465 /* Info.plist */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +249,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20AC1BED2141A19200E05465 /* ViewController.swift in Sources */,
+				802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */,
 				20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */,
+				800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */,
+				802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */,
+				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
+				80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +415,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = companion/Info.plist;
+				DEVELOPMENT_TEAM = 854F25WCHE;
+				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,7 +433,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = companion/Info.plist;
+				DEVELOPMENT_TEAM = 854F25WCHE;
+				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
