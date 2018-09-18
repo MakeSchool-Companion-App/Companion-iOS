@@ -17,7 +17,7 @@ class Attendance: Codable{
         self.event_time = event_time
         self.beacon_id = beaconId
         self.event = event.rawValue
-        self.user_id = User.current.id
+        self.user_id = User.current.user_id
     }
     func toBody() -> Data{
         return try! JSONEncoder().encode(self)

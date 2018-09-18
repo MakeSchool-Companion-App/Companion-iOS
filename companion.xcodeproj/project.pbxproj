@@ -15,13 +15,9 @@
 		209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB946214B0FDB00D81ABD /* AttendanceServices.swift */; };
 		209DB948214B0FDB00D81ABD /* AttendanceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB946214B0FDB00D81ABD /* AttendanceServices.swift */; };
 		209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94A214B117200D81ABD /* Date+Extensions.swift */; };
-		209DB94F214B117300D81ABD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94A214B117200D81ABD /* Date+Extensions.swift */; };
 		209DB950214B117300D81ABD /* viewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94B214B117200D81ABD /* viewControllers.swift */; };
-		209DB951214B117300D81ABD /* viewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94B214B117200D81ABD /* viewControllers.swift */; };
 		209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94C214B117200D81ABD /* UIColor+Extension.swift */; };
-		209DB953214B117300D81ABD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94C214B117200D81ABD /* UIColor+Extension.swift */; };
 		209DB954214B117300D81ABD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94D214B117200D81ABD /* String+Extensions.swift */; };
-		209DB955214B117300D81ABD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94D214B117200D81ABD /* String+Extensions.swift */; };
 		20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BEA2141A19200E05465 /* AppDelegate.swift */; };
 		20AC1BF02141A19200E05465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BEE2141A19200E05465 /* Main.storyboard */; };
 		20AC1BF22141A19200E05465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BF12141A19200E05465 /* Assets.xcassets */; };
@@ -126,17 +122,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		209DB949214B113600D81ABD /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				209DB94A214B117200D81ABD /* Date+Extensions.swift */,
-				209DB94D214B117200D81ABD /* String+Extensions.swift */,
-				209DB94C214B117200D81ABD /* UIColor+Extension.swift */,
-				209DB94B214B117200D81ABD /* viewControllers.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		20AC1BDE2141A19200E05465 = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +150,6 @@
 				800BBE7B214C298A006E96CC /* Views */,
 				80074E2D2149CA2700AA684C /* Extensions */,
 				80074E272149BD2500AA684C /* Controllers */,
-				209DB949214B113600D81ABD /* Extension */,
 				20587CDC214AE2CD004B60A2 /* Network */,
 				20587CD5214ADFFA004B60A2 /* Models */,
 				20587CD4214ADFED004B60A2 /* Services */,
@@ -216,6 +200,10 @@
 			isa = PBXGroup;
 			children = (
 				80074E2E2149CA6900AA684C /* UIView+Extension.swift */,
+				209DB94A214B117200D81ABD /* Date+Extensions.swift */,
+				209DB94D214B117200D81ABD /* String+Extensions.swift */,
+				209DB94C214B117200D81ABD /* UIColor+Extension.swift */,
+				209DB94B214B117200D81ABD /* viewControllers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -433,10 +421,6 @@
 			files = (
 				209DB948214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
 				20AC1C002141A19200E05465 /* companionTests.swift in Sources */,
-				209DB951214B117300D81ABD /* viewControllers.swift in Sources */,
-				209DB94F214B117300D81ABD /* Date+Extensions.swift in Sources */,
-				209DB955214B117300D81ABD /* String+Extensions.swift in Sources */,
-				209DB953214B117300D81ABD /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

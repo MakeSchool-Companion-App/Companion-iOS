@@ -37,18 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-
-        
-        registeredBeacon = Beacon(uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 44941, minor: 4437, identifier: "God help me")
-        if let registeredBeacon = registeredBeacon {
-            beaconManager = BeaconManager(beacon: registeredBeacon)
-        }
-        beaconManager.startMonitoring()
-        
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         // Anything that accesses NavigationBar will contain these default parameters
         UINavigationBar.appearance().tintColor = .white
         // This will set the nav bar color to a light red color
@@ -71,6 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let scanBeaconController = ScanBeaconController()
         window?.rootViewController = scanBeaconController
+        
+        
+        registeredBeacon = Beacon(uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 44941, minor: 4437, identifier: "God help me")
+        if let registeredBeacon = registeredBeacon {
+            beaconManager = BeaconManager(beacon: registeredBeacon)
+        }
+        beaconManager.startMonitoring()
         
         return true
     }
@@ -97,4 +92,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         }
     }
-}
+
