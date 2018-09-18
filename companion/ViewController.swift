@@ -36,7 +36,7 @@ extension ViewController: BeaconManagerDelegate{
         
         let att = Attendance(Date().toString(), Date().timeToString(), "")
         AttendanceServices.create { (att) in
-            <#code#>
+            
         }
     }
     
