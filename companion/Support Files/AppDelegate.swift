@@ -27,12 +27,16 @@ extension UINavigationController {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var beaconManager: BeaconManager!
-    var registeredBeacon: Beacon?
+    static let shared: AppDelegate = AppDelegate()
     
-    class var shared: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
-    }
+    lazy var beaconManager: BeaconManager = {
+        // Register a beacon
+        let registeredBeacon = Beacon(uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 44941, minor: 4437, identifier: "God help me")
+        // Manage the registered beacon
+        let manager = BeaconManager(beacon: registeredBeacon)
+        return manager
+    }()
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -50,21 +54,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the color of the font to white
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
         
-        
-        
-        
-        
         window = UIWindow()
         window?.makeKeyAndVisible()
         
         let scanBeaconController = ScanBeaconController()
         window?.rootViewController = scanBeaconController
-        
-        
-        registeredBeacon = Beacon(uuid: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 44941, minor: 4437, identifier: "God help me")
-        if let registeredBeacon = registeredBeacon {
-            beaconManager = BeaconManager(beacon: registeredBeacon)
-        }
+
         beaconManager.startMonitoring()
         
         return true

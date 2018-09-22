@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import iBeaconManager
+import CoreLocation
 
 class ScanBeaconController: UIViewController {
-
     
-    // MARK: - Properties
+    // MARK: Properties
     
-    // will this later. Only for testing purposes
-    private let urlString = "https://firebasestorage.googleapis.com/v0/b/firestorechat-e64ac.appspot.com/o/intermediate_training_rec.mp4?alt=media&token=e20261d0-7219-49d2-b32d-367e1606500c"
+    var beaconManager: BeaconManager?
     
     // MARK: - UI Elements
     
@@ -46,11 +46,13 @@ class ScanBeaconController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        beaconManager = AppDelegate.shared.beaconManager
+        beaconManager?.delegate = self
+
         view.backgroundColor = UIColor(red: 53/255, green: 65/255, blue: 164/255, alpha: 1)
         print(beaconView.frame)
         
         beaconView.startPulsatingAnimation()
-//       beginDownloadingFile()
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,16 +60,6 @@ class ScanBeaconController: UIViewController {
         
         setupAutoLayout()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        beaconView.checkMarkAnimation()
-//        searchForBeaconLabel.text = "iBeacon Found"
-//        cancelAndOkButton.setTitle("Okay", for: .normal)
-//
-//    }
-
     
     // MARK: - Methods
     
@@ -114,16 +106,6 @@ class ScanBeaconController: UIViewController {
         
     }
     
-    func beginDownloadingFile() {
-        print("Attempting to download...")
-        let configuration = URLSessionConfiguration.default
-        let operationQueue = OperationQueue()
-        let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
-        
-        guard let url = URL(string: urlString) else { return }
-        let downloadTask = urlSession.downloadTask(with: url)
-        downloadTask.resume()
-    }
     
     @objc private func showHistory() {
         print("Show Check In & Out History")
@@ -132,11 +114,38 @@ class ScanBeaconController: UIViewController {
     }
 }
 
-extension ScanBeaconController: URLSessionDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
-        print("Finished downloading file")
-        
-        
+extension ScanBeaconController: BeaconManagerDelegate {
+    
+    func beaconManager(sender: BeaconManager, isInBeaconRange region: CLRegion) {
+        print("Beacon is in range.")
+        view.backgroundColor = .yellow
     }
+    
+    func beaconManager(sender: BeaconManager, isNotInBeaconRange region: CLRegion) {
+        print("Beacon is not in range")
+        view.backgroundColor = .gray 
+    }
+    
+    func beaconManager(sender: BeaconManager, searchingInRegion region: CLRegion) {
+        print("Search for beacon in region")
+        view.backgroundColor = UIColor.green
+    }
+    
+    func beaconManager(sender: BeaconManager, enteredBeaconRegion region: CLRegion) {
+        print("Entered Beacon Region")
+        view.backgroundColor = .yellow
+    }
+    
+    func beaconManager(sender: BeaconManager, exitedBeaconRegion region: CLRegion) {
+        print("Exited Beacon Region")
+        view.backgroundColor = .orange
+    }
+    
+    func beaconManager(sender: BeaconManager, monitoringRegionFailed region: CLRegion, withError error: Error) {
+        print("Failed to monitor beacon \(error)")
+        view.backgroundColor = .red
+    }
+    
+    
 }
+
