@@ -11,7 +11,7 @@ struct NetworkManager{
     //var shared = NetworkManager()
     static func network(_ path: Path, _ httpMethod: HttpMethod, _ httpBody: Data? = nil, completion: @escaping (Any?, Error?)->()){
     // 1.  based link
-        var links = ""
+        var links = "https://make-school-companion.herokuapp.com/"
     
     // 2.  path
        links += path.rawValue
@@ -23,7 +23,7 @@ struct NetworkManager{
             request.httpBody = httpBody
         }
     // 4. header
-        
+        request.setValue(User.current.token, forHTTPHeaderField: "Authorization")
     // 5. http method
         request.httpMethod = httpMethod.rawValue
         
@@ -31,23 +31,37 @@ struct NetworkManager{
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, _, err) in
             guard let data = data else {return completion(nil,err)}
+            
+            let res =  String(data: data, encoding: .utf8)
+            print(res)
+            
             switch path{
                 
-            case .getAllAttendances:
-                let attanandaces = try! JSONDecoder().decode([Attendance].self, from: data)
-                completion(attanandaces,nil)
-                
-            case .getAttendance: fallthrough
-            case .postAttendance:
-                let attanandace = try! JSONDecoder().decode(Attendance.self, from: data)
-                completion(attanandace, nil)
-                
-            case .getUser: fallthrough
-            case .postUser:
-                let user = try! JSONDecoder().decode(User.self, from: data)
-                completion(user, nil)
-                
-                
+            case .attendance:
+                switch httpMethod{
+                case .get:
+                    let attanandaces = try! JSONDecoder().decode([Attendance].self, from: data)
+                        completion(attanandaces,nil)
+                case .post:
+                    let attanandace = try! JSONDecoder().decode(Attendance.self, from: data)
+                        completion(attanandace, nil)
+                case .update:
+                    let attanandace = try! JSONDecoder().decode(Attendance.self, from: data)
+                    completion(attanandace, nil)
+                }
+            case .user:
+                switch httpMethod{
+                    
+                case .get: fallthrough
+                case .post: fallthrough
+                case .update:
+                    do{
+                    let user = try JSONDecoder().decode(User.self, from: data)
+                        completion(user, nil)
+                    }catch{
+                       return completion(nil,nil)
+                    }
+                }
             }
         }
         task.resume()
@@ -56,11 +70,8 @@ struct NetworkManager{
 }
 
 enum Path: String{
-    case getAllAttendances = ""
-    case getAttendance = "q"
-    case postAttendance = "a"
-    case getUser = "aa"
-    case postUser = "s"
+    case attendance = "attendances"
+    case user = "registrations"
 }
 enum HttpMethod: String{
     case get = "GET"

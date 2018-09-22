@@ -18,6 +18,7 @@
 		209DB950214B117300D81ABD /* viewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94B214B117200D81ABD /* viewControllers.swift */; };
 		209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94C214B117200D81ABD /* UIColor+Extension.swift */; };
 		209DB954214B117300D81ABD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94D214B117200D81ABD /* String+Extensions.swift */; };
+		20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A0E5D42152EB4B00F0F049 /* UserServices.swift */; };
 		20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BEA2141A19200E05465 /* AppDelegate.swift */; };
 		20AC1BF02141A19200E05465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BEE2141A19200E05465 /* Main.storyboard */; };
 		20AC1BF22141A19200E05465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BF12141A19200E05465 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		209DB94B214B117200D81ABD /* viewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = viewControllers.swift; sourceTree = "<group>"; };
 		209DB94C214B117200D81ABD /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		209DB94D214B117200D81ABD /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		20A0E5D42152EB4B00F0F049 /* UserServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		20AC1BE72141A19200E05465 /* companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = companion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AC1BEA2141A19200E05465 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20AC1BEF2141A19200E05465 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		20587CD4214ADFED004B60A2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				20A0E5D42152EB4B00F0F049 /* UserServices.swift */,
 				20587CDF214AE3F8004B60A2 /* BeaconServices.swift */,
 				209DB946214B0FDB00D81ABD /* AttendanceServices.swift */,
 			);
@@ -410,6 +413,7 @@
 				802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */,
 				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
 				80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */,
+				20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
 				20587CDB214AE159004B60A2 /* Attendance.swift in Sources */,
 			);

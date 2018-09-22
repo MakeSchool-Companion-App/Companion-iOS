@@ -11,7 +11,7 @@ struct AttendanceServices{
     /// method to create a new attendance
     static func create(completion: @escaping (Attendance?) ->()){
         
-        isAttendanceExist { (exist) in
+        isAttendanceExist {(exist) in
             switch exist{
             case true: completion(nil)
             case false:
@@ -49,7 +49,7 @@ struct AttendanceServices{
     /// method to post attendance
     private static func post(_ attendance: Attendance, completion: @escaping(Attendance?, Error?)->()){
         
-        NetworkManager.network(.postAttendance, .post, attendance.toBody()) { (att,err) in
+        NetworkManager.network(.attendance, .post, attendance.toBody()) { (att,err) in
             if let value = att {
                 let attendance = value as! Attendance
                 completion(attendance,nil)
@@ -65,7 +65,7 @@ struct AttendanceServices{
 //        let attendance = Attendance(Date().toString(), Date().timeToString(), "")
 //        return completion(attendance)
         
-        NetworkManager.network(.getAttendance, .get) { (attendance, err) in
+        NetworkManager.network(.attendance, .get) { (attendance, err) in
             guard let value = attendance else {return completion(nil)}
             let attendance = value as! Attendance
             if attendance.event_time == Date().toString(){

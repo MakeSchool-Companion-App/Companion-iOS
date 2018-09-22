@@ -10,11 +10,34 @@ import Foundation
 struct User: Codable{
     var first_name: String
     var last_name: String
-    var user_id: String
+    var user_id: String?
     var token: String?
     var image_url: String?
+    var email: String
     
-   
-    static var current: User!
+    private static var _current: User?
+    
+    static var current: User {
+        if let currentUser = _current  {
+            return currentUser
+        }
+        else{
+            let data =   UserDefaults.standard.value(forKey: "current") as? Data
+            let user = try! JSONDecoder().decode(User.self, from: data!)
+            return user
+        }
+        
+    }
+    
+    // MARK: - Class Methods
+    
+    static func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
+        if writeToUserDefaults {
+            if let data = try? JSONEncoder().encode(user) {
+                UserDefaults.standard.set(data, forKey: "current")
+            }
+        }
+        _current = user
+    }
 }
 

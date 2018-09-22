@@ -65,8 +65,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let registeredBeacon = registeredBeacon {
             beaconManager = BeaconManager(beacon: registeredBeacon)
         }
-        beaconManager.startMonitoring()
-        
+       
+        let email = "yves.songolo@students.makeschool.com"
+        let email2 = "yves.songolo@gmail.com"
+        let password = "songolo93"
+        let loc = AppDelegate.shared.beaconManager.beaconRegion.proximityUUID.uuidString
+       let att = Attendance.init(Date().toString(), event: .onEntry, beaconId: loc)
+    
+        UserServices.login(email: email2, password: password) { (user) in
+            if let user = user as? User{
+                print (user.token!)
+                NetworkManager.network(.attendance, .post, att.toBody(), completion: { (att, error) in
+                    
+                })
+                
+            }
+        }
+       
         return true
     }
 
