@@ -75,8 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserServices.login(email: email2, password: password) { (user) in
             if let user = user as? User{
                 print (user.token!)
-                NetworkManager.network(.attendance, .post, att.toBody(), completion: { (att, error) in
+                AttendanceServices.create(completion: { (attendance) in
+                    print(attendance)
                     
+                    AttendanceServices.show(completion: { (attendace) in
+                        print(attendance)
+                    })
                 })
                 
             }

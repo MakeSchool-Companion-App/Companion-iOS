@@ -12,6 +12,7 @@ class Attendance: Codable{
     var event: String
     var beacon_id: String
     var user_id: String?
+    var id: Int?
     
     init(_ event_time: String, event: EventType, beaconId: String){
         self.event_time = event_time
@@ -21,6 +22,9 @@ class Attendance: Codable{
     }
     func toBody() -> Data{
         return try! JSONEncoder().encode(self)
+    }
+    func toDictionary()->[String: Any]{
+        return ["event_time":event_time,"beacon_id":beacon_id,"event":event]
     }
 }
 

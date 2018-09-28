@@ -22,7 +22,7 @@ struct User: Codable{
             return currentUser
         }
         else{
-            let data =   UserDefaults.standard.value(forKey: "current") as? Data
+            let data =   UserDefaults.standard.value(forKey: Constant.current) as? Data
             let user = try! JSONDecoder().decode(User.self, from: data!)
             return user
         }
@@ -34,7 +34,7 @@ struct User: Codable{
     static func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
         if writeToUserDefaults {
             if let data = try? JSONEncoder().encode(user) {
-                UserDefaults.standard.set(data, forKey: "current")
+                UserDefaults.standard.set(data, forKey: Constant.current)
             }
         }
         _current = user

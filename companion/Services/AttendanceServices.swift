@@ -15,7 +15,7 @@ struct AttendanceServices{
             switch exist{
             case true: completion(nil)
             case false:
-                let attendance = Attendance(Date().toString(), event: .onEntry, beaconId: "")
+                let attendance = Attendance(Date().toString(), event: .onEntry, beaconId: "00000")
                 post(attendance, completion: { (att, error) in
                     guard error != nil else {return completion(att)}
                     return completion(nil)
@@ -26,13 +26,10 @@ struct AttendanceServices{
     
     /// method to retrieve all attendance
     static func show(completion: @escaping([Attendance]?)->()){
-        fetchAllAttendance { (attendance) in
-            if let attendance = attendance{
-                return completion(attendance)
-            }
-            else{
-                return completion(nil)
-            }
+        
+        NetworkManager.network(.attendance, .get) { (attendance, error) in
+            guard let att = attendance as? [Attendance] else {return completion (nil)}
+            return completion(att)
         }
     }
     /// method to check if today attendance was already made
@@ -48,9 +45,9 @@ struct AttendanceServices{
     }
     /// method to post attendance
     private static func post(_ attendance: Attendance, completion: @escaping(Attendance?, Error?)->()){
-        
-        NetworkManager.network(.attendance, .post, attendance.toBody()) { (att,err) in
-            if let value = att {
+        NetworkManager.network(.attendance, .post, params: attendance.toDictionary()) { (att, err) in
+            
+             if let value = att {
                 let attendance = value as! Attendance
                 completion(attendance,nil)
             }
@@ -79,10 +76,7 @@ struct AttendanceServices{
     }
     /// method to fetch all attendances
     private static func fetchAllAttendance(completion: @escaping ([Attendance]?)->()){
-        //let attendance = Attendance(Date().toString(), Date().timeToString(), "")
-        //var att = [Attendance]()
-        //att.append(attendance)
-        //return completion(att)
+        
     }
 }
 

@@ -14,17 +14,13 @@ struct UserServices{
     }
     /// method to login user with email and password
     static func login(email: String, password: String, completion: @escaping(Any)->()){
+
+        let credential = ["email": email, "password": password]
         
-        let json = ["email":email,
-                    "password":password]
-        let data = try! JSONEncoder().encode(json)
-        
-        NetworkManager.network(.user, .post, data) { (user, error) in
+        NetworkManager.network(.user, .post, credentail: credential) { (user, error) in
             guard let user = user as? User else { return completion(error!)}
-            
             User.setCurrent(user, writeToUserDefaults: true)
             return completion(user)
         }
     }
-    
 }
