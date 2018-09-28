@@ -9,7 +9,7 @@
 import Foundation
 struct AttendanceServices{
     /// method to create a new attendance
-    static func create(completion: @escaping (Attendance?) ->()){
+    static func create(_ attendance: Attendance, completion: @escaping (Attendance?) ->()){
         
         isAttendanceExist {(exist) in
             switch exist{
