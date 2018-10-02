@@ -50,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the color of the font to white
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
         
+        /// monitoring for make school
+        
+        GeoFenceServices.startMonitoringMakeschool()
         
         
         
@@ -65,7 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let registeredBeacon = registeredBeacon {
             beaconManager = BeaconManager(beacon: registeredBeacon)
         }
-       
+      
+        
         let email = "yves.songolo@students.makeschool.com"
         let email2 = "yves.songolo@gmail.com"
         let password = "songolo93"

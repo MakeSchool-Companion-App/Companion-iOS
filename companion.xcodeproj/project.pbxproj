@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2019D7592163E6D500F8AB25 /* GeofenceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2019D7582163E6D500F8AB25 /* GeofenceServices.swift */; };
 		20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CD6214AE00F004B60A2 /* Beacon.swift */; };
 		20587CD9214AE0D0004B60A2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CD8214AE0D0004B60A2 /* User.swift */; };
 		20587CDB214AE159004B60A2 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDA214AE159004B60A2 /* Attendance.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		1F1DF813115A5D40E7E32482 /* Pods-companionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.release.xcconfig"; sourceTree = "<group>"; };
+		2019D7582163E6D500F8AB25 /* GeofenceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceServices.swift; sourceTree = "<group>"; };
 		20587CD6214AE00F004B60A2 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		20587CD8214AE0D0004B60A2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20587CDA214AE159004B60A2 /* Attendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				20A0E5D42152EB4B00F0F049 /* UserServices.swift */,
 				20587CDF214AE3F8004B60A2 /* BeaconServices.swift */,
 				209DB946214B0FDB00D81ABD /* AttendanceServices.swift */,
+				2019D7582163E6D500F8AB25 /* GeofenceServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
 				20587CDB214AE159004B60A2 /* Attendance.swift in Sources */,
+				2019D7592163E6D500F8AB25 /* GeofenceServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
