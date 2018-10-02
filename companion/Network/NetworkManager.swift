@@ -16,10 +16,7 @@ struct NetworkManager{
         // 2.  path
         links += path.rawValue
         
-        //3. Credential
-        if let cred = credentail{
-            links += "?email=\(cred["email"] ?? "")&password=\(cred["password"] ?? "")"//path.rawValue
-        }
+       
         
         //4. params
         if let params = params{
@@ -37,6 +34,11 @@ struct NetworkManager{
         if path.rawValue == Path.attendance.rawValue{
             request.setValue("Token token=\(User.current.token ?? "")", forHTTPHeaderField: "Authorization")
         }
+        
+        if path.rawValue == Path.user.rawValue{
+            request.allHTTPHeaderFields = credentail!
+        }
+        
         // 6. http method
         request.httpMethod = httpMethod.rawValue
         

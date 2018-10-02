@@ -15,7 +15,6 @@ struct AttendanceServices{
             switch exist{
             case true: completion(nil)
             case false:
-                let attendance = Attendance(Date().toString(), event: .onEntry, beaconId: "00000")
                 post(attendance, completion: { (att, error) in
                     guard error != nil else {return completion(att)}
                     return completion(nil)
@@ -62,16 +61,14 @@ struct AttendanceServices{
 //        let attendance = Attendance(Date().toString(), Date().timeToString(), "")
 //        return completion(attendance)
         
-        NetworkManager.network(.attendance, .get) { (attendance, err) in
-            guard let value = attendance else {return completion(nil)}
-            let attendance = value as! Attendance
-            if attendance.event_time == Date().toString(){
-               return completion(attendance)
-            }
-            else{
-                return completion(nil)
-            }
-           
+        NetworkManager.network(.attendance, .get) { (attendances, err) in
+            guard let value = attendances else {return completion(nil)}
+            let attendances = value as! [Attendance]
+            
+            let todayAttendance = attendances.filter({$0.event_time == Date().toString()})
+            
+            return todayAttendance.isEmpty ? completion (nil) : completion(todayAttendance.first)
+            
         }
     }
     /// method to fetch all attendances

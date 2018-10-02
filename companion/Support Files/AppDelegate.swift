@@ -70,8 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let email2 = "yves.songolo@gmail.com"
         let password = "songolo93"
         let loc = AppDelegate.shared.beaconManager.beaconRegion.proximityUUID.uuidString
-       let att = Attendance.init(Date().toString(), event: .onEntry, beaconId: "0000")
-    
+        let date = Date().toString()
+       let att = Attendance.init(date, event: .onEntry, beaconId: "0000")
+        
         UserServices.login(email: email2, password: password) { (user) in
             if let user = user as? User{
                 print (user.token!)
