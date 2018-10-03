@@ -18,7 +18,8 @@ struct UserServices{
         let credential = ["email": email, "password": password]
         
         NetworkManager.network(.user, .post, credentail: credential) { (user, error) in
-            guard let user = user as? User else { return completion(error!)}
+            
+            guard let user = user as? User else { return completion(error) }
             User.setCurrent(user, writeToUserDefaults: true)
             return completion(user)
         }

@@ -13,6 +13,8 @@ class LoginController: UIViewController {
     
     // MARK: - Properties
     
+    var user: User?
+    
     // MARK: - UI Elements
     
     private let companionLabel: UILabel = {
@@ -38,6 +40,7 @@ class LoginController: UIViewController {
         textField.attributedPlaceholder = NSAttributedString(string: "email address", attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1)])
         textField.textAlignment = .center
         textField.font = UIFont(name: "AvenirNext-Medium", size: 19)
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.backgroundColor = .white
         return textField
     }()
@@ -53,6 +56,7 @@ class LoginController: UIViewController {
         textField.leftView = imageView
         textField.textAlignment = .center
         textField.layer.cornerRadius = 10
+        textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1)])
         textField.font = UIFont(name: "AvenirNext-Medium", size: 19)
         textField.backgroundColor = .white
@@ -144,16 +148,53 @@ class LoginController: UIViewController {
     
     @objc private func handleLogin() {
         // After logging in, present the MainTabBarController
-
-        let mainTabBarController = MainTabBarController()
-        self.view.window?.rootViewController = mainTabBarController
-        self.view.window?.makeKeyAndVisible()
+        
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text
+        else { return }
+        
+        print(email)
+        print(password)
+        
+        UserServices.login(email: email, password: password) { (user) in
+            
+            
+            if let user = user as? User {
+                // handle existing user
+                User.setCurrent(user, writeToUserDefaults: true)
+                
+                DispatchQueue.main.async {
+                    let mainTabBarController = MainTabBarController()
+                    self.view.window?.rootViewController = mainTabBarController
+    
+                    self.view.window?.makeKeyAndVisible()
+                }
+                
+            } else {
+                self.presentAlert(title: "", message: "Incorrect email or password")
+            }
+            
+        }
+        
+        
+        
     }
     
 }
 
 extension LoginController {
     
-    
+//    func loginUser(_ email: String, _ password: String) {
+//        UserServices.login(email: email, password: password) { (user) in
+//            if let user = user as? User{
+//                User.setCurrent(user, writeToUserDefaults: true)
+//                // perform segue
+//            }
+//            else{
+//                // error message
+//            }
+//        }
+//    }
+//
     
 }
