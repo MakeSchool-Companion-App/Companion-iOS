@@ -13,7 +13,7 @@ struct GeoFenceServices{
     
     
     /// method to convert address to coordinate
-    static func addressToCoordinate(_ address: String, completion: @escaping(CLLocationCoordinate2D?)->()){
+    private static func addressToCoordinate(_ address: String, completion: @escaping(CLLocationCoordinate2D?)->()){
         print("getting location coordinate")
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {
@@ -32,16 +32,16 @@ struct GeoFenceServices{
         }
     }
     /// Mehtod to start monitoring region
-    static func startMonitoringMakeschool(){
+    static func startMonitoringMakeschool( completion: @escaping (Bool)->()){
         let address = "555 post street, San Francisco, CA"
         addressToCoordinate(address) { (center) in
             
-            guard let center = center else {return}
+            guard let center = center else {return completion(false)}
             
             let region = CLCircularRegion(center: center, radius: 150, identifier: "make school")
             let manager = CLLocationManager()
             manager.startMonitoring(for: region)
-            
+            return completion(true)
         }
     }
 }

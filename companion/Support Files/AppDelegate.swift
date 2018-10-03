@@ -50,13 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the color of the font to white
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
         
-        /// monitoring for make school
-        
-        GeoFenceServices.startMonitoringMakeschool()
-        
-        
-        
-        
         window = UIWindow()
         window?.makeKeyAndVisible()
         
@@ -69,28 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             beaconManager = BeaconManager(beacon: registeredBeacon)
         }
       
-        
-        let email = "yves.songolo@students.makeschool.com"
-        let email2 = "yves.songolo@gmail.com"
-        let password = "songolo93"
-        let loc = AppDelegate.shared.beaconManager.beaconRegion.proximityUUID.uuidString
-        let date = Date().toString()
-       let att = Attendance.init(date, event: .onEntry, beaconId: "0000")
-        
-        UserServices.login(email: email2, password: password) { (user) in
-            if let user = user as? User{
-                print (user.token!)
-                AttendanceServices.create(att, completion: { (attendance) in
-                    print(attendance)
-                    
-                    AttendanceServices.show(completion: { (attendace) in
-                        print(attendance)
-                    })
-                })
-                
-            }
-        }
-       
         return true
     }
 
