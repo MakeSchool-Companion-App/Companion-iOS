@@ -7,7 +7,8 @@
 //
 
 import Foundation
-struct NetworkManager{
+
+struct NetworkManager {
     //var shared = NetworkManager()
     static func network(_ path: Path, _ httpMethod: HttpMethod, _ httpBody: Data? = nil, completion: @escaping (Any?, Error?)->()){
     // 1.  based link
@@ -31,7 +32,7 @@ struct NetworkManager{
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, _, err) in
             guard let data = data else {return completion(nil,err)}
-            switch path{
+            switch path {
                 
             case .getAllAttendances:
                 let attanandaces = try! JSONDecoder().decode([Attendance].self, from: data)
@@ -55,19 +56,19 @@ struct NetworkManager{
    
 }
 
-enum Path: String{
+enum Path: String {
     case getAllAttendances = ""
     case getAttendance = "q"
     case postAttendance = "a"
     case getUser = "aa"
     case postUser = "s"
 }
-enum HttpMethod: String{
+enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
     case update = "UPDATE"
 }
-enum HttpBody{
+enum HttpBody {
     case user
     case attendance
 }

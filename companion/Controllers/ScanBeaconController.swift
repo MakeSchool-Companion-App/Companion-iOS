@@ -36,11 +36,21 @@ class ScanBeaconController: UIViewController {
         button.setTitleColor(.blue, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 30
-        button.addTarget(self, action: #selector(showHistory), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleCancellation), for: .touchUpInside)
         return button
     }()
     
-
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "arrow-left"), for: .normal)
+        button.layer.cornerRadius = self.view.frame.height
+        button.addTarget(self, action: #selector(showAttendanceController), for: .touchUpInside)
+        button.backgroundColor = .white
+        return button
+    }()
+    
+    
+    
     // MARK: - View Life Cyle Methods
     
     override func viewDidLoad() {
@@ -49,20 +59,22 @@ class ScanBeaconController: UIViewController {
         beaconManager = AppDelegate.shared.beaconManager
         beaconManager?.delegate = self
 
-        view.backgroundColor = UIColor(red: 53/255, green: 65/255, blue: 164/255, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.05490196078, green: 0.1921568627, blue: 0.8117647059, alpha: 0.9730308219)
         print(beaconView.frame)
         
-        beaconView.startPulsatingAnimation()
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         setupAutoLayout()
+        
+        beaconView.startPulsatingAnimation()
     }
     
     // MARK: - Methods
-    
+
     func setupAutoLayout() {
 
         view.addSubviews(views: beaconView, searchForBeaconLabel, cancelAndOkButton)
@@ -104,13 +116,23 @@ class ScanBeaconController: UIViewController {
             width: 224)
         cancelAndOkButton.centerAnchor(centerX: view.centerXAnchor, centerY: nil)
         
+        beaconView.addSubview(backButton)
+        backButton.anchor(top: beaconView.topAnchor, right: nil, bottom: nil, left: beaconView.leftAnchor, topPadding: 10, rightPadding: 0, bottomPadding: 0, leftPadding: 22, height: 32, width: 32)
+        
     }
     
     
-    @objc private func showHistory() {
+    @objc private func handleCancellation() {
         print("Show Check In & Out History")
-        let logHistoryController = LogHistoryController()
-        show(logHistoryController, sender: nil)
+//        let logHistoryController = LogHistoryController()
+//        show(logHistoryController, sender: nil)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func showAttendanceController() {
+        print("Test: Show Attendance Controller")
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

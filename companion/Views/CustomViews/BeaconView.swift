@@ -30,7 +30,7 @@ class BeaconView: UIView {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 160, height: 160)
         view.layer.cornerRadius = view.frame.size.height / 2
-        view.backgroundColor = .blue
+        view.backgroundColor = #colorLiteral(red: 0.05490196078, green: 0.1921568627, blue: 0.8117647059, alpha: 0.9730308219)
         return view
     }()
     

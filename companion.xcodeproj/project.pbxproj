@@ -15,7 +15,7 @@
 		209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB946214B0FDB00D81ABD /* AttendanceServices.swift */; };
 		209DB948214B0FDB00D81ABD /* AttendanceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB946214B0FDB00D81ABD /* AttendanceServices.swift */; };
 		209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94A214B117200D81ABD /* Date+Extensions.swift */; };
-		209DB950214B117300D81ABD /* viewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94B214B117200D81ABD /* viewControllers.swift */; };
+		209DB950214B117300D81ABD /* UIViewControllers+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94B214B117200D81ABD /* UIViewControllers+Extension.swift */; };
 		209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94C214B117200D81ABD /* UIColor+Extension.swift */; };
 		209DB954214B117300D81ABD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94D214B117200D81ABD /* String+Extensions.swift */; };
 		20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BEA2141A19200E05465 /* AppDelegate.swift */; };
@@ -29,6 +29,15 @@
 		800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BBE7C214C29BD006E96CC /* BeaconView.swift */; };
 		802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806D9214CCE19009CC42B /* LogHistoryController.swift */; };
 		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
+		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
+		80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E5215DF92A008E98EF /* LoginController.swift */; };
+		80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */; };
+		80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E9215E18C9008E98EF /* OnboardingController.swift */; };
+		80DC39EC215E9AD4008E98EF /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EB215E9AD4008E98EF /* OnboardingCell.swift */; };
+		80DC39EE215ECF02008E98EF /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39ED215ECF02008E98EF /* Page.swift */; };
+		80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EF215EDED3008E98EF /* AttendanceController.swift */; };
+		80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F2215EE10D008E98EF /* MainTabBarController.swift */; };
+		80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */; };
 		A9E31D75F6C4D30DC27D0DB4 /* Pods_companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B457FBFF3BF354D54C2DFD3 /* Pods_companion.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +60,7 @@
 		20587CDF214AE3F8004B60A2 /* BeaconServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconServices.swift; sourceTree = "<group>"; };
 		209DB946214B0FDB00D81ABD /* AttendanceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceServices.swift; sourceTree = "<group>"; };
 		209DB94A214B117200D81ABD /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		209DB94B214B117200D81ABD /* viewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = viewControllers.swift; sourceTree = "<group>"; };
+		209DB94B214B117200D81ABD /* UIViewControllers+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewControllers+Extension.swift"; sourceTree = "<group>"; };
 		209DB94C214B117200D81ABD /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		209DB94D214B117200D81ABD /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		20AC1BE72141A19200E05465 /* companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = companion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +79,15 @@
 		800BBE7C214C29BD006E96CC /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
 		802806D9214CCE19009CC42B /* LogHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryController.swift; sourceTree = "<group>"; };
 		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
+		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
+		80DC39E5215DF92A008E98EF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		80DC39E9215E18C9008E98EF /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		80DC39EB215E9AD4008E98EF /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		80DC39ED215ECF02008E98EF /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		80DC39EF215EDED3008E98EF /* AttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceController.swift; sourceTree = "<group>"; };
+		80DC39F2215EE10D008E98EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
 		8F8B4D8E5DD97F1D8F368A6D /* Pods_companionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A30F77EE29664E0E42FF24 /* Pods-companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.debug.xcconfig"; sourceTree = "<group>"; };
 		B997025132705622CE816D75 /* Pods-companionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +128,7 @@
 				20587CD6214AE00F004B60A2 /* Beacon.swift */,
 				20587CD8214AE0D0004B60A2 /* User.swift */,
 				20587CDA214AE159004B60A2 /* Attendance.swift */,
+				80DC39ED215ECF02008E98EF /* Page.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,14 +164,14 @@
 		20AC1BE92141A19200E05465 /* companion */ = {
 			isa = PBXGroup;
 			children = (
-				80FE0BEB214E481200459A64 /* Support Files */,
-				80FE0BEA214E47F500459A64 /* Storyboards */,
-				800BBE7B214C298A006E96CC /* Views */,
-				80074E2D2149CA2700AA684C /* Extensions */,
 				80074E272149BD2500AA684C /* Controllers */,
+				80074E2D2149CA2700AA684C /* Extensions */,
 				20587CDC214AE2CD004B60A2 /* Network */,
 				20587CD5214ADFFA004B60A2 /* Models */,
 				20587CD4214ADFED004B60A2 /* Services */,
+				80FE0BEA214E47F500459A64 /* Storyboards */,
+				80FE0BEB214E481200459A64 /* Support Files */,
+				800BBE7B214C298A006E96CC /* Views */,
 				20AC1BF12141A19200E05465 /* Assets.xcassets */,
 			);
 			path = companion;
@@ -190,8 +209,12 @@
 		80074E272149BD2500AA684C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
+				80DC39EF215EDED3008E98EF /* AttendanceController.swift */,
 				802806D9214CCE19009CC42B /* LogHistoryController.swift */,
+				80DC39E5215DF92A008E98EF /* LoginController.swift */,
+				80DC39E9215E18C9008E98EF /* OnboardingController.swift */,
+				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
+				80DC39F1215EE0E9008E98EF /* TabBarController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,7 +226,8 @@
 				209DB94A214B117200D81ABD /* Date+Extensions.swift */,
 				209DB94D214B117200D81ABD /* String+Extensions.swift */,
 				209DB94C214B117200D81ABD /* UIColor+Extension.swift */,
-				209DB94B214B117200D81ABD /* viewControllers.swift */,
+				209DB94B214B117200D81ABD /* UIViewControllers+Extension.swift */,
+				80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -211,10 +235,37 @@
 		800BBE7B214C298A006E96CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				800BBE7C214C29BD006E96CC /* BeaconView.swift */,
-				802806DB214CD020009CC42B /* LogHistoryCell.swift */,
+				803E476D216294BC004C62DF /* CustomViews */,
+				803E4770216299E1004C62DF /* TableViewCells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		803E476D216294BC004C62DF /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				800BBE7C214C29BD006E96CC /* BeaconView.swift */,
+				803E476E216294F0004C62DF /* LeftPaddedTextField.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		803E4770216299E1004C62DF /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				802806DB214CD020009CC42B /* LogHistoryCell.swift */,
+				80DC39EB215E9AD4008E98EF /* OnboardingCell.swift */,
+				80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		80DC39F1215EE0E9008E98EF /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				80DC39F2215EE10D008E98EF /* MainTabBarController.swift */,
+			);
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
 		80FE0BEA214E47F500459A64 /* Storyboards */ = {
@@ -396,14 +447,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */,
 				802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */,
-				209DB950214B117300D81ABD /* viewControllers.swift in Sources */,
+				209DB950214B117300D81ABD /* UIViewControllers+Extension.swift in Sources */,
+				80DC39EE215ECF02008E98EF /* Page.swift in Sources */,
 				20587CDE214AE35F004B60A2 /* NetworkManager.swift in Sources */,
 				20587CD9214AE0D0004B60A2 /* User.swift in Sources */,
+				80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */,
+				80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */,
 				209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */,
+				80DC39EC215E9AD4008E98EF /* OnboardingCell.swift in Sources */,
+				80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */,
 				209DB954214B117300D81ABD /* String+Extensions.swift in Sources */,
+				803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */,
 				209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */,
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,
+				80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */,
 				20587CE0214AE3F8004B60A2 /* BeaconServices.swift in Sources */,
 				20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */,
 				800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */,
@@ -411,6 +470,7 @@
 				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
 				80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
+				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,
 				20587CDB214AE159004B60A2 /* Attendance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

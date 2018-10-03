@@ -32,7 +32,10 @@ extension UIView {
         
     }
     
+   
     func anchor(top: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, topPadding: CGFloat, rightPadding: CGFloat, bottomPadding: CGFloat, leftPadding: CGFloat, height: CGFloat, width: CGFloat) {
+        
+    
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -51,6 +54,54 @@ extension UIView {
         if let left = left {
             self.leftAnchor.constraint(equalTo: left, constant: leftPadding).isActive = true
         }
+        
+        if height != 0 {
+            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+        
+        if width != 0 {
+            self.widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        
+    }
+    
+    /*
+     Center X and Center Y
+     */
+    
+    func anchor(centerX: NSLayoutXAxisAnchor?, centerY: NSLayoutYAxisAnchor?, top: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, topPadding: CGFloat, rightPadding: CGFloat, bottomPadding: CGFloat, leftPadding: CGFloat, height: CGFloat, width: CGFloat) {
+        
+        /*
+         Center X and Center Y
+         */
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        if let top = top {
+            self.topAnchor.constraint(equalTo: top, constant: topPadding).isActive = true
+        }
+        
+        if let right = right {
+            self.rightAnchor.constraint(equalTo: right, constant: -rightPadding).isActive = true
+        }
+        
+        if let bottom = bottom {
+            self.bottomAnchor.constraint(equalTo: bottom, constant: -bottomPadding).isActive = true
+        }
+        
+        if let left = left {
+            self.leftAnchor.constraint(equalTo: left, constant: leftPadding).isActive = true
+        }
+        
+        if let centerX = centerX {
+            self.centerXAnchor.constraint(equalTo: centerX).isActive = true
+        }
+        
+        if let centerY = centerY {
+            self.centerYAnchor.constraint(equalTo: centerY).isActive = true
+        }
+        
+        
         
         if height != 0 {
             self.heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -100,6 +151,19 @@ extension UIView {
         views.forEach { (subview) in
             self.addSubview(subview)
         }
+    }
+    
+    // Setting Gradient Background Color
+    func setGradientBackground(firstColor: UIColor, secondColor: UIColor) {
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+//        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: frame.midX, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: frame.midX, y: 1.0)
+        
+        layer.insertSublayer(gradientLayer, at: 0)
     }
     
 }

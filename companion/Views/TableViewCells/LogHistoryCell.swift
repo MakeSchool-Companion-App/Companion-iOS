@@ -10,6 +10,8 @@ import UIKit
 
 class LogHistoryCell: UITableViewCell {
     
+    static let logHistoryCellId = "LogHistoryCellId"
+    
     // MARK: - UI Elements
     private let enterLabel: UILabel = {
         let label = UILabel()
