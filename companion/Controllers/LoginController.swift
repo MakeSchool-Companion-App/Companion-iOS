@@ -40,6 +40,8 @@ class LoginController: UIViewController {
         textField.attributedPlaceholder = NSAttributedString(string: "email address", attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1)])
         textField.textAlignment = .center
         textField.font = UIFont(name: "AvenirNext-Medium", size: 19)
+        textField.becomeFirstResponder()
+        textField.isUserInteractionEnabled = true
         textField.autocapitalizationType = UITextAutocapitalizationType.none
         textField.backgroundColor = .white
         return textField
@@ -81,6 +83,9 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         view.setGradientBackground(firstColor: #colorLiteral(red: 0.02745098039, green: 0.6, blue: 0.9333333333, alpha: 1), secondColor: #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1))
         setupAutoLayout()
+        
+        emailTextField.delegate = self
+        emailTextField.becomeFirstResponder()
         
     }
     
@@ -153,9 +158,6 @@ class LoginController: UIViewController {
               let password = passwordTextField.text
         else { return }
         
-        print(email)
-        print(password)
-        
         UserServices.login(email: email, password: password) { (user) in
             
             
@@ -178,6 +180,14 @@ class LoginController: UIViewController {
         
         
         
+    }
+    
+}
+
+extension LoginController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("show keyboard")
     }
     
 }

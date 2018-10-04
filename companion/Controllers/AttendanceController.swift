@@ -12,6 +12,14 @@ class AttendanceController: UIViewController {
     
     // MARK: - Properties
     
+    var attendance = [Attendance]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.attendanceTableView.reloadData()
+            }
+            
+        }
+    }
     
     
     // MARK: - UI Elements
@@ -33,6 +41,11 @@ class AttendanceController: UIViewController {
         
         setupAutoLayout()
         setupNavbarItem()
+        
+        AttendanceServices.show { (attendance) in
+            // Fetch student's attendance from Companion API
+            self.attendance = attendance ?? []
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +54,7 @@ class AttendanceController: UIViewController {
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
-    // MARK: - Methods
+    // MARK: - UI Setup Methods
     
     private func setupNavbarItem() {
 
@@ -82,7 +95,7 @@ class AttendanceController: UIViewController {
 extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return attendance.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,7 +103,10 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Failed to initialize Attendance Cell")
         }
         
+        let studentAttendance = attendance[indexPath.row]
         
+        cell.checkInDateLabel.text = studentAttendance.event_time
+        cell.checkOutTimeLabel.text = studentAttendance.event_time
         
         return cell
     }
