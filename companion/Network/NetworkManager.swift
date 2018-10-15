@@ -79,10 +79,12 @@ struct NetworkManager {
                 case .post: fallthrough
                 case .update:
                     do{
-                        let user = try JSONDecoder().decode(User.self, from: data)
+                        let user = try? JSONDecoder().decode(User.self, from: data)
                         completion(user, nil)
+                        
                     }catch{
                         return completion(nil,nil)
+                        
                     }
                 }
             }

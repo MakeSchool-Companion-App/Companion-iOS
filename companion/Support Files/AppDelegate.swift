@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let manager = BeaconManager(beacon: registeredBeacon)
         return manager
     }()
-    
+    let locationManager = CLLocationManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -63,13 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = mainTabBarController
         
         beaconManager.startMonitoring()
-        
-        UserServices.login(email: ":yves.songolo@gmail.com", password: "songolo93.") { (user) in
-            AttendanceServices.show(completion: { (att) in
-                print(att)
-            })
+        GeoFenceServices.startMonitoringMakeschool { (started) in
+            if started == true{
+                self.locationManager.delegate = self
+            }
         }
-        
         return true
     }
 
@@ -85,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        self.locationManager.delegate = self
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -95,4 +94,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         }
     }
+
+extension AppDelegate: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        let identifier = region.identifier
+        if identifier == Constant.makeSchoolRegionId {
+            let attendance = Attendance.init(Date().toString(), event: .onEntry, beaconId: "")
+            AttendanceServices.create(attendance) { (att) in
+                if let attendance = att{
+                    UserDefaults.standard.set(attendance.id, forKey: "attendance_id")
+                    UserDefaults.standard.set(attendance.event_time, forKey: "event_time")
+                    /// local notification
+                }
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region.identifier == Constant.makeSchoolRegionId {
+            
+            if let eventTime = UserDefaults.standard.value(forKey: "event_time") as? String {
+                
+                if eventTime == Date().toString() {
+                    guard let attendanceId = UserDefaults.standard.value(forKey: "attendance_id") as? String else { return }
+                    
+                    // Fetch a list of attendance from the Companion API
+                    AttendanceServices.show { (attendance) in
+                        // Get today's attendance (first element in the array)
+                        let attendance = attendance?.filter { $0.id == Int(attendanceId) }
+                        let todaysAttendance = attendance?.first
+                            /// adding the clock out time on the attendance model
+                            /// clean the user default
+                    }
+                }
+            }
+        }
+    }
+    
+}
 

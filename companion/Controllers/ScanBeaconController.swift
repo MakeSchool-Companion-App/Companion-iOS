@@ -56,11 +56,10 @@ class ScanBeaconController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        beaconManager = AppDelegate.shared.beaconManager
-        beaconManager?.delegate = self
-
         view.backgroundColor = #colorLiteral(red: 0.05490196078, green: 0.1921568627, blue: 0.8117647059, alpha: 0.9730308219)
         print(beaconView.frame)
+        
+        setupBeaconManager()
         
         
     }
@@ -69,11 +68,16 @@ class ScanBeaconController: UIViewController {
         super.viewDidLayoutSubviews()
         
         setupAutoLayout()
-        
         beaconView.startPulsatingAnimation()
     }
     
-    // MARK: - Methods
+    func setupBeaconManager() {
+        beaconManager = AppDelegate.shared.beaconManager
+        beaconManager?.delegate = self
+        beaconManager?.startMonitoring()
+    }
+    
+    // MARK: - Setup UI Methods
 
     func setupAutoLayout() {
 
@@ -121,11 +125,10 @@ class ScanBeaconController: UIViewController {
         
     }
     
+    // MARK: - Methods with @objc
     
     @objc private func handleCancellation() {
         print("Show Check In & Out History")
-//        let logHistoryController = LogHistoryController()
-//        show(logHistoryController, sender: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -140,6 +143,9 @@ extension ScanBeaconController: BeaconManagerDelegate {
     
     func beaconManager(sender: BeaconManager, isInBeaconRange region: CLRegion) {
         print("Beacon is in range.")
+        // Create a timestamp (Attendance) once you're in the region
+       
+        
         view.backgroundColor = .yellow
     }
     
