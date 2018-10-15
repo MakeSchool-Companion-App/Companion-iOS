@@ -243,29 +243,29 @@
 		800BBE7B214C298A006E96CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				803E476D216294BC004C62DF /* CustomViews */,
-				803E4770216299E1004C62DF /* TableViewCells */,
+				803E476D216294BC004C62DF /* Custom Views */,
+				803E4770216299E1004C62DF /* Table View Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		803E476D216294BC004C62DF /* CustomViews */ = {
+		803E476D216294BC004C62DF /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
 				800BBE7C214C29BD006E96CC /* BeaconView.swift */,
 				803E476E216294F0004C62DF /* LeftPaddedTextField.swift */,
 			);
-			path = CustomViews;
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		803E4770216299E1004C62DF /* TableViewCells */ = {
+		803E4770216299E1004C62DF /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
 				802806DB214CD020009CC42B /* LogHistoryCell.swift */,
 				80DC39EB215E9AD4008E98EF /* OnboardingCell.swift */,
 				80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */,
 			);
-			path = TableViewCells;
+			path = "Table View Cells";
 			sourceTree = "<group>";
 		};
 		80DC39F1215EE0E9008E98EF /* TabBarController */ = {
