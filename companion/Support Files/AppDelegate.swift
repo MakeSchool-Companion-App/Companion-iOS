@@ -64,6 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         beaconManager.startMonitoring()
         
+        UserServices.login(email: ":yves.songolo@gmail.com", password: "songolo93.") { (user) in
+            AttendanceServices.show(completion: { (att) in
+                print(att)
+            })
+        }
+        
         return true
     }
 
