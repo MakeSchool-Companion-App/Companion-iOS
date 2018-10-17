@@ -9,6 +9,7 @@
 import UIKit
 import iBeaconManager
 import CoreLocation
+import UserNotifications
 
 class CustomNavigationController: UINavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -37,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return manager
     }()
     let locationManager = CLLocationManager()
+    
+    // Local Notification
+    let center = UNUserNotificationCenter.current()
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -68,6 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.locationManager.delegate = self
             }
         }
+        
+        center.delegate = self
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { (requestAuth, error) in
+            print("AppDelegate: Testing Request Authorization")
+        }
+        
         return true
     }
 
@@ -101,10 +112,11 @@ extension AppDelegate: CLLocationManagerDelegate{
         if identifier == Constant.makeSchoolRegionId {
             let attendance = Attendance.init(Date().toString(), event: .onEntry, beaconId: "")
             AttendanceServices.create(attendance) { (att) in
-                if let attendance = att{
-                    UserDefaults.standard.set(attendance.id, forKey: "attendance_id")
-                    UserDefaults.standard.set(attendance.event_time, forKey: "event_time")
+                if let checkInAttendance = att{
+                    UserDefaults.standard.set(checkInAttendance.id, forKey: "attendance_id")
+                    UserDefaults.standard.set(checkInAttendance.event_time, forKey: "event_time")
                     /// local notification
+                    self.attendanceNotification(attendance: checkInAttendance)
                 }
             }
         }
@@ -129,6 +141,32 @@ extension AppDelegate: CLLocationManagerDelegate{
                 }
             }
         }
+    }
+    
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func attendanceNotification(attendance: Attendance) {
+        
+        // The notification content
+        let content = UNMutableNotificationContent()
+        
+        // Adding title, subtitle, body and badge
+        content.title = "Companion"
+        content.subtitle = "Check In"
+        content.body = "You entered Make School at \(attendance.event_time)."
+        content.badge = 1
+        
+        // Triggering the notification
+        // Once a person steps inside the building
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        
+        // Getting the notification request
+        let request = UNNotificationRequest(identifier: Constant.attendanceNotificationId, content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: nil)
+        
     }
     
 }
