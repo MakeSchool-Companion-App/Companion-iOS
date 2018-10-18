@@ -14,6 +14,11 @@ import UIKit
 // Usage: let someColor = UIColor.colorFromHex("#2d34aa")
 extension UIColor {
     
+    
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+        self.init(red: r / 255, green: g / 255 , blue: b / 255, alpha: a)
+    }
+    
     // Convert a hex string to a UIColor object.
     class func colorFromHex(hexString:String) -> UIColor {
         

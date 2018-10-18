@@ -31,9 +31,16 @@ class MainTabBarController: UITabBarController {
             selectedImageName: nil,
             rootViewController: AttendanceController())
         
+        // Student Dashboard
+        let studentDashboardNavController = createNavigationController(
+            navTitle: "Dashboard",
+            tabBarTitle: "Dashboard",
+            unselectedImageName: nil,
+            selectedImageName: nil,
+            rootViewController: StudentDashboardController())
         
         // Add each controller in the view controllers array
-        viewControllers = [attendanceNavController]
+        viewControllers = [attendanceNavController, studentDashboardNavController]
         
         
         // modify tab bar item insets

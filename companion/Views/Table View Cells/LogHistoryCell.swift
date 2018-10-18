@@ -22,6 +22,7 @@ class LogHistoryCell: UITableViewCell {
         return label
     }()
     
+    
     private let exitLabel: UILabel = {
         let label = UILabel()
         label.text = "Exit"

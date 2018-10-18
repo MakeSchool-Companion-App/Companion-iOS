@@ -28,6 +28,12 @@
 		20AC1C002141A19200E05465 /* companionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BFF2141A19200E05465 /* companionTests.swift */; };
 		29722AE8C16C7AD82FA9683B /* Pods_companionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8B4D8E5DD97F1D8F368A6D /* Pods_companionTests.framework */; };
 		8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93C21770BA5007514D1 /* StudentDashboardController .swift */; };
+		8000A93F2177D841007514D1 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93E2177D841007514D1 /* ProfileCardView.swift */; };
+		8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */; };
+		8000A943217844ED007514D1 /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A942217844ED007514D1 /* ProjectsCell.swift */; };
+		8000A94521784508007514D1 /* CoursesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94421784508007514D1 /* CoursesCell.swift */; };
+		8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94721784D01007514D1 /* ProjectsCollectionCell.swift */; };
+		8000A94A21786295007514D1 /* CoursesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94921786295007514D1 /* CoursesCollectionCell.swift */; };
 		80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80074E2B2149BE7800AA684C /* ScanBeaconController.swift */; };
 		80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80074E2E2149CA6900AA684C /* UIView+Extension.swift */; };
 		800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BBE7C214C29BD006E96CC /* BeaconView.swift */; };
@@ -82,6 +88,12 @@
 		2B457FBFF3BF354D54C2DFD3 /* Pods_companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F83C0A19417ECCBF8797EF /* Pods-companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.release.xcconfig"; sourceTree = "<group>"; };
 		8000A93C21770BA5007514D1 /* StudentDashboardController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentDashboardController .swift"; sourceTree = "<group>"; };
+		8000A93E2177D841007514D1 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
+		8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeSchoolDesignColor.swift; sourceTree = "<group>"; };
+		8000A942217844ED007514D1 /* ProjectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
+		8000A94421784508007514D1 /* CoursesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCell.swift; sourceTree = "<group>"; };
+		8000A94721784D01007514D1 /* ProjectsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCollectionCell.swift; sourceTree = "<group>"; };
+		8000A94921786295007514D1 /* CoursesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCollectionCell.swift; sourceTree = "<group>"; };
 		80074E2B2149BE7800AA684C /* ScanBeaconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBeaconController.swift; sourceTree = "<group>"; };
 		80074E2E2149CA6900AA684C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		800BBE7C214C29BD006E96CC /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
@@ -216,6 +228,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8000A94621784CC3007514D1 /* Collection View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8000A94721784D01007514D1 /* ProjectsCollectionCell.swift */,
+				8000A94921786295007514D1 /* CoursesCollectionCell.swift */,
+			);
+			path = "Collection View Cells";
+			sourceTree = "<group>";
+		};
 		80074E272149BD2500AA684C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				803E476D216294BC004C62DF /* Custom Views */,
+				8000A94621784CC3007514D1 /* Collection View Cells */,
 				803E4770216299E1004C62DF /* Table View Cells */,
 			);
 			path = Views;
@@ -257,6 +279,7 @@
 			children = (
 				800BBE7C214C29BD006E96CC /* BeaconView.swift */,
 				803E476E216294F0004C62DF /* LeftPaddedTextField.swift */,
+				8000A93E2177D841007514D1 /* ProfileCardView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -267,6 +290,8 @@
 				802806DB214CD020009CC42B /* LogHistoryCell.swift */,
 				80DC39EB215E9AD4008E98EF /* OnboardingCell.swift */,
 				80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */,
+				8000A942217844ED007514D1 /* ProjectsCell.swift */,
+				8000A94421784508007514D1 /* CoursesCell.swift */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -294,6 +319,7 @@
 				20AC1BEA2141A19200E05465 /* AppDelegate.swift */,
 				20AC1BF62141A19200E05465 /* Info.plist */,
 				205EC0E8215AA6DE00B40141 /* Constant.swift */,
+				8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -468,7 +494,9 @@
 				80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */,
 				80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */,
 				209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */,
+				8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */,
 				80DC39EC215E9AD4008E98EF /* OnboardingCell.swift in Sources */,
+				8000A93F2177D841007514D1 /* ProfileCardView.swift in Sources */,
 				80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */,
 				209DB954214B117300D81ABD /* String+Extensions.swift in Sources */,
 				803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */,
@@ -480,13 +508,17 @@
 				800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */,
 				8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */,
 				205EC0E9215AA6DE00B40141 /* Constant.swift in Sources */,
+				8000A943217844ED007514D1 /* ProjectsCell.swift in Sources */,
 				802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */,
 				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
 				80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */,
 				20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
+				8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */,
 				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,
+				8000A94521784508007514D1 /* CoursesCell.swift in Sources */,
 				20587CDB214AE159004B60A2 /* Attendance.swift in Sources */,
+				8000A94A21786295007514D1 /* CoursesCollectionCell.swift in Sources */,
 				2019D7592163E6D500F8AB25 /* GeofenceServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
