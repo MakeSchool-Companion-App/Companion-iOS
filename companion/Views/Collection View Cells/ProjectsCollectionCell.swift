@@ -50,7 +50,7 @@ class ProjectsCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        backgroundColor = UIColor.red 
         setupAutoLayout()
         
     }

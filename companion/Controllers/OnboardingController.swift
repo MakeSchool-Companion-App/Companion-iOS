@@ -65,7 +65,7 @@ class OnboardingController: UICollectionViewController {
     fileprivate func setupCollectionView() {
 
         collectionView?.backgroundColor = .gray
-        collectionView?.register(OnboardingCell.self, forCellWithReuseIdentifier: OnboardingCell.onboardingCellID)
+        collectionView?.register(OnboardingCollectionCell.self, forCellWithReuseIdentifier: OnboardingCollectionCell.onboardingCellID)
         collectionView?.isPagingEnabled = true
     }
     
@@ -128,7 +128,7 @@ extension OnboardingController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.onboardingCellID, for: indexPath) as? OnboardingCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionCell.onboardingCellID, for: indexPath) as? OnboardingCollectionCell
         else {
             fatalError("Failed to create initialize oboardingCell instance")
         }

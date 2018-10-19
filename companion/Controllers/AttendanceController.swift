@@ -44,7 +44,10 @@ class AttendanceController: UIViewController {
         
         AttendanceServices.show { (attendance) in
             // Fetch student's attendance from Companion API
+            print("This is the attendance objects \(attendance)" )
             self.attendance = attendance ?? []
+            print("Count: \(attendance?.count)")
+            
         }
     }
     

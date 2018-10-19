@@ -22,12 +22,14 @@ struct AttendanceServices{
             }
         }
     }
-    
+
     /// method to retrieve all attendance
     static func show(completion: @escaping([Attendance]?)->()){
         
         NetworkManager.network(.attendance, .get) { (attendance, error) in
             guard let att = attendance as? [Attendance] else {return completion (nil)}
+            print("Attendance: \(att)")
+            
             return completion(att)
         }
     }
