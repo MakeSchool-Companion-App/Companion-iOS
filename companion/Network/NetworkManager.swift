@@ -9,7 +9,7 @@
 import Foundation
 
 struct NetworkManager {
-    //var shared = NetworkManager()
+   
     static func network(_ path: Path, _ httpMethod: HttpMethod, _ httpBody: Data? = nil, credentail: [String:String]? = nil, params: [String:Any]? = nil,completion: @escaping (Any?, Error?)->()){
         // 1.  based link
         var links = "https://make-school-companion.herokuapp.com/"
@@ -100,31 +100,49 @@ struct NetworkManager {
         }
         task.resume()
     }
+//
+//    func fetchStudentDashboardInfo(primaryPath: Path, secondaryPath: Path?, httpMethod: HttpMethod, completion: @escaping (Any) -> Void) {
+//
+//        var baseUrl = "https://www.makeschool.com/"
+//
+//        guard let secondaryPath = secondaryPath else { return }
+//
+//        if primaryPath.rawValue == "dashboard" {
+//            baseUrl.append("dashboard/\(secondaryPath)")
+//        } else if primaryPath.rawValue == "portfolio" {
+//            let usersFirstName =  User.current.first_name.lowercased()
+//            let usersLastName = User.current.last_name.lowercased()
+//            baseUrl.append("portfolio/\(usersFirstName)-\(usersLastName)")
+//        }
+//
+//
+//        let fullUrl = URL(string: baseUrl)
+//        var request = URLRequest(url: fullUrl!)
+//        request.httpMethod = HttpMethod.get.rawValue
+//
+//        let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//
+//        }
+//    }
     
-    func fetchStudentDashboardInfo(primaryPath: Path, secondaryPath: Path?, httpMethod: HttpMethod, completion: @escaping (Any) -> Void) {
-        
-        var baseUrl = "https://www.makeschool.com/"
-        
-        guard let secondaryPath = secondaryPath else { return }
-        
-        if primaryPath.rawValue == "dashboard" {
-            baseUrl.append("dashboard/\(secondaryPath)")
-        } else if primaryPath.rawValue == "portfolio" {
-            let usersFirstName =  User.current.first_name.lowercased()
-            let usersLastName = User.current.last_name.lowercased()
-            baseUrl.append("portfolio/\(usersFirstName)-\(usersLastName)")
-        }
-        
-        
-        let fullUrl = URL(string: baseUrl)
-        var request = URLRequest(url: fullUrl!)
-        request.httpMethod = HttpMethod.get.rawValue
-        
-        let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
+    
+    static func fetchProfile(completion: @escaping ([Profile])->()){
+        let link = "https://www.makeschool.com/portfolios.json"
+        let url = URL(string: link)!
+        let request = URLRequest(url: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, res, error) in
+            guard let data = data else {return}
             
-        }
-        
-        
+            do{
+                let profiles = try JSONDecoder().decode([Profile].self, from: data)
+                
+                return completion(profiles)
+            }
+            catch{
+                
+            }
+        }.resume()
     }
     
 }
