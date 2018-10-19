@@ -27,16 +27,16 @@ class MainTabBarController: UITabBarController {
         let attendanceNavController = createNavigationController(
             navTitle: "Attendance",
             tabBarTitle: "Attendance",
-            unselectedImageName: nil,
-            selectedImageName: nil,
+            unselectedImageName: UIImage(named: "unselectedClock"),
+            selectedImageName: UIImage(named: "unselectedClock"),
             rootViewController: AttendanceController())
         
         // Student Dashboard
         let studentDashboardNavController = createNavigationController(
             navTitle: "Dashboard",
             tabBarTitle: "Dashboard",
-            unselectedImageName: nil,
-            selectedImageName: nil,
+            unselectedImageName: UIImage(named: "profile_unselected"),
+            selectedImageName: UIImage(named: "profile_selected"),
             rootViewController: StudentDashboardController())
         
         // Add each controller in the view controllers array
@@ -65,8 +65,8 @@ class MainTabBarController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem.title = tabBarTitle
         navigationController.navigationBar.isTranslucent = false
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 24)!, NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController.navigationBar.barTintColor = #colorLiteral(red: 0.03529411765, green: 0.1607843137, blue: 0.8078431373, alpha: 0.9677600599)
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 20)!, NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController.navigationBar.barTintColor = MakeSchoolDesignColor.darkBlue
         
         
         // setup TabBarItemImage
@@ -79,9 +79,9 @@ class MainTabBarController: UITabBarController {
         }
         
         tabBar.isTranslucent = false
-        tabBar.barTintColor = #colorLiteral(red: 0.03529411765, green: 0.1607843137, blue: 0.8078431373, alpha: 1)
-        tabBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
+        tabBar.barTintColor = MakeSchoolDesignColor.faintBlue
+        tabBar.tintColor = MakeSchoolDesignColor.darkBlue
+//        tabBar.unselectedItemTintColor = MakeSchoolDesignColor.grey
         return navigationController
     }
     

@@ -17,23 +17,14 @@ class CoursesCell: UITableViewCell {
     
     // MARK: - UI Elements
     
-    lazy var coursesCollectionView: UICollectionView = {
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView()
-        collectionView.collectionViewLayout = layout
-        collectionView.register(CoursesCollectionCell.self, forCellWithReuseIdentifier: CoursesCollectionCell.coursesCollectionCellId)
-        
-        return collectionView
-    }()
+    var coursesCollectionView: UICollectionView?
     
     
     // MARK: - Initializers
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupCollectionView()
         setupAutoLayout()
     }
     
@@ -41,13 +32,27 @@ class CoursesCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//    }
+    
     // MARK: - Methods
+    
+    private func setupCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        coursesCollectionView = UICollectionView(frame: self.frame, collectionViewLayout: layout)
+        coursesCollectionView?.backgroundColor = MakeSchoolDesignColor.green
+        coursesCollectionView?.register(CoursesCollectionCell.self, forCellWithReuseIdentifier: CoursesCollectionCell.coursesCollectionCellId)
+    }
     
     private func setupAutoLayout() {
         
-        contentView.addSubview(coursesCollectionView)
+        contentView.addSubview(coursesCollectionView ?? UICollectionView())
         
-        coursesCollectionView.anchor(
+        coursesCollectionView?.anchor(
             top: contentView.topAnchor,
             right: contentView.rightAnchor,
             bottom: contentView.bottomAnchor,
@@ -60,9 +65,9 @@ class CoursesCell: UITableViewCell {
         <D: UICollectionViewDataSource & UICollectionViewDelegate>
         (dataSourceDelegate: D, forRow row: Int) {
         
-        coursesCollectionView.delegate = dataSourceDelegate
-        coursesCollectionView.dataSource = dataSourceDelegate
-        coursesCollectionView.tag = row
-        coursesCollectionView.reloadData()
+        coursesCollectionView?.delegate = dataSourceDelegate
+        coursesCollectionView?.dataSource = dataSourceDelegate
+        coursesCollectionView?.tag = row
+        coursesCollectionView?.reloadData()
     }
 }

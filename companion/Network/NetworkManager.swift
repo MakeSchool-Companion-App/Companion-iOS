@@ -47,10 +47,13 @@ struct NetworkManager {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, res, err) in
             guard let data = data else {return completion(nil,err)}
+            
+            
             let response = res as! HTTPURLResponse
             print(response.statusCode)
             let res =  String(data: data, encoding: .utf8)
-            print(res)
+            print("This is the res \(res)")
+//            print("This is the data as a string \(data.base64EncodedString())")
             
             switch path{
                 
@@ -58,8 +61,10 @@ struct NetworkManager {
                 switch httpMethod{
                 case .get:
                     do{
+                        
                         let attanandaces = try JSONDecoder().decode([Attendance].self, from: data)
                         completion(attanandaces,nil)
+                        
                     }catch{
                         completion(nil,nil)
                     }
@@ -87,20 +92,52 @@ struct NetworkManager {
                         
                     }
                 }
+            case .dashboard:
+                return completion(nil, nil)
+            case .portfolio:
+                return completion(nil, nil)
             }
         }
         task.resume()
     }
     
+    func fetchStudentDashboardInfo(primaryPath: Path, secondaryPath: Path?, httpMethod: HttpMethod, completion: @escaping (Any) -> Void) {
+        
+        var baseUrl = "https://www.makeschool.com/"
+        
+        guard let secondaryPath = secondaryPath else { return }
+        
+        if primaryPath.rawValue == "dashboard" {
+            baseUrl.append("dashboard/\(secondaryPath)")
+        } else if primaryPath.rawValue == "portfolio" {
+            let usersFirstName =  User.current.first_name.lowercased()
+            let usersLastName = User.current.last_name.lowercased()
+            baseUrl.append("portfolio/\(usersFirstName)-\(usersLastName)")
+        }
+        
+        
+        let fullUrl = URL(string: baseUrl)
+        var request = URLRequest(url: fullUrl!)
+        request.httpMethod = HttpMethod.get.rawValue
+        
+        let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+        }
+        
+        
+    }
+    
 }
 
-enum Path: String{
+enum Path: String {
     case attendance = "attendances"
     case user = "registrations"
+    case dashboard = "dashboard"
+    case portfolio = "portfolio"
 }
 
 
-enum HttpMethod: String{
+enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
     case update = "UPDATE"

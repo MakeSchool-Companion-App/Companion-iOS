@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardingCell: UICollectionViewCell {
+class OnboardingCollectionCell: UICollectionViewCell {
     
     // MARK: - Properties
     static let onboardingCellID = "onboardingCellID"

@@ -45,7 +45,7 @@ class CoursesCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        backgroundColor = MakeSchoolDesignColor.red
         setupAutoLayout()
         
     }

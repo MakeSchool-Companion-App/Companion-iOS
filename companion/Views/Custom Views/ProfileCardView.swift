@@ -14,18 +14,24 @@ class ProfileCardView: UIView {
     
     let profilePictureImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        imageView.image = UIImage(named: "uchennagithub")
+        imageView.frame = CGRect(x: 0, y: 0, width: 95, height: 95)
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = MakeSchoolDesignColor.faintBlue.cgColor
+//        imageView.layer.shadowColor = MakeSchoolDesignColor.black.cgColor
+//        imageView.layer.shadowRadius = 45.25
+//        imageView.layer.shadowOpacity = 0.5
+//        imageView.layer.shadowOffset = CGSize(width: 100, height: 100)
         return imageView
     }()
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "John Doe"
-        label.textAlignment = .center
+        label.text = "Uchenna Aguocha"
+        label.textAlignment = .left
         label.textColor = MakeSchoolDesignColor.black
         label.font = UIFont(name: "AvenirNext-DemiBold", size: 23)
         return label
@@ -34,7 +40,7 @@ class ProfileCardView: UIView {
     let concentrationLabel: UILabel = {
         let label = UILabel()
         label.text = "Mobile Developer"
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.textColor = MakeSchoolDesignColor.darkGrey
         label.font = UIFont(name: "AvenirNext", size: 16)
         return label
@@ -43,10 +49,11 @@ class ProfileCardView: UIView {
     let biographyTextView: UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = false
-        textView.text = "I'm the best developer in the world, and I love to bike around SF and sleep."
+        textView.text = "Senior iOS Developer @ Make School. I enjoy sleeping, biking, running, and eating free food."
         textView.textColor = MakeSchoolDesignColor.darkGrey
         textView.textAlignment = .left
-        textView.font = UIFont(name: "AvenirNext-Medium", size: 12)
+        textView.backgroundColor = UIColor.clear
+        textView.font = UIFont(name: "AvenirNext-Medium", size: 13)
         return textView
     }()
     
@@ -75,63 +82,57 @@ class ProfileCardView: UIView {
     
     private func setupAutoLayout() {
         
-        let stackView = UIStackView(arrangedSubviews: [nameLabel, concentrationLabel])
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 10
-        
-        addSubviews(views: profilePictureImageView, editButton, stackView, biographyTextView)
-        
         profilePictureImageView.anchor(
-            top: topAnchor,
-            right: nil,
-            bottom: nil,
-            left: leftAnchor,
-            topPadding: 10,
-            rightPadding: 0,
-            bottomPadding: 0,
-            leftPadding: 10,
-            height: 95,
-            width: 95)
-        
-        editButton.anchor(
-            centerX: profilePictureImageView.centerXAnchor,
-            centerY: nil,
-            top: profilePictureImageView.bottomAnchor,
+            top: nil,
             right: nil,
             bottom: nil,
             left: nil,
-            topPadding: 12,
+            topPadding: 0,
             rightPadding: 0,
             bottomPadding: 0,
             leftPadding: 0,
-            height: 21,
+            height: 0,
+            width: 0)
+        
+        editButton.anchor(
+            centerX: nil,
+            centerY: nil,
+            top: nil,
+            right: nil,
+            bottom: nil,
+            left: nil,
+            topPadding: 0,
+            rightPadding: 0,
+            bottomPadding: 0,
+            leftPadding: 0,
+            height: 25,
             width: 70)
         
-        stackView.anchor(
-            top: topAnchor,
-            right: rightAnchor,
-            bottom: nil,
-            left: profilePictureImageView.leftAnchor,
-            topPadding: 28,
-            rightPadding: 10,
-            bottomPadding: 0,
-            leftPadding: 24,
-            height: 40,
-            width: 0)
+        let leftStackView = UIStackView(arrangedSubviews: [profilePictureImageView, editButton])
+        leftStackView.distribution = .equalSpacing
+        leftStackView.axis = .vertical
+        leftStackView.alignment = .center
+        leftStackView.spacing = 10
+
         
-        biographyTextView.anchor(
-            top: stackView.bottomAnchor,
-            right: rightAnchor,
-            bottom: bottomAnchor,
-            left: profilePictureImageView.leftAnchor,
-            topPadding: 5,
-            rightPadding: 10,
-            bottomPadding: 10,
-            leftPadding: 24,
-            height: 69,
-            width: 0)
+        
+        nameLabel.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 23, width: 0)
+        concentrationLabel.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 15, width: 0)
+        biographyTextView.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 0, width: 0)
+        
+        let rightStackView = UIStackView(arrangedSubviews: [nameLabel, concentrationLabel, biographyTextView])
+        rightStackView.distribution = .fillProportionally
+        rightStackView.axis = .vertical
+        rightStackView.alignment = .leading
+        rightStackView.spacing = 0
+        
+        addSubviews(views: leftStackView, rightStackView)
+        
+        leftStackView.anchor(top: topAnchor, right: nil, bottom: bottomAnchor, left: leftAnchor, topPadding: 10, rightPadding: 0, bottomPadding: 10, leftPadding: 10, height: 0, width: 95)
+        
+        rightStackView.anchor(top: topAnchor, right: rightAnchor, bottom: bottomAnchor, left: leftStackView.rightAnchor, topPadding: 20, rightPadding: 0, bottomPadding: 10, leftPadding: 10, height: 0, width: 0)
+
+
         
     }
     

@@ -11,30 +11,28 @@ import UIKit
 class ProjectsCell: UITableViewCell {
     
     // MARK: - Properties
+    
     static var projectsCellId = "projectsCellId"
     
     
     // MARK: - UI Elements
     
-    lazy var projectsCollectionView: UICollectionView = {
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView()
-        collectionView.collectionViewLayout = layout
-        collectionView.register(ProjectsCollectionCell.self, forCellWithReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId)
-        
-        return collectionView
-    }()
+    var projectsCollectionView: UICollectionView?
     
     
     // MARK: - Initializers
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupCollectionView()
         setupAutoLayout()
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -42,11 +40,20 @@ class ProjectsCell: UITableViewCell {
     
     // MARK: - Methods
     
+    private func setupCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        
+        projectsCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 300, height: 300), collectionViewLayout: flowLayout)
+        projectsCollectionView?.backgroundColor = MakeSchoolDesignColor.darkBlue
+        projectsCollectionView?.register(ProjectsCollectionCell.self, forCellWithReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId)
+    }
+    
     private func setupAutoLayout() {
         
-        contentView.addSubview(projectsCollectionView)
+        contentView.addSubview(projectsCollectionView ?? UICollectionView())
         
-        projectsCollectionView.anchor(
+        projectsCollectionView?.anchor(
             top: contentView.topAnchor,
             right: contentView.rightAnchor,
             bottom: contentView.bottomAnchor,
@@ -58,10 +65,9 @@ class ProjectsCell: UITableViewCell {
     func setCollectionViewDataSourceDelegate
         <D: UICollectionViewDataSource & UICollectionViewDelegate>
         (dataSourceDelegate: D, forRow row: Int) {
-        
-        projectsCollectionView.delegate = dataSourceDelegate
-        projectsCollectionView.dataSource = dataSourceDelegate
-        projectsCollectionView.tag = row
-        projectsCollectionView.reloadData()
+        projectsCollectionView?.delegate = dataSourceDelegate
+        projectsCollectionView?.dataSource = dataSourceDelegate
+        projectsCollectionView?.tag = row
+        projectsCollectionView?.reloadData()
     }
 }
