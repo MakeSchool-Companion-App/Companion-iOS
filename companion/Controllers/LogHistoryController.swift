@@ -12,8 +12,8 @@ class LogHistoryController: UIViewController {
     
     // MARK: - Properties
     
-    private let logHistoryCellId = "LogHistoryCellId"
-    
+
+//    lazy var attendaceViewModel = AttendanceViewModel()
     
     // MARK: - UI Elements
     
@@ -23,7 +23,7 @@ class LogHistoryController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.register(LogHistoryCell.self, forCellReuseIdentifier: logHistoryCellId)
+        tableView.register(LogHistoryCell.self, forCellReuseIdentifier: LogHistoryCell.logHistoryCellId)
         return tableView
     }()
     
@@ -103,10 +103,10 @@ extension LogHistoryController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: logHistoryCellId, for: indexPath) as! LogHistoryCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LogHistoryCell.logHistoryCellId, for: indexPath) as? LogHistoryCell else { fatalError("TableViewCell Failed")}
         
-        cell.enterDateLabel.text = "Sept 12, 2018 11:30am"
-        cell.exitDateLabel.text = "Sept 14, 2018 5:30pm"
+//        cell.enterDateLabel.text = attendaceViewModel.event
+//        cell.exitDateLabel.text = attendaceViewModel.event
         
         return cell
     }

@@ -87,6 +87,8 @@ class LoginController: UIViewController {
         emailTextField.delegate = self
         emailTextField.becomeFirstResponder()
         
+        passwordTextField.delegate = self 
+        
     }
     
     // MARK: - Methods
@@ -190,7 +192,13 @@ extension LoginController: UITextFieldDelegate {
         print("show keyboard")
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
+
 
 extension LoginController {
     

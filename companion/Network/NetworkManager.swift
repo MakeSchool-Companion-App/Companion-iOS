@@ -7,7 +7,8 @@
 //
 
 import Foundation
-struct NetworkManager{
+
+struct NetworkManager {
     //var shared = NetworkManager()
     static func network(_ path: Path, _ httpMethod: HttpMethod, _ httpBody: Data? = nil, credentail: [String:String]? = nil, params: [String:Any]? = nil,completion: @escaping (Any?, Error?)->()){
         // 1.  based link
@@ -78,10 +79,12 @@ struct NetworkManager{
                 case .post: fallthrough
                 case .update:
                     do{
-                        let user = try JSONDecoder().decode(User.self, from: data)
+                        let user = try? JSONDecoder().decode(User.self, from: data)
                         completion(user, nil)
+                        
                     }catch{
                         return completion(nil,nil)
+                        
                     }
                 }
             }
@@ -102,7 +105,7 @@ enum HttpMethod: String{
     case post = "POST"
     case update = "UPDATE"
 }
-enum HttpBody{
+enum HttpBody {
     case user
     case attendance
 }
