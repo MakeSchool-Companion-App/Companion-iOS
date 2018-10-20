@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        let loginController = StudentDashboardController()
+        let loginController = LoginController()
         window?.rootViewController = loginController
 //        let mainTabBarController = MainTabBarController()
 //        window?.rootViewController = mainTabBarController
