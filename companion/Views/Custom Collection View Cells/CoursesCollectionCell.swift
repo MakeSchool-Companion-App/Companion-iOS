@@ -31,10 +31,11 @@ class CoursesCollectionCell: UICollectionViewCell {
         label.textColor = MakeSchoolDesignColor.faintBlue
         label.font = UIFont(name: "AvenirNext-Medium", size: 17)
         label.textAlignment = .center
+        label.numberOfLines = 2
         return label
     }()
     
-    private let containerView: UIView = {
+    let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 6
         view.backgroundColor = MakeSchoolDesignColor.darkBlue
@@ -45,9 +46,13 @@ class CoursesCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = MakeSchoolDesignColor.red
-        setupAutoLayout()
         
+        
+    }
+    
+    override func layoutSubviews() {
+        containerView.backgroundColor = MakeSchoolDesignColor.red 
+        setupAutoLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {

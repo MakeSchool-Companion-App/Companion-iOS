@@ -15,13 +15,20 @@ class ProjectsCollectionCell: UICollectionViewCell {
     
     static var projectsCollectionCellId = "projectsCollectionCellId"
     
+    
     // MARK: - UI Elements
     
-    let projectImageView: UIImageView = {
+    lazy var projectImageView: UIImageView = {
+        let path = UIBezierPath(roundedRect: self.frame, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 6, height: 6))
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.borderWidth = 2
+        imageView.layer.mask = maskLayer
+        
         return imageView
     }()
     
@@ -43,6 +50,12 @@ class ProjectsCollectionCell: UICollectionViewCell {
     
     private let containerView: UIView = {
         let view = UIView()
+        view.layer.cornerRadius = 6
+        view.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowOpacity = 0.25
+        view.layer.shadowRadius = 5
+        view.backgroundColor = MakeSchoolDesignColor.faintBlue
         return view
     }()
     
@@ -50,13 +63,17 @@ class ProjectsCollectionCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.red 
-        setupAutoLayout()
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: View Life Cycle Methods
+    
+    override func layoutSubviews() {
+        setupAutoLayout()
     }
     
     // MARK: - Methods
@@ -82,7 +99,7 @@ class ProjectsCollectionCell: UICollectionViewCell {
             rightPadding: 0,
             bottomPadding: 0,
             leftPadding: 0,
-            height: 26,
+            height: 120,
             width: 0)
         
         projectNameLabel.anchor(
