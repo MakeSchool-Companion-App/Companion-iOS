@@ -83,6 +83,22 @@ class ProfileCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(frame: CGRect, profile: Profile) {
+        self.init(frame: frame)
+        self.nameLabel.text = profile.first_name + " " + profile.last_name
+        self.biographyTextView.text = profile.about_description
+        self.concentrationLabel.text = profile.professional_title
+        DispatchQueue.global().async {
+            let url = URL(string: profile.profile_img_url!)
+            let data = try! Data(contentsOf: url!)
+            let image = UIImage(data: data)
+            DispatchQueue.main.async {
+                 self.profilePictureImageView.image = image
+            }
+        }
+       
+    }
+    
     // MARK: Methods
     
     private func setupAutoLayout() {

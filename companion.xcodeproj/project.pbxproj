@@ -11,6 +11,7 @@
 		2019D7592163E6D500F8AB25 /* GeofenceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2019D7582163E6D500F8AB25 /* GeofenceServices.swift */; };
 		205055B4217A77A60005D207 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205055B3217A77A60005D207 /* ProfileService.swift */; };
 		205055D5217D74050005D207 /* ParseHtml.js in Resources */ = {isa = PBXBuildFile; fileRef = 205055D4217D74050005D207 /* ParseHtml.js */; };
+		205055D6217EDD4B0005D207 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205055B1217A75F70005D207 /* Profile.swift */; };
 		20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CD6214AE00F004B60A2 /* Beacon.swift */; };
 		20587CD9214AE0D0004B60A2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CD8214AE0D0004B60A2 /* User.swift */; };
 		20587CDB214AE159004B60A2 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDA214AE159004B60A2 /* Attendance.swift */; };
@@ -555,6 +556,7 @@
 				8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */,
 				205EC0E9215AA6DE00B40141 /* Constant.swift in Sources */,
 				8000A943217844ED007514D1 /* ProjectsCell.swift in Sources */,
+				205055D6217EDD4B0005D207 /* Profile.swift in Sources */,
 				802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */,
 				80276D71217BE630007BC4C9 /* Course.swift in Sources */,
 				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
@@ -732,7 +734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 854F25WCHE;
+				DEVELOPMENT_TEAM = 9V3JAM5FPH;
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -751,7 +753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 854F25WCHE;
+				DEVELOPMENT_TEAM = 9V3JAM5FPH;
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

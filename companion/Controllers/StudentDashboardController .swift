@@ -36,7 +36,7 @@ class StudentDashboardController: UIViewController {
     
     var dashboardTableView: UITableView?
     
-    let profileCardView = ProfileCardView()
+    var profileCardView = ProfileCardView()
     
     // MARK: - View Life Cycle Methods
     
@@ -46,9 +46,31 @@ class StudentDashboardController: UIViewController {
         
         setupTableView()
         setupAutoLayout()
+        setupProfile()
     }
     
     // MARK: - Methods
+    
+    private func setupProfile(){
+        ProfileService.show { (profile) in
+            DispatchQueue.main.async {
+               
+                self.profileCardView.nameLabel.text = profile.first_name + " " + profile.last_name
+                self.profileCardView.biographyTextView.text = profile.about_description
+                self.profileCardView.concentrationLabel.text = profile.professional_title
+                
+                DispatchQueue.global().async {
+                    let url = URL(string: profile.profile_img_url!)
+                    let data = try! Data(contentsOf: url!)
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        self.profileCardView.profilePictureImageView.image = image
+                    }
+                }
+            }
+            
+        }
+    }
     
     private func setupTableView() {
         dashboardTableView = UITableView()
