@@ -19,60 +19,86 @@ class LoginController: UIViewController {
     
     private let companionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Companion"
-        label.textAlignment = .center
-        label.font = UIFont.init(name: "AvenirNext-Bold", size: 40)
-        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.text = "Welcome to Companion!"
+        label.textAlignment = .left
+        label.font = UIFont.init(name: "AvenirNext-DemiBold", size: 33)
+        label.numberOfLines = 2
+        label.textColor = MakeSchoolDesignColor.black
         return label
     }()
     
     private let emailTextField: UITextField = {
-    
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
-        imageView.image = #imageLiteral(resourceName: "Frame").withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1)
+        // MARK: TODO - Add padding to the image
+//        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+//        leftView.backgroundColor = MakeSchoolDesignColor.faintBlue
+//        
+//        let imageView = UIImageView(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
+//        imageView.image = #imageLiteral(resourceName: "Frame").withRenderingMode(.alwaysTemplate)
+//        imageView.tintColor = MakeSchoolDesignColor.darkBlue
+//        
+//        leftView.addSubview(imageView)
         
         let textField = LeftPaddedTextField()
-        textField.leftView = imageView
-        textField.leftView?.frame = CGRect(x: 20, y: 5, width: 24, height: 24)
+//        textField.leftView = leftView
+//        textField.setLeftPaddingPoints()
+//        textField.leftView?.frame = CGRect(x: 20, y: 5, width: 24, height: 24)
         textField.leftViewMode = .always
-        textField.layer.cornerRadius = 10
-        textField.attributedPlaceholder = NSAttributedString(string: "email address", attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1)])
-        textField.textAlignment = .center
-        textField.font = UIFont(name: "AvenirNext-Medium", size: 19)
+        textField.textColor = MakeSchoolDesignColor.darkBlue
+        textField.layer.cornerRadius = 6
+        textField.layer.shadowColor = #colorLiteral(red: 0.03137254902, green: 0.4862745098, blue: 0.7215686275, alpha: 1).cgColor
+        textField.layer.shadowOffset = CGSize.zero
+        textField.layer.shadowOpacity = 0.40
+        textField.layer.shadowRadius = 5
+        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
+        textField.textAlignment = .left
+        textField.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         textField.becomeFirstResponder()
         textField.isUserInteractionEnabled = true
         textField.autocapitalizationType = UITextAutocapitalizationType.none
-        textField.backgroundColor = .white
+        textField.backgroundColor = MakeSchoolDesignColor.faintBlue
         return textField
     }()
     
     private let passwordTextField: UITextField = {
-        
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        imageView.image = #imageLiteral(resourceName: "lock").withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1)
+        // MARK: TODO - Uchenna Add padding to the image
+//        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+//        leftView.backgroundColor = MakeSchoolDesignColor.faintBlue
+//
+//        let imageView = UIImageView(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
+//        imageView.image = #imageLiteral(resourceName: "lock").withRenderingMode(.alwaysTemplate)
+//        imageView.tintColor = MakeSchoolDesignColor.darkBlue
+//
+//        leftView.addSubview(imageView)
         
         let textField = LeftPaddedTextField()
         textField.leftViewMode = .always
-        textField.leftView = imageView
-        textField.textAlignment = .center
-        textField.layer.cornerRadius = 10
+//        textField.leftView = leftView
+        
+        textField.textAlignment = .left
+        textField.textColor = MakeSchoolDesignColor.darkBlue
+        textField.backgroundColor = MakeSchoolDesignColor.faintBlue
+        textField
+        textField.layer.cornerRadius = 6
+        textField.layer.shadowColor = #colorLiteral(red: 0.03137254902, green: 0.4862745098, blue: 0.7215686275, alpha: 1).cgColor
+        textField.layer.shadowOffset = CGSize.zero
+        textField.layer.shadowOpacity = 0.40
+        textField.layer.shadowRadius = 5
+        
         textField.autocapitalizationType = UITextAutocapitalizationType.none
-        textField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1)])
-        textField.font = UIFont(name: "AvenirNext-Medium", size: 19)
-        textField.backgroundColor = .white
+        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
+        textField.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         textField.isSecureTextEntry = true
+        
         return textField
     }()
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("login", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1), for: .normal)
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
+        button.backgroundColor = MakeSchoolDesignColor.darkBlue
         button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 24)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -81,7 +107,7 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.setGradientBackground(firstColor: #colorLiteral(red: 0.02745098039, green: 0.6, blue: 0.9333333333, alpha: 1), secondColor: #colorLiteral(red: 0.02745098039, green: 0.1215686275, blue: 0.7960784314, alpha: 1))
+        view.backgroundColor = MakeSchoolDesignColor.faintBlue
         setupAutoLayout()
         
         emailTextField.delegate = self
@@ -96,9 +122,9 @@ class LoginController: UIViewController {
     private func setupAutoLayout() {
         // Add Contraints to each subview
         
-        emailTextField.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 66, width: 290)
+        emailTextField.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 60, width: 300)
 
-        passwordTextField.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 66, width: 290)
+        passwordTextField.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 60, width: 300)
         
         let textFieldStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField])
         textFieldStackView.alignment = .center
@@ -117,9 +143,9 @@ class LoginController: UIViewController {
             topPadding: 50,
             rightPadding: 73,
             bottomPadding: 0,
-            leftPadding: 73,
-            height: 48,
-            width: 0)
+            leftPadding: 36,
+            height: 100,
+            width: 225)
         
         textFieldStackView.anchor(
             centerX: view.centerXAnchor,
@@ -197,6 +223,7 @@ extension LoginController: UITextFieldDelegate {
         return true
     }
     
+
 }
 
 

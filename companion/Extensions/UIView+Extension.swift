@@ -160,8 +160,8 @@ extension UIView {
         gradientLayer.frame = bounds
         gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
 //        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.startPoint = CGPoint(x: frame.midX, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: frame.midX, y: 1.0)
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: frame.midY)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: frame.midY)
         
         layer.insertSublayer(gradientLayer, at: 0)
     }
