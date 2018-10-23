@@ -19,7 +19,7 @@ class AttendanceCell: UITableViewCell {
     private let checkInLabel: UILabel = {
         let label = UILabel()
         label.text = "Check in"
-        label.textColor = .blue
+        label.textColor = MakeSchoolDesignColor.mediumBlue
         label.textAlignment = .left
         label.font = UIFont(name: "Avenir-Heavy", size: 22)
         return label
@@ -28,7 +28,7 @@ class AttendanceCell: UITableViewCell {
     let checkInTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "9:30am"
-        label.textColor = .blue
+        label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .left
         label.font = UIFont(name: "Avenir-Light", size: 17)
         return label
@@ -37,7 +37,7 @@ class AttendanceCell: UITableViewCell {
     let checkInDateLabel: UILabel = {
         let label = UILabel()
         label.text = "Sept 3, 2018"
-        label.textColor = .blue
+        label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .left
         label.font = UIFont(name: "Avenir-Light", size: 17)
         return label
@@ -46,7 +46,7 @@ class AttendanceCell: UITableViewCell {
     private let checkOutLabel: UILabel = {
         let label = UILabel()
         label.text = "Check out"
-        label.textColor = .blue
+        label.textColor = MakeSchoolDesignColor.mediumBlue
         label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Heavy", size: 22)
         return label
@@ -55,7 +55,7 @@ class AttendanceCell: UITableViewCell {
     let checkOutTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "5:30pm"
-        label.textColor = .blue
+        label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 17)
         return label
@@ -64,7 +64,7 @@ class AttendanceCell: UITableViewCell {
     let checkOutDateLabel: UILabel = {
         let label = UILabel()
         label.text = "Sept 3, 2018"
-        label.textColor = .blue
+        label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 17)
         return label

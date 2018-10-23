@@ -40,6 +40,7 @@
 		80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D6B217AC6BD007BC4C9 /* ProjectsCollectionView.swift */; };
 		80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D6E217BDEA5007BC4C9 /* Project.swift */; };
 		80276D71217BE630007BC4C9 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D70217BE630007BC4C9 /* Course.swift */; };
+		80276D73217D3CC1007BC4C9 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */; };
 		802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806D9214CCE19009CC42B /* LogHistoryController.swift */; };
 		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
@@ -103,6 +104,7 @@
 		80276D6B217AC6BD007BC4C9 /* ProjectsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCollectionView.swift; sourceTree = "<group>"; };
 		80276D6E217BDEA5007BC4C9 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		80276D70217BE630007BC4C9 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		802806D9214CCE19009CC42B /* LogHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryController.swift; sourceTree = "<group>"; };
 		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				209DB94C214B117200D81ABD /* UIColor+Extension.swift */,
 				209DB94B214B117200D81ABD /* UIViewControllers+Extension.swift */,
 				80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */,
+				80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,
 				8000A94521784508007514D1 /* CoursesCell.swift in Sources */,
 				20587CDB214AE159004B60A2 /* Attendance.swift in Sources */,
+				80276D73217D3CC1007BC4C9 /* UITextField+Extension.swift in Sources */,
 				8000A94A21786295007514D1 /* CoursesCollectionCell.swift in Sources */,
 				2019D7592163E6D500F8AB25 /* GeofenceServices.swift in Sources */,
 			);

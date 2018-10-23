@@ -21,6 +21,11 @@ class ProfileCardView: UIView {
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = MakeSchoolDesignColor.faintBlue.cgColor
+        
+        imageView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        imageView.layer.shadowOffset = CGSize.zero
+        imageView.layer.shadowOpacity = 0.25
+        imageView.layer.shadowRadius = 5
 //        imageView.layer.shadowColor = MakeSchoolDesignColor.black.cgColor
 //        imageView.layer.shadowRadius = 45.25
 //        imageView.layer.shadowOpacity = 0.5
@@ -116,7 +121,7 @@ class ProfileCardView: UIView {
 
         
         
-        nameLabel.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 23, width: 0)
+        nameLabel.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 24, width: 0)
         concentrationLabel.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 15, width: 0)
         biographyTextView.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 0, width: 0)
         
@@ -124,7 +129,7 @@ class ProfileCardView: UIView {
         rightStackView.distribution = .fillProportionally
         rightStackView.axis = .vertical
         rightStackView.alignment = .leading
-        rightStackView.spacing = 0
+        rightStackView.spacing = 1
         
         addSubviews(views: leftStackView, rightStackView)
         

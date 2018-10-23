@@ -38,6 +38,10 @@ class CoursesCollectionCell: UICollectionViewCell {
     let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 6
+        view.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowOpacity = 0.25
+        view.layer.shadowRadius = 5
         view.backgroundColor = MakeSchoolDesignColor.darkBlue
         return view
     }()
