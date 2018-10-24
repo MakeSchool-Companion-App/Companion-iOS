@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let manager = BeaconManager(beacon: registeredBeacon)
         return manager
     }()
+    
     let locationManager = CLLocationManager()
     
     // Local Notification
@@ -60,12 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
         
         window = UIWindow()
-        window?.makeKeyAndVisible()
-        
-        let loginController = LoginController()
-        window?.rootViewController = loginController
+//        window?.makeKeyAndVisible()
+
+//        let loginController = LoginController()
+//        window?.rootViewController = loginController
 //        let mainTabBarController = MainTabBarController()
 //        window?.rootViewController = mainTabBarController
+        
+        configureInitialRootViewController(for: window)
         
         beaconManager.startMonitoring()
         GeoFenceServices.startMonitoringMakeschool { (started) in
@@ -171,3 +174,26 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
 }
 
+extension AppDelegate {
+    
+    func configureInitialRootViewController(for window: UIWindow?) {
+        let defualts = UserDefaults.standard
+        let initialViewController: UIViewController
+        
+       
+        if let _ = User.current as? User,
+           let userData = defualts.object(forKey: Constant.current) as? Data,
+           let user = try? JSONDecoder().decode(User.self, from: userData) {
+            
+            User.setCurrent(user)
+            initialViewController = MainTabBarController()
+        } else {
+            initialViewController = LoginController()
+        }
+        
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+    
+    }
+    
+}
