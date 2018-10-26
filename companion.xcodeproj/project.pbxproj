@@ -17,7 +17,7 @@
 		20587CDB214AE159004B60A2 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDA214AE159004B60A2 /* Attendance.swift */; };
 		20587CDE214AE35F004B60A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDD214AE35F004B60A2 /* NetworkManager.swift */; };
 		20587CE0214AE3F8004B60A2 /* BeaconServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDF214AE3F8004B60A2 /* BeaconServices.swift */; };
-		205EC0E9215AA6DE00B40141 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205EC0E8215AA6DE00B40141 /* Constant.swift */; };
+		205EC0E9215AA6DE00B40141 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205EC0E8215AA6DE00B40141 /* Constants.swift */; };
 		209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB946214B0FDB00D81ABD /* AttendanceServices.swift */; };
 		209DB948214B0FDB00D81ABD /* AttendanceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB946214B0FDB00D81ABD /* AttendanceServices.swift */; };
 		209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94A214B117200D81ABD /* Date+Extensions.swift */; };
@@ -49,6 +49,9 @@
 		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
+		80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
+		80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56539218250E70028CD18 /* HelperFunctions.swift */; };
+		80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5653B2182514E0028CD18 /* FacebookServices.swift */; };
 		80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E5215DF92A008E98EF /* LoginController.swift */; };
 		80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */; };
 		80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E9215E18C9008E98EF /* OnboardingController.swift */; };
@@ -80,7 +83,7 @@
 		20587CDA214AE159004B60A2 /* Attendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
 		20587CDD214AE35F004B60A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		20587CDF214AE3F8004B60A2 /* BeaconServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconServices.swift; sourceTree = "<group>"; };
-		205EC0E8215AA6DE00B40141 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		205EC0E8215AA6DE00B40141 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		209DB946214B0FDB00D81ABD /* AttendanceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceServices.swift; sourceTree = "<group>"; };
 		209DB94A214B117200D81ABD /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		209DB94B214B117200D81ABD /* UIViewControllers+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewControllers+Extension.swift"; sourceTree = "<group>"; };
@@ -115,6 +118,9 @@
 		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
+		80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginWebViewController.swift; sourceTree = "<group>"; };
+		80D56539218250E70028CD18 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		80D5653B2182514E0028CD18 /* FacebookServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookServices.swift; sourceTree = "<group>"; };
 		80DC39E5215DF92A008E98EF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		80DC39E9215E18C9008E98EF /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 				209DB946214B0FDB00D81ABD /* AttendanceServices.swift */,
 				2019D7582163E6D500F8AB25 /* GeofenceServices.swift */,
 				205055B3217A77A60005D207 /* ProfileService.swift */,
+				80D5653B2182514E0028CD18 /* FacebookServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -224,6 +231,7 @@
 		20AC1BE92141A19200E05465 /* companion */ = {
 			isa = PBXGroup;
 			children = (
+				80D56538218250AA0028CD18 /* Helpers Functions */,
 				205055D3217D73890005D207 /* JavaScript Code */,
 				80074E272149BD2500AA684C /* Controllers */,
 				80074E2D2149CA2700AA684C /* Extensions */,
@@ -260,9 +268,9 @@
 		80074E272149BD2500AA684C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				80D56535218243590028CD18 /* Login */,
 				80DC39EF215EDED3008E98EF /* AttendanceController.swift */,
 				802806D9214CCE19009CC42B /* LogHistoryController.swift */,
-				80DC39E5215DF92A008E98EF /* LoginController.swift */,
 				80DC39E9215E18C9008E98EF /* OnboardingController.swift */,
 				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
 				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
@@ -335,6 +343,23 @@
 			path = "Custom Table View Cells";
 			sourceTree = "<group>";
 		};
+		80D56535218243590028CD18 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				80DC39E5215DF92A008E98EF /* LoginController.swift */,
+				80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		80D56538218250AA0028CD18 /* Helpers Functions */ = {
+			isa = PBXGroup;
+			children = (
+				80D56539218250E70028CD18 /* HelperFunctions.swift */,
+			);
+			path = "Helpers Functions";
+			sourceTree = "<group>";
+		};
 		80DC39F1215EE0E9008E98EF /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,7 +382,7 @@
 			children = (
 				20AC1BEA2141A19200E05465 /* AppDelegate.swift */,
 				20AC1BF62141A19200E05465 /* Info.plist */,
-				205EC0E8215AA6DE00B40141 /* Constant.swift */,
+				205EC0E8215AA6DE00B40141 /* Constants.swift */,
 				8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */,
 			);
 			path = "Support Files";
@@ -516,10 +541,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iBeaconManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,6 +570,7 @@
 				80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */,
 				80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */,
 				80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */,
+				80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */,
 				209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */,
 				8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */,
 				80DC39EC215E9AD4008E98EF /* OnboardingCollectionCell.swift in Sources */,
@@ -554,10 +582,11 @@
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,
 				80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */,
 				20587CE0214AE3F8004B60A2 /* BeaconServices.swift in Sources */,
+				80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */,
 				20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */,
 				800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */,
 				8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */,
-				205EC0E9215AA6DE00B40141 /* Constant.swift in Sources */,
+				205EC0E9215AA6DE00B40141 /* Constants.swift in Sources */,
 				8000A943217844ED007514D1 /* ProjectsCell.swift in Sources */,
 				205055D6217EDD4B0005D207 /* Profile.swift in Sources */,
 				802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */,
@@ -565,6 +594,7 @@
 				80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */,
 				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
 				80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */,
+				80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */,
 				20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */,
 				80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
@@ -777,6 +807,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9V3JAM5FPH;
 				INFOPLIST_FILE = companionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -798,6 +829,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9V3JAM5FPH;
 				INFOPLIST_FILE = companionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

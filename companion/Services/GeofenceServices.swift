@@ -38,7 +38,7 @@ struct GeoFenceServices{
             
             guard let center = center else {return completion(false)}
             
-            let region = CLCircularRegion(center: center, radius: 150, identifier: "make school")
+            let region = CLCircularRegion(center: center, radius: 150, identifier: Constants.makeSchoolRegionId)
             let manager = CLLocationManager()
             manager.startMonitoring(for: region)
             return completion(true)

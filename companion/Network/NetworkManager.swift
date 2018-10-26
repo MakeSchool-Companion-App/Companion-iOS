@@ -33,7 +33,7 @@ struct NetworkManager {
         
         // 5. header
         if path.rawValue == Path.attendance.rawValue{
-            request.setValue("Token token=\(User.current.token ?? "")", forHTTPHeaderField: "Authorization")
+            request.setValue("Token token=\(User.current?.token ?? "")", forHTTPHeaderField: "Authorization")
         }
         
         if path.rawValue == Path.user.rawValue{
@@ -51,8 +51,7 @@ struct NetworkManager {
             
             let response = res as! HTTPURLResponse
             print(response.statusCode)
-            let res =  String(data: data, encoding: .utf8)
-            print("This is the res \(res)")
+            
 //            print("This is the data as a string \(data.base64EncodedString())")
             
             switch path{
@@ -87,8 +86,8 @@ struct NetworkManager {
                         let user = try? JSONDecoder().decode(User.self, from: data)
                         completion(user, nil)
                         
-                    }catch{
-                        return completion(nil,nil)
+                    } catch let error {
+                        return completion(nil,error)
                         
                     }
                 }
@@ -131,7 +130,7 @@ struct NetworkManager {
         let url = URL(string: link)!
         let request = URLRequest(url: url)
         let session = URLSession.shared
-        let task = session.dataTask(with: request) { (data, res, error) in
+        _ = session.dataTask(with: request) { (data, res, error) in
             guard let data = data else {return}
             
             do{

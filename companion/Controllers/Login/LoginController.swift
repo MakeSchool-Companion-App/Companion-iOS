@@ -92,7 +92,7 @@ class LoginController: UIViewController {
         return textField
     }()
     
-    private lazy var loginButton: UIButton = {
+    private var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Login", for: .normal)
         button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
@@ -100,6 +100,17 @@ class LoginController: UIViewController {
         button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 24)
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    private var facebookLoginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login with Facebook", for: .normal)
+        button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
+        button.backgroundColor = UIColor(r: 59, g: 89, b: 152, a: 1)
+        button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 24)
+        button.layer.cornerRadius = 6
+        button.addTarget(self, action: #selector(handleFacebookLogin), for: .touchUpInside)
         return button
     }()
     
@@ -133,7 +144,16 @@ class LoginController: UIViewController {
         textFieldStackView.spacing = 16
         
         
-        view.addSubviews(views: companionLabel, textFieldStackView, loginButton)
+        loginButton.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 0, width: 0)
+        facebookLoginButton.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 0, width: 0)
+        
+        let loginButtonsStackView = UIStackView(arrangedSubviews: [loginButton, facebookLoginButton])
+        textFieldStackView.alignment = .center
+        textFieldStackView.distribution = .equalSpacing
+        textFieldStackView.axis = .vertical
+        textFieldStackView.spacing = 0
+        
+        view.addSubviews(views: companionLabel, textFieldStackView, loginButtonsStackView)
         
         companionLabel.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
@@ -161,19 +181,33 @@ class LoginController: UIViewController {
             height: 177,
             width: 0)
         
-        loginButton.anchor(
+        loginButtonsStackView.anchor(
             centerX: view.centerXAnchor,
             centerY: nil,
             top: textFieldStackView.bottomAnchor,
-            right: nil,
+            right: view.safeAreaLayoutGuide.rightAnchor,
             bottom: nil,
-            left: nil,
-            topPadding: 80,
+            left: view.safeAreaLayoutGuide.leftAnchor,
+            topPadding: 0,
             rightPadding: 0,
             bottomPadding: 0,
             leftPadding: 0,
-            height: 50,
-            width: 180)
+            height: 123,
+            width: 0)
+        
+//        loginButton.anchor(
+//            centerX: view.centerXAnchor,
+//            centerY: nil,
+//            top: textFieldStackView.bottomAnchor,
+//            right: nil,
+//            bottom: nil,
+//            left: nil,
+//            topPadding: 80,
+//            rightPadding: 0,
+//            bottomPadding: 0,
+//            leftPadding: 0,
+//            height: 50,
+//            width: 180)
         
     }
     
@@ -205,9 +239,17 @@ class LoginController: UIViewController {
             }
             
         }
+    }
+    
+    @objc private func handleFacebookLogin() {
+        print("LOGIN WITH FACEBOOK")
         
         
-        
+        DispatchQueue.main.async {
+            let faceBookLoginWebViewController = FacebookLoginWebViewController()
+            self.view.window?.rootViewController = faceBookLoginWebViewController
+            self.view.window?.makeKeyAndVisible()
+        }
     }
     
 }

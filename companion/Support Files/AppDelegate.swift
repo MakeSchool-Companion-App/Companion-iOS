@@ -61,18 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
         
         window = UIWindow()
-//        window?.makeKeyAndVisible()
-
-//        let loginController = LoginController()
-//        window?.rootViewController = loginController
-//        let mainTabBarController = MainTabBarController()
-//        window?.rootViewController = mainTabBarController
         
         configureInitialRootViewController(for: window)
         
         beaconManager.startMonitoring()
+        
         GeoFenceServices.startMonitoringMakeschool { (started) in
-            if started == true{
+            if started == true {
                 self.locationManager.delegate = self
             }
         }
@@ -112,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let identifier = region.identifier
-        if identifier == Constant.makeSchoolRegionId {
+        if identifier == Constants.makeSchoolRegionId {
             let attendance = Attendance.init(Date().toString(), event: .onEntry, beaconId: "")
             AttendanceServices.create(attendance) { (att) in
                 if let checkInAttendance = att{
@@ -126,7 +121,7 @@ extension AppDelegate: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if region.identifier == Constant.makeSchoolRegionId {
+        if region.identifier == Constants.makeSchoolRegionId {
             
             if let eventTime = UserDefaults.standard.value(forKey: "event_time") as? String {
                 
@@ -136,8 +131,8 @@ extension AppDelegate: CLLocationManagerDelegate{
                     // Fetch a list of attendance from the Companion API
                     AttendanceServices.show { (attendance) in
                         // Get today's attendance (first element in the array)
-                        let attendance = attendance?.filter { $0.id == Int(attendanceId) }
-                        let todaysAttendance = attendance?.first
+//                        let attendance = attendance?.filter { $0.id == Int(attendanceId) }
+//                        let todaysAttendance = attendance?.first
                             /// adding the clock out time on the attendance model
                             /// clean the user default
                     }
@@ -166,7 +161,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
         
         // Getting the notification request
-        let request = UNNotificationRequest(identifier: Constant.attendanceNotificationId, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: Constants.attendanceNotificationId, content: content, trigger: trigger)
         
         center.add(request, withCompletionHandler: nil)
         
@@ -181,8 +176,8 @@ extension AppDelegate {
         let initialViewController: UIViewController
         
        
-        if let _ = User.current as? User,
-           let userData = defualts.object(forKey: Constant.current) as? Data,
+        if let _ = User.current,
+           let userData = defualts.object(forKey: Constants.current) as? Data,
            let user = try? JSONDecoder().decode(User.self, from: userData) {
             
             User.setCurrent(user)

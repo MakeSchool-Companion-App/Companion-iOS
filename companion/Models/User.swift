@@ -17,13 +17,14 @@ struct User: Codable{
     
     private static var _current: User?
     
-    static var current: User {
+    static var current: User? {
         if let currentUser = _current  {
             return currentUser
         }
         else{
-            let data =   UserDefaults.standard.value(forKey: Constant.current) as? Data
-            let user = try! JSONDecoder().decode(User.self, from: data!)
+            guard let data = UserDefaults.standard.value(forKey: Constants.current) as? Data,
+                
+                let user = try? JSONDecoder().decode(User.self, from: data) else { fatalError("Error: current user doesn't exist") }
             return user
         }
         
@@ -34,7 +35,7 @@ struct User: Codable{
     static func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
         if writeToUserDefaults {
             if let data = try? JSONEncoder().encode(user) {
-                UserDefaults.standard.set(data, forKey: Constant.current)
+                UserDefaults.standard.set(data, forKey: Constants.current)
             }
         }
         _current = user

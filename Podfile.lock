@@ -1,16 +1,20 @@
 PODS:
   - iBeaconManager (0.1.0)
+  - KeychainSwift (13.0.0)
 
 DEPENDENCIES:
   - iBeaconManager (= 0.1.0)
+  - KeychainSwift (~> 13.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - iBeaconManager
+    - KeychainSwift
 
 SPEC CHECKSUMS:
   iBeaconManager: 24b93a45f18271574877074faa64eacb4ad6349e
+  KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
 
-PODFILE CHECKSUM: 84479dc5eda0e8d4f8a34222d815b187b1c27c15
+PODFILE CHECKSUM: 1d9af9eb39ba8f89ff27735e74258143c26d0df2
 
 COCOAPODS: 1.5.3

@@ -19,7 +19,7 @@ struct ProfileService{
     static func show(user_id: Int? = nil, completion: @escaping(Profile)->()){
         index { (profiles) in
             
-            let id = user_id ?? Int(User.current.user_id!)
+            let id = user_id ?? Int(User.current?.user_id! ?? "0")
             
             let profile = profiles.filter({$0.user_id == id}).first
             

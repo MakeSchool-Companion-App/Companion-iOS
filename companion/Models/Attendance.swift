@@ -19,14 +19,14 @@ class Attendance: Codable {
         self.event_time = event_time
         self.beacon_id = beaconId ?? "No beacon id"
         self.event = event.rawValue
-        self.user_id = Int(User.current.user_id!)
+        self.user_id = Int(User.current?.user_id! ?? "0")
     }
     
     func toBody() -> Data {
         return try! JSONEncoder().encode(self)
     }
     func toDictionary()->[String: Any]{
-        return ["event_time":event_time,"beacon_id":beacon_id,"event":event]
+        return ["event_time":event_time,"beacon_id":beacon_id ?? "","event":event]
     }
 }
 

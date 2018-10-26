@@ -7,8 +7,8 @@
 //
 
 import Foundation
-struct Constant{
+struct Constants {
     static var current = "current"
-    static var makeSchoolRegionId = "make school"
+    static var makeSchoolRegionId = "MakeSchool"
     static var attendanceNotificationId = "attendanceNotificationId"
 }
