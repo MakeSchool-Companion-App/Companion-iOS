@@ -24,7 +24,7 @@ struct User: Codable{
         else{
             guard let data = UserDefaults.standard.value(forKey: Constants.current) as? Data,
                 
-                let user = try? JSONDecoder().decode(User.self, from: data) else { fatalError("Error: current user doesn't exist") }
+                let user = try? JSONDecoder().decode(User.self, from: data) else { return nil }
             return user
         }
         
