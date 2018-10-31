@@ -14,6 +14,8 @@ class Attendance: Codable {
     var beacon_id: String?
     var user_id: Int?
     var id: Int?
+    var created_at: String?
+    var checkInTime: String?
     
     init(_ event_time: String, event: EventType, beaconId: String?) {
         self.event_time = event_time

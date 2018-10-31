@@ -22,7 +22,7 @@ struct NetworkManager {
         //4. params
         if let params = params{
             let beacon = params["beacon_id"] as! String
-            let time = "today"//params["event_time"] as! String
+            let time = params["event_time"] as! String
             let event = params["event"] as! String
             links += "?beacon_id=\(beacon)&event_time=\(time)&event=\(event)"
         }
@@ -61,8 +61,16 @@ struct NetworkManager {
                 case .get:
                     do{
                         
-                        let attanandaces = try JSONDecoder().decode([Attendance].self, from: data)
-                        completion(attanandaces,nil)
+                        let attendances = try JSONDecoder().decode([Attendance].self, from: data)
+                        
+                        attendances.forEach({ (attendance) in
+                            let date = attendance.created_at?.components(separatedBy: "T")
+                            let time = date?.last?.components(separatedBy: ".")
+                            attendance.event_time = (date?.first)!
+                            attendance.checkInTime = time?.first!
+                        })
+                        
+                        completion(attendances,nil)
                         
                     }catch{
                         completion(nil,nil)
@@ -99,31 +107,6 @@ struct NetworkManager {
         }
         task.resume()
     }
-//
-//    func fetchStudentDashboardInfo(primaryPath: Path, secondaryPath: Path?, httpMethod: HttpMethod, completion: @escaping (Any) -> Void) {
-//
-//        var baseUrl = "https://www.makeschool.com/"
-//
-//        guard let secondaryPath = secondaryPath else { return }
-//
-//        if primaryPath.rawValue == "dashboard" {
-//            baseUrl.append("dashboard/\(secondaryPath)")
-//        } else if primaryPath.rawValue == "portfolio" {
-//            let usersFirstName =  User.current.first_name.lowercased()
-//            let usersLastName = User.current.last_name.lowercased()
-//            baseUrl.append("portfolio/\(usersFirstName)-\(usersLastName)")
-//        }
-//
-//
-//        let fullUrl = URL(string: baseUrl)
-//        var request = URLRequest(url: fullUrl!)
-//        request.httpMethod = HttpMethod.get.rawValue
-//
-//        let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//        }
-//    }
-    
     
     static func fetchProfile(completion: @escaping ([Profile])->()){
         let link = "https://www.makeschool.com/portfolios.json"

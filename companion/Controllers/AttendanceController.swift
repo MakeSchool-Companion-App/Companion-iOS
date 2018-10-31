@@ -48,6 +48,14 @@ class AttendanceController: UIViewController {
 //            print("This is the attendance objects \(attendance)" )
 //            self.attendance = attendance ?? []
 //            print("Count: \(attendance?.count)")
+            if let attendances = attendance{
+            self.attendance = attendances
+                
+                // test
+                AttendanceServices.create(Attendance(Date().toString(), event: .onEntry, beaconId: "test-test"), completion: { (att) in
+                    print(att)
+                })
+            }
             
         }
     }
@@ -111,6 +119,7 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         
         cell.checkInDateLabel.text = studentAttendance.event_time
         cell.checkOutTimeLabel.text = studentAttendance.event_time
+        cell.checkInTimeLabel.text = studentAttendance.checkInTime
         
         return cell
     }

@@ -11,4 +11,7 @@ struct Constants {
     static var current = "current"
     static var makeSchoolRegionId = "MakeSchool"
     static var attendanceNotificationId = "attendanceNotificationId"
+    static let attendanceId = "attendance_id"
+    static let eventId = "event_time"
+    static let savedAttendance = "savedAttendance"
 }

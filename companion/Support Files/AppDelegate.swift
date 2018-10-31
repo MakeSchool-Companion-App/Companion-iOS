@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         beaconManager.startMonitoring()
         
         GeoFenceServices.startMonitoringMakeschool { (started) in
-            if started == true {
+            if started {
                 self.locationManager.delegate = self
             }
         }
@@ -88,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+     self.locationManager.delegate = self
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -97,24 +98,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+     self.locationManager.delegate = self
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        }
+     self.locationManager.delegate = self
+    }
     }
 
 extension AppDelegate: CLLocationManagerDelegate{
+    
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let identifier = region.identifier
+        
+        // check if the attendance was already taken to avoid double check in
+        if AttendanceServices.isTodayAttendanceDone() == true{ return}
+        
         if identifier == Constants.makeSchoolRegionId {
-            let attendance = Attendance.init(Date().toString(), event: .onEntry, beaconId: "")
+            let attendance = Attendance.init(Date().toString(), event: .onEntry, beaconId: Constants.makeSchoolRegionId)
             AttendanceServices.create(attendance) { (att) in
                 if let checkInAttendance = att{
-                    UserDefaults.standard.set(checkInAttendance.id, forKey: "attendance_id")
-                    UserDefaults.standard.set(checkInAttendance.event_time, forKey: "event_time")
+                    UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
+                    UserDefaults.standard.set(checkInAttendance.event_time, forKey: Constants.eventId)
+                    
                     /// local notification
                     self.attendanceNotification(attendance: checkInAttendance)
+                    
+                    /// save today attendance
+                    AttendanceServices.markAttendance()
                 }
             }
         }

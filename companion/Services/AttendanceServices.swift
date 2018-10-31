@@ -77,6 +77,24 @@ struct AttendanceServices{
     private static func fetchAllAttendance(completion: @escaping ([Attendance]?)->()){
         
     }
+    /// method to save the last date of attendance on userdefault
+    static func markAttendance(){
+        UserDefaults.standard.set(Date().toString(), forKey: Constants.savedAttendance)
+    }
+    static func isTodayAttendanceDone() -> Bool{
+        
+        if let date = UserDefaults.standard.value(forKey: Constants.savedAttendance) as? String{
+            if date == Date().toString(){
+                return true
+            }else{
+                return false
+            }
+        }
+        else{
+           return false
+        }
+    }
+    
 }
 
 
