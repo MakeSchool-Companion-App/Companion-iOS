@@ -14,4 +14,5 @@ struct Constants {
     static let attendanceId = "attendance_id"
     static let eventId = "event_time"
     static let savedAttendance = "savedAttendance"
+    static let lastAttendanceId = "lastAttendanceId"
 }

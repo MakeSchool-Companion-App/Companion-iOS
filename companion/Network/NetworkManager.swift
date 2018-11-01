@@ -7,17 +7,21 @@
 //
 
 import Foundation
+import KeychainSwift
 
 struct NetworkManager {
-   
-    static func network(_ path: Path, _ httpMethod: HttpMethod, _ httpBody: Data? = nil, credentail: [String:String]? = nil, params: [String:Any]? = nil,completion: @escaping (Any?, Error?)->()){
+    
+    static func network(_ path: Path, _ httpMethod: HttpMethod,_ attendanceId: String? = nil, _ httpBody: Data? = nil, credentail: [String:String]? = nil, params: [String:Any]? = nil,completion: @escaping (Any?, Error?)->()){
         // 1.  based link
         var links = "https://make-school-companion.herokuapp.com/"
         
         // 2.  path
         links += path.rawValue
         
-       
+        // show, update or delete attendance
+        if let attendanceId = attendanceId{
+            links += "/" + attendanceId
+        }
         
         //4. params
         if let params = params{
@@ -40,6 +44,13 @@ struct NetworkManager {
             request.allHTTPHeaderFields = credentail!
         }
         
+        // add cookie to the request for facebook user
+        if let cookie = KeychainSwift().get("cookie") {
+            request.setValue("_makeschool_session=\(cookie)", forHTTPHeaderField: "Cookie")
+        }
+        
+        
+        
         // 6. http method
         request.httpMethod = httpMethod.rawValue
         
@@ -52,7 +63,7 @@ struct NetworkManager {
             let response = res as! HTTPURLResponse
             print(response.statusCode)
             
-//            print("This is the data as a string \(data.base64EncodedString())")
+            // decode data based on request type
             
             switch path{
                 
@@ -70,16 +81,29 @@ struct NetworkManager {
                             attendance.checkInTime = time?.first!
                         })
                         
-                        completion(attendances,nil)
+                       return completion(attendances,nil)
                         
                     }catch{
-                        completion(nil,nil)
+                        do{
+                            let attendance = try JSONDecoder().decode(Attendance.self, from: data)
+                            let date = attendance.created_at?.components(separatedBy: "T")
+                            let time = date?.last?.components(separatedBy: ".")
+                            attendance.event_time = (date?.first)!
+                            attendance.checkInTime = time?.first!
+                            return completion(attendance, nil)
+                        }catch{
+                            return completion(nil, nil)
+                        }
                     }
                 case .post: fallthrough
                 case .update:
                     do{
-                        let attanandace = try JSONDecoder().decode(Attendance.self, from: data)
-                        completion(attanandace, nil)
+                        let attendance = try JSONDecoder().decode(Attendance.self, from: data)
+                        let date = attendance.created_at?.components(separatedBy: "T")
+                        let time = date?.last?.components(separatedBy: ".")
+                        attendance.event_time = (date?.first)!
+                        attendance.checkInTime = time?.first!
+                        completion(attendance, nil)
                     }catch{
                         return completion(nil, nil)
                     }
@@ -91,7 +115,7 @@ struct NetworkManager {
                 case .post: fallthrough
                 case .update:
                     do{
-                        let user = try? JSONDecoder().decode(User.self, from: data)
+                        let user = try JSONDecoder().decode(User.self, from: data)
                         completion(user, nil)
                         
                     } catch let error {
@@ -124,7 +148,7 @@ struct NetworkManager {
             catch{
                 
             }
-        }.resume()
+            }.resume()
     }
     
 }

@@ -10,6 +10,7 @@ import UIKit
 import iBeaconManager
 import CoreLocation
 import UserNotifications
+import KeychainSwift
 
 class CustomNavigationController: UINavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -77,6 +78,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("AppDelegate: Testing Request Authorization")
         }
         
+        AttendanceServices.fetchLastAttendance(id: "6671") { (attendance) in
+           attendance.beacon_id = "testtest"
+            AttendanceServices.update(attendance: attendance, completion: { (att) in
+                print(att)
+            })
+        }
+        
         return true
     }
 
@@ -121,6 +129,7 @@ extension AppDelegate: CLLocationManagerDelegate{
                 if let checkInAttendance = att{
                     UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
                     UserDefaults.standard.set(checkInAttendance.event_time, forKey: Constants.eventId)
+                   
                     
                     /// local notification
                     self.attendanceNotification(attendance: checkInAttendance)

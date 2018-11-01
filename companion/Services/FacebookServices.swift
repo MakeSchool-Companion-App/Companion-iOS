@@ -32,8 +32,12 @@ struct FacebookServices {
             do {
                 guard let userData = data,
                     let decodedFacebookUser = try? JSONDecoder().decode(User.self, from: userData) else { return }
-                
-                completionHandler(decodedFacebookUser, nil)
+               /// make a post request to get user
+                UserServices.login(email: decodedFacebookUser.email, password: "", completion: { (user) in
+                    
+                     completionHandler(decodedFacebookUser, nil)
+                })
+               
             } catch let error {
                 return completionHandler(nil, error)
             }

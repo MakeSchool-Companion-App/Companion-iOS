@@ -126,6 +126,8 @@ class LoginController: UIViewController {
         
         passwordTextField.delegate = self 
         
+        // dismiss keyboard on touch
+        self.hideKeyboard()
     }
     
     // MARK: - Methods

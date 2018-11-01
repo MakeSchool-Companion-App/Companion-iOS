@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeychainSwift
 struct AttendanceServices{
     /// method to create a new attendance
     static func create(_ attendance: Attendance, completion: @escaping (Attendance?) ->()){
@@ -33,6 +34,26 @@ struct AttendanceServices{
             return completion(att)
         }
     }
+    /// method to fetch the last attendance
+    static func fetchLastAttendance(id: String? = nil, completion: @escaping(Attendance)->()){
+        var attendanceId = String()
+        if let savedId = UserDefaults.standard.value(forKey: Constants.attendanceId) as? Int{
+            attendanceId = String(savedId)
+        }
+        
+         NetworkManager.network(.attendance, .get, id ?? attendanceId) { (attendance, error) in
+            return completion(attendance as! Attendance)
+        }
+    }
+    
+    static func update(attendance: Attendance,completion: @escaping (Attendance)->()){
+        
+        NetworkManager.network(.attendance, .update, String(attendance.id!), params: attendance.toDictionary()) { (attendance, error) in
+            return completion(attendance as! Attendance)
+        }
+        
+    }
+    
     /// method to check if today attendance was already made
     static func isAttendanceExist(completion: @escaping (Bool)-> ()){
         getTodayAttendance { (attendance) in
@@ -73,10 +94,7 @@ struct AttendanceServices{
             
         }
     }
-    /// method to fetch all attendances
-    private static func fetchAllAttendance(completion: @escaping ([Attendance]?)->()){
-        
-    }
+    
     /// method to save the last date of attendance on userdefault
     static func markAttendance(){
         UserDefaults.standard.set(Date().toString(), forKey: Constants.savedAttendance)
