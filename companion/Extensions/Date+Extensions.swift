@@ -32,6 +32,9 @@ extension Date{
         let stringDate = formatter.string(from: self)
         return stringDate
     }
+    public func checkTime() -> String{
+        return self.toString() + "+" + self.timeToString()
+    }
 }
 
 extension Calendar{

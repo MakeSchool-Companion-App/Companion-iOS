@@ -1,0 +1,16 @@
+//
+//  Dev.xcconfig
+//  companion
+//
+//  Created by Yves Songolo on 11/1/18.
+//  Copyright © 2018 Yves Songolo. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+IS_APP_NAME = Companion Dev
+IS_APP_VERSION = 0.1
+
+BACKEND_URL = https:\/\/aqueous-island-69394.herokuapp.com
+

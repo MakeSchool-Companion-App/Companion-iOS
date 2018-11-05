@@ -24,6 +24,12 @@ extension UINavigationController {
     }
 }
 
+enum environmentType {
+    case development, production
+}
+
+let environment:environmentType = .production
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -61,6 +67,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        // Set the color of the font to white
 //        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
         
+        switch environment {
+        case .development:
+            // set web service URL to development
+            // set API keys to development
+            print("It's for development")
+        case .production:
+            // set web service URL to production
+            // set API keys to production
+            print("It's for production")
+        }
+
+        
+        
         window = UIWindow()
         
         configureInitialRootViewController(for: window)
@@ -77,13 +96,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (requestAuth, error) in
             print("AppDelegate: Testing Request Authorization")
         }
+//        
+
         
-        AttendanceServices.fetchLastAttendance(id: "6671") { (attendance) in
-           attendance.beacon_id = "testtest"
-            AttendanceServices.update(attendance: attendance, completion: { (att) in
-                print(att)
-            })
-        }
+  
         
         return true
     }
@@ -124,11 +140,13 @@ extension AppDelegate: CLLocationManagerDelegate{
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
         if identifier == Constants.makeSchoolRegionId {
-            let attendance = Attendance.init(Date().toString(), event: .onEntry, beaconId: Constants.makeSchoolRegionId)
+            let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             AttendanceServices.create(attendance) { (att) in
                 if let checkInAttendance = att{
+                    /// store the date and id of the last attendance for future verification
                     UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
-                    UserDefaults.standard.set(checkInAttendance.event_time, forKey: Constants.eventId)
+                    
+                    UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
                    
                     
                     /// local notification
@@ -144,21 +162,14 @@ extension AppDelegate: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region.identifier == Constants.makeSchoolRegionId {
             
-            if let eventTime = UserDefaults.standard.value(forKey: "event_time") as? String {
-                
-                if eventTime == Date().toString() {
-                    guard let attendanceId = UserDefaults.standard.value(forKey: "attendance_id") as? String else { return }
-                    
-                    // Fetch a list of attendance from the Companion API
-                    AttendanceServices.show { (attendance) in
-                        // Get today's attendance (first element in the array)
-//                        let attendance = attendance?.filter { $0.id == Int(attendanceId) }
-//                        let todaysAttendance = attendance?.first
-                            /// adding the clock out time on the attendance model
-                            /// clean the user default
-                    }
-                }
+            //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
+            AttendanceServices.fetchLastAttendance { (lastAttendance) in
+                lastAttendance.event_out = Date().checkTime()
+                AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                    self.attendanceNotification(attendance: updatedAttendance)
+                })
             }
+           
         }
     }
     
@@ -174,7 +185,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // Adding title, subtitle, body and badge
         content.title = "Companion"
         content.subtitle = "Check In"
-        content.body = "You entered Make School at \(attendance.event_time)."
+        content.body = "You entered Make School at \(attendance.event_in)."
         content.badge = 1
         
         // Triggering the notification
@@ -213,3 +224,4 @@ extension AppDelegate {
     }
     
 }
+

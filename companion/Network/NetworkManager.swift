@@ -11,6 +11,11 @@ import KeychainSwift
 
 struct NetworkManager {
     
+    private static func infoForKey(_ key: String) -> String? {
+        return (Bundle.main.infoDictionary?[key] as? String)?
+            .replacingOccurrences(of: "\\", with: "")
+    }
+    
     static func network(_ path: Path, _ httpMethod: HttpMethod,_ attendanceId: String? = nil, _ httpBody: Data? = nil, credentail: [String:String]? = nil, params: [String:Any]? = nil,completion: @escaping (Any?, Error?)->()){
         // 1.  based link
         var links = "https://make-school-companion.herokuapp.com/"
@@ -26,9 +31,10 @@ struct NetworkManager {
         //4. params
         if let params = params{
             let beacon = params["beacon_id"] as! String
-            let time = params["event_time"] as! String
+            let event_in = params["event_in"] as! String
             let event = params["event"] as! String
-            links += "?beacon_id=\(beacon)&event_time=\(time)&event=\(event)"
+            let event_out = params["event_out"] as! String
+            links += "?beacon_id=\(beacon)&event_in=\(event_in)&event=\(event)&event_out=\(event_out)"
         }
         
         let url = URL(string: links)
@@ -58,7 +64,7 @@ struct NetworkManager {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, res, err) in
             guard let data = data else {return completion(nil,err)}
-            
+            print(String(data: data, encoding: .utf8))
             
             let response = res as! HTTPURLResponse
             print(response.statusCode)
@@ -74,23 +80,14 @@ struct NetworkManager {
                         
                         let attendances = try JSONDecoder().decode([Attendance].self, from: data)
                         
-                        attendances.forEach({ (attendance) in
-                            let date = attendance.created_at?.components(separatedBy: "T")
-                            let time = date?.last?.components(separatedBy: ".")
-                            attendance.event_time = (date?.first)!
-                            attendance.checkInTime = time?.first!
-                        })
-                        
                        return completion(attendances,nil)
                         
                     }catch{
                         do{
                             let attendance = try JSONDecoder().decode(Attendance.self, from: data)
-                            let date = attendance.created_at?.components(separatedBy: "T")
-                            let time = date?.last?.components(separatedBy: ".")
-                            attendance.event_time = (date?.first)!
-                            attendance.checkInTime = time?.first!
-                            return completion(attendance, nil)
+                            return completion(attendance,nil)
+
+                            
                         }catch{
                             return completion(nil, nil)
                         }
@@ -99,10 +96,15 @@ struct NetworkManager {
                 case .update:
                     do{
                         let attendance = try JSONDecoder().decode(Attendance.self, from: data)
-                        let date = attendance.created_at?.components(separatedBy: "T")
-                        let time = date?.last?.components(separatedBy: ".")
-                        attendance.event_time = (date?.first)!
-                        attendance.checkInTime = time?.first!
+
+                        completion(attendance, nil)
+                    }catch{
+                        return completion(nil, nil)
+                    }
+                case .delete:
+                    do{
+                        let attendance = try JSONDecoder().decode(Attendance.self, from: data)
+                        
                         completion(attendance, nil)
                     }catch{
                         return completion(nil, nil)
@@ -110,9 +112,10 @@ struct NetworkManager {
                 }
             case .user:
                 switch httpMethod{
-                    
+                
                 case .get: fallthrough
                 case .post: fallthrough
+                 case .delete: fallthrough
                 case .update:
                     do{
                         let user = try JSONDecoder().decode(User.self, from: data)
@@ -122,6 +125,8 @@ struct NetworkManager {
                         return completion(nil,error)
                         
                     }
+               
+                    
                 }
             case .dashboard:
                 return completion(nil, nil)
@@ -164,7 +169,8 @@ enum Path: String {
 enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
-    case update = "UPDATE"
+    case update = "PATCH"
+    case delete = "DELETE"
 }
 enum HttpBody {
     case user

@@ -2,19 +2,25 @@
 
  platform :ios, '9.0'
 
+ use_frameworks!
+def dev_pods
+    pod 'iBeaconManager', '0.1.0'
+    pod 'KeychainSwift', '~> 13.0'
+end
+
+ # Pods for companion
 target 'companion' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for companion
-
-pod 'iBeaconManager', '0.1.0'
-pod 'KeychainSwift', '~> 13.0'
-
-
+ 
+  dev_pods
+ 
   target 'companionTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
 end
+
+target 'companion Dev' do
+    
+     pod 'iBeaconManager', '0.1.0'
+     pod 'KeychainSwift', '~> 13.0'
+    end

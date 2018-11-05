@@ -41,23 +41,65 @@ class AttendanceController: UIViewController {
         
         setupAutoLayout()
         setupNavbarItem()
+
+//        AttendanceServices.show { (att) in
+//            let attend = att?.first
+//            attend?.event_out = "2000-01-01"
+//            AttendanceServices.update(attendance: attend!, completion: { (a) in
+//                print(a)
+//                AttendanceServices.fetchLastAttendance(id: String(a.id!), completion: { (at) in
+//                    print(at)
+//                })
+//            })
+//        }
         
-        AttendanceServices.show { (attendance) in
+        
+//        let att = Attendance.init(event: .onEntry, beaconId: "makeschool", event_in: Date().toString(), event_out: "no", id: 0, user_id: 0)
+//        AttendanceServices.create(att) { (att) in
+//            if let id = att?.id{
+//                AttendanceServices.fetchLastAttendance(id: String(id)) { (att) in
+//                    att.event_out = "2010-4-22"
+//                    AttendanceServices.update(attendance: att, completion: { (at) in
+//                        print(at)
+//                        AttendanceServices.fetchLastAttendance(id: String(att.id!), completion: { (a) in
+//                            print(a)
+//                        })
+//                    })
+//                }
+//            }
+//      }
+       
+//        let dg = DispatchGroup()
+//        AttendanceServices.show { (att) in
+//            att?.forEach({
+//                dg.enter()
+//                AttendanceServices.delete(id: String($0.id!), completion: { (at) in
+//                    print(at)
+//                    dg.leave()
+//                })
+//                dg.notify(queue: .global(), execute: {
+//                    print("finish deleteing")
+//                })
+//            })
+//        }
+       
+        
+       // AttendanceServices.show { (attendance) in
             // Fetch student's attendance from Companion API
 //            let todaysAttendance = attendance?.filter { $0.event_time == Date() }
 //            print("This is the attendance objects \(attendance)" )
 //            self.attendance = attendance ?? []
 //            print("Count: \(attendance?.count)")
-            if let attendances = attendance{
-            self.attendance = attendances
-                
-                // test
-                AttendanceServices.create(Attendance(Date().toString(), event: .onEntry, beaconId: "test-test"), completion: { (att) in
-                    print(att)
-                })
-            }
+//            if let attendances = attendance{
+//            self.attendance = attendances
+//
+//                // test
+//                AttendanceServices.create(Attendance(Date().toString(), event: .onEntry, beaconId: "test-test"), completion: { (att) in
+//                    print(att)
+//                })
+//            }
             
-        }
+  //      }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,8 +159,8 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         
         let studentAttendance = attendance[indexPath.row]
         
-        cell.checkInDateLabel.text = studentAttendance.event_time
-        cell.checkOutTimeLabel.text = studentAttendance.event_time
+        cell.checkInDateLabel.text = studentAttendance.event_in
+        cell.checkOutTimeLabel.text = studentAttendance.event_in
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
         
         return cell
