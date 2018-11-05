@@ -9,7 +9,7 @@
 import Foundation
 struct Constants {
     static var current = "current"
-    static var makeSchoolRegionId = "makeSchool"
+    static var makeSchoolRegionId = "makeschool"
     static var attendanceNotificationId = "attendanceNotificationId"
     static let attendanceId = "attendance_id"
     static let eventId = "event_time"

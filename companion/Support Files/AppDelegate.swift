@@ -35,7 +35,9 @@ let environment:environmentType = .production
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    static let shared: AppDelegate = AppDelegate()
+    
+    static let shared = UIApplication.shared.delegate as! AppDelegate
+//    static let shared: AppDelegate = AppDelegate()
     
     lazy var beaconManager: BeaconManager = {
         // Register a beacon
@@ -86,11 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         beaconManager.startMonitoring()
         
-        GeoFenceServices.startMonitoringMakeschool { (started) in
-            if started {
-                self.locationManager.delegate = self
-            }
-        }
+//        GeoFenceServices.startMonitoringMakeschool { (started) in
+//            if started {
+//                self.locationManager.delegate = self
+//            }
+//        }
         
         center.delegate = self
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (requestAuth, error) in
@@ -136,6 +138,10 @@ extension AppDelegate: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         let identifier = region.identifier
         
+        AttendanceController.shared.presentAlert(title: "did enter", message: "enter in the region")
+        
+        let att = Attendance.init(event: .onEntry, beaconId: "test", event_in: "test", event_out: "test", id: 0, user_id: 0)
+         self.attendanceNotification(attendance: att)
         // check if the attendance was already taken to avoid double check in
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
@@ -143,6 +149,7 @@ extension AppDelegate: CLLocationManagerDelegate{
             let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             AttendanceServices.create(attendance) { (att) in
                 if let checkInAttendance = att{
+                    
                     /// store the date and id of the last attendance for future verification
                     UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
                     
@@ -158,8 +165,11 @@ extension AppDelegate: CLLocationManagerDelegate{
             }
         }
     }
-    
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+       
+    }
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+         AttendanceController.shared.presentAlert(title: "did Exit", message: "exiting the region")
         if region.identifier == Constants.makeSchoolRegionId {
             
             //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
@@ -190,7 +200,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         // Triggering the notification
         // Once a person steps inside the building
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         
         // Getting the notification request
         let request = UNNotificationRequest(identifier: Constants.attendanceNotificationId, content: content, trigger: trigger)

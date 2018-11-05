@@ -34,17 +34,23 @@ struct GeoFenceServices{
     /// Mehtod to start monitoring region
     static func startMonitoringMakeschool( completion: @escaping (Bool)->()){
         let address = "555 post street, San Francisco, CA"
-        let testAddress = "1368 natoma street, San Francisco, CA"
-        addressToCoordinate(testAddress) { (center) in
+        //let testAddress = "1368 natoma street, San Francisco, CA"
+        addressToCoordinate(address) { (center) in
             
             guard let center = center else {return completion(false)}
             
-            let region = CLCircularRegion(center: center, radius: 150, identifier: Constants.makeSchoolRegionId)
-            let manager = CLLocationManager()
+            let region = CLCircularRegion(center: center, radius: 30, identifier: Constants.makeSchoolRegionId)
+            region.notifyOnExit = true
+            region.notifyOnEntry = true
+            let manager = AppDelegate.shared.locationManager//CLLocationManager()
             manager.startMonitoring(for: region)
             return completion(true)
         }
+        
+       
+       
     }
+    
 }
 
 
