@@ -7,24 +7,34 @@
 //
 
 import Foundation
+import KeychainSwift
 
 struct NetworkManager {
-   
-    static func network(_ path: Path, _ httpMethod: HttpMethod, _ httpBody: Data? = nil, credentail: [String:String]? = nil, params: [String:Any]? = nil,completion: @escaping (Any?, Error?)->()){
+    
+    private static func infoForKey(_ key: String) -> String? {
+        return (Bundle.main.infoDictionary?[key] as? String)?
+            .replacingOccurrences(of: "\\", with: "")
+    }
+    
+    static func network(_ path: Path, _ httpMethod: HttpMethod,_ attendanceId: String? = nil, _ httpBody: Data? = nil, credentail: [String:String]? = nil, params: [String:Any]? = nil,completion: @escaping (Any?, Error?)->()){
         // 1.  based link
         var links = "https://make-school-companion.herokuapp.com/"
         
         // 2.  path
         links += path.rawValue
         
-       
+        // show, update or delete attendance
+        if let attendanceId = attendanceId{
+            links += "/" + attendanceId
+        }
         
         //4. params
         if let params = params{
             let beacon = params["beacon_id"] as! String
-            let time = "today"//params["event_time"] as! String
+            let event_in = params["event_in"] as! String
             let event = params["event"] as! String
-            links += "?beacon_id=\(beacon)&event_time=\(time)&event=\(event)"
+            let event_out = params["event_out"] as! String
+            links += "?beacon_id=\(beacon)&event_in=\(event_in)&event=\(event)&event_out=\(event_out)"
         }
         
         let url = URL(string: links)
@@ -40,6 +50,13 @@ struct NetworkManager {
             request.allHTTPHeaderFields = credentail!
         }
         
+        // add cookie to the request for facebook user
+        if let cookie = KeychainSwift().get("cookie") {
+            request.setValue("_makeschool_session=\(cookie)", forHTTPHeaderField: "Cookie")
+        }
+        
+        
+        
         // 6. http method
         request.httpMethod = httpMethod.rawValue
         
@@ -47,12 +64,12 @@ struct NetworkManager {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, res, err) in
             guard let data = data else {return completion(nil,err)}
-            
+            print(String(data: data, encoding: .utf8))
             
             let response = res as! HTTPURLResponse
             print(response.statusCode)
             
-//            print("This is the data as a string \(data.base64EncodedString())")
+            // decode data based on request type
             
             switch path{
                 
@@ -61,35 +78,55 @@ struct NetworkManager {
                 case .get:
                     do{
                         
-                        let attanandaces = try JSONDecoder().decode([Attendance].self, from: data)
-                        completion(attanandaces,nil)
+                        let attendances = try JSONDecoder().decode([Attendance].self, from: data)
+                        
+                       return completion(attendances,nil)
                         
                     }catch{
-                        completion(nil,nil)
+                        do{
+                            let attendance = try JSONDecoder().decode(Attendance.self, from: data)
+                            return completion(attendance,nil)
+
+                            
+                        }catch{
+                            return completion(nil, nil)
+                        }
                     }
                 case .post: fallthrough
                 case .update:
                     do{
-                        let attanandace = try JSONDecoder().decode(Attendance.self, from: data)
-                        completion(attanandace, nil)
+                        let attendance = try JSONDecoder().decode(Attendance.self, from: data)
+
+                        completion(attendance, nil)
+                    }catch{
+                        return completion(nil, nil)
+                    }
+                case .delete:
+                    do{
+                        let attendance = try JSONDecoder().decode(Attendance.self, from: data)
+                        
+                        completion(attendance, nil)
                     }catch{
                         return completion(nil, nil)
                     }
                 }
             case .user:
                 switch httpMethod{
-                    
+                
                 case .get: fallthrough
                 case .post: fallthrough
+                 case .delete: fallthrough
                 case .update:
                     do{
-                        let user = try? JSONDecoder().decode(User.self, from: data)
+                        let user = try JSONDecoder().decode(User.self, from: data)
                         completion(user, nil)
                         
                     } catch let error {
                         return completion(nil,error)
                         
                     }
+               
+                    
                 }
             case .dashboard:
                 return completion(nil, nil)
@@ -99,31 +136,6 @@ struct NetworkManager {
         }
         task.resume()
     }
-//
-//    func fetchStudentDashboardInfo(primaryPath: Path, secondaryPath: Path?, httpMethod: HttpMethod, completion: @escaping (Any) -> Void) {
-//
-//        var baseUrl = "https://www.makeschool.com/"
-//
-//        guard let secondaryPath = secondaryPath else { return }
-//
-//        if primaryPath.rawValue == "dashboard" {
-//            baseUrl.append("dashboard/\(secondaryPath)")
-//        } else if primaryPath.rawValue == "portfolio" {
-//            let usersFirstName =  User.current.first_name.lowercased()
-//            let usersLastName = User.current.last_name.lowercased()
-//            baseUrl.append("portfolio/\(usersFirstName)-\(usersLastName)")
-//        }
-//
-//
-//        let fullUrl = URL(string: baseUrl)
-//        var request = URLRequest(url: fullUrl!)
-//        request.httpMethod = HttpMethod.get.rawValue
-//
-//        let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//        }
-//    }
-    
     
     static func fetchProfile(completion: @escaping ([Profile])->()){
         let link = "https://www.makeschool.com/portfolios.json"
@@ -141,7 +153,7 @@ struct NetworkManager {
             catch{
                 
             }
-        }.resume()
+            }.resume()
     }
     
 }
@@ -157,7 +169,8 @@ enum Path: String {
 enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
-    case update = "UPDATE"
+    case update = "PATCH"
+    case delete = "DELETE"
 }
 enum HttpBody {
     case user

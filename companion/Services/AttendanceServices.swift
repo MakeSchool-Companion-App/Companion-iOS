@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeychainSwift
 struct AttendanceServices{
     /// method to create a new attendance
     static func create(_ attendance: Attendance, completion: @escaping (Attendance?) ->()){
@@ -16,8 +17,14 @@ struct AttendanceServices{
             case true: completion(nil)
             case false:
                 post(attendance, completion: { (att, error) in
-                    guard error != nil else {return completion(att)}
+                    
+                    if let attendance = att{
+                        UserDefaults.standard.set(attendance.id, forKey:  Constants.attendanceId)
+                        return completion(attendance)
+                    }
+                    else{
                     return completion(nil)
+                    }
                 })
             }
         }
@@ -33,6 +40,33 @@ struct AttendanceServices{
             return completion(att)
         }
     }
+    /// method to fetch the last attendance
+    static func fetchLastAttendance(id: String? = nil, completion: @escaping(Attendance)->()){
+        var attendanceId = String()
+        if let savedId = UserDefaults.standard.value(forKey: Constants.attendanceId) as? Int{
+            attendanceId = String(savedId)
+        }
+        
+         NetworkManager.network(.attendance, .get, id ?? attendanceId) { (attendance, error) in
+            
+            return completion(attendance as! Attendance)
+        }
+    }
+    
+    static func delete(id: String, completion: @escaping (Attendance)->()){
+        NetworkManager.network(.attendance, .delete, id) { (attendance, error) in
+            return completion(attendance as! Attendance)
+        }
+    }
+    
+    static func update(attendance: Attendance,completion: @escaping (Attendance)->()){
+        
+        NetworkManager.network(.attendance, .update, String(attendance.id!), params: attendance.toDictionary()) { (attendance, error) in
+            return completion(attendance as! Attendance)
+        }
+        
+    }
+    
     /// method to check if today attendance was already made
     static func isAttendanceExist(completion: @escaping (Bool)-> ()){
         getTodayAttendance { (attendance) in
@@ -67,16 +101,31 @@ struct AttendanceServices{
             guard let value = attendances else {return completion(nil)}
             let attendances = value as! [Attendance]
             
-            let todayAttendance = attendances.filter({$0.event_time == Date().toString()})
+            let todayAttendance = attendances.filter({$0.event_in == Date().toString()})
             
             return todayAttendance.isEmpty ? completion (nil) : completion(todayAttendance.first)
             
         }
     }
-    /// method to fetch all attendances
-    private static func fetchAllAttendance(completion: @escaping ([Attendance]?)->()){
-        
+    
+    /// method to save the last date of attendance on userdefault
+    static func markAttendance(){
+        UserDefaults.standard.set(Date().toString(), forKey: Constants.savedAttendance)
     }
+    static func isTodayAttendanceDone() -> Bool{
+        
+        if let date = UserDefaults.standard.value(forKey: Constants.savedAttendance) as? String{
+            if date == Date().toString(){
+                return true
+            }else{
+                return false
+            }
+        }
+        else{
+           return false
+        }
+    }
+    
 }
 
 

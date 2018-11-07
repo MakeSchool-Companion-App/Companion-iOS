@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
+import CoreLocation
 class AttendanceController: UIViewController {
     
     // MARK: - Properties
-    
+    let locationManager = CLLocationManager()
     var attendance = [Attendance]() {
         didSet {
             DispatchQueue.main.async {
@@ -21,7 +21,9 @@ class AttendanceController: UIViewController {
         }
     }
     
+    var inRange = false
     
+    static let shared = AttendanceController()
     // MARK: - UI Elements
     
     lazy var attendanceTableView: UITableView = {
@@ -42,14 +44,22 @@ class AttendanceController: UIViewController {
         setupAutoLayout()
         setupNavbarItem()
         
-        AttendanceServices.show { (attendance) in
-            // Fetch student's attendance from Companion API
-//            let todaysAttendance = attendance?.filter { $0.event_time == Date() }
-//            print("This is the attendance objects \(attendance)" )
-//            self.attendance = attendance ?? []
-//            print("Count: \(attendance?.count)")
-            
+        GeoFenceServices.startMonitoringMakeschool { (started) in
+            if started {
+                self.locationManager.delegate = self
+                self.locationManager.startUpdatingLocation()
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest//kCLLocationAccuracyBestForNavigation
+               // self.locationManager.allowsBackgroundLocationUpdates = true
+                 self.locationManager.pausesLocationUpdatesAutomatically = false
+            }
         }
+        
+
+        
+        AttendanceServices.show { (att) in
+            print(att)
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,8 +119,9 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         
         let studentAttendance = attendance[indexPath.row]
         
-        cell.checkInDateLabel.text = studentAttendance.event_time
-        cell.checkOutTimeLabel.text = studentAttendance.event_time
+        cell.checkInDateLabel.text = studentAttendance.event_in
+        cell.checkOutTimeLabel.text = studentAttendance.event_in
+        cell.checkInTimeLabel.text = studentAttendance.checkInTime
         
         return cell
     }
@@ -120,4 +131,76 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension AttendanceController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        
+        self.presentAlert(title: "did enter", message: "enter in the region")
+        
+        
+        // check if the attendance was already taken to avoid double check in
+        if AttendanceServices.isTodayAttendanceDone() == true{ return}
+        
+        if region.identifier == Constants.makeSchoolRegionId {
+            let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
+            
+            AttendanceServices.create(attendance) { (att) in
+                if let checkInAttendance = att{
+                     self.presentAlert(title: "post attendance", message: "posrt attendance completeted")
+                    /// store the date and id of the last attendance for future verification
+                    UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
+                    
+                    UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
+                    
+                    
+                    /// save today attendance
+                     AppDelegate.shared.attendanceNotification(attendance: attendance)
+                }
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print(region.identifier)
+        self.presentAlert(title: "did Exit", message: "exiting the region")
+        if region.identifier == Constants.makeSchoolRegionId {
+            
+            //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
+            AttendanceServices.fetchLastAttendance { (lastAttendance) in
+                lastAttendance.event_out = Date().checkTime()
+                AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                    AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+                })
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+         print(region.identifier)
+        let att = Attendance.init(event: .onEntry, beaconId: "test", event_in: "test", event_out: "test", id: 0, user_id: 0)
+        AppDelegate.shared.attendanceNotification(attendance: att)
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first{
+            //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
+            let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
+            let distance = location.distance(from: msCoordinate)
+            self.title = String(distance)
+            if distance > 40 {
+                
+                if inRange == true{
+                self.presentAlert(title: "out of range", message: "you left make school")
+                    inRange = false
+                }
+            }
+            else{
+                if inRange == false{
+                 self.presentAlert(title: "in range", message: "you enter make school")
+                inRange = true
+                }
+            }
+            
+        }
+    }
 }
