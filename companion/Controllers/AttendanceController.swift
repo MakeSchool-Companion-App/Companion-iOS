@@ -136,13 +136,13 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
 extension AttendanceController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         
-        self.presentAlert(title: "did enter", message: "enter in the region")
+        //self.presentAlert(title: "did enter", message: "enter in the region")
         
         
         // check if the attendance was already taken to avoid double check in
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
-        if region.identifier == Constants.makeSchoolRegionId {
+      //  if region.identifier == Constants.makeSchoolRegionId {
             let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             
             AttendanceServices.create(attendance) { (att) in
@@ -158,7 +158,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                      AppDelegate.shared.attendanceNotification(attendance: attendance)
                 }
             }
-        }
+        //}
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -177,9 +177,7 @@ extension AttendanceController: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-         print(region.identifier)
-        let att = Attendance.init(event: .onEntry, beaconId: "test", event_in: "test", event_out: "test", id: 0, user_id: 0)
-        AppDelegate.shared.attendanceNotification(attendance: att)
+        
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
@@ -187,16 +185,43 @@ extension AttendanceController: CLLocationManagerDelegate{
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
             let distance = location.distance(from: msCoordinate)
             self.title = String(distance)
-            if distance > 40 {
+            if distance < 50 {
                 
                 if inRange == true{
-                self.presentAlert(title: "out of range", message: "you left make school")
+                //self.presentAlert(title: "out of range", message: "you left make school")
+                    
+                    // check if the attendance was already taken to avoid double check in
+                    if AttendanceServices.isTodayAttendanceDone() == true{ return}
+                    
+                    let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
+                    
+                    AttendanceServices.create(attendance) { (att) in
+                        if let checkInAttendance = att{
+                           
+                            /// store the date and id of the last attendance for future verification
+                            UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
+                            
+                            UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
+                            
+                            AttendanceServices.markAttendance()
+                            /// save today attendance
+                            AppDelegate.shared.attendanceNotification(attendance: attendance)
+                        }
+                    }
                     inRange = false
                 }
             }
             else{
                 if inRange == false{
-                 self.presentAlert(title: "in range", message: "you enter make school")
+                 //self.presentAlert(title: "in range", message: "you enter make school")
+                    if AttendanceServices.isTodayAttendanceDone() == false {return}
+                    AttendanceServices.fetchLastAttendance { (lastAttendance) in
+                        lastAttendance.event_out = Date().checkTime()
+                        AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                            AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+                        })
+                    }
+                    
                 inRange = true
                 }
             }

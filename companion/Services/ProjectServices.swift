@@ -20,7 +20,5 @@ struct ProjectServices {
         catch {
             return completion(nil)
         }
-        
-        
     }
 }
