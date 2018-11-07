@@ -20,7 +20,7 @@ class AttendanceController: UIViewController {
             
         }
     }
-    
+    var onPost = false
     var inRange = false
     
     static let shared = AttendanceController()
@@ -187,11 +187,12 @@ extension AttendanceController: CLLocationManagerDelegate{
             self.title = String(distance)
             if distance < 50 {
                 
-                if inRange == true{
+                // check if the attendance was already taken to avoid double check in
+                if AttendanceServices.isTodayAttendanceDone() == true{ return}
+                
+                if onPost == false{
+                    onPost = true
                 //self.presentAlert(title: "out of range", message: "you left make school")
-                    
-                    // check if the attendance was already taken to avoid double check in
-                    if AttendanceServices.isTodayAttendanceDone() == true{ return}
                     
                     let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
                     
@@ -208,11 +209,10 @@ extension AttendanceController: CLLocationManagerDelegate{
                             AppDelegate.shared.attendanceNotification(attendance: attendance)
                         }
                     }
-                    inRange = false
                 }
             }
             else{
-                if inRange == false{
+                //if inRange == false{
                  //self.presentAlert(title: "in range", message: "you enter make school")
                     if AttendanceServices.isTodayAttendanceDone() == false {return}
                     AttendanceServices.fetchLastAttendance { (lastAttendance) in
@@ -222,8 +222,8 @@ extension AttendanceController: CLLocationManagerDelegate{
                         })
                     }
                     
-                inRange = true
-                }
+                //inRange = true
+                //}
             }
             
         }

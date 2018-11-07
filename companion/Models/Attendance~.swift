@@ -60,8 +60,8 @@ class Attendance: Codable {
         let event_in = try container.decode(String.self, forKey: .event_in)
         let event_out = try container.decodeIfPresent(String.self, forKey: .event_out)
         
-        let timeIn = event_in.components(separatedBy: " ")
-        let timeOut = event_out?.components(separatedBy: " ")
+        let timeIn = event_in.components(separatedBy: "+")
+        let timeOut = event_out?.components(separatedBy: "+")
         let checkInDate = timeIn[0]
         let checkInTime = timeIn[1]
         self.init(event: event, beaconId: String(beacon_id!), event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)

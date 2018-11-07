@@ -18,7 +18,14 @@ class StudentDashboardController: UIViewController {
     // MARK: - Properties
     
     // Dummy Data
-    var projects = [Project]()
+    var projects = [Project](){
+        didSet{
+            DispatchQueue.main.async {
+                  self.dashboardTableView?.reloadData()
+            }
+         
+        }
+    }
 //        [
 //        Project(name: "Companion App", technologies: "Swift & UIKit", image: UIImage(named: "makeschool")!),
 //        Project(name: "Instagram", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "instagram")!),
@@ -68,6 +75,14 @@ class StudentDashboardController: UIViewController {
                         self.profileCardView.profilePictureImageView.image = image
                     }
                 }
+            }
+            DispatchQueue.global().async {
+                ProjectServices.show(slug: profile.slug, completion: { (projects) in
+                   // print(projects)
+                    if let projects = projects as? [Project]{
+                        self.projects = projects
+                    }
+                })
             }
             
         }
