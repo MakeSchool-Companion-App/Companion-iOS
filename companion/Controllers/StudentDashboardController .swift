@@ -18,12 +18,13 @@ class StudentDashboardController: UIViewController {
     // MARK: - Properties
     
     // Dummy Data
-    var projects: [Project] = [
-        Project(name: "Companion App", technologies: "Swift & UIKit", image: UIImage(named: "makeschool")!),
-        Project(name: "Instagram", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "instagram")!),
-        Project(name: "Twitter", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "twitter")!),
-        Project(name: "Snapchat", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "snapchat")!)
-    ]
+    var projects = [Project]()
+//        [
+//        Project(name: "Companion App", technologies: "Swift & UIKit", image: UIImage(named: "makeschool")!),
+//        Project(name: "Instagram", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "instagram")!),
+//        Project(name: "Twitter", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "twitter")!),
+//        Project(name: "Snapchat", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "snapchat")!)
+//    ]
     // Dummy Data
     var courses: [Course] = [
         Course(name: "DS 1.1", description: "Data Analysis & Visualization", color: UIColor.purple),

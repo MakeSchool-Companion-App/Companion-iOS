@@ -34,7 +34,7 @@ struct GeoFenceServices{
     /// Mehtod to start monitoring region
     static func startMonitoringMakeschool( completion: @escaping (Bool)->()){
         let address = "555 post street, San Francisco, CA"
-        //let testAddress = "1368 natoma street, San Francisco, CA"
+       // let testAddress = "1368 natoma street, San Francisco, CA"
         addressToCoordinate(address) { (center) in
             
             guard let center = center else {return completion(false)}

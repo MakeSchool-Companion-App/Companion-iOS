@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 
-struct Project {
+struct Project: Codable {
     let name: String
     let technologies: String
-    let image: UIImage
+    //let image: UIImage
+    let img_url: String
+    var writeup_url: String?
+    var github_url: String?
+    var uri: String?
+    let id: Int
+    var description: String?
 }

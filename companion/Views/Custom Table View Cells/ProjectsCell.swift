@@ -92,7 +92,7 @@ extension ProjectsCell: UICollectionViewDelegateFlowLayout, UICollectionViewData
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId, for: indexPath) as? ProjectsCollectionCell else { fatalError("ProjectsCell: failed to create a collectionViewCell") }
         let project = projects[indexPath.item]
         
-        cell.projectImageView.image = project.image
+        //cell.projectImageView.image = project.image
         cell.projectNameLabel.text = project.name
         cell.technologiesLabel.text = project.technologies
         
