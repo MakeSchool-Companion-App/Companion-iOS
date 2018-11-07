@@ -17,6 +17,13 @@ class LoginController: UIViewController {
     
     // MARK: - UI Elements
     
+    private let activityIndicatorView: UIActivityIndicatorView = {
+        
+        let view = UIActivityIndicatorView()
+        view.color = MakeSchoolDesignColor.darkBlue
+        return view
+    }()
+    
     private let companionLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome to Companion!"
@@ -77,7 +84,7 @@ class LoginController: UIViewController {
         textField.textAlignment = .left
         textField.textColor = MakeSchoolDesignColor.darkBlue
         textField.backgroundColor = MakeSchoolDesignColor.faintBlue
-        textField
+    
         textField.layer.cornerRadius = 6
         textField.layer.shadowColor = #colorLiteral(red: 0.03137254902, green: 0.4862745098, blue: 0.7215686275, alpha: 1).cgColor
         textField.layer.shadowOffset = CGSize.zero
@@ -97,7 +104,7 @@ class LoginController: UIViewController {
         button.setTitle("Login", for: .normal)
         button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
         button.backgroundColor = MakeSchoolDesignColor.darkBlue
-        button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 24)
+        button.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
@@ -108,7 +115,7 @@ class LoginController: UIViewController {
         button.setTitle("Login with Facebook", for: .normal)
         button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
         button.backgroundColor = UIColor(r: 59, g: 89, b: 152, a: 1)
-        button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 24)
+        button.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(handleFacebookLogin), for: .touchUpInside)
         return button
@@ -144,16 +151,9 @@ class LoginController: UIViewController {
         textFieldStackView.spacing = 16
         
         
-        loginButton.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 0, width: 0)
-        facebookLoginButton.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 0, width: 0)
         
-        let loginButtonsStackView = UIStackView(arrangedSubviews: [loginButton, facebookLoginButton])
-        textFieldStackView.alignment = .center
-        textFieldStackView.distribution = .equalSpacing
-        textFieldStackView.axis = .vertical
-        textFieldStackView.spacing = 0
         
-        view.addSubviews(views: companionLabel, textFieldStackView, loginButtonsStackView)
+        view.addSubviews(views: companionLabel, textFieldStackView, loginButton, facebookLoginButton)
         
         companionLabel.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
@@ -165,7 +165,7 @@ class LoginController: UIViewController {
             bottomPadding: 0,
             leftPadding: 36,
             height: 100,
-            width: 225)
+            width: 0)
         
         textFieldStackView.anchor(
             centerX: view.centerXAnchor,
@@ -181,19 +181,33 @@ class LoginController: UIViewController {
             height: 177,
             width: 0)
         
-        loginButtonsStackView.anchor(
+        loginButton.anchor(
             centerX: view.centerXAnchor,
             centerY: nil,
             top: textFieldStackView.bottomAnchor,
-            right: view.safeAreaLayoutGuide.rightAnchor,
+            right: nil,
             bottom: nil,
-            left: view.safeAreaLayoutGuide.leftAnchor,
-            topPadding: 0,
+            left: nil,
+            topPadding: 42,
             rightPadding: 0,
             bottomPadding: 0,
             leftPadding: 0,
-            height: 123,
-            width: 0)
+            height: 46,
+            width: 206)
+        
+        facebookLoginButton.anchor(
+            centerX: view.centerXAnchor,
+            centerY: nil,
+            top: loginButton.bottomAnchor,
+            right: nil,
+            bottom: nil,
+            left: nil,
+            topPadding: 30,
+            rightPadding: 0,
+            bottomPadding: 0,
+            leftPadding: 0,
+            height: 46,
+            width: 206)
         
 //        loginButton.anchor(
 //            centerX: view.centerXAnchor,
@@ -222,15 +236,20 @@ class LoginController: UIViewController {
         
         UserServices.login(email: email, password: password) { (user) in
             
+            DispatchQueue.main.async {
+                self.view.addSubview(self.activityIndicatorView)
+                self.activityIndicatorView.startAnimating()
+            }
             
             if let user = user as? User {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
                 
                 DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
                     let mainTabBarController = MainTabBarController()
                     self.view.window?.rootViewController = mainTabBarController
-    
+                    
                     self.view.window?.makeKeyAndVisible()
                 }
                 
@@ -243,14 +262,44 @@ class LoginController: UIViewController {
     
     @objc private func handleFacebookLogin() {
         print("LOGIN WITH FACEBOOK")
+        let defaults = UserDefaults.standard
+        let initialViewController: UIViewController
         
-        
-        DispatchQueue.main.async {
-            let faceBookLoginWebViewController = FacebookLoginWebViewController()
-            self.view.window?.rootViewController = faceBookLoginWebViewController
-            self.view.window?.makeKeyAndVisible()
+        if let _ = User.current,
+            let userData = defaults.object(forKey: Constants.current) as? Data,
+            let user = try? JSONDecoder().decode(User.self, from: userData) {
+            
+            User.setCurrent(user)
+            initialViewController = MainTabBarController()
+        } else {
+            initialViewController = FacebookLoginWebViewController()
         }
+        
+        view.window?.rootViewController = initialViewController
+        view.window?.makeKeyAndVisible()
+//        DispatchQueue.main.async {
+//            let faceBookLoginWebViewController = FacebookLoginWebViewController()
+//            self.view.window?.rootViewController = faceBookLoginWebViewController
+//            self.view.window?.makeKeyAndVisible()
+//        }
     }
+    
+//    let defualts = UserDefaults.standard
+//    let initialViewController: UIViewController
+//
+//
+//    if let _ = User.current,
+//    let userData = defualts.object(forKey: Constants.current) as? Data,
+//    let user = try? JSONDecoder().decode(User.self, from: userData) {
+//
+//        User.setCurrent(user)
+//        initialViewController = MainTabBarController()
+//    } else {
+//    initialViewController = LoginController()
+//    }
+//
+//    window?.rootViewController = initialViewController
+//    window?.makeKeyAndVisible()
     
 }
 
@@ -269,19 +318,4 @@ extension LoginController: UITextFieldDelegate {
 }
 
 
-extension LoginController {
-    
-//    func loginUser(_ email: String, _ password: String) {
-//        UserServices.login(email: email, password: password) { (user) in
-//            if let user = user as? User{
-//                User.setCurrent(user, writeToUserDefaults: true)
-//                // perform segue
-//            }
-//            else{
-//                // error message
-//            }
-//        }
-//    }
-//
-    
-}
+

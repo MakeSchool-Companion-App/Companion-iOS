@@ -10,6 +10,8 @@ import UIKit
 import iBeaconManager
 import CoreLocation
 
+
+
 class ScanBeaconController: UIViewController {
     
     // MARK: Properties
@@ -22,7 +24,7 @@ class ScanBeaconController: UIViewController {
     
     let searchForBeaconLabel: UILabel = {
         let label = UILabel()
-        label.text = "Searching for iBeacon..."
+        label.text = "Searching for an iBeacon..."
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
@@ -60,8 +62,6 @@ class ScanBeaconController: UIViewController {
         print(beaconView.frame)
         
         setupBeaconManager()
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -139,41 +139,51 @@ class ScanBeaconController: UIViewController {
     }
 }
 
+enum BeaconRegionStatus {
+    case inRange
+    case notInRange
+    case searching
+    case entered
+    case exited
+    case failed
+}
+
 extension ScanBeaconController: BeaconManagerDelegate {
     
     func beaconManager(sender: BeaconManager, isInBeaconRange region: CLRegion) {
         print("Beacon is in range.")
         // Create a timestamp (Attendance) once you're in the region
        
-        
-        view.backgroundColor = .yellow
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
     }
     
     func beaconManager(sender: BeaconManager, isNotInBeaconRange region: CLRegion) {
         print("Beacon is not in range")
-        view.backgroundColor = .gray 
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
     }
     
     func beaconManager(sender: BeaconManager, searchingInRegion region: CLRegion) {
         print("Search for beacon in region")
-        view.backgroundColor = UIColor.green
+        
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
     }
     
     func beaconManager(sender: BeaconManager, enteredBeaconRegion region: CLRegion) {
         print("Entered Beacon Region")
-        view.backgroundColor = .yellow
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
     }
     
     func beaconManager(sender: BeaconManager, exitedBeaconRegion region: CLRegion) {
         print("Exited Beacon Region")
-        view.backgroundColor = .orange
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
     }
     
     func beaconManager(sender: BeaconManager, monitoringRegionFailed region: CLRegion, withError error: Error) {
         print("Failed to monitor beacon \(error)")
-        view.backgroundColor = .red
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
     }
     
-    
+
 }
+
 

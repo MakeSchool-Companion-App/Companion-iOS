@@ -33,9 +33,10 @@ class FacebookLoginWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupAutoLayout()
         
-        view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        view.setNeedsLayout()
+//        view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+//        view.setNeedsLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,12 +51,29 @@ class FacebookLoginWebViewController: UIViewController {
         super.loadView()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.view = facebookWebView
+//        self.view = facebookWebView
+        view.backgroundColor = UIColor.white
     }
     
-    
-    
     // MARK: - Methods
+    
+    private func setupAutoLayout() {
+     
+        view.addSubview(facebookWebView)
+        facebookWebView.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            right: view.safeAreaLayoutGuide.rightAnchor,
+            bottom: view.bottomAnchor,
+            left: view.safeAreaLayoutGuide.leftAnchor,
+            topPadding: 0,
+            rightPadding: 0,
+            bottomPadding: 0,
+            leftPadding: 0,
+            height: 0,
+            width: 0)
+        
+    }
+    
 }
 
 // MARK: - WKUIDelegate Methods
@@ -98,7 +116,8 @@ extension FacebookLoginWebViewController: WKNavigationDelegate {
                                 if let user = user{
                                     User.setCurrent(user)
                                     // go to the nexr view controller
-                                    
+                                    let mainTabBarController = MainTabBarController()
+                                    self.present(mainTabBarController, animated: true, completion: nil)
                                 }
                             })
                             return

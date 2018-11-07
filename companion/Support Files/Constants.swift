@@ -11,4 +11,5 @@ struct Constants {
     static var current = "current"
     static var makeSchoolRegionId = "MakeSchool"
     static var attendanceNotificationId = "attendanceNotificationId"
+    static var vantaggiosAddress = "246 McAllister Street, San Francisco, CA"
 }

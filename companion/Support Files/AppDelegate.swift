@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GeoFenceServices.startMonitoringMakeschool { (started) in
             if started == true {
                 self.locationManager.delegate = self
+                
             }
         }
         
