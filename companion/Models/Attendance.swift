@@ -54,7 +54,7 @@ class Attendance: Codable {
         default: break
         }
        
-        let beacon_id = try  container.decode(Int?.self, forKey: .beacon_id)
+        let beacon_id = "makeschool"//try  container.decode(String?.self, forKey: .beacon_id)
         let id = try container.decode(Int.self, forKey: .id)
         let user_id = try container.decode(Int.self, forKey: .user_id)
         let event_in = try container.decodeIfPresent(String.self, forKey: .event_in)

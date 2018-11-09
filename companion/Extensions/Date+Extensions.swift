@@ -33,7 +33,7 @@ extension Date{
         return stringDate
     }
     public func checkTime() -> String{
-        return self.toString() + "+" + self.timeToString()
+        return self.toString() + " " + self.timeToString()
     }
 }
 

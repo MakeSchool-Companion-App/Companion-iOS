@@ -34,6 +34,7 @@ class StudentDashboardController: UIViewController {
     
     var profileCardView = ProfileCardView()
     
+   
     // MARK: - View Life Cycle Methods
     
     override func viewDidLoad() {
@@ -67,6 +68,14 @@ class StudentDashboardController: UIViewController {
                         self.profileCardView.profilePictureImageView.image = image
                     }
                 }
+            }
+            DispatchQueue.global().async {
+                ProjectServices.show(slug: profile.slug, completion: { (projects) in
+                   // print(projects)
+                    if let projects = projects as? [Project]{
+                        self.projects = projects
+                    }
+                })
             }
             
             DispatchQueue.global().async {

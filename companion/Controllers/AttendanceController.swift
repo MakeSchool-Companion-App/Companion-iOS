@@ -19,7 +19,7 @@ class AttendanceController: UIViewController {
             
         }
     }
-    
+    var onPost = false
     var inRange = false
     
     static let shared = AttendanceController()
@@ -140,13 +140,13 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
 extension AttendanceController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         
-        self.presentAlert(title: "did enter", message: "enter in the region")
+        //self.presentAlert(title: "did enter", message: "enter in the region")
         
         
         // check if the attendance was already taken to avoid double check in
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
-        if region.identifier == Constants.makeSchoolRegionId {
+      //  if region.identifier == Constants.makeSchoolRegionId {
             let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             
             AttendanceServices.create(attendance) { (att) in
@@ -162,15 +162,16 @@ extension AttendanceController: CLLocationManagerDelegate{
                      AppDelegate.shared.attendanceNotification(attendance: attendance)
                 }
             }
-        }
+        //}
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print(region.identifier)
-        self.presentAlert(title: "did Exit", message: "exiting the region")
+        
+        
+       
+        
         if region.identifier == Constants.makeSchoolRegionId {
             
-            //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
             AttendanceServices.fetchLastAttendance { (lastAttendance) in
                 lastAttendance.event_out = Date().checkTime()
                 AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
@@ -180,29 +181,51 @@ extension AttendanceController: CLLocationManagerDelegate{
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-         print(region.identifier)
-        let att = Attendance.init(event: .onEntry, beaconId: "test", event_in: "test", event_out: "test", id: 0, user_id: 0)
-        AppDelegate.shared.attendanceNotification(attendance: att)
-    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
             //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
-            let distance = location.distance(from: msCoordinate)
-//            self.title = String(distance)
-            if distance > 40 {
+            let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
+            
+            let distance = location.distance(from: natomaCoordinate)
+           
+            if distance < 50 {
                 
-                if inRange == true{
-                self.presentAlert(title: "out of range", message: "you left make school")
-                    inRange = false
+                // check if the attendance was already taken to avoid double check in
+                if AttendanceServices.isTodayAttendanceDone() == true{ return}
+                
+                if onPost == false{
+                    onPost = true
+                //self.presentAlert(title: "out of range", message: "you left make school")
+                    
+                    let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
+                    
+                    AttendanceServices.create(attendance) { (att) in
+                        if let checkInAttendance = att{
+                            AttendanceServices.fetchLastAttendance(id: String(checkInAttendance.id!), completion: { (attendance) in
+                               
+                                /// store the date and id of the last attendance for future verification
+                                UserDefaults.standard.set(attendance.id, forKey: Constants.attendanceId)
+                                
+                                UserDefaults.standard.set(attendance.event_in, forKey: Constants.eventId)
+                                
+                                AttendanceServices.markAttendance()
+                              
+                                AppDelegate.shared.attendanceNotification(attendance: attendance)
+                            })
+                        }
+                    }
                 }
             }
             else{
-                if inRange == false{
-                 self.presentAlert(title: "in range", message: "you enter make school")
-                inRange = true
-                }
+               
+                    if AttendanceServices.isTodayAttendanceDone() == false {return}
+                    AttendanceServices.fetchLastAttendance { (lastAttendance) in
+                        lastAttendance.event_out = Date().checkTime()
+                        AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                            AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+                        })
+                    }
             }
             
         }

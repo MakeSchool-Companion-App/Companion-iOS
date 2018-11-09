@@ -12,22 +12,15 @@ struct AttendanceServices{
     /// method to create a new attendance
     static func create(_ attendance: Attendance, completion: @escaping (Attendance?) ->()){
         
-        isAttendanceExist {(exist) in
-            switch exist{
-            case true: completion(nil)
-            case false:
-                post(attendance, completion: { (att, error) in
-                    
-                    if let attendance = att{
-                        UserDefaults.standard.set(attendance.id, forKey:  Constants.attendanceId)
-                        return completion(attendance)
-                    }
-                    else{
-                    return completion(nil)
-                    }
-                })
+        post(attendance, completion: { (att, error) in
+            
+            if let attendance = att{
+                return completion(attendance)
             }
-        }
+            else{
+                return completion(nil)
+            }
+        })
     }
 
     /// method to retrieve all attendance
