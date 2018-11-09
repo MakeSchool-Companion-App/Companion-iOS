@@ -14,7 +14,6 @@ class ProfileCardView: UIView {
     
     let profilePictureImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "uchennagithub")
         imageView.frame = CGRect(x: 0, y: 0, width: 95, height: 95)
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
@@ -35,7 +34,6 @@ class ProfileCardView: UIView {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Uchenna Aguocha"
         label.textAlignment = .left
         label.textColor = MakeSchoolDesignColor.black
         label.font = UIFont(name: "AvenirNext-DemiBold", size: 23)
@@ -44,7 +42,6 @@ class ProfileCardView: UIView {
     
     let concentrationLabel: UILabel = {
         let label = UILabel()
-        label.text = "Mobile Developer"
         label.textAlignment = .left
         label.textColor = MakeSchoolDesignColor.darkGrey
         label.font = UIFont(name: "AvenirNext", size: 16)
@@ -54,7 +51,6 @@ class ProfileCardView: UIView {
     let biographyTextView: UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = false
-        textView.text = "Senior iOS Developer @ Make School. I enjoy sleeping, biking, running, and eating free food."
         textView.textColor = MakeSchoolDesignColor.darkGrey
         textView.textAlignment = .left
         textView.backgroundColor = UIColor.clear
@@ -64,9 +60,10 @@ class ProfileCardView: UIView {
     
     let editButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Edit", for: .normal)
-        button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
-        button.backgroundColor = MakeSchoolDesignColor.darkBlue
+//        button.setTitle("Edit", for: .normal)
+//        button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
+        
+        button.backgroundColor = UIColor(r: 255, g: 255, b: 255, a: 0)
         button.layer.cornerRadius = 6
         return button
     }()

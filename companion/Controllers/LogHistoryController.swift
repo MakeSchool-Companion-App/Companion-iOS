@@ -12,9 +12,6 @@ class LogHistoryController: UIViewController {
     
     // MARK: - Properties
     
-
-//    lazy var attendaceViewModel = AttendanceViewModel()
-    
     // MARK: - UI Elements
     
     lazy var logHistoryTableView: UITableView = {

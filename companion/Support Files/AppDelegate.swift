@@ -100,10 +100,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 //        
 
-        ProjectServices.show(slug: "yveslym-songolo") { (projects) in
-            print(projects)
-        }
-  
+//        ProjectServices.show(slug: "yveslym-songolo") { (projects) in
+//            print(projects)
+//        }
+//  
         
         return true
     }

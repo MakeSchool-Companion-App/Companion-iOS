@@ -11,21 +11,16 @@ import UIKit
 
 class StudentDashboardController: UIViewController {
     
-    // MARK: TODO: Fetch students courses and projects from MAKE SCHOOL API
-    
-    
-    
     // MARK: - Properties
     
-    // Dummy Data
-    var projects = [Project]()
-//        [
-//        Project(name: "Companion App", technologies: "Swift & UIKit", image: UIImage(named: "makeschool")!),
-//        Project(name: "Instagram", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "instagram")!),
-//        Project(name: "Twitter", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "twitter")!),
-//        Project(name: "Snapchat", technologies: "Swift, GraphQL, & Rails", image: UIImage(named: "snapchat")!)
-//    ]
-    // Dummy Data
+    var projects = [Project]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.dashboardTableView?.reloadData()
+            }
+        }
+    }
+
     var courses: [Course] = [
         Course(name: "DS 1.1", description: "Data Analysis & Visualization", color: UIColor.purple),
         Course(name: "MOB 1.1", description: "Concurrency & Parallelism ", color: UIColor.red),
@@ -49,13 +44,17 @@ class StudentDashboardController: UIViewController {
         setupAutoLayout()
         setupProfile()
     }
+   
     
     // MARK: - Methods
     
     private func setupProfile(){
-        ProfileService.show { (profile) in
+        
+        ProfileService.show(user_id: Int(User.current?.user_id ?? "0")) { (profile) in
             DispatchQueue.main.async {
-               
+
+                print("1. User Profile\(profile)")
+                
                 self.profileCardView.nameLabel.text = profile.first_name + " " + profile.last_name
                 self.profileCardView.biographyTextView.text = profile.about_description
                 self.profileCardView.concentrationLabel.text = profile.professional_title
@@ -70,6 +69,14 @@ class StudentDashboardController: UIViewController {
                 }
             }
             
+            DispatchQueue.global().async {
+                ProjectServices.show(slug: profile.slug) { (projects) in
+                    guard let projects = projects as? [Project] else { return }
+                    self.projects = projects
+                    print(self.projects)
+                }
+            }
+    
         }
     }
     

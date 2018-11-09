@@ -16,10 +16,10 @@ class ProjectsCell: UITableViewCell {
     
     var projects = [Project]() {
         didSet {
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.projectsCollectionView?.reloadData()
             }
-        }
+//        }
     }
     
     // MARK: - UI Elements
@@ -53,6 +53,7 @@ class ProjectsCell: UITableViewCell {
         flowLayout.minimumInteritemSpacing = 14
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
         projectsCollectionView = UICollectionView(frame: self.frame, collectionViewLayout: flowLayout)
+        
         projectsCollectionView?.delegate = self
         projectsCollectionView?.dataSource = self
         projectsCollectionView?.backgroundColor = MakeSchoolDesignColor.faintBlue
@@ -90,11 +91,20 @@ extension ProjectsCell: UICollectionViewDelegateFlowLayout, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId, for: indexPath) as? ProjectsCollectionCell else { fatalError("ProjectsCell: failed to create a collectionViewCell") }
-        let project = projects[indexPath.item]
+        let project = projects[indexPath.row]
         
-        //cell.projectImageView.image = project.image
+        print("Project Image: \(project.img_url)")
+        
+        
         cell.projectNameLabel.text = project.name
         cell.technologiesLabel.text = project.technologies
+        DispatchQueue.main.async {
+            if let url = URL(string: project.img_url),
+                let data = try? Data(contentsOf: url) {
+                let projectImage = UIImage(data: data)
+                cell.projectImageView.image = projectImage
+            }
+        }
         
         return cell
     }

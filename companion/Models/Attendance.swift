@@ -17,7 +17,7 @@ class Attendance: Codable {
     var created_at: String?
     var checkInTime: String?
     var checkOutTime: String?
-    var event_in: String
+    var event_in: String?
     var event_out: String?
     
     init( event: EventType, beaconId: String?, event_in: String, event_out: String, id: Int, user_id: Int) {
@@ -57,25 +57,23 @@ class Attendance: Codable {
         let beacon_id = try  container.decode(Int?.self, forKey: .beacon_id)
         let id = try container.decode(Int.self, forKey: .id)
         let user_id = try container.decode(Int.self, forKey: .user_id)
-        let event_in = try container.decode(String.self, forKey: .event_in)
+        let event_in = try container.decodeIfPresent(String.self, forKey: .event_in)
         let event_out = try container.decodeIfPresent(String.self, forKey: .event_out)
         
-        let timeIn = event_in.components(separatedBy: "+")
-        let timeOut = event_out?.components(separatedBy: "+")
-        let checkInDate = timeIn[0]
-        let checkInTime = timeIn[1]
+        // Message for Yves [Fixed]: It crashed here because you were trying to access a value that didn't exist at index 1
+      
+        let checkInDate = event_in?.convertToMonthDayYear.toString() ?? "00:00"
+        let checkInTime = event_in?.timeToDate.timeToString() ?? "00:00"
+        
+        
         self.init(event: event, beaconId: String(beacon_id!), event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)
         
        
-        if let checkOutTime = timeOut?[1]{
-             self.event_out = timeOut![0]
+        if let checkOutTime = event_out?.timeToDate.timeToString(){
+            self.event_out = event_out?.convertToMonthDayYear.toString()
             self.checkOutTime = checkOutTime
-          
         }
         self.checkInTime = checkInTime
-      
-        
-       
     }
     
     

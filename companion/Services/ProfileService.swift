@@ -23,6 +23,7 @@ struct ProfileService{
             guard let id = user_id else {
                 return
             }
+            print("User Id: \(user_id)")
             
 //            let profile = profiles.filter({$0.user_id == id}).first
             

@@ -19,14 +19,15 @@ class ProjectsCollectionCell: UICollectionViewCell {
     // MARK: - UI Elements
     
     lazy var projectImageView: UIImageView = {
-        let path = UIBezierPath(roundedRect: self.frame, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 6, height: 6))
+        let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 6, height: 6))
         
         let maskLayer = CAShapeLayer()
         maskLayer.path = path.cgPath
         
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+//        imageView.layer.cornerRadius = 6
         imageView.layer.mask = maskLayer
         
         return imageView

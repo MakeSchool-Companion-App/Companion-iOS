@@ -18,9 +18,8 @@ class LoginController: UIViewController {
     // MARK: - UI Elements
     
     private let activityIndicatorView: UIActivityIndicatorView = {
-        
         let view = UIActivityIndicatorView()
-        view.color = MakeSchoolDesignColor.darkBlue
+        view.activityIndicatorViewStyle = .gray
         return view
     }()
     
@@ -227,6 +226,25 @@ class LoginController: UIViewController {
         
     }
     
+    private func startActivityIndicator() {
+        DispatchQueue.main.async {
+            self.view.addSubview(self.activityIndicatorView)
+            self.activityIndicatorView.frame = self.view.bounds
+            self.activityIndicatorView.center = self.view.center
+            self.activityIndicatorView.hidesWhenStopped = true
+            self.activityIndicatorView.startAnimating()
+//            UIApplication.shared.beginIgnoringInteractionEvents()
+        }
+    }
+    
+    private func stopActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.removeFromSuperview()
+//            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+    }
+    
     // MARK: Methods with @objc
     
     @objc private func handleLogin() {
@@ -236,19 +254,19 @@ class LoginController: UIViewController {
               let password = passwordTextField.text
         else { return }
         
+        print("Password: \(password)")
+        startActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
-            DispatchQueue.main.async {
-                self.view.addSubview(self.activityIndicatorView)
-                self.activityIndicatorView.startAnimating()
-            }
+            
             
             if let user = user as? User {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
-                
+                self.stopActivityIndicator()
+
                 DispatchQueue.main.async {
-                    self.activityIndicatorView.stopAnimating()
+                    
                     let mainTabBarController = MainTabBarController()
                     self.view.window?.rootViewController = mainTabBarController
                     

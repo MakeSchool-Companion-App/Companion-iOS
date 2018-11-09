@@ -26,4 +26,21 @@ extension String {
         guard let date = formatter.date(from: self) else {return nil}
         return date
     }
+    
+    var convertToMonthDayYear: Date {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        guard let date = dateFormatter.date(from: self) else { return Date() }
+        
+        return date
+    }
+    
+    var timeToDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm a"
+        guard let time = dateFormatter.date(from: self) else { return Date() }
+        
+        return time 
+    }
 }

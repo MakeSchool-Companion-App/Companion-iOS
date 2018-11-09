@@ -25,7 +25,26 @@ class CoursesCell: UITableViewCell {
     // MARK: - UI Elements
     
     var coursesCollectionView: UICollectionView?
+    var blurredBackgroundView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.backgroundColor = MakeSchoolDesignColor.faintBlue
+        view.alpha = 0.75
+//        view.backgroundColor = UIColor(r: 246, g: 248, b: 252, a: 0.99)
+        return view
+    }()
     
+    lazy var comingSoonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Coming Soon!"
+        label.textColor = MakeSchoolDesignColor.faintBlue
+        label.backgroundColor = MakeSchoolDesignColor.darkBlue
+        label.textAlignment = .center
+        label.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
+        label.layer.cornerRadius = 10
+        return label
+    }()
     
     // MARK: - Initializers
     
@@ -52,8 +71,10 @@ class CoursesCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 14
         layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
+    
         
         coursesCollectionView = UICollectionView(frame: self.frame, collectionViewLayout: layout)
+        coursesCollectionView?.isScrollEnabled = false 
         coursesCollectionView?.delegate = self
         coursesCollectionView?.dataSource = self
         coursesCollectionView?.backgroundColor = MakeSchoolDesignColor.faintBlue
@@ -69,6 +90,13 @@ class CoursesCell: UITableViewCell {
             right: contentView.rightAnchor,
             bottom: contentView.bottomAnchor,
             left: contentView.leftAnchor)
+        
+        coursesCollectionView?.insertSubview(blurredBackgroundView, aboveSubview: coursesCollectionView ?? UICollectionView())
+        
+        blurredBackgroundView.anchor(top: contentView.topAnchor, right: contentView.rightAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor)
+        
+        coursesCollectionView?.insertSubview(comingSoonLabel, aboveSubview: blurredBackgroundView)
+        comingSoonLabel.centerAnchor(centerX: contentView.centerXAnchor, centerY: contentView.centerYAnchor, width: 200, height: 50)
         
     }
     

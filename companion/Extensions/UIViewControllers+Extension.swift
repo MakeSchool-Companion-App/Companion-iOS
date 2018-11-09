@@ -12,7 +12,7 @@ import UIKit
 extension UIViewController{
     func presentAlert(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Return", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         alert.addAction(cancel)
         self.present(alert,animated: true)
     }

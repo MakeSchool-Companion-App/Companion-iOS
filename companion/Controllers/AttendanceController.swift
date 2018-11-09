@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 class AttendanceController: UIViewController {
-    
     // MARK: - Properties
     let locationManager = CLLocationManager()
     var attendance = [Attendance]() {
@@ -57,7 +56,9 @@ class AttendanceController: UIViewController {
 
         
         AttendanceServices.show { (att) in
-            print(att)
+            if let attendance = att{
+            self.attendance = attendance
+            }
         }
 
     }
@@ -120,8 +121,11 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         let studentAttendance = attendance[indexPath.row]
         
         cell.checkInDateLabel.text = studentAttendance.event_in
-        cell.checkOutTimeLabel.text = studentAttendance.event_in
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
+        cell.checkOutTimeLabel.text = studentAttendance.event_out
+        cell.checkOutDateLabel.text = studentAttendance.checkOutTime
+        
+        
         
         return cell
     }
@@ -186,7 +190,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
             let distance = location.distance(from: msCoordinate)
-            self.title = String(distance)
+//            self.title = String(distance)
             if distance > 40 {
                 
                 if inRange == true{
