@@ -68,7 +68,7 @@ class Attendance: Codable {
         
         self.init(event: event, beaconId: beacon_id, event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)
         
-        if event_out == Constants.eventOutEmptyFormat{
+        if event_out == Constants.eventOutEmptyFormatCheck{
            self.event_out = " "
             self.checkOutTime = " "
         }

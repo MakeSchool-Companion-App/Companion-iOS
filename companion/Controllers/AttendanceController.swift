@@ -186,9 +186,9 @@ extension AttendanceController: CLLocationManagerDelegate{
             //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
             let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
-            
+          
             let distance = location.distance(from: natomaCoordinate)
-           
+             self.title = String(distance)
             if distance < 50 {
                 
                 // check if the attendance was already taken to avoid double check in
