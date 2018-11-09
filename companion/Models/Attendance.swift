@@ -10,13 +10,15 @@ import Foundation
 
 class Attendance: Codable {
     
-    var event: String
+    var event: String?
     var beacon_id: String?
     var user_id: Int?
     var id: Int?
     var created_at: String?
+    var checkInDate: String?
     var checkInTime: String?
     var checkOutTime: String?
+    var checkOutDate: String?
     var event_in: String?
     var event_out: String?
     
@@ -35,7 +37,7 @@ class Attendance: Codable {
         return try! JSONEncoder().encode(self)
     }
     func toDictionary()->[String: Any]{
-        return ["event_in":event_in,"beacon_id":beacon_id ?? "","event":event, "event_out":event_out ?? "00:00"]
+        return ["event_in":event_in,"beacon_id":beacon_id ?? "","event":event ?? "Entry", "event_out":event_out ?? "00:00"]
     }
     
     enum CodingKeys: String,CodingKey{
@@ -44,42 +46,45 @@ class Attendance: Codable {
    
     required convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let event_type = try container.decode(String.self, forKey: .event)
+        let event_type = try container.decodeIfPresent(String.self, forKey: .event)
         var event = EventType.onEntry
        
         switch event_type{
-            
         case "OnEntry": event = EventType.onEntry
         case "OnExit": event = EventType.onExit
-        default: break
+        default: event = EventType.onEntry
         }
        
-        let beacon_id = "makeschool"//try  container.decode(String?.self, forKey: .beacon_id)
+        let beacon_id = "makeschool"
+        //try  container.decode(String?.self, forKey: .beacon_id)
         let id = try container.decode(Int.self, forKey: .id)
-        let user_id = try container.decode(Int.self, forKey: .user_id)
+        let user_id = try container.decodeIfPresent(Int.self, forKey: .user_id)
         let event_in = try container.decodeIfPresent(String.self, forKey: .event_in)
         let event_out = try container.decodeIfPresent(String.self, forKey: .event_out)
         
         // Message for Yves [Fixed]: It crashed here because you were trying to access a value that didn't exist at index 1
       
-        let checkInDate = event_in?.convertToMonthDayYear.toString() ?? "00:00"
-        let checkInTime = event_in?.timeToDate.timeToString() ?? "00:00"
+        let checkInDate = event_in?.toDate()?.toString() ?? "00:00"
+        let checkInTime = event_in?.toDate()?.timeToString() ?? "00:00"
         
         
-        self.init(event: event, beaconId: beacon_id, event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)
+        self.init(event: event, beaconId: beacon_id, event_in: event_in ?? "", event_out: event_out ?? "", id: id, user_id: user_id ?? Int((User.current?.user_id)!) ?? 0)
         
         if event_out == Constants.eventOutEmptyFormatCheck{
            self.event_out = " "
             self.checkOutTime = " "
+            self.checkOutDate = " "
         }
         else{
-            if let checkOutTime = event_out?.timeToDate.timeToString(){
-                self.event_out = event_out?.convertToMonthDayYear.toString()
+            if let checkOutTime = event_out?.toDate()?.timeToString(){
+                self.event_out = event_out
                 self.checkOutTime = checkOutTime
+                self.checkOutDate = event_out?.toDate()?.toString()
             }
         }
        
         self.checkInTime = checkInTime
+        self.checkInDate = checkInDate
     }
     
     

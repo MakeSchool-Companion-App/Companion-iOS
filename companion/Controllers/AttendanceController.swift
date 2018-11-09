@@ -47,13 +47,20 @@ class AttendanceController: UIViewController {
             if started {
                 self.locationManager.delegate = self
                 self.locationManager.startUpdatingLocation()
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest//kCLLocationAccuracyBestForNavigation
-               // self.locationManager.allowsBackgroundLocationUpdates = true
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
                  self.locationManager.pausesLocationUpdatesAutomatically = false
             }
         }
-        
-
+         //UserDefaults.standard.set("", forKey: Constants.savedAttendance)
+//        AttendanceServices.fetchLastAttendance { (lastAttendance) in
+//            lastAttendance.event_out = Date().checkTime()
+//            lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
+//                                                options: NSString.CompareOptions.literal, range:nil)
+//            lastAttendance.event = EventType.onExit.rawValue
+//            AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+//                AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+//            })
+//        }
         
         AttendanceServices.show { (att) in
             if let attendance = att{
@@ -120,10 +127,10 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         
         let studentAttendance = attendance[indexPath.row]
         
-        cell.checkInDateLabel.text = studentAttendance.event_in
+        cell.checkInDateLabel.text = studentAttendance.checkInDate
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
-        cell.checkOutTimeLabel.text = studentAttendance.event_out
-        cell.checkOutDateLabel.text = studentAttendance.checkOutTime
+        cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
+        cell.checkOutDateLabel.text = studentAttendance.checkOutDate
         
         
         
@@ -187,8 +194,8 @@ extension AttendanceController: CLLocationManagerDelegate{
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
             let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
           
-            let distance = location.distance(from: natomaCoordinate)
-             self.title = String(distance)
+            let distance = location.distance(from: msCoordinate)
+             //self.title = String(distance)
             if distance < 50 {
                 
                 // check if the attendance was already taken to avoid double check in
@@ -209,6 +216,8 @@ extension AttendanceController: CLLocationManagerDelegate{
                                 
                                 UserDefaults.standard.set(attendance.event_in, forKey: Constants.eventId)
                                 
+                                
+                                
                                 AttendanceServices.markAttendance()
                               
                                 AppDelegate.shared.attendanceNotification(attendance: attendance)
@@ -220,12 +229,15 @@ extension AttendanceController: CLLocationManagerDelegate{
             else{
                
                     if AttendanceServices.isTodayAttendanceDone() == false {return}
-                    AttendanceServices.fetchLastAttendance { (lastAttendance) in
-                        lastAttendance.event_out = Date().checkTime()
-                        AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-                            AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
-                        })
-                    }
+                AttendanceServices.fetchLastAttendance { (lastAttendance) in
+                    lastAttendance.event_out = Date().checkTime()
+                    lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
+                                                                                            options: NSString.CompareOptions.literal, range:nil)
+                    lastAttendance.event = EventType.onExit.rawValue
+                    AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                        AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+                    })
+                }
             }
             
         }
