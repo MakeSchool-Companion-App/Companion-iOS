@@ -162,11 +162,12 @@ extension AttendanceController: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print(region.identifier)
-        self.presentAlert(title: "did Exit", message: "exiting the region")
+        
+        
+       
+        
         if region.identifier == Constants.makeSchoolRegionId {
             
-            //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
             AttendanceServices.fetchLastAttendance { (lastAttendance) in
                 lastAttendance.event_out = Date().checkTime()
                 AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
