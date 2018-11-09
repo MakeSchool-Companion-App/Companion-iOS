@@ -15,5 +15,5 @@ struct Constants {
     static let eventId = "event_time"
     static let savedAttendance = "savedAttendance"
     static let lastAttendanceId = "lastAttendanceId"
-    static let eventOutEmptyFormat = "000-00-00+00:00:00"
+    static let eventOutEmptyFormat = "000-00-00 00:00:00"
 }

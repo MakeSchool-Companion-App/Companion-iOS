@@ -35,7 +35,7 @@ class Attendance: Codable {
         return try! JSONEncoder().encode(self)
     }
     func toDictionary()->[String: Any]{
-        return ["event_in":event_in,"beacon_id":beacon_id ?? "","event":event, "event_out":event_out ?? "none"]
+        return ["event_in":event_in,"beacon_id":beacon_id ?? "","event":event, "event_out":event_out ?? "00:00"]
     }
     
     enum CodingKeys: String,CodingKey{
@@ -66,13 +66,19 @@ class Attendance: Codable {
         let checkInTime = event_in?.timeToDate.timeToString() ?? "00:00"
         
         
-        self.init(event: event, beaconId: String(beacon_id!), event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)
+        self.init(event: event, beaconId: beacon_id, event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)
         
-       
-        if let checkOutTime = event_out?.timeToDate.timeToString(){
-            self.event_out = event_out?.convertToMonthDayYear.toString()
-            self.checkOutTime = checkOutTime
+        if event_out == Constants.eventOutEmptyFormat{
+           self.event_out = " "
+            self.checkOutTime = " "
         }
+        else{
+            if let checkOutTime = event_out?.timeToDate.timeToString(){
+                self.event_out = event_out?.convertToMonthDayYear.toString()
+                self.checkOutTime = checkOutTime
+            }
+        }
+       
         self.checkInTime = checkInTime
     }
     
