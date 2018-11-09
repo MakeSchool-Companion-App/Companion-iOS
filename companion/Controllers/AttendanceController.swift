@@ -219,7 +219,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                                 
                                 
                                 AttendanceServices.markAttendance()
-                              
+                                self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
                                 AppDelegate.shared.attendanceNotification(attendance: attendance)
                             })
                         }
@@ -235,6 +235,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                                                                                             options: NSString.CompareOptions.literal, range:nil)
                     lastAttendance.event = EventType.onExit.rawValue
                     AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                         self.presentAlert(title: "Check out", message: "You left Make School at \(updatedAttendance.checkOutTime ?? "") ")
                         AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
                     })
                 }
