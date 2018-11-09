@@ -184,7 +184,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
             
             let distance = location.distance(from: natomaCoordinate)
-            self.title = String(distance)
+           
             if distance < 50 {
                 
                 // check if the attendance was already taken to avoid double check in
@@ -206,7 +206,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                                 UserDefaults.standard.set(attendance.event_in, forKey: Constants.eventId)
                                 
                                 AttendanceServices.markAttendance()
-                                /// save today attendance
+                              
                                 AppDelegate.shared.attendanceNotification(attendance: attendance)
                             })
                         }
@@ -214,8 +214,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                 }
             }
             else{
-                //if inRange == false{
-                 //self.presentAlert(title: "in range", message: "you enter make school")
+               
                     if AttendanceServices.isTodayAttendanceDone() == false {return}
                     AttendanceServices.fetchLastAttendance { (lastAttendance) in
                         lastAttendance.event_out = Date().checkTime()
@@ -223,9 +222,6 @@ extension AttendanceController: CLLocationManagerDelegate{
                             AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
                         })
                     }
-                    
-                //inRange = true
-                //}
             }
             
         }
