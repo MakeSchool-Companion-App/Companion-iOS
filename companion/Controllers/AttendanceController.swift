@@ -176,14 +176,13 @@ extension AttendanceController: CLLocationManagerDelegate{
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        
-    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
             //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
-            let distance = location.distance(from: msCoordinate)
+            let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
+            
+            let distance = location.distance(from: natomaCoordinate)
             self.title = String(distance)
             if distance < 50 {
                 
@@ -198,15 +197,17 @@ extension AttendanceController: CLLocationManagerDelegate{
                     
                     AttendanceServices.create(attendance) { (att) in
                         if let checkInAttendance = att{
-                           
-                            /// store the date and id of the last attendance for future verification
-                            UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
-                            
-                            UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
-                            
-                            AttendanceServices.markAttendance()
-                            /// save today attendance
-                            AppDelegate.shared.attendanceNotification(attendance: attendance)
+                            AttendanceServices.fetchLastAttendance(id: String(checkInAttendance.id!), completion: { (attendance) in
+                               
+                                /// store the date and id of the last attendance for future verification
+                                UserDefaults.standard.set(attendance.id, forKey: Constants.attendanceId)
+                                
+                                UserDefaults.standard.set(attendance.event_in, forKey: Constants.eventId)
+                                
+                                AttendanceServices.markAttendance()
+                                /// save today attendance
+                                AppDelegate.shared.attendanceNotification(attendance: attendance)
+                            })
                         }
                     }
                 }

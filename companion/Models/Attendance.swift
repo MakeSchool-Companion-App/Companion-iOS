@@ -54,17 +54,17 @@ class Attendance: Codable {
         default: break
         }
        
-        let beacon_id = try  container.decode(Int?.self, forKey: .beacon_id)
+        let beacon_id = "makeschool"//try  container.decode(String?.self, forKey: .beacon_id)
         let id = try container.decode(Int.self, forKey: .id)
-        let user_id = try container.decode(Int.self, forKey: .user_id)
-        let event_in = try container.decode(String.self, forKey: .event_in)
+        let user_id = try container.decodeIfPresent(Int.self, forKey: .user_id)
+        let event_in = try container.decodeIfPresent(String.self, forKey: .event_in)
         let event_out = try container.decodeIfPresent(String.self, forKey: .event_out)
         
-        let timeIn = event_in.components(separatedBy: " ")
+        let timeIn = event_in?.components(separatedBy: " ") ?? ["00 00"]
         let timeOut = event_out?.components(separatedBy: " ")
         let checkInDate = timeIn[0]
-        let checkInTime = timeIn[1]
-        self.init(event: event, beaconId: String(beacon_id!), event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)
+        let checkInTime = timeIn[0]
+        self.init(event: event, beaconId: beacon_id, event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id ?? 0000)
         
        
         if let checkOutTime = timeOut?[1]{
