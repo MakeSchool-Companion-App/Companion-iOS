@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import iBeaconManager
+import CoreLocation
+
+
 
 class ScanBeaconController: UIViewController {
-
     
-    // MARK: - Properties
+    // MARK: Properties
     
-    // will this later. Only for testing purposes
-    private let urlString = "https://firebasestorage.googleapis.com/v0/b/firestorechat-e64ac.appspot.com/o/intermediate_training_rec.mp4?alt=media&token=e20261d0-7219-49d2-b32d-367e1606500c"
+    var beaconManager: BeaconManager?
     
     // MARK: - UI Elements
     
@@ -22,7 +24,7 @@ class ScanBeaconController: UIViewController {
     
     let searchForBeaconLabel: UILabel = {
         let label = UILabel()
-        label.text = "Searching for iBeacon..."
+        label.text = "Searching for an iBeacon..."
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
@@ -36,41 +38,47 @@ class ScanBeaconController: UIViewController {
         button.setTitleColor(.blue, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 30
-        button.addTarget(self, action: #selector(showHistory), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleCancellation), for: .touchUpInside)
         return button
     }()
     
-
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "arrow-left"), for: .normal)
+        button.layer.cornerRadius = self.view.frame.height
+        button.addTarget(self, action: #selector(showAttendanceController), for: .touchUpInside)
+        button.backgroundColor = .white
+        return button
+    }()
+    
+    
+    
     // MARK: - View Life Cyle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 53/255, green: 65/255, blue: 164/255, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.05490196078, green: 0.1921568627, blue: 0.8117647059, alpha: 0.9730308219)
         print(beaconView.frame)
         
-        beaconView.startPulsatingAnimation()
-//       beginDownloadingFile()
+        setupBeaconManager()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         setupAutoLayout()
+        beaconView.startPulsatingAnimation()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        beaconView.checkMarkAnimation()
-//        searchForBeaconLabel.text = "iBeacon Found"
-//        cancelAndOkButton.setTitle("Okay", for: .normal)
-//
-//    }
+    func setupBeaconManager() {
+        beaconManager = AppDelegate.shared.beaconManager
+        beaconManager?.delegate = self
+        beaconManager?.startMonitoring()
+    }
+    
+    // MARK: - Setup UI Methods
 
-    
-    // MARK: - Methods
-    
     func setupAutoLayout() {
 
         view.addSubviews(views: beaconView, searchForBeaconLabel, cancelAndOkButton)
@@ -112,31 +120,70 @@ class ScanBeaconController: UIViewController {
             width: 224)
         cancelAndOkButton.centerAnchor(centerX: view.centerXAnchor, centerY: nil)
         
-    }
-    
-    func beginDownloadingFile() {
-        print("Attempting to download...")
-        let configuration = URLSessionConfiguration.default
-        let operationQueue = OperationQueue()
-        let urlSession = URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
+        beaconView.addSubview(backButton)
+        backButton.anchor(top: beaconView.topAnchor, right: nil, bottom: nil, left: beaconView.leftAnchor, topPadding: 10, rightPadding: 0, bottomPadding: 0, leftPadding: 22, height: 32, width: 32)
         
-        guard let url = URL(string: urlString) else { return }
-        let downloadTask = urlSession.downloadTask(with: url)
-        downloadTask.resume()
     }
     
-    @objc private func showHistory() {
+    // MARK: - Methods with @objc
+    
+    @objc private func handleCancellation() {
         print("Show Check In & Out History")
-        let logHistoryController = LogHistoryController()
-        show(logHistoryController, sender: nil)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func showAttendanceController() {
+        print("Test: Show Attendance Controller")
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
-extension ScanBeaconController: URLSessionDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
-        print("Finished downloading file")
-        
-        
-    }
+enum BeaconRegionStatus {
+    case inRange
+    case notInRange
+    case searching
+    case entered
+    case exited
+    case failed
 }
+
+extension ScanBeaconController: BeaconManagerDelegate {
+    
+    func beaconManager(sender: BeaconManager, isInBeaconRange region: CLRegion) {
+        print("Beacon is in range.")
+        // Create a timestamp (Attendance) once you're in the region
+       
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
+    }
+    
+    func beaconManager(sender: BeaconManager, isNotInBeaconRange region: CLRegion) {
+        print("Beacon is not in range")
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
+    }
+    
+    func beaconManager(sender: BeaconManager, searchingInRegion region: CLRegion) {
+        print("Search for beacon in region")
+        
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
+    }
+    
+    func beaconManager(sender: BeaconManager, enteredBeaconRegion region: CLRegion) {
+        print("Entered Beacon Region")
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
+    }
+    
+    func beaconManager(sender: BeaconManager, exitedBeaconRegion region: CLRegion) {
+        print("Exited Beacon Region")
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
+    }
+    
+    func beaconManager(sender: BeaconManager, monitoringRegionFailed region: CLRegion, withError error: Error) {
+        print("Failed to monitor beacon \(error)")
+        view.backgroundColor = MakeSchoolDesignColor.darkBlue
+    }
+    
+
+}
+
+

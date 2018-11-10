@@ -10,6 +10,8 @@ import UIKit
 
 class LogHistoryCell: UITableViewCell {
     
+    static let logHistoryCellId = "LogHistoryCellId"
+    
     // MARK: - UI Elements
     private let enterLabel: UILabel = {
         let label = UILabel()
@@ -19,6 +21,7 @@ class LogHistoryCell: UITableViewCell {
         label.font = UIFont(name: "Avenir Next", size: 19)
         return label
     }()
+    
     
     private let exitLabel: UILabel = {
         let label = UILabel()

@@ -22,7 +22,13 @@ extension Date{
     }
     public func toString() -> String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd"
+        let stringDate = formatter.string(from: self)
+        return stringDate
+    }
+    public func toPrettyString() -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd yyyy"
         let stringDate = formatter.string(from: self)
         return stringDate
     }
@@ -31,6 +37,16 @@ extension Date{
         formatter.dateFormat = "HH:mm:ss"
         let stringDate = formatter.string(from: self)
         return stringDate
+    }
+    
+    public func timeToPrettyString() -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm a"
+        let stringDate = formatter.string(from: self)
+        return stringDate
+    }
+    public func checkTime() -> String{
+        return self.toString() + "+" + self.timeToString()
     }
 }
 

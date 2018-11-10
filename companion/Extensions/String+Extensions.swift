@@ -22,8 +22,25 @@ extension String {
     }
     func toDate() -> Date? {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         guard let date = formatter.date(from: self) else {return nil}
         return date
+    }
+    
+    var convertToMonthDayYear: Date {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        guard let date = dateFormatter.date(from: self) else { return Date() }
+        
+        return date
+    }
+    
+    var timeToDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm a"
+        guard let time = dateFormatter.date(from: self) else { return Date() }
+        
+        return time 
     }
 }
