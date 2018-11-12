@@ -194,11 +194,22 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // The notification content
         let content = UNMutableNotificationContent()
         
+        switch attendance.event{
+            
+        case "Entry":
+            content.title = "Companion"
+            content.subtitle = "Check In"
+            content.body = "You entered Make School at \(attendance.checkInTime ?? " ")."
+            content.badge = 1
+        case "Exit":
+            content.title = "Companion"
+            content.subtitle = "Check Out"
+            content.body = "You left Make School at \(attendance.checkOutTime ?? " ")."
+            content.badge = 1
+        default: break
+        }
         // Adding title, subtitle, body and badge
-        content.title = "Companion"
-        content.subtitle = "Check In"
-        content.body = "You entered Make School at \(attendance.event_in)."
-        content.badge = 1
+       
         
         // Triggering the notification
         // Once a person steps inside the building

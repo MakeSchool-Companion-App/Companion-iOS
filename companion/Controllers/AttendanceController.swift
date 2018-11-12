@@ -47,13 +47,20 @@ class AttendanceController: UIViewController {
             if started {
                 self.locationManager.delegate = self
                 self.locationManager.startUpdatingLocation()
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest//kCLLocationAccuracyBestForNavigation
-               // self.locationManager.allowsBackgroundLocationUpdates = true
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
                  self.locationManager.pausesLocationUpdatesAutomatically = false
             }
         }
-        
-
+         //UserDefaults.standard.set("", forKey: Constants.savedAttendance)
+//        AttendanceServices.fetchLastAttendance { (lastAttendance) in
+//            lastAttendance.event_out = Date().checkTime()
+//            lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
+//                                                options: NSString.CompareOptions.literal, range:nil)
+//            lastAttendance.event = EventType.onExit.rawValue
+//            AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+//                AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+//            })
+//        }
         
         AttendanceServices.show { (att) in
             if let attendance = att{
@@ -120,7 +127,7 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         
         let studentAttendance = attendance[indexPath.row]
         
-        cell.checkInDateLabel.text = studentAttendance.event_in
+        cell.checkInDateLabel.text = studentAttendance.checkInDate
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
         cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
         cell.checkOutDateLabel.text = studentAttendance.event_out
@@ -207,8 +214,10 @@ extension AttendanceController: CLLocationManagerDelegate{
                                 
                                 UserDefaults.standard.set(attendance.event_in, forKey: Constants.eventId)
                                 
+                                
+                                
                                 AttendanceServices.markAttendance()
-                              
+                                self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
                                 AppDelegate.shared.attendanceNotification(attendance: attendance)
                             })
                         }
@@ -218,12 +227,16 @@ extension AttendanceController: CLLocationManagerDelegate{
             else{
                
                     if AttendanceServices.isTodayAttendanceDone() == false {return}
-                    AttendanceServices.fetchLastAttendance { (lastAttendance) in
-                        lastAttendance.event_out = Date().checkTime()
-                        AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-                            AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
-                        })
-                    }
+                AttendanceServices.fetchLastAttendance { (lastAttendance) in
+                    lastAttendance.event_out = Date().checkTime()
+                    lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
+                                                                                            options: NSString.CompareOptions.literal, range:nil)
+                    lastAttendance.event = EventType.onExit.rawValue
+                    AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                         self.presentAlert(title: "Check out", message: "You left Make School at \(updatedAttendance.checkOutTime ?? "") ")
+                        AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+                    })
+                }
             }
             
         }

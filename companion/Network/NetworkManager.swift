@@ -55,6 +55,9 @@ struct NetworkManager {
             request.setValue("_makeschool_session=\(cookie)", forHTTPHeaderField: "Cookie")
         }
         
+        if let body = httpBody{
+            request.httpBody = body
+        }
         
         
         // 6. http method

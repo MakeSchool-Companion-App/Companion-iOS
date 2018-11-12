@@ -10,13 +10,15 @@ import Foundation
 
 class Attendance: Codable {
     
-    var event: String
+    var event: String?
     var beacon_id: String?
     var user_id: Int?
     var id: Int?
     var created_at: String?
+    var checkInDate: String?
     var checkInTime: String?
     var checkOutTime: String?
+    var checkOutDate: String?
     var event_in: String?
     var event_out: String?
     
@@ -35,7 +37,7 @@ class Attendance: Codable {
         return try! JSONEncoder().encode(self)
     }
     func toDictionary()->[String: Any]{
-        return ["event_in":event_in,"beacon_id":beacon_id ?? "","event":event, "event_out":event_out ?? "00:00"]
+        return ["event_in":event_in,"beacon_id":beacon_id ?? "","event":event ?? "Entry", "event_out":event_out ?? "00:00"]
     }
     
     enum CodingKeys: String,CodingKey{
@@ -44,19 +46,19 @@ class Attendance: Codable {
    
     required convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let event_type = try container.decode(String.self, forKey: .event)
+        let event_type = try container.decodeIfPresent(String.self, forKey: .event)
         var event = EventType.onEntry
        
         switch event_type{
-            
         case "OnEntry": event = EventType.onEntry
         case "OnExit": event = EventType.onExit
-        default: break
+        default: event = EventType.onEntry
         }
        
-        let beacon_id = "makeschool"//try  container.decode(String?.self, forKey: .beacon_id)
+        let beacon_id = "makeschool"
+        //try  container.decode(String?.self, forKey: .beacon_id)
         let id = try container.decode(Int.self, forKey: .id)
-        let user_id = try container.decode(Int.self, forKey: .user_id)
+        let user_id = try container.decodeIfPresent(Int.self, forKey: .user_id)
         let event_in = try container.decodeIfPresent(String.self, forKey: .event_in)
         let event_out = try container.decodeIfPresent(String.self, forKey: .event_out)
         
@@ -73,6 +75,7 @@ class Attendance: Codable {
         if event_out == Constants.eventOutEmptyFormatCheck{
            self.event_out = " "
             self.checkOutTime = " "
+            self.checkOutDate = " "
         }
         else{
             // Change back to event_out?.timeToDate.timeToString()
@@ -88,6 +91,7 @@ class Attendance: Codable {
         }
        
         self.checkInTime = checkInTime
+        self.checkInDate = checkInDate
     }
     
     
