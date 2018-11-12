@@ -61,22 +61,30 @@ class Attendance: Codable {
         let event_out = try container.decodeIfPresent(String.self, forKey: .event_out)
         
         // Message for Yves [Fixed]: It crashed here because you were trying to access a value that didn't exist at index 1
-      
-        let checkInDate = event_in?.convertToMonthDayYear.toString() ?? "00:00"
-        let checkInTime = event_in?.timeToDate.timeToString() ?? "00:00"
         
+        // Change this back to the original
+//        let checkInDate = event_in?.convertToMonthDayYear.toString() ?? ""
+//        let checkInTime = event_in?.timeToDate.timeToString() ?? "00:00"
+        let checkInDate = event_in?.convertToMonthDayYear.dayAndMonthStringFormat
+        let checkInTime = event_in?.timeToDate.timeToStringFormat 
         
-        self.init(event: event, beaconId: beacon_id, event_in: checkInDate, event_out: event_out ?? "", id: id, user_id: user_id)
+        self.init(event: event, beaconId: beacon_id, event_in: checkInDate ?? "", event_out: event_out ?? "", id: id, user_id: user_id)
         
         if event_out == Constants.eventOutEmptyFormatCheck{
            self.event_out = " "
             self.checkOutTime = " "
         }
         else{
-            if let checkOutTime = event_out?.timeToDate.timeToString(){
-                self.event_out = event_out?.convertToMonthDayYear.toString()
-                self.checkOutTime = checkOutTime
+            // Change back to event_out?.timeToDate.timeToString()
+            // Change baack to event_out?.convertToMonthDayYear.toString()
+            if let checkOut = event_out?.timeToDate.timeToStringFormat {
+                self.event_out = event_out?.convertToMonthDayYear.dayAndMonthStringFormat
+                self.checkOutTime = checkOut
             }
+//            if let checkOutTime = event_out?.timeToDate.timeToString(){
+//                self.event_out = event_out?.convertToMonthDayYear.toString()
+//                self.checkOutTime = checkOutTime
+//            }
         }
        
         self.checkInTime = checkInTime

@@ -245,6 +245,8 @@ class LoginController: UIViewController {
         }
     }
     
+    
+    
     // MARK: Methods with @objc
     
     @objc private func handleLogin() {
@@ -258,12 +260,12 @@ class LoginController: UIViewController {
         startActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
-            
+            self.stopActivityIndicator()
             
             if let user = user as? User {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
-                self.stopActivityIndicator()
+                
 
                 DispatchQueue.main.async {
                     
@@ -292,6 +294,8 @@ class LoginController: UIViewController {
             User.setCurrent(user)
             initialViewController = MainTabBarController()
         } else {
+//            let navigationController = UINavigationController(rootViewController: FacebookLoginWebViewController())
+//            navigationController.navigationBar.barTintColor = UIColor.blue
             initialViewController = FacebookLoginWebViewController()
         }
         

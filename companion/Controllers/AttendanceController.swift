@@ -122,10 +122,8 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         
         cell.checkInDateLabel.text = studentAttendance.event_in
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
-        cell.checkOutTimeLabel.text = studentAttendance.event_out
-        cell.checkOutDateLabel.text = studentAttendance.checkOutTime
-        
-        
+        cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
+        cell.checkOutDateLabel.text = studentAttendance.event_out
         
         return cell
     }
@@ -146,7 +144,7 @@ extension AttendanceController: CLLocationManagerDelegate{
         // check if the attendance was already taken to avoid double check in
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
-      //  if region.identifier == Constants.makeSchoolRegionId {
+      ///  if region.identifier == Constants.makeSchoolRegionId {
             let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             
             AttendanceServices.create(attendance) { (att) in
@@ -188,7 +186,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
           
             let distance = location.distance(from: natomaCoordinate)
-             self.title = String(distance)
+//             self.title = String(distance)
             if distance < 50 {
                 
                 // check if the attendance was already taken to avoid double check in
