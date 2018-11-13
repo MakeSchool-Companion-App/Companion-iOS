@@ -219,16 +219,20 @@ extension AttendanceController: CLLocationManagerDelegate{
                                 
                                 
                                 AttendanceServices.markAttendance()
-                                self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
+                                //self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
                                 AppDelegate.shared.attendanceNotification(attendance: attendance)
                             })
                         }
                     }
                 }
             }
-            else{
-               
+            else
+                {
+                    // addition: Adding the method of attendance service isTodayAttendance checkout to save when the checkout was done
+                    if distance < 100 {
+                    
                     if AttendanceServices.isTodayAttendanceDone() == false {return}
+                        if AttendanceServices.isTodayAttendanceCheckOut() == true {return}
                 AttendanceServices.fetchLastAttendance { (lastAttendance) in
                     lastAttendance.event_out = Date().checkTime()
                     lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
@@ -237,10 +241,12 @@ extension AttendanceController: CLLocationManagerDelegate{
                     AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
                          self.presentAlert(title: "Check out", message: "You left Make School at \(updatedAttendance.checkOutTime ?? "") ")
                         AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+                        AttendanceServices.markCheckoutDone()
+                        
                     })
                 }
+               }
             }
-            
         }
     }
 }

@@ -119,6 +119,25 @@ struct AttendanceServices{
         }
     }
     
+    static func markCheckoutDone(){
+        UserDefaults.standard.set(Date().toString(), forKey: Constants.checkoutDate)
+    }
+    
+    /// check if checkout attendance have been made already
+    static func isTodayAttendanceCheckOut() -> Bool{
+        
+        if let date = UserDefaults.standard.value(forKey: Constants.checkoutDate) as? String{
+            if date == Date().toString(){
+                return true
+            }else{
+                return false
+            }
+        }
+        else{
+            return false
+        }
+    }
+    
 }
 
 
