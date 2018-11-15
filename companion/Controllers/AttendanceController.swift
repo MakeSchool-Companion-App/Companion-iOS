@@ -20,6 +20,8 @@ class AttendanceController: UIViewController {
         }
     }
     var onPost = false
+    var onUpdate = false
+    
     var inRange = false
     
     static let shared = AttendanceController()
@@ -35,8 +37,15 @@ class AttendanceController: UIViewController {
         return tableView
     }()
     
-    // MARK: - View Life Cycle Methods
-    
+   // method to fetch data and reload table
+    func reloadTable(){
+        AttendanceServices.show { (att) in
+            if let attendance = att{
+                self.attendance = attendance
+            }
+        }
+    }
+     // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,23 +60,8 @@ class AttendanceController: UIViewController {
                  self.locationManager.pausesLocationUpdatesAutomatically = false
             }
         }
-         //UserDefaults.standard.set("", forKey: Constants.savedAttendance)
-//        AttendanceServices.fetchLastAttendance { (lastAttendance) in
-//            lastAttendance.event_out = Date().checkTime()
-//            lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
-//                                                options: NSString.CompareOptions.literal, range:nil)
-//            lastAttendance.event = EventType.onExit.rawValue
-//            AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-//                AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
-//            })
-//        }
         
-        AttendanceServices.show { (att) in
-            if let attendance = att{
-            self.attendance = attendance
-            }
-        }
-
+    reloadTable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -195,7 +189,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
           
             let distance = location.distance(from: msCoordinate)
-             //self.title = String(distance)
+           //  self.title = String(distance)
             if distance < 50 {
                 
                 // check if the attendance was already taken to avoid double check in
@@ -220,6 +214,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                                 
                                 AttendanceServices.markAttendance()
                                 //self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
+                                self.reloadTable()
                                 AppDelegate.shared.attendanceNotification(attendance: attendance)
                             })
                         }
@@ -229,24 +224,29 @@ extension AttendanceController: CLLocationManagerDelegate{
             else
                 {
                     // addition: Adding the method of attendance service isTodayAttendance checkout to save when the checkout was done
-                    if distance < 100 {
-                    
+                   
                     if AttendanceServices.isTodayAttendanceDone() == false {return}
                         if AttendanceServices.isTodayAttendanceCheckOut() == true {return}
-                AttendanceServices.fetchLastAttendance { (lastAttendance) in
-                    lastAttendance.event_out = Date().checkTime()
-                    lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
-                                                                                            options: NSString.CompareOptions.literal, range:nil)
-                    lastAttendance.event = EventType.onExit.rawValue
-                    AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-                         self.presentAlert(title: "Check out", message: "You left Make School at \(updatedAttendance.checkOutTime ?? "") ")
-                        AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
-                        AttendanceServices.markCheckoutDone()
-                        
-                    })
-                }
+                    if onUpdate == false {
+                        onUpdate = true
+                        AttendanceServices.fetchLastAttendance { (lastAttendance) in
+                            lastAttendance.event_out = Date().checkTime()
+                            lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
+                                                                                                    options: NSString.CompareOptions.literal, range:nil)
+                            lastAttendance.event = EventType.onExit.rawValue
+                            AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+                                self.presentAlert(title: "Check out", message: "You left Make School at \(updatedAttendance.checkOutTime ?? "") ")
+                                AttendanceServices.fetchLastAttendance(completion: { (lastAttendance) in
+                                    lastAttendance.event = "Exit"
+                                    AppDelegate.shared.attendanceNotification(attendance: lastAttendance)
+                                    self.reloadTable()
+                                    AttendanceServices.markCheckoutDone()
+                                })
+                            })
+                        }
                }
             }
         }
     }
+    
 }
