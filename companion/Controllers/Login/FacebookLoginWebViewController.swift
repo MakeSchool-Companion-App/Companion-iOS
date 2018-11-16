@@ -110,12 +110,13 @@ extension FacebookLoginWebViewController: WKNavigationDelegate {
                             keychain.set(cookie.value, forKey: "cookieValue")
                             keychain.set(cookie.domain, forKey: "cookieDomain")
                             keychain.set(cookie.name, forKey: "cookieName")
-                            HTTPCookieStorage.shared.setCookie(cookie)
+                            //HTTPCookieStorage.shared.setCookie(cookie)
                             
                             FacebookServices.showFacebookUserProfile(completionHandler: { (user, error) in
                                 if let user = user{
-                                    User.setCurrent(user)
+                                    User.setCurrent(user, writeToUserDefaults: true)
                                     // go to the nexr view controller
+                                
                                     let mainTabBarController = MainTabBarController()
                                     self.present(mainTabBarController, animated: true, completion: nil)
                                 }

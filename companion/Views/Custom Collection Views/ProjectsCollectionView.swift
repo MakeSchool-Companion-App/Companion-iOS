@@ -31,10 +31,5 @@ class ProjectsCollectionView: UICollectionView {
     
     private func setupCollectionViewCell() {
         self.register(ProjectsCollectionCell.self, forCellWithReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId)
-        
     }
-    
-    
-    
-    
 }
