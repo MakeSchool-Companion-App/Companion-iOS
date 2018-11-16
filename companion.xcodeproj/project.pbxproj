@@ -98,6 +98,8 @@
 		80276D73217D3CC1007BC4C9 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */; };
 		802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806D9214CCE19009CC42B /* LogHistoryController.swift */; };
 		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
+		8032487D219D1E1F006B7D80 /* UsefulLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487C219D1E1F006B7D80 /* UsefulLink.swift */; };
+		8032487F219D20F0006B7D80 /* UsefulLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487E219D20F0006B7D80 /* UsefulLinkCell.swift */; };
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
 		80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
@@ -176,6 +178,8 @@
 		80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		802806D9214CCE19009CC42B /* LogHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryController.swift; sourceTree = "<group>"; };
 		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
+		8032487C219D1E1F006B7D80 /* UsefulLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulLink.swift; sourceTree = "<group>"; };
+		8032487E219D20F0006B7D80 /* UsefulLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulLinkCell.swift; sourceTree = "<group>"; };
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
 		80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginWebViewController.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 			children = (
 				80276D6E217BDEA5007BC4C9 /* Project.swift */,
 				80276D70217BE630007BC4C9 /* Course.swift */,
+				8032487C219D1E1F006B7D80 /* UsefulLink.swift */,
 			);
 			path = DummyData;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */,
 				8000A942217844ED007514D1 /* ProjectsCell.swift */,
 				8000A94421784508007514D1 /* CoursesCell.swift */,
+				8032487E219D20F0006B7D80 /* UsefulLinkCell.swift */,
 			);
 			path = "Custom Table View Cells";
 			sourceTree = "<group>";
@@ -761,6 +767,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8032487D219D1E1F006B7D80 /* UsefulLink.swift in Sources */,
+				8032487F219D20F0006B7D80 /* UsefulLinkCell.swift in Sources */,
 				80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */,
 				802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */,
 				209DB950214B117300D81ABD /* UIViewControllers+Extension.swift in Sources */,
@@ -964,12 +972,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 854F25WCHE;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1147,12 +1156,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 854F25WCHE;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1170,12 +1180,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 854F25WCHE;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

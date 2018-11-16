@@ -27,6 +27,8 @@ class StudentDashboardController: UIViewController {
         Course(name: "CS 1.1", description: "Intro to Python & OOP", color: MakeSchoolDesignColor.mediumBlue)
     ]
     
+
+
     
     // MARK: - UI Elements
     
@@ -96,6 +98,7 @@ class StudentDashboardController: UIViewController {
         dashboardTableView?.dataSource = self
         dashboardTableView?.register(ProjectsCell.self, forCellReuseIdentifier: ProjectsCell.projectsCellId)
         dashboardTableView?.register(CoursesCell.self, forCellReuseIdentifier: CoursesCell.coursesCellId)
+        dashboardTableView?.register(UsefulLinkCell.self, forCellReuseIdentifier: UsefulLinkCell.cellId)
     }
     
     private func setupAutoLayout() {
@@ -143,7 +146,7 @@ extension StudentDashboardController: UITableViewDelegate, UITableViewDataSource
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -164,6 +167,15 @@ extension StudentDashboardController: UITableViewDelegate, UITableViewDataSource
             }
             
             cell.courses = courses
+            
+            return cell
+            
+        case 2:
+            // Useful Link Cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: UsefulLinkCell.cellId, for: indexPath) as? UsefulLinkCell else {
+                fatalError("Failed to create a UsefulLinkCell")
+            }
+            
             
             return cell
             

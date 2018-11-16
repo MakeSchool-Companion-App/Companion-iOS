@@ -55,7 +55,7 @@ class LoginController: UIViewController {
         textField.layer.shadowOffset = CGSize.zero
         textField.layer.shadowOpacity = 0.40
         textField.layer.shadowRadius = 5
-        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
+        textField.attributedPlaceholder = NSAttributedString(string: "Make School Email", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
         textField.textAlignment = .left
         textField.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         textField.becomeFirstResponder()
@@ -91,7 +91,7 @@ class LoginController: UIViewController {
         textField.layer.shadowRadius = 5
         
         textField.autocapitalizationType = UITextAutocapitalizationType.none
-        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
+        textField.attributedPlaceholder = NSAttributedString(string: "Make School Password", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
         textField.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         textField.isSecureTextEntry = true
         
@@ -133,7 +133,7 @@ class LoginController: UIViewController {
         passwordTextField.delegate = self 
         
         // dismiss keyboard on touch
-        self.hideKeyboard()
+        self.hideKeyboardWhenTappedAround()
     }
     
     // MARK: - Methods
@@ -291,7 +291,8 @@ class LoginController: UIViewController {
             let userData = defaults.object(forKey: Constants.current) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
             
-            User.setCurrent(user)
+            User.setCurrent(user, writeToUserDefaults: true)
+            
             initialViewController = MainTabBarController()
         } else {
 //            let navigationController = UINavigationController(rootViewController: FacebookLoginWebViewController())
