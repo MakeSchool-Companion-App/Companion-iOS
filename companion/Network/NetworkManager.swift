@@ -51,7 +51,7 @@ struct NetworkManager {
         }
         
         // add cookie to the request for facebook user
-        if let cookie = KeychainSwift().get("cookie") {
+        if let cookie = KeychainSwift().get("cookieValue") {
             request.setValue("_makeschool_session=\(cookie)", forHTTPHeaderField: "Cookie")
         }
         

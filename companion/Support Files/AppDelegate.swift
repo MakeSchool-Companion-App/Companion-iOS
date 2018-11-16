@@ -199,12 +199,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         case "Entry":
             content.title = "Companion"
             content.subtitle = "Check In"
-            content.body = "You entered Make School at \(attendance.checkInTime ?? " ")."
+            content.body = "You entered Make School at \(attendance.checkInTime ?? " ")"
             content.badge = 1
         case "Exit":
             content.title = "Companion"
             content.subtitle = "Check Out"
-            content.body = "You left Make School at \(attendance.checkOutTime ?? " ")."
+            content.body = "You left Make School at \(attendance.checkOutTime ?? " ")"
             content.badge = 1
         default: break
         }
