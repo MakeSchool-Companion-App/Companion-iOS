@@ -1,5 +1,5 @@
 //
-//  ProjectsCell.swift
+//  ProjectsSectionCell.swift
 //  companion
 //
 //  Created by Uchenna  Aguocha on 10/17/18.
@@ -8,20 +8,26 @@
 
 import UIKit
 
-class ProjectsCell: UITableViewCell {
+
+protocol ProjectsSectionCellDelegate: class {
+    func displayProject(project: Project)
+}
+
+class ProjectsSectionCell: UITableViewCell {
     
     // MARK: - Properties
     
-    static var projectsCellId = "projectsCellId"
+    static var cellId = "projectsCellId"
+    weak var delegate: ProjectsSectionCellDelegate?
     
     var projects = [Project]() {
         didSet {
-//            DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 self.projectsCollectionView?.reloadData()
             }
-//        }
+        }
     }
-    
+
     // MARK: - UI Elements
     
     var projectsCollectionView: UICollectionView?
@@ -31,12 +37,10 @@ class ProjectsCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
         setupCollectionView()
         setupAutoLayout()
     }
@@ -47,20 +51,19 @@ class ProjectsCell: UITableViewCell {
     
     // MARK: - Methods
     
-    private func setupCollectionView() {
+    fileprivate func setupCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 14
         flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
         projectsCollectionView = UICollectionView(frame: self.frame, collectionViewLayout: flowLayout)
-        
         projectsCollectionView?.delegate = self
         projectsCollectionView?.dataSource = self
         projectsCollectionView?.backgroundColor = MakeSchoolDesignColor.faintBlue
-        projectsCollectionView?.register(ProjectsCollectionCell.self, forCellWithReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId)
+        projectsCollectionView?.register(ProjectsCollectionCell.self, forCellWithReuseIdentifier: ProjectsCollectionCell.cellId)
     }
     
-    private func setupAutoLayout() {
+    fileprivate func setupAutoLayout() {
         
         contentView.addSubview(projectsCollectionView ?? UICollectionView())
         
@@ -72,37 +75,30 @@ class ProjectsCell: UITableViewCell {
         
     }
     
-    // Credit goes to Ash Furrow
-//    func setCollectionViewDataSourceDelegate
-//        <D: UICollectionViewDataSource & UICollectionViewDelegate>
-//        (dataSourceDelegate: D, forRow row: Int) {
-//        projectsCollectionView?.delegate = dataSourceDelegate
-//        projectsCollectionView?.dataSource = dataSourceDelegate
-//        projectsCollectionView?.tag = row
-//        projectsCollectionView?.reloadData()
-//    }
+
 }
 
-extension ProjectsCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension ProjectsSectionCell:  UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId, for: indexPath) as? ProjectsCollectionCell else { fatalError("ProjectsCell: failed to create a collectionViewCell") }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProjectsCollectionCell.cellId, for: indexPath) as? ProjectsCollectionCell else { fatalError("ProjectsSectionCell: failed to create a collectionViewCell") }
         let project = projects[indexPath.row]
-        
-        print("Project Image: \(project.img_url)")
-        
-        
-        cell.projectNameLabel.text = project.name
-        cell.technologiesLabel.text = project.technologies
+        print("Project Image URL: \(project.img_url)")
         DispatchQueue.main.async {
-            if let url = URL(string: project.img_url),
-                let data = try? Data(contentsOf: url) {
-                let projectImage = UIImage(data: data)
-                cell.projectImageView.image = projectImage
+            cell.projectNameLabel.text = project.name
+            cell.technologiesLabel.text = project.technologies
+
+            DispatchQueue.global().async {
+                if let url = URL(string: project.img_url),
+                    let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        cell.projectImageView.image = UIImage(data: data)
+                    }
+                }
             }
         }
         
@@ -113,24 +109,18 @@ extension ProjectsCell: UICollectionViewDelegateFlowLayout, UICollectionViewData
         return CGSize(width: 180, height: 212)
     }
     
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        projectsCollectionView?.backgroundColor = UIColor.red
+        
+        let project = projects[indexPath.item]
+        delegate?.displayProject(project: project)
+    
+    }
+    
     
 }
 
 
 
-//extension UICollectionView{
-//    func colletionType (section: Int) -> String{
-//        switch section{
-//        case 0: return "course"
-//        case 1: return "project"
-//        default: return ""
-//        }
-//    }
-//}
-//class CustomCollection: UICollectionView{
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//}
+

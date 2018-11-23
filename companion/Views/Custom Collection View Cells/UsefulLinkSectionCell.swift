@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class UsefulLinkCell: UITableViewCell {
+class UsefulLinkSectionCell: UITableViewCell {
     
     // MARK: Properties
     
@@ -20,30 +20,34 @@ class UsefulLinkCell: UITableViewCell {
     let userLinkButton: UIButton = {
         let button = UIButton()
         button.setTitle("Useful Links", for: .normal)
-        button.setTitleColor(MakeSchoolDesignColor.darkBlue, for: .normal)
+        button.setTitleColor(MakeSchoolDesignColor.faintBlue, for: .normal)
         button.layer.cornerRadius = 6
-        button.layer.borderColor = MakeSchoolDesignColor.darkBlue.cgColor
-        button.layer.borderWidth = 2
-        button.backgroundColor = MakeSchoolDesignColor.faintBlue
+        button.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 23)
+        button.backgroundColor = MakeSchoolDesignColor.lightBlue
         return button
     }()
     
     // MARK: Initializers
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupAutoLayout()
+        
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: View Layout Methods
+    
+    override func layoutSubviews() {
+        backgroundColor = MakeSchoolDesignColor.faintBlue
+        setupAutoLayout()
     }
     
     // MARK: Methods
     
     fileprivate func setupAutoLayout() {
         contentView.addSubview(userLinkButton)
-        userLinkButton.anchor(top: contentView.topAnchor, right: contentView.rightAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor, topPadding: 20, rightPadding: 25, bottomPadding: 20, leftPadding: 25, height: 70, width: 0)
+        userLinkButton.anchor(top: contentView.topAnchor, right: contentView.rightAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor, topPadding: 20, rightPadding: 52, bottomPadding: 20, leftPadding: 52, height: 60, width: 0)
     }
     
 }

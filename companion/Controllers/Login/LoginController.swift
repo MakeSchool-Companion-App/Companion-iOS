@@ -256,7 +256,6 @@ class LoginController: UIViewController {
               let password = passwordTextField.text
         else { return }
         
-        print("Password: \(password)")
         startActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
@@ -294,38 +293,14 @@ class LoginController: UIViewController {
             User.setCurrent(user, writeToUserDefaults: true)
             
             initialViewController = MainTabBarController()
+            view.window?.rootViewController = initialViewController
+            view.window?.makeKeyAndVisible()
         } else {
-//            let navigationController = UINavigationController(rootViewController: FacebookLoginWebViewController())
-//            navigationController.navigationBar.barTintColor = UIColor.blue
-            initialViewController = FacebookLoginWebViewController()
+
+            self.present(FacebookLoginWebViewController(), animated: true, completion: nil)
         }
         
-        view.window?.rootViewController = initialViewController
-        view.window?.makeKeyAndVisible()
-//        DispatchQueue.main.async {
-//            let faceBookLoginWebViewController = FacebookLoginWebViewController()
-//            self.view.window?.rootViewController = faceBookLoginWebViewController
-//            self.view.window?.makeKeyAndVisible()
-//        }
     }
-    
-//    let defualts = UserDefaults.standard
-//    let initialViewController: UIViewController
-//
-//
-//    if let _ = User.current,
-//    let userData = defualts.object(forKey: Constants.current) as? Data,
-//    let user = try? JSONDecoder().decode(User.self, from: userData) {
-//
-//        User.setCurrent(user)
-//        initialViewController = MainTabBarController()
-//    } else {
-//    initialViewController = LoginController()
-//    }
-//
-//    window?.rootViewController = initialViewController
-//    window?.makeKeyAndVisible()
-    
 }
 
 extension LoginController: UITextFieldDelegate {

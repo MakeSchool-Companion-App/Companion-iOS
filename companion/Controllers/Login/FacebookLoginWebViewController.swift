@@ -95,8 +95,7 @@ class FacebookLoginWebViewController: UIViewController {
     
     @objc private func cancelFacebookLogin() {
         print("Cancelling Facebook Login")
-        self.view.window?.rootViewController = LoginController()
-        self.view.window?.makeKeyAndVisible()
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
