@@ -275,6 +275,7 @@ class LoginController: UIViewController {
                 }
                 
             } else {
+                self.stopActivityIndicator()
                 self.presentAlert(title: "", message: "Incorrect email or password")
             }
             
