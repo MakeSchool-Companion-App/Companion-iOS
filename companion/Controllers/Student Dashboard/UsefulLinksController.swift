@@ -52,6 +52,7 @@ extension UsefulLinksController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let staticLink = staticLinks[indexPath.row]
         guard let url = URL(string: staticLink.url) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)

@@ -28,6 +28,7 @@ class AttendanceController: UIViewController {
     var inRange = false
     
     static let shared = AttendanceController()
+    
     // MARK: - UI Elements
     
     lazy var attendanceTableView: UITableView = {
@@ -102,7 +103,7 @@ class AttendanceController: UIViewController {
     }
     
     private func setupNotificationCenter() {
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+        UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (requestedAuth, error) in
             if (requestedAuth) {
                 print("True")
@@ -276,3 +277,5 @@ extension AttendanceController: CLLocationManagerDelegate{
     }
     
 }
+
+extension AttendanceController: UNUserNotificationCenterDelegate {}

@@ -58,8 +58,6 @@ class ScanBeaconController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = #colorLiteral(red: 0.05490196078, green: 0.1921568627, blue: 0.8117647059, alpha: 0.9730308219)
-        print(beaconView.frame)
-        
         setupBeaconManager()
     }
     

@@ -111,11 +111,9 @@ extension ProjectsSectionCell:  UICollectionViewDelegateFlowLayout, UICollection
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        projectsCollectionView?.backgroundColor = UIColor.red
         
         let project = projects[indexPath.item]
         delegate?.displayProject(project: project)
-    
     }
     
     

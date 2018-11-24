@@ -46,6 +46,7 @@ class StaticLinksCell: UITableViewCell {
     private func setupAutoLayout() {
         contentView.addSubview(linkLabel)
         linkLabel.centerAnchor(centerX: contentView.centerXAnchor, centerY: contentView.centerYAnchor, width: 200, height: 50)
+//        linkLabel.anchor(centerX: centerXAnchor, centerY: nil, top: nil, right: nil, bottom: nil, left: contentView.leftAnchor, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 10, height: 200, width: 50)
     }
 
 }

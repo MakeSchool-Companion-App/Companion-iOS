@@ -23,7 +23,7 @@ class ProjectDetailsController: UIViewController {
             
             projectNameLabel.text = project?.name
             projectDescriptionTextView.text = project?.description
-            projectTechnologiesLabel.text = project?.technologies
+            projectTechnologiesLabel.text = "Technologies: \(project?.technologies ?? "")"
         }
     }
     
@@ -31,7 +31,7 @@ class ProjectDetailsController: UIViewController {
     
     let projectImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -40,7 +40,7 @@ class ProjectDetailsController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont(name: "AvenirNext Demi-Bold", size: 17)
+        label.font = UIFont(name: "AvenirNext-Bold", size: 23)
         return label
     }()
     
@@ -48,8 +48,9 @@ class ProjectDetailsController: UIViewController {
         let textView = UITextView()
         textView.isEditable = false
         textView.textColor = .black
-        textView.font = UIFont(name: "AvenirNext Demi-Bold", size: 17)
+        textView.font = UIFont(name: "AvenirNext-Regular", size: 17)
         textView.textAlignment = .left
+        textView.backgroundColor = .clear
         return textView
     }()
     
@@ -58,8 +59,15 @@ class ProjectDetailsController: UIViewController {
         label.numberOfLines = 2
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont(name: "AvenirNext Demi-Bold", size: 17)
+        label.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         return label
+    }()
+    
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "back-arrow"), for: .normal)
+        button.addTarget(self, action: #selector(dismissProjectDetailsController), for: .touchUpInside)
+        return button
     }()
     
     // MARK: View Life Cycle Methods
@@ -74,18 +82,38 @@ class ProjectDetailsController: UIViewController {
     
     fileprivate func setupAutoLayout() {
         
+        projectNameLabel.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 30, width: 0)
+        
+        projectDescriptionTextView.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 140, width: 0)
+        
+        projectTechnologiesLabel.anchor(top: nil, right: nil, bottom: nil, left: nil, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 25, width: 0)
+        
+
         let stackView = UIStackView(arrangedSubviews: [projectNameLabel, projectDescriptionTextView, projectTechnologiesLabel])
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.axis = .vertical
-        stackView.alignment = .leading
+        stackView.alignment = .fill
         stackView.spacing = 10
         
-        view.addSubviews(views: projectImageView, stackView)
+        view.addSubviews(views: projectImageView, stackView, backButton)
+        
         
         projectImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, bottom: nil, left: view.leftAnchor, topPadding: 0, rightPadding: 0, bottomPadding: 0, leftPadding: 0, height: 230, width: 0)
         
-        stackView.anchor(top: projectImageView.bottomAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, topPadding: 10, rightPadding: 10, bottomPadding: 10, leftPadding: 20, height: 0, width: 0)
         
+        stackView.anchor(top: projectImageView.bottomAnchor, right: view.rightAnchor, bottom: nil, left: view.leftAnchor, topPadding: 10, rightPadding: 10, bottomPadding: 0, leftPadding: 10, height: 240, width: 0)
+        
+        
+//        projectImageView.insertSubview(backButton, aboveSubview: projectImageView)
+        
+        backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, right: nil, bottom: nil, left: view.leftAnchor, topPadding: 5, rightPadding: 0, bottomPadding: 0, leftPadding: 5, height: 33, width: 33)
+    }
+    
+    
+    // MARK: Methods with @objc
+    
+    @objc func dismissProjectDetailsController() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

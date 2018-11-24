@@ -190,7 +190,6 @@ extension StudentDashboardController: UICollectionViewDelegateFlowLayout {
 
 extension StudentDashboardController {
     @objc func showStaticLinks() {
-        print("Show Static Links")
         self.navigationController?.pushViewController(UsefulLinksController(), animated: true)
         
     }
@@ -202,7 +201,7 @@ extension StudentDashboardController: ProjectsSectionCellDelegate {
 
         let projectDetailsController = ProjectDetailsController()
         projectDetailsController.project = project
-        
+        print(project)
         self.present(projectDetailsController, animated: true, completion: nil)
         
     }
