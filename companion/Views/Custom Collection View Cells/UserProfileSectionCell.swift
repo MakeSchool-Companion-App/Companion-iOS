@@ -14,20 +14,34 @@ class UserProfileSectionCell: UITableViewCell {
     
     static let cellId = "UserProfileCellId"
     
-    var profile: Profile? {
+    var viewModel: UserProfileViewModel? {
         didSet {
-            nameLabel.text = "\(profile?.first_name ?? "") \(profile?.last_name ?? "")"
-            biographyTextView.text = profile?.about_description
-            concentrationLabel.text = profile?.professional_title
-
-            guard let imageUrl = URL(string: profile?.profile_img_url ?? "") else { return }
-
+            nameLabel.text = viewModel?.fullname
+            biographyTextView.text = viewModel?.aboutDescription
+            concentrationLabel.text = viewModel?.professionalTitle
+            
+            guard let imageUrl = URL(string: viewModel?.profileImageUrl ?? "") else { return }
+            
             guard let imageData = try? Data(contentsOf: imageUrl) else { return }
             DispatchQueue.main.async {
                 self.profilePictureImageView.image = UIImage(data: imageData)
             }
         }
     }
+//    var profile: Profile? {
+//        didSet {
+//            nameLabel.text = "\(profile?.first_name ?? "") \(profile?.last_name ?? "")"
+//            biographyTextView.text = profile?.about_description
+//            concentrationLabel.text = profile?.professional_title
+//
+//            guard let imageUrl = URL(string: profile?.profile_img_url ?? "") else { return }
+//
+//            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+//            DispatchQueue.main.async {
+//                self.profilePictureImageView.image = UIImage(data: imageData)
+//            }
+//        }
+//    }
 
     // MARK: - UI Elements
     

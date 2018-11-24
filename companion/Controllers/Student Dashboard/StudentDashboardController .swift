@@ -15,6 +15,9 @@ class StudentDashboardController: UITableViewController {
     
     var profile: Profile?
     
+    var userProfileViewModel = UserProfileViewModel()
+    var projectsViewModel = ProjectsViewModel()
+    
     var projects = [Project]() {
         didSet {
             DispatchQueue.main.async {
@@ -37,7 +40,11 @@ class StudentDashboardController: UITableViewController {
         super.viewDidLoad()
         
         setupTableView()
-        fetchUserProfileAndProjects()
+//        fetchUserProfileAndProjects()
+        
+        userProfileViewModel.fetchUserProfile { (profile) in
+            projectsViewModel.fetchUsersProjects(slug: profile.slug)
+        }
     }
     
     
@@ -56,24 +63,24 @@ class StudentDashboardController: UITableViewController {
 
     }
     
-    fileprivate func fetchUserProfileAndProjects() {
-        
-        ProfileService.show(user_id: Int(User.current?.user_id ?? "0")) { (profile) in
-            
-            DispatchQueue.global().async {
-                self.profile = profile
-            }
-            
-            DispatchQueue.global().async {
-                ProjectServices.show(slug: profile.slug, completion: { (projects) in
-                    if let projects = projects as? [Project] {
-                        self.projects = projects
-                    }
-                })
-            }
-        }
-        
-    }
+//    fileprivate func fetchUserProfileAndProjects() {
+//
+//        ProfileService.show(user_id: Int(User.current?.user_id ?? "0")) { (profile) in
+//
+//            DispatchQueue.global().async {
+//                self.profile = profile
+//            }
+//
+//            DispatchQueue.global().async {
+//                ProjectServices.show(slug: profile.slug, completion: { (projects) in
+//                    if let projects = projects as? [Project] {
+//                        self.projects = projects
+//                    }
+//                })
+//            }
+//        }
+//
+//    }
     
 }
 
@@ -94,7 +101,7 @@ extension StudentDashboardController: UICollectionViewDelegateFlowLayout {
         case 0:
             // User Profile
             guard let userProfileCell = tableView.dequeueReusableCell(withIdentifier: UserProfileSectionCell.cellId, for: indexPath) as? UserProfileSectionCell else { fatalError("StudentDashboardController: failed to create a UserProileSectionCell") }
-            userProfileCell.profile = profile
+            userProfileCell.viewModel = userProfileViewModel
             
             return userProfileCell
             
