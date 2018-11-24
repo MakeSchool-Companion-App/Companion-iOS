@@ -14,6 +14,7 @@ class LoginController: UIViewController {
     // MARK: - Properties
     
     var user: User?
+    let viewModel = UserViewModel()
     
     // MARK: - UI Elements
     
@@ -209,21 +210,6 @@ class LoginController: UIViewController {
             leftPadding: 0,
             height: 46,
             width: 206)
-        
-//        loginButton.anchor(
-//            centerX: view.centerXAnchor,
-//            centerY: nil,
-//            top: textFieldStackView.bottomAnchor,
-//            right: nil,
-//            bottom: nil,
-//            left: nil,
-//            topPadding: 80,
-//            rightPadding: 0,
-//            bottomPadding: 0,
-//            leftPadding: 0,
-//            height: 50,
-//            width: 180)
-        
     }
     
     private func startActivityIndicator() {
@@ -233,7 +219,6 @@ class LoginController: UIViewController {
             self.activityIndicatorView.center = self.view.center
             self.activityIndicatorView.hidesWhenStopped = true
             self.activityIndicatorView.startAnimating()
-//            UIApplication.shared.beginIgnoringInteractionEvents()
         }
     }
     
@@ -241,7 +226,6 @@ class LoginController: UIViewController {
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
             self.activityIndicatorView.removeFromSuperview()
-//            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
     
@@ -257,15 +241,10 @@ class LoginController: UIViewController {
         else { return }
         
         startActivityIndicator()
-        UserServices.login(email: email, password: password) { (user) in
-            
-            self.stopActivityIndicator()
-            
-            if let user = user as? User {
-                // handle existing user
-                User.setCurrent(user, writeToUserDefaults: true)
-                
-
+        
+        viewModel.login(email: email, password: password) { (success) in
+            if success {
+                self.stopActivityIndicator()
                 DispatchQueue.main.async {
                     
                     let mainTabBarController = MainTabBarController()
@@ -273,16 +252,14 @@ class LoginController: UIViewController {
                     
                     self.view.window?.makeKeyAndVisible()
                 }
-                
             } else {
+                self.stopActivityIndicator()
                 self.presentAlert(title: "", message: "Incorrect email or password")
             }
-            
         }
     }
     
     @objc private func handleFacebookLogin() {
-        print("LOGIN WITH FACEBOOK")
         let defaults = UserDefaults.standard
         let initialViewController: UIViewController
         

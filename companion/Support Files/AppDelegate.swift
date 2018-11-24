@@ -87,24 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureInitialRootViewController(for: window)
         
         beaconManager.startMonitoring()
-        
-//        GeoFenceServices.startMonitoringMakeschool { (started) in
-//            if started {
-//                self.locationManager.delegate = self
-//            }
-//        }
-        
-        center.delegate = self
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { (requestAuth, error) in
-            print("AppDelegate: Testing Request Authorization")
-        }
-//        
-
-//        ProjectServices.show(slug: "yveslym-songolo") { (projects) in
-//            print(projects)
-//        }
-//  
-        
+                
         return true
     }
 
