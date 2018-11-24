@@ -9,6 +9,7 @@
 import Foundation
 
 typealias LoginSuccess = (Bool) -> Void
+typealias FacebookLoginSuccess = (Bool) -> Void
 
 struct UserViewModel {
     
@@ -50,4 +51,12 @@ struct UserViewModel {
         }
     }
     
+    func facebookLogin(completionHandler: FacebookLoginSuccess) {
+        FacebookServices.showFacebookUserProfile { (user, error) in
+            if let user = user {
+                User.setCurrent(user, writeToUserDefaults: true)
+                
+            }
+        }
+    }
 }
