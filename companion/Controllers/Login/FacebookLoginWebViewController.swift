@@ -123,7 +123,6 @@ extension FacebookLoginWebViewController: WKNavigationDelegate {
                             })
                             return
                         }
-                        
                     })
                 }
             }
