@@ -12,7 +12,7 @@ class CoursesCollectionCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static var coursesCollectionCellId = "coursesCollectionCellId"
+    static var cellId = "coursesCollectionCellId"
     
     // MARK: - UI Elements
     

@@ -9,10 +9,10 @@
 import UIKit
 
 
-class CoursesCell: UITableViewCell {
+class CoursesSectionCell: UITableViewCell {
     
     // MARK: - Properties
-    static var coursesCellId = "coursesCellId"
+    static var cellId = "coursesCellId"
     
     var courses = [Course]() {
         didSet {
@@ -21,10 +21,11 @@ class CoursesCell: UITableViewCell {
             }
         }
     }
-    
+
     // MARK: - UI Elements
     
     var coursesCollectionView: UICollectionView?
+    
     var blurredBackgroundView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
         let view = UIVisualEffectView(effect: blurEffect)
@@ -48,15 +49,16 @@ class CoursesCell: UITableViewCell {
     
     // MARK: - Initializers
     
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-//        backgroundColor = MakeSchoolDesignColor.lightBlue
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Layout Methods
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -78,60 +80,50 @@ class CoursesCell: UITableViewCell {
         coursesCollectionView?.delegate = self
         coursesCollectionView?.dataSource = self
         coursesCollectionView?.backgroundColor = MakeSchoolDesignColor.faintBlue
-        coursesCollectionView?.register(CoursesCollectionCell.self, forCellWithReuseIdentifier: CoursesCollectionCell.coursesCollectionCellId)
+        coursesCollectionView?.register(CoursesCollectionCell.self, forCellWithReuseIdentifier: CoursesCollectionCell.cellId)
     }
     
     private func setupAutoLayout() {
         
-        contentView.addSubview(coursesCollectionView ?? UICollectionView())
+        guard let coursesCollectionView = coursesCollectionView else { return }
         
-        coursesCollectionView?.anchor(
+        contentView.addSubview(coursesCollectionView)
+        
+        coursesCollectionView.anchor(
             top: contentView.topAnchor,
             right: contentView.rightAnchor,
             bottom: contentView.bottomAnchor,
             left: contentView.leftAnchor)
         
-        coursesCollectionView?.insertSubview(blurredBackgroundView, aboveSubview: coursesCollectionView ?? UICollectionView())
+        coursesCollectionView.insertSubview(blurredBackgroundView, aboveSubview: coursesCollectionView)
         
         blurredBackgroundView.anchor(top: contentView.topAnchor, right: contentView.rightAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor)
         
-        coursesCollectionView?.insertSubview(comingSoonLabel, aboveSubview: blurredBackgroundView)
+        coursesCollectionView.insertSubview(comingSoonLabel, aboveSubview: blurredBackgroundView)
         comingSoonLabel.centerAnchor(centerX: contentView.centerXAnchor, centerY: contentView.centerYAnchor, width: 200, height: 50)
         
     }
     
-    // Credit goes to Ash Furrow
-//    func setCollectionViewDataSourceDelegate
-//        <D: UICollectionViewDataSource & UICollectionViewDelegate>
-//        (dataSourceDelegate: D, forRow row: Int, indexPath: IndexPath) {
-//
-//        coursesCollectionView?.delegate = dataSourceDelegate
-//        coursesCollectionView?.dataSource = dataSourceDelegate
-//        coursesCollectionView?.tag = row
-//        UserDefaults.standard.set(indexPath.section, forKey: "cellSection")
-//
-//        coursesCollectionView?.reloadData()
-//
-//    }
 }
 
 // MARK: - CollectionView DelegateFlowLayout & DataSource Methods
 
-extension CoursesCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension CoursesSectionCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return courses.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoursesCollectionCell.coursesCollectionCellId, for: indexPath) as? CoursesCollectionCell else { fatalError("CoursesCell: failed to create a collectionViewCell") }
+        // The bug is happening here. Once this methods is called, it duplicates the collection view and its cells twice
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoursesCollectionCell.cellId, for: indexPath) as? CoursesCollectionCell else { fatalError("CoursesSectionCell: failed to create a collectionViewCell") }
         let course = courses[indexPath.item]
         
+    
         cell.courseTitleLabel.text = course.name
         cell.courseSubtitleLabel.text = course.description
         cell.containerView.backgroundColor = course.color
-        
+    
         return cell
         
     }

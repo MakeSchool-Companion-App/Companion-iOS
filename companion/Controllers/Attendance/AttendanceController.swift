@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
+
+
 class AttendanceController: UIViewController {
     // MARK: - Properties
     let locationManager = CLLocationManager()
@@ -25,6 +28,7 @@ class AttendanceController: UIViewController {
     var inRange = false
     
     static let shared = AttendanceController()
+    
     // MARK: - UI Elements
     
     lazy var attendanceTableView: UITableView = {
@@ -51,6 +55,8 @@ class AttendanceController: UIViewController {
         
         setupAutoLayout()
         setupNavbarItem()
+        setupNotificationCenter()
+        
         
         GeoFenceServices.startMonitoringMakeschool { (started) in
             if started {
@@ -96,6 +102,17 @@ class AttendanceController: UIViewController {
         
     }
     
+    private func setupNotificationCenter() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (requestedAuth, error) in
+            if (requestedAuth) {
+                print("True")
+            } else {
+                print("Error message: \(String(describing: error?.localizedDescription))")
+            }
+        }
+    }
+    
     // MARK: - Methods with @objc attribute
     
     @objc private func tapBeaconNavItem() {
@@ -124,9 +141,7 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         cell.checkInDateLabel.text = studentAttendance.checkInDate
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
         cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
-        cell.checkOutDateLabel.text = studentAttendance.checkOutDate
-        
-        
+        cell.checkOutDateLabel.text = studentAttendance.event_out
         
         return cell
     }
@@ -135,7 +150,19 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         return 110
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = " No attendance..."
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return attendance.count == 0 ? 150: 0
+    }
+
 }
 
 extension AttendanceController: CLLocationManagerDelegate{
@@ -147,12 +174,12 @@ extension AttendanceController: CLLocationManagerDelegate{
         // check if the attendance was already taken to avoid double check in
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
-      //  if region.identifier == Constants.makeSchoolRegionId {
+      ///  if region.identifier == Constants.makeSchoolRegionId {
             let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             
             AttendanceServices.create(attendance) { (att) in
                 if let checkInAttendance = att{
-                     self.presentAlert(title: "post attendance", message: "posrt attendance completeted")
+                     self.presentAlert(title: "post attendance", message: "post attendance completed")
                     /// store the date and id of the last attendance for future verification
                     UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
                     
@@ -250,3 +277,5 @@ extension AttendanceController: CLLocationManagerDelegate{
     }
     
 }
+
+extension AttendanceController: UNUserNotificationCenterDelegate {}

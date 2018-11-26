@@ -13,9 +13,9 @@ class ProjectsCollectionCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static var projectsCollectionCellId = "projectsCollectionCellId"
+    static var cellId = "projectsCollectionCellId"
     
-    
+
     // MARK: - UI Elements
     
     lazy var projectImageView: UIImageView = {
@@ -128,7 +128,5 @@ class ProjectsCollectionCell: UICollectionViewCell {
             width: 0)
         
     }
-    
-    
     
 }

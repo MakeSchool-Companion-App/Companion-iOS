@@ -55,7 +55,7 @@ class LoginController: UIViewController {
         textField.layer.shadowOffset = CGSize.zero
         textField.layer.shadowOpacity = 0.40
         textField.layer.shadowRadius = 5
-        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
+        textField.attributedPlaceholder = NSAttributedString(string: "Make School Email", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
         textField.textAlignment = .left
         textField.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         textField.becomeFirstResponder()
@@ -91,7 +91,7 @@ class LoginController: UIViewController {
         textField.layer.shadowRadius = 5
         
         textField.autocapitalizationType = UITextAutocapitalizationType.none
-        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
+        textField.attributedPlaceholder = NSAttributedString(string: "Make School Password", attributes: [NSAttributedStringKey.foregroundColor: MakeSchoolDesignColor.darkBlue])
         textField.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         textField.isSecureTextEntry = true
         
@@ -133,7 +133,7 @@ class LoginController: UIViewController {
         passwordTextField.delegate = self 
         
         // dismiss keyboard on touch
-        self.hideKeyboard()
+        self.hideKeyboardWhenTappedAround()
     }
     
     // MARK: - Methods
@@ -245,6 +245,8 @@ class LoginController: UIViewController {
         }
     }
     
+    
+    
     // MARK: Methods with @objc
     
     @objc private func handleLogin() {
@@ -254,16 +256,15 @@ class LoginController: UIViewController {
               let password = passwordTextField.text
         else { return }
         
-        print("Password: \(password)")
         startActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
-            
+            self.stopActivityIndicator()
             
             if let user = user as? User {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
-                self.stopActivityIndicator()
+                
 
                 DispatchQueue.main.async {
                     
@@ -274,6 +275,7 @@ class LoginController: UIViewController {
                 }
                 
             } else {
+                self.stopActivityIndicator()
                 self.presentAlert(title: "", message: "Incorrect email or password")
             }
             
@@ -289,38 +291,17 @@ class LoginController: UIViewController {
             let userData = defaults.object(forKey: Constants.current) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
             
-            User.setCurrent(user)
+            User.setCurrent(user, writeToUserDefaults: true)
+            
             initialViewController = MainTabBarController()
+            view.window?.rootViewController = initialViewController
+            view.window?.makeKeyAndVisible()
         } else {
-            initialViewController = FacebookLoginWebViewController()
+
+            self.present(FacebookLoginWebViewController(), animated: true, completion: nil)
         }
         
-        view.window?.rootViewController = initialViewController
-        view.window?.makeKeyAndVisible()
-//        DispatchQueue.main.async {
-//            let faceBookLoginWebViewController = FacebookLoginWebViewController()
-//            self.view.window?.rootViewController = faceBookLoginWebViewController
-//            self.view.window?.makeKeyAndVisible()
-//        }
     }
-    
-//    let defualts = UserDefaults.standard
-//    let initialViewController: UIViewController
-//
-//
-//    if let _ = User.current,
-//    let userData = defualts.object(forKey: Constants.current) as? Data,
-//    let user = try? JSONDecoder().decode(User.self, from: userData) {
-//
-//        User.setCurrent(user)
-//        initialViewController = MainTabBarController()
-//    } else {
-//    initialViewController = LoginController()
-//    }
-//
-//    window?.rootViewController = initialViewController
-//    window?.makeKeyAndVisible()
-    
 }
 
 extension LoginController: UITextFieldDelegate {

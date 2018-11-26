@@ -37,7 +37,7 @@ class Attendance: Codable {
         return try! JSONEncoder().encode(self)
     }
     func toDictionary()->[String: Any]{
-        return ["event_in":event_in,"beacon_id":beacon_id ?? "","event":event ?? "Entry", "event_out":event_out ?? "00:00"]
+        return ["event_in":event_in ?? "","beacon_id":beacon_id ?? "","event":event ?? "Entry", "event_out":event_out ?? "00:00"]
     }
     
     enum CodingKeys: String,CodingKey{
@@ -63,12 +63,14 @@ class Attendance: Codable {
         let event_out = try container.decodeIfPresent(String.self, forKey: .event_out)
         
         // Message for Yves [Fixed]: It crashed here because you were trying to access a value that didn't exist at index 1
-      
-        let checkInDate = event_in?.toDate()?.toString() ?? "00:00"
-        let checkInTime = event_in?.toDate()?.timeToString() ?? "00:00"
         
+        // Change this back to the original
+//        let checkInDate = event_in?.convertToMonthDayYear.toString() ?? ""
+//        let checkInTime = event_in?.timeToDate.timeToString() ?? "00:00"
+        let checkInDate = event_in?.convertToMonthDayYear.dayAndMonthStringFormat
+        let checkInTime = event_in?.timeToDate.timeToStringFormat 
         
-        self.init(event: event, beaconId: beacon_id, event_in: event_in ?? "", event_out: event_out ?? "", id: id, user_id: user_id ?? Int((User.current?.user_id)!) ?? 0)
+        self.init(event: event, beaconId: beacon_id, event_in: checkInDate ?? "", event_out: event_out ?? "", id: id, user_id: user_id ?? 0)
         
         if event_out == Constants.eventOutEmptyFormatCheck{
            self.event_out = " "
@@ -76,11 +78,16 @@ class Attendance: Codable {
             self.checkOutDate = " "
         }
         else{
-            if let checkOutTime = event_out?.toDate()?.timeToString(){
-                self.event_out = event_out
-                self.checkOutTime = checkOutTime
-                self.checkOutDate = event_out?.toDate()?.toString()
+            // Change back to event_out?.timeToDate.timeToString()
+            // Change baack to event_out?.convertToMonthDayYear.toString()
+            if let checkOut = event_out?.timeToDate.timeToStringFormat {
+                self.event_out = event_out?.convertToMonthDayYear.dayAndMonthStringFormat
+                self.checkOutTime = checkOut
             }
+//            if let checkOutTime = event_out?.timeToDate.timeToString(){
+//                self.event_out = event_out?.convertToMonthDayYear.toString()
+//                self.checkOutTime = checkOutTime
+//            }
         }
        
         self.checkInTime = checkInTime
