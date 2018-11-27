@@ -64,6 +64,7 @@ class AttendanceController: UIViewController {
                 self.locationManager.startUpdatingLocation()
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
                  self.locationManager.pausesLocationUpdatesAutomatically = false
+                self.locationManager.activityType = .fitness
             }
         }
         
@@ -141,7 +142,7 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         cell.checkInDateLabel.text = studentAttendance.checkInDate
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
         cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
-        cell.checkOutDateLabel.text = studentAttendance.event_out
+        cell.checkOutDateLabel.text = studentAttendance.checkOutDate
         
         return cell
     }
@@ -190,7 +191,6 @@ extension AttendanceController: CLLocationManagerDelegate{
                      AppDelegate.shared.attendanceNotification(attendance: attendance)
                 }
             }
-        //}
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -227,7 +227,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                 //self.presentAlert(title: "out of range", message: "you left make school")
                     
                     let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
-                    
+                   
                     AttendanceServices.create(attendance) { (att) in
                         if let checkInAttendance = att{
                             AttendanceServices.fetchLastAttendance(id: String(checkInAttendance.id!), completion: { (attendance) in
@@ -260,6 +260,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                             lastAttendance.event_out = Date().checkTime()
                             lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
                                                                                                     options: NSString.CompareOptions.literal, range:nil)
+                            
                             lastAttendance.event = EventType.onExit.rawValue
                             AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
                                 self.presentAlert(title: "Check out", message: "You left Make School at \(updatedAttendance.checkOutTime ?? "") ")

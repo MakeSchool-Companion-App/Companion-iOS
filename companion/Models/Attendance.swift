@@ -67,10 +67,10 @@ class Attendance: Codable {
         // Change this back to the original
 //        let checkInDate = event_in?.convertToMonthDayYear.toString() ?? ""
 //        let checkInTime = event_in?.timeToDate.timeToString() ?? "00:00"
-        let checkInDate = event_in?.convertToMonthDayYear.dayAndMonthStringFormat
-        let checkInTime = event_in?.timeToDate.timeToStringFormat 
+        let checkInDate = event_in?.toDate()?.dayAndMonthStringFormat
+        let checkInTime = event_in?.toDate()?.timeToStringFormat
         
-        self.init(event: event, beaconId: beacon_id, event_in: checkInDate ?? "", event_out: event_out ?? "", id: id, user_id: user_id ?? 0)
+        self.init(event: event, beaconId: beacon_id, event_in: event_in ?? "", event_out: event_out ?? "", id: id, user_id: user_id ?? 0)
         
         if event_out == Constants.eventOutEmptyFormatCheck{
            self.event_out = " "
@@ -80,14 +80,10 @@ class Attendance: Codable {
         else{
             // Change back to event_out?.timeToDate.timeToString()
             // Change baack to event_out?.convertToMonthDayYear.toString()
-            if let checkOut = event_out?.timeToDate.timeToStringFormat {
-                self.event_out = event_out?.convertToMonthDayYear.dayAndMonthStringFormat
+            if let checkOut = event_out?.toDate()?.timeToStringFormat {
+                self.checkOutDate = event_out?.toDate()?.dayAndMonthStringFormat
                 self.checkOutTime = checkOut
             }
-//            if let checkOutTime = event_out?.timeToDate.timeToString(){
-//                self.event_out = event_out?.convertToMonthDayYear.toString()
-//                self.checkOutTime = checkOutTime
-//            }
         }
        
         self.checkInTime = checkInTime
