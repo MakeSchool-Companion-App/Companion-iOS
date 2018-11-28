@@ -8,7 +8,8 @@
 
 import Foundation
 import KeychainSwift
-struct AttendanceServices{
+
+struct AttendanceServices {
     /// method to create a new attendance
     static func create(_ attendance: Attendance, completion: @escaping (Attendance?) ->()){
         

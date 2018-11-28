@@ -14,7 +14,6 @@ class ProjectsViewModel {
     
     private var projects = [Project]()
     
-    
     // MARK: Methods
     
     // Fetch user's projects using a their slug
