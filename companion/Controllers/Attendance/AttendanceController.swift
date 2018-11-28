@@ -14,14 +14,9 @@ import UserNotifications
 class AttendanceController: UIViewController {
     // MARK: - Properties
     let locationManager = CLLocationManager()
-    var attendance = [Attendance]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.attendanceTableView.reloadData()
-            }
-            
-        }
-    }
+    
+    var attendancesViewModel = AttendancesViewModel()
+    
     var onPost = false
     var onUpdate = false
     
@@ -67,7 +62,11 @@ class AttendanceController: UIViewController {
             }
         }
         
-    reloadTable()
+        attendancesViewModel.fetchAttendances { [weak self] in
+            DispatchQueue.main.async {
+                self?.attendanceTableView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,9 +78,7 @@ class AttendanceController: UIViewController {
     // MARK: - UI Setup Methods
     
     private func setupNavbarItem() {
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "beaconNavItem"), style: .plain, target: self, action: #selector(tapBeaconNavItem))
-    
     }
     
     private func setupAutoLayout() {
@@ -128,20 +125,16 @@ class AttendanceController: UIViewController {
 extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attendance.count
+        return attendancesViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AttendanceCell.attendanceCellId, for: indexPath) as? AttendanceCell else {
-            fatalError("Failed to initialize Attendance Cell")
+            return UITableViewCell()
         }
         
-        let studentAttendance = attendance[indexPath.row]
-        
-        cell.checkInDateLabel.text = studentAttendance.checkInDate
-        cell.checkInTimeLabel.text = studentAttendance.checkInTime
-        cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
-        cell.checkOutDateLabel.text = studentAttendance.event_out
+        let attendanceViewModel = attendancesViewModel.cellViewModel(index: indexPath.row)
+        cell.attendanceViewModel = attendanceViewModel
         
         return cell
     }

@@ -14,6 +14,16 @@ class AttendanceCell: UITableViewCell {
     
     static let attendanceCellId = "attendanceCellId"
     
+    var attendanceViewModel: AttendanceViewModel? {
+        didSet {
+            guard let attendanceViewModel = attendanceViewModel else { return }
+            checkInTimeLabel.text = attendanceViewModel.checkInTime
+            checkInDateLabel.text = attendanceViewModel.checkInDate
+            checkOutTimeLabel.text = attendanceViewModel.checkOutTime
+            checkOutDateLabel.text = attendanceViewModel.checkOutDate
+        }
+    }
+    
     // MARK: - UI Elements
     
     private let checkInLabel: UILabel = {
@@ -27,7 +37,6 @@ class AttendanceCell: UITableViewCell {
     
     let checkInTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "9:30am"
         label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .left
         label.font = UIFont(name: "Avenir-Light", size: 17)
@@ -36,7 +45,6 @@ class AttendanceCell: UITableViewCell {
     
     let checkInDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sept 3, 2018"
         label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .left
         label.font = UIFont(name: "Avenir-Light", size: 17)
@@ -54,7 +62,6 @@ class AttendanceCell: UITableViewCell {
     
     let checkOutTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "5:30pm"
         label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 17)
@@ -63,7 +70,6 @@ class AttendanceCell: UITableViewCell {
     
     let checkOutDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sept 3, 2018"
         label.textColor = MakeSchoolDesignColor.black
         label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 17)

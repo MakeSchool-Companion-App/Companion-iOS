@@ -297,6 +297,7 @@
 				20587CD8214AE0D0004B60A2 /* User.swift */,
 				20587CDA214AE159004B60A2 /* Attendance.swift */,
 				80DC39ED215ECF02008E98EF /* Page.swift */,
+				80276D6E217BDEA5007BC4C9 /* Project.swift */,
 				205055B1217A75F70005D207 /* Profile.swift */,
 			);
 			path = Models;
@@ -454,7 +455,6 @@
 		80276D6D217BDE8F007BC4C9 /* DummyData */ = {
 			isa = PBXGroup;
 			children = (
-				80276D6E217BDEA5007BC4C9 /* Project.swift */,
 				80276D70217BE630007BC4C9 /* Course.swift */,
 				8032487C219D1E1F006B7D80 /* StaticLink.swift */,
 			);
