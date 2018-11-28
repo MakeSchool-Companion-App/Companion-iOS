@@ -143,6 +143,7 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
         cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
         cell.checkOutDateLabel.text = studentAttendance.checkOutDate
+        cell.selectionStyle = .none
         
         return cell
     }
