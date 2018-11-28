@@ -16,33 +16,19 @@ class UserProfileSectionCell: UITableViewCell {
     
     var viewModel: UserProfileViewModel? {
         didSet {
-            nameLabel.text = viewModel?.fullname
-            biographyTextView.text = viewModel?.aboutDescription
-            concentrationLabel.text = viewModel?.professionalTitle
+            guard let viewModel = viewModel else { return }
+            nameLabel.text = viewModel.fullname
+            biographyTextView.text = viewModel.aboutDescription
+            concentrationLabel.text = viewModel.professionalTitle
             
-            guard let imageUrl = URL(string: viewModel?.profileImageUrl ?? "") else { return }
-            
-            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+            guard let imageUrl = URL(string: viewModel.profileImageUrl),
+                  let imageData = try? Data(contentsOf: imageUrl) else { return }
             DispatchQueue.main.async {
                 self.profilePictureImageView.image = UIImage(data: imageData)
             }
         }
     }
-//    var profile: Profile? {
-//        didSet {
-//            nameLabel.text = "\(profile?.first_name ?? "") \(profile?.last_name ?? "")"
-//            biographyTextView.text = profile?.about_description
-//            concentrationLabel.text = profile?.professional_title
-//
-//            guard let imageUrl = URL(string: profile?.profile_img_url ?? "") else { return }
-//
-//            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-//            DispatchQueue.main.async {
-//                self.profilePictureImageView.image = UIImage(data: imageData)
-//            }
-//        }
-//    }
-
+    
     // MARK: - UI Elements
     
     let profilePictureImageView: UIImageView = {
@@ -51,11 +37,7 @@ class UserProfileSectionCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = MakeSchoolDesignColor.faintBlue.cgColor
-        
-//        imageView.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-//        imageView.layer.shadowOffset = CGSize.zero
-//        imageView.layer.shadowOpacity = 0.25
-//        imageView.layer.shadowRadius = 5
+
         return imageView
     }()
     
@@ -139,8 +121,18 @@ class UserProfileSectionCell: UITableViewCell {
         contentView.addSubview(mainStackView)
         
         mainStackView.anchor(top: contentView.topAnchor, right: contentView.rightAnchor, bottom: contentView.bottomAnchor, left: contentView.leftAnchor, topPadding: 0, rightPadding: 10, bottomPadding: 10, leftPadding: 10, height: 0, width: 0)
+    }
+    
+    func configure(withViewModel viewModel: UserProfileViewModel) {
+        nameLabel.text = viewModel.fullname
+        biographyTextView.text = viewModel.aboutDescription
+        concentrationLabel.text = viewModel.professionalTitle
         
+        guard let imageUrl = URL(string: viewModel.profileImageUrl) else { return }
         
-        
-    }    
+        guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+        DispatchQueue.main.async {
+            self.profilePictureImageView.image = UIImage(data: imageData)
+        }
+    }
 }

@@ -45,6 +45,7 @@ class AttendanceController: UIViewController {
         AttendanceServices.show { (att) in
             if let attendance = att{
                 self.attendance = attendance
+                
             }
         }
     }

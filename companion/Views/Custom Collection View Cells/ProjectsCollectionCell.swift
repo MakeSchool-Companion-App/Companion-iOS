@@ -15,7 +15,20 @@ class ProjectsCollectionCell: UICollectionViewCell {
     
     static var cellId = "projectsCollectionCellId"
     
-
+    var viewModel: ProjectViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            projectNameLabel.text = viewModel.name
+            technologiesLabel.text = viewModel.technologies
+            
+            if let imageUrl = URL(string: viewModel.imageUrl),
+            let imageData = try? Data(contentsOf: imageUrl) {
+                DispatchQueue.main.async {
+                    self.projectImageView.image = UIImage(data: imageData)
+                }
+            }
+        }
+    }
     // MARK: - UI Elements
     
     lazy var projectImageView: UIImageView = {

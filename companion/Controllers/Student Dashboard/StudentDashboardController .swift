@@ -13,20 +13,9 @@ class StudentDashboardController: UITableViewController {
     
      // MARK: - Properties
     
-    var profile: Profile?
-    
     var userProfileViewModel = UserProfileViewModel()
     var projectsViewModel = ProjectsViewModel()
     
-    var projects = [Project]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView?.reloadData()
-            }
-        }
-    }
-    
-    var project: Project?
     
     var courses: [Course] = [
         Course(name: "DS 1.1", description: "Data Analysis & Visualization", color: UIColor.purple),
@@ -40,11 +29,16 @@ class StudentDashboardController: UITableViewController {
         super.viewDidLoad()
         
         setupTableView()
-//        fetchUserProfileAndProjects()
         
+        // Fetching User's profile and projects
         userProfileViewModel.fetchUserProfile { (profile) in
-            projectsViewModel.fetchUsersProjects(slug: profile.slug)
+            self.projectsViewModel.fetchUsersProjects(slug: profile.slug, completion: {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
         }
+        
     }
     
     
@@ -62,25 +56,6 @@ class StudentDashboardController: UITableViewController {
         tableView.register(UsefulLinkSectionCell.self, forCellReuseIdentifier: UsefulLinkSectionCell.cellId)
 
     }
-    
-//    fileprivate func fetchUserProfileAndProjects() {
-//
-//        ProfileService.show(user_id: Int(User.current?.user_id ?? "0")) { (profile) in
-//
-//            DispatchQueue.global().async {
-//                self.profile = profile
-//            }
-//
-//            DispatchQueue.global().async {
-//                ProjectServices.show(slug: profile.slug, completion: { (projects) in
-//                    if let projects = projects as? [Project] {
-//                        self.projects = projects
-//                    }
-//                })
-//            }
-//        }
-//
-//    }
     
 }
 
@@ -100,23 +75,31 @@ extension StudentDashboardController: UICollectionViewDelegateFlowLayout {
         switch indexPath.section {
         case 0:
             // User Profile
-            guard let userProfileCell = tableView.dequeueReusableCell(withIdentifier: UserProfileSectionCell.cellId, for: indexPath) as? UserProfileSectionCell else { fatalError("StudentDashboardController: failed to create a UserProileSectionCell") }
+            guard let userProfileCell = tableView.dequeueReusableCell(withIdentifier: UserProfileSectionCell.cellId, for: indexPath) as? UserProfileSectionCell else { return UITableViewCell() }
+
             userProfileCell.viewModel = userProfileViewModel
             
             return userProfileCell
             
         case 1:
             // Projects Section
-            guard let projectsSectionCell = tableView.dequeueReusableCell(withIdentifier: ProjectsSectionCell.cellId, for: indexPath) as? ProjectsSectionCell else { fatalError("StudentDashboardController: failed to create a ProjectsSectionCell") }
+            guard let projectsSectionCell = tableView.dequeueReusableCell(withIdentifier: ProjectsSectionCell.cellId, for: indexPath) as? ProjectsSectionCell else { return UITableViewCell() }
     
-            projectsSectionCell.projects = projects
-            projectsSectionCell.delegate = self
+            projectsSectionCell.projectsViewModel = projectsViewModel
+//            projectsSectionCell.delegate = self
+            projectsSectionCell.tapCell = { (viewModel) in
+                let projectDetailsController = ProjectDetailsController()
+                projectDetailsController.projectViewModel = viewModel
+                
+                self.present(projectDetailsController, animated: true, completion: nil)
+            }
             
             return projectsSectionCell
             
         case 2:
             // Courses Section
-            guard let coursesSectionCell = tableView.dequeueReusableCell(withIdentifier: CoursesSectionCell.cellId, for: indexPath) as? CoursesSectionCell else { fatalError("StudentDashboardController: failed to create a CoursesSectionCell") }
+            guard let coursesSectionCell = tableView.dequeueReusableCell(withIdentifier: CoursesSectionCell.cellId, for: indexPath) as? CoursesSectionCell else { return UITableViewCell() }
+            
             print("Courses: \(courses)")
             coursesSectionCell.courses = courses
             return coursesSectionCell
@@ -131,6 +114,8 @@ extension StudentDashboardController: UICollectionViewDelegateFlowLayout {
             return UITableViewCell()
         }
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
@@ -203,18 +188,18 @@ extension StudentDashboardController {
     }
 }
 
-extension StudentDashboardController: ProjectsSectionCellDelegate {
-    
-    func displayProject(project: Project) {
-
-        let projectDetailsController = ProjectDetailsController()
-        projectDetailsController.project = project
-        
-        self.present(projectDetailsController, animated: true, completion: nil)
-        
-    }
-    
-    
-}
+//extension StudentDashboardController:  {
+//    
+////    func displayProject(project: Project) {
+////
+////        let projectDetailsController = ProjectDetailsController()
+////        projectDetailsController.project = project
+////        
+////        self.present(projectDetailsController, animated: true, completion: nil)
+////        
+////    }
+//    
+//    
+//}
 
 

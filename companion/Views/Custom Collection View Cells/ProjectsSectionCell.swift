@@ -15,12 +15,16 @@ protocol ProjectsSectionCellDelegate: class {
 
 class ProjectsSectionCell: UITableViewCell {
     
+    
     // MARK: - Properties
     
     static var cellId = "projectsCellId"
-    weak var delegate: ProjectsSectionCellDelegate?
+//    weak var delegate: ProjectsSectionCellDelegate?
     
-    var projects = [Project]() {
+    typealias PassProjectViewModel = (ProjectViewModel) -> Void
+    var tapCell: PassProjectViewModel?
+    
+    var projectsViewModel: ProjectsViewModel? {
         didSet {
             DispatchQueue.main.async {
                 self.projectsCollectionView?.reloadData()
@@ -81,26 +85,15 @@ class ProjectsSectionCell: UITableViewCell {
 extension ProjectsSectionCell:  UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return projects.count
+//        return projects.count
+        return projectsViewModel?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProjectsCollectionCell.cellId, for: indexPath) as? ProjectsCollectionCell else { fatalError("ProjectsSectionCell: failed to create a collectionViewCell") }
-        let project = projects[indexPath.row]
-        print("Project Image URL: \(project.img_url)")
-        DispatchQueue.main.async {
-            cell.projectNameLabel.text = project.name
-            cell.technologiesLabel.text = project.technologies
-
-            DispatchQueue.global().async {
-                if let url = URL(string: project.img_url),
-                    let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        cell.projectImageView.image = UIImage(data: data)
-                    }
-                }
-            }
-        }
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProjectsCollectionCell.cellId, for: indexPath) as? ProjectsCollectionCell else { return UICollectionViewCell() }
+        
+        cell.viewModel = projectsViewModel?.cellViewModel(index: indexPath.row)
         
         return cell
     }
@@ -111,16 +104,17 @@ extension ProjectsSectionCell:  UICollectionViewDelegateFlowLayout, UICollection
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        projectsCollectionView?.backgroundColor = UIColor.red
         
-        let project = projects[indexPath.item]
-        delegate?.displayProject(project: project)
+        guard let projectViewModel = projectsViewModel?.cellViewModel(index: indexPath.item) else { return }
+        self.tapCell?(projectViewModel)
+
+//        delegate?.displayProject(project: project)
     
     }
     
     
-}
 
+}
 
 
 

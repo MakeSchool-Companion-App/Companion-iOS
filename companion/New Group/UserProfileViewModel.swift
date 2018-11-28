@@ -10,7 +10,7 @@ import Foundation
 
 typealias ProfileCompletion = (Profile) -> Void
 
-struct UserProfileViewModel {
+class UserProfileViewModel {
     
     // MARK: Properties
     

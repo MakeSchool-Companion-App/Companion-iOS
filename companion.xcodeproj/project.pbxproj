@@ -108,7 +108,7 @@
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
 		80A386B521A948EA00536AC5 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A386B421A948EA00536AC5 /* UserViewModel.swift */; };
 		80A386B721A97A9200536AC5 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A386B621A97A9200536AC5 /* UserProfileViewModel.swift */; };
-		80A386B921A986D300536AC5 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A386B821A986D300536AC5 /* ProjectsViewModel.swift */; };
+		80A4328221AA654F00138D0D /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A4328121AA654F00138D0D /* Observer.swift */; };
 		80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
 		80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56539218250E70028CD18 /* HelperFunctions.swift */; };
 		80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5653B2182514E0028CD18 /* FacebookServices.swift */; };
@@ -120,6 +120,8 @@
 		80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EF215EDED3008E98EF /* AttendanceController.swift */; };
 		80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F2215EE10D008E98EF /* MainTabBarController.swift */; };
 		80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */; };
+		80FFE31021ADF8380028299E /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FFE30F21ADF8380028299E /* ProjectViewModel.swift */; };
+		80FFE31321ADFD610028299E /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FFE31221ADFD610028299E /* ProjectsViewModel.swift */; };
 		9224D480E4FF9A068F640F21 /* Pods_companionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4869445B8B1A39767B46C9 /* Pods_companionTests.framework */; };
 		D4119DD8C8EBD302FFF606C4 /* Pods_companion_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */; };
 		E9846D02033D1A2DDFA95DD9 /* Pods_companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E6F6578E0712191F3EFB1 /* Pods_companion.framework */; };
@@ -195,7 +197,7 @@
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
 		80A386B421A948EA00536AC5 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		80A386B621A97A9200536AC5 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
-		80A386B821A986D300536AC5 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
+		80A4328121AA654F00138D0D /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginWebViewController.swift; sourceTree = "<group>"; };
 		80D56539218250E70028CD18 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		80D5653B2182514E0028CD18 /* FacebookServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookServices.swift; sourceTree = "<group>"; };
@@ -207,6 +209,8 @@
 		80DC39EF215EDED3008E98EF /* AttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceController.swift; sourceTree = "<group>"; };
 		80DC39F2215EE10D008E98EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
+		80FFE30F21ADF8380028299E /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
+		80FFE31221ADFD610028299E /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		BE46A2D2E1719AF5EACDF5E6 /* Pods-companionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2DFC0FA15CCF60A251303A3 /* Pods-companionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.release.xcconfig"; sourceTree = "<group>"; };
 		C7C51834B7A84C776E5DC45C /* Pods-companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 				800BBE7B214C298A006E96CC /* Views */,
 				20AC1BF12141A19200E05465 /* Assets.xcassets */,
 				20828E29218C083700875599 /* Dev.xcconfig */,
+				80A4328121AA654F00138D0D /* Observer.swift */,
 			);
 			path = companion;
 			sourceTree = "<group>";
@@ -471,9 +476,9 @@
 		80A386B321A9488000536AC5 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				80FFE31121ADF83F0028299E /* Projects View Models */,
 				80A386B421A948EA00536AC5 /* UserViewModel.swift */,
 				80A386B621A97A9200536AC5 /* UserProfileViewModel.swift */,
-				80A386B821A986D300536AC5 /* ProjectsViewModel.swift */,
 			);
 			name = "View Models";
 			path = "New Group";
@@ -523,6 +528,15 @@
 				8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		80FFE31121ADF83F0028299E /* Projects View Models */ = {
+			isa = PBXGroup;
+			children = (
+				80FFE30F21ADF8380028299E /* ProjectViewModel.swift */,
+				80FFE31221ADFD610028299E /* ProjectsViewModel.swift */,
+			);
+			path = "Projects View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -827,6 +841,7 @@
 				80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */,
 				80A386B521A948EA00536AC5 /* UserViewModel.swift in Sources */,
 				80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */,
+				80FFE31021ADF8380028299E /* ProjectViewModel.swift in Sources */,
 				209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */,
 				8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */,
 				80DC39EC215E9AD4008E98EF /* OnboardingCollectionCell.swift in Sources */,
@@ -846,7 +861,7 @@
 				802446C721A12276008B2100 /* StaticLinksCell.swift in Sources */,
 				205EC0E9215AA6DE00B40141 /* Constants.swift in Sources */,
 				8000A943217844ED007514D1 /* ProjectsSectionCell.swift in Sources */,
-				80A386B921A986D300536AC5 /* ProjectsViewModel.swift in Sources */,
+				80A4328221AA654F00138D0D /* Observer.swift in Sources */,
 				205055D6217EDD4B0005D207 /* Profile.swift in Sources */,
 				802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */,
 				80A386B721A97A9200536AC5 /* UserProfileViewModel.swift in Sources */,
@@ -859,6 +874,7 @@
 				80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */,
 				20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */,
 				80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */,
+				80FFE31321ADFD610028299E /* ProjectsViewModel.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
 				8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */,
 				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,

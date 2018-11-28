@@ -44,6 +44,7 @@ struct UserViewModel {
             if let user = user as? User {
                 User.setCurrent(user, writeToUserDefaults: true)
                 completionHandler(true)
+                
             } else {
                 completionHandler(false)
             }

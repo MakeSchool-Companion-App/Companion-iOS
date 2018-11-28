@@ -12,18 +12,18 @@ class ProjectDetailsController: UIViewController {
     
     // MARK: Properties
     
-    var project: Project? {
+    var projectViewModel: ProjectViewModel? {
         didSet {
-            
+            guard let projectViewModel = projectViewModel else { return }
             DispatchQueue.main.async {
-                guard let imageUrl = URL(string: self.project?.img_url ?? ""),
+                guard let imageUrl = URL(string: projectViewModel.imageUrl),
                 let imageData = try? Data(contentsOf: imageUrl) else { return }
                 self.projectImageView.image = UIImage(data: imageData)
             }
-            
-            projectNameLabel.text = project?.name
-            projectDescriptionTextView.text = project?.description
-            projectTechnologiesLabel.text = project?.technologies
+
+            projectNameLabel.text = projectViewModel.name
+            projectDescriptionTextView.text = projectViewModel.description
+            projectTechnologiesLabel.text = projectViewModel.technologies
         }
     }
     
