@@ -57,7 +57,7 @@ class ProjectDetailsController: UIViewController {
     
     let projectTechnologiesLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 2
+        label.numberOfLines = 3
         label.textColor = .black
         label.textAlignment = .left
         label.font = UIFont(name: "AvenirNext-DemiBold", size: 17)

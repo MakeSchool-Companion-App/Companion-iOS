@@ -63,7 +63,7 @@ class AttendanceController: UIViewController {
                 self.locationManager.delegate = self
                 self.locationManager.startUpdatingLocation()
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                 self.locationManager.pausesLocationUpdatesAutomatically = false
+                self.locationManager.pausesLocationUpdatesAutomatically = false
                 self.locationManager.activityType = .fitness
             }
         }
