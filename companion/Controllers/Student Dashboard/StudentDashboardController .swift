@@ -86,6 +86,9 @@ extension StudentDashboardController: UICollectionViewDelegateFlowLayout {
             guard let projectsSectionCell = tableView.dequeueReusableCell(withIdentifier: ProjectsSectionCell.cellId, for: indexPath) as? ProjectsSectionCell else { return UITableViewCell() }
     
             projectsSectionCell.projectsViewModel = projectsViewModel
+            
+            
+            
 //            projectsSectionCell.delegate = self
             projectsSectionCell.tapCell = { (viewModel) in
                 let projectDetailsController = ProjectDetailsController()
