@@ -18,4 +18,5 @@ struct Constants {
     static let eventOutEmptyFormat = "000-00-00+00:00:00"
      static let eventOutEmptyFormatCheck = "000-00-00 00:00:00"
     static let checkoutDate = "checkoutDate"
+    static let iBeaconsId = [""]
 }

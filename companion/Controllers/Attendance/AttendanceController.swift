@@ -175,7 +175,7 @@ extension AttendanceController: CLLocationManagerDelegate{
         // check if the attendance was already taken to avoid double check in
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
-      ///  if region.identifier == Constants.makeSchoolRegionId {
+        if Constants.iBeaconsId.contains(region.identifier) {
             let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             
             AttendanceServices.create(attendance) { (att) in
@@ -191,15 +191,13 @@ extension AttendanceController: CLLocationManagerDelegate{
                      AppDelegate.shared.attendanceNotification(attendance: attendance)
                 }
             }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        
-        
-       
-        
-        if region.identifier == Constants.makeSchoolRegionId {
-            
+
+        if Constants.iBeaconsId.contains(region.identifier) {
+
             AttendanceServices.fetchLastAttendance { (lastAttendance) in
                 lastAttendance.event_out = Date().checkTime()
                 AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
@@ -208,7 +206,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             }
         }
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
             //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
