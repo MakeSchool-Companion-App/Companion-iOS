@@ -46,6 +46,7 @@ class ProjectsCollectionCell: UICollectionViewCell {
         label.text = "Companion App"
         label.textColor = MakeSchoolDesignColor.darkGrey
         label.font = UIFont(name: "AvenirNext-Medium", size: 12)
+        label.numberOfLines = 2
         return label
     }()
     

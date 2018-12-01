@@ -51,7 +51,7 @@ extension Date{
     
     var timeToStringFormat: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm a"
+        formatter.dateFormat = "h:mm a"
         let stringDate = formatter.string(from: self)
         return stringDate
     }

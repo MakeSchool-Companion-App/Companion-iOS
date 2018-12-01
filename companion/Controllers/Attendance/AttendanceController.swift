@@ -63,7 +63,7 @@ class AttendanceController: UIViewController {
                 self.locationManager.delegate = self
                 self.locationManager.startUpdatingLocation()
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                 self.locationManager.pausesLocationUpdatesAutomatically = false
+                self.locationManager.pausesLocationUpdatesAutomatically = false
                 self.locationManager.activityType = .fitness
             }
         }
@@ -143,6 +143,7 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
         cell.checkInTimeLabel.text = studentAttendance.checkInTime
         cell.checkOutTimeLabel.text = studentAttendance.checkOutTime
         cell.checkOutDateLabel.text = studentAttendance.checkOutDate
+        cell.selectionStyle = .none
         
         return cell
     }

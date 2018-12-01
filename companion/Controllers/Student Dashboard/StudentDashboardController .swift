@@ -93,14 +93,14 @@ extension StudentDashboardController: UICollectionViewDelegateFlowLayout {
         switch indexPath.section {
         case 0:
             // User Profile
-            guard let userProfileCell = tableView.dequeueReusableCell(withIdentifier: UserProfileSectionCell.cellId, for: indexPath) as? UserProfileSectionCell else { fatalError("StudentDashboardController: failed to create a UserProileSectionCell") }
+            guard let userProfileCell = tableView.dequeueReusableCell(withIdentifier: UserProfileSectionCell.cellId, for: indexPath) as? UserProfileSectionCell else { return UITableViewCell() }
             userProfileCell.profile = profile
-            
+            userProfileCell.selectionStyle = .none
             return userProfileCell
             
         case 1:
             // Projects Section
-            guard let projectsSectionCell = tableView.dequeueReusableCell(withIdentifier: ProjectsSectionCell.cellId, for: indexPath) as? ProjectsSectionCell else { fatalError("StudentDashboardController: failed to create a ProjectsSectionCell") }
+            guard let projectsSectionCell = tableView.dequeueReusableCell(withIdentifier: ProjectsSectionCell.cellId, for: indexPath) as? ProjectsSectionCell else { return UITableViewCell() }
     
             projectsSectionCell.projects = projects
             projectsSectionCell.delegate = self
@@ -109,14 +109,14 @@ extension StudentDashboardController: UICollectionViewDelegateFlowLayout {
             
         case 2:
             // Courses Section
-            guard let coursesSectionCell = tableView.dequeueReusableCell(withIdentifier: CoursesSectionCell.cellId, for: indexPath) as? CoursesSectionCell else { fatalError("StudentDashboardController: failed to create a CoursesSectionCell") }
+            guard let coursesSectionCell = tableView.dequeueReusableCell(withIdentifier: CoursesSectionCell.cellId, for: indexPath) as? CoursesSectionCell else { return UITableViewCell() }
             print("Courses: \(courses)")
             coursesSectionCell.courses = courses
             return coursesSectionCell
             
         case 3:
             // Useful Links Section
-            guard let usefulLinksSectionCell = tableView.dequeueReusableCell(withIdentifier: UsefulLinkSectionCell.cellId, for: indexPath) as? UsefulLinkSectionCell else { fatalError("StudentDashboardController: failed to create a UsefulLinkSectionCell") }
+            guard let usefulLinksSectionCell = tableView.dequeueReusableCell(withIdentifier: UsefulLinkSectionCell.cellId, for: indexPath) as? UsefulLinkSectionCell else { return UITableViewCell() }
             usefulLinksSectionCell.userLinkButton.addTarget(self, action: #selector(showStaticLinks), for: .touchUpInside)
             return usefulLinksSectionCell
             
@@ -202,7 +202,8 @@ extension StudentDashboardController: ProjectsSectionCellDelegate {
         let projectDetailsController = ProjectDetailsController()
         projectDetailsController.project = project
         print(project)
-        self.present(projectDetailsController, animated: true, completion: nil)
+        
+        self.navigationController?.pushViewController(projectDetailsController, animated: true)
         
     }
     

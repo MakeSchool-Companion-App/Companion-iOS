@@ -50,7 +50,9 @@ class ScanBeaconController: UIViewController {
         return button
     }()
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     // MARK: - View Life Cyle Methods
     
