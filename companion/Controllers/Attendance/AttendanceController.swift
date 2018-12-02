@@ -117,7 +117,6 @@ class AttendanceController: UIViewController {
         
         let scanBeaconController = ScanBeaconController()
         self.navigationController?.present(scanBeaconController, animated: true, completion: nil)
-        
     }
 }
 
@@ -153,7 +152,7 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return attendance.count == 0 ? 150: 0
+        return attendancesViewModel.count == 0 ? 150: 0
     }
 
 }
@@ -165,9 +164,17 @@ extension AttendanceController: CLLocationManagerDelegate{
         
         
         // check if the attendance was already taken to avoid double check in
-        if AttendanceServices.isTodayAttendanceDone() == true{ return}
+        
+        attendancesViewModel.doesTodaysAttendanceExist { (exist) in
+            if exist {
+                return
+            }
+        }
+//        if AttendanceServices.isTodayAttendanceDone() == true{ return}
         
       ///  if region.identifier == Constants.makeSchoolRegionId {
+        
+            let attendanceViewModel = AttendanceViewModel(attendance: <#T##Attendance#>)
             let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
             
             AttendanceServices.create(attendance) { (att) in
@@ -218,6 +225,8 @@ extension AttendanceController: CLLocationManagerDelegate{
                 if onPost == false{
                     onPost = true
                 //self.presentAlert(title: "out of range", message: "you left make school")
+                    
+                    
                     
                     let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
                     
