@@ -213,6 +213,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
             let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
+            let assumeBestLocation = CLLocation(latitude:  37.787612, longitude: -122.411046)
           
             let distance = location.distance(from: msCoordinate)
            //  self.title = String(distance)
