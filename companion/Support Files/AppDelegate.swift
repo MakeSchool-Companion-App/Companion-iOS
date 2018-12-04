@@ -57,16 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
-        switch environment {
-        case .development:
-            // set web service URL to development
-            // set API keys to development
-            print("It's for development")
-        case .production:
-            // set web service URL to production
-            // set API keys to production
-            print("It's for production")
-        }
+//        switch environment {
+//        case .development:
+//            // set web service URL to development
+//            // set API keys to development
+//            print("It's for development")
+//        case .production:
+//            // set web service URL to production
+//            // set API keys to production
+//            print("It's for production")
+//        }
 
         
         
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         configureInitialRootViewController(for: window)
         
-        beaconManager.startMonitoring()
+        //beaconManager.startMonitoring()
         
         
         return true
@@ -109,54 +109,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: CLLocationManagerDelegate{
     
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        let identifier = region.identifier
-        
-        AttendanceController.shared.presentAlert(title: "did enter", message: "enter in the region")
-        
-        let att = Attendance.init(event: .onEntry, beaconId: "test", event_in: "test", event_out: "test", id: 0, user_id: 0)
-         self.attendanceNotification(attendance: att)
-        // check if the attendance was already taken to avoid double check in
-        if AttendanceServices.isTodayAttendanceDone() == true{ return}
-        
-        if identifier == Constants.makeSchoolRegionId {
-            let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
-            AttendanceServices.create(attendance) { (att) in
-                if let checkInAttendance = att{
-                    
-                    /// store the date and id of the last attendance for future verification
-                    UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
-                    
-                    UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
-                   
-                    
-                    /// local notification
-                    self.attendanceNotification(attendance: checkInAttendance)
-                    
-                    /// save today attendance
-                    AttendanceServices.markAttendance()
-                }
-            }
-        }
-    }
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-       
-    }
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-         AttendanceController.shared.presentAlert(title: "did Exit", message: "exiting the region")
-        if region.identifier == Constants.makeSchoolRegionId {
-            
-            //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
-            AttendanceServices.fetchLastAttendance { (lastAttendance) in
-                lastAttendance.event_out = Date().checkTime()
-                AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-                    self.attendanceNotification(attendance: updatedAttendance)
-                })
-            }
-           
-        }
-    }
-    
+//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+//        let identifier = region.identifier
+//
+//        AttendanceController.shared.presentAlert(title: "did enter", message: "enter in the region")
+//
+//        let att = Attendance.init(event: .onEntry, beaconId: "test", event_in: "test", event_out: "test", id: 0, user_id: 0)
+//         self.attendanceNotification(attendance: att)
+//        // check if the attendance was already taken to avoid double check in
+//        if AttendanceServices.isTodayAttendanceDone() == true{ return}
+//
+//        if identifier == Constants.makeSchoolRegionId {
+//            let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
+//            AttendanceServices.create(attendance) { (att) in
+//                if let checkInAttendance = att{
+//
+//                    /// store the date and id of the last attendance for future verification
+//                    UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
+//
+//                    UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
+//
+//
+//                    /// local notification
+//                    self.attendanceNotification(attendance: checkInAttendance)
+//
+//                    /// save today attendance
+//                    AttendanceServices.markAttendance()
+//                }
+//            }
+//        }
+//    }
+//    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+//
+//    }
+//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//         AttendanceController.shared.presentAlert(title: "did Exit", message: "exiting the region")
+//        if region.identifier == Constants.makeSchoolRegionId {
+//
+//            //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
+//            AttendanceServices.fetchLastAttendance { (lastAttendance) in
+//                lastAttendance.event_out = Date().checkTime()
+//                AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+//                    self.attendanceNotification(attendance: updatedAttendance)
+//                })
+//            }
+//
+//        }
+//    }
+
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

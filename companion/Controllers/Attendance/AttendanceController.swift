@@ -13,7 +13,7 @@ import UserNotifications
 
 class AttendanceController: UIViewController {
     // MARK: - Properties
-    let locationManager = CLLocationManager()
+    let locationManager = AppDelegate.shared.locationManager
     var attendance = [Attendance]() {
         didSet {
             DispatchQueue.main.async {
@@ -168,45 +168,45 @@ extension AttendanceController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension AttendanceController: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        
-        //self.presentAlert(title: "did enter", message: "enter in the region")
-        
-        
-        // check if the attendance was already taken to avoid double check in
-        if AttendanceServices.isTodayAttendanceDone() == true{ return}
-        
-        if Constants.iBeaconsId.contains(region.identifier) {
-            let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
-            
-            AttendanceServices.create(attendance) { (att) in
-                if let checkInAttendance = att{
-                     self.presentAlert(title: "post attendance", message: "post attendance completed")
-                    /// store the date and id of the last attendance for future verification
-                    UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
-                    
-                    UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
-                    
-                    
-                    /// save today attendance
-                     AppDelegate.shared.attendanceNotification(attendance: attendance)
-                }
-            }
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+//
+//        //self.presentAlert(title: "did enter", message: "enter in the region")
+//
+//
+//        // check if the attendance was already taken to avoid double check in
+//        if AttendanceServices.isTodayAttendanceDone() == true{ return}
+//
+//        if Constants.iBeaconsId.contains(region.identifier) {
+//            let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
+//
+//            AttendanceServices.create(attendance) { (att) in
+//                if let checkInAttendance = att{
+//                     self.presentAlert(title: "post attendance", message: "post attendance completed")
+//                    /// store the date and id of the last attendance for future verification
+//                    UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
+//
+//                    UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
+//
+//
+//                    /// save today attendance
+//                     AppDelegate.shared.attendanceNotification(attendance: attendance)
+//                }
+//            }
+//        }
+//    }
 
-        if Constants.iBeaconsId.contains(region.identifier) {
-
-            AttendanceServices.fetchLastAttendance { (lastAttendance) in
-                lastAttendance.event_out = Date().checkTime()
-                AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-                    AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
-                })
-            }
-        }
-    }
+//    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+//
+//        if Constants.iBeaconsId.contains(region.identifier) {
+//
+//            AttendanceServices.fetchLastAttendance { (lastAttendance) in
+//                lastAttendance.event_out = Date().checkTime()
+//                AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
+//                    AppDelegate.shared.attendanceNotification(attendance: updatedAttendance)
+//                })
+//            }
+//        }
+//    }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
@@ -215,7 +215,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
           
             let distance = location.distance(from: msCoordinate)
-           //  self.title = String(distance)
+           self.title = String(distance)
             if distance < 50 {
                 
                 // check if the attendance was already taken to avoid double check in
@@ -223,7 +223,6 @@ extension AttendanceController: CLLocationManagerDelegate{
                 
                 if onPost == false{
                     onPost = true
-                //self.presentAlert(title: "out of range", message: "you left make school")
                     
                     let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
                    
@@ -239,7 +238,7 @@ extension AttendanceController: CLLocationManagerDelegate{
                                 
                                 
                                 AttendanceServices.markAttendance()
-                                //self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
+                                self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
                                 self.reloadTable()
                                 AppDelegate.shared.attendanceNotification(attendance: attendance)
                             })
