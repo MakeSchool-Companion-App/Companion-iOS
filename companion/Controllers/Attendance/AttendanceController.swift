@@ -210,13 +210,14 @@ extension AttendanceController: CLLocationManagerDelegate{
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
-            //let cord = CLLocationCoordinate2D(latitude: 37.787871, longitude: -122.410966)
+
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
-            let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
+           // let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
+            let bestEstimateLocation = CLLocation(latitude: 37.787675, longitude: -122.410973)
           
-            let distance = location.distance(from: msCoordinate)
+            let distance = location.distance(from: bestEstimateLocation)
            self.title = String(distance)
-            if distance < 50 {
+            if distance < 75 {
                 
                 // check if the attendance was already taken to avoid double check in
                 if AttendanceServices.isTodayAttendanceDone() == true{ return}
