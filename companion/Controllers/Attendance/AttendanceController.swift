@@ -60,6 +60,7 @@ class AttendanceController: UIViewController {
         
         GeoFenceServices.startMonitoringMakeschool { (started) in
             if started {
+                self.locationManager.requestAlwaysAuthorization()
                 self.locationManager.delegate = self
                 self.locationManager.startUpdatingLocation()
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
