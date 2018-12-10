@@ -217,7 +217,7 @@ extension AttendanceController: CLLocationManagerDelegate{
             let bestEstimateLocation = CLLocation(latitude: 37.787675, longitude: -122.410973)
           
             let distance = location.distance(from: bestEstimateLocation)
-           self.title = String(distance)
+          
             if distance < 100 {
                 
                 // check if the attendance was already taken to avoid double check in
