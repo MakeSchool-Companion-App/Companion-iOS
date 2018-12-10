@@ -217,7 +217,7 @@ extension AttendanceController: CLLocationManagerDelegate{
           
             let distance = location.distance(from: bestEstimateLocation)
            self.title = String(distance)
-            if distance < 75 {
+            if distance < 100 {
                 
                 // check if the attendance was already taken to avoid double check in
                 if AttendanceServices.isTodayAttendanceDone() == true{ return}
