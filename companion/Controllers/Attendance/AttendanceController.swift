@@ -14,12 +14,12 @@ import UserNotifications
 class AttendanceController: UIViewController {
     // MARK: - Properties
     let locationManager = AppDelegate.shared.locationManager
+
     var attendance = [Attendance]() {
         didSet {
             DispatchQueue.main.async {
                 self.attendanceTableView.reloadData()
             }
-            
         }
     }
     var onPost = false
@@ -65,6 +65,7 @@ class AttendanceController: UIViewController {
                 self.locationManager.startUpdatingLocation()
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 self.locationManager.pausesLocationUpdatesAutomatically = false
+                self.locationManager.allowsBackgroundLocationUpdates = true
                 self.locationManager.activityType = .fitness
             }
         }
@@ -217,8 +218,8 @@ extension AttendanceController: CLLocationManagerDelegate{
             let bestEstimateLocation = CLLocation(latitude: 37.787675, longitude: -122.410973)
           
             let distance = location.distance(from: bestEstimateLocation)
-          
-            if distance < 100 {
+
+            if distance < 90 {
                 
                 // check if the attendance was already taken to avoid double check in
                 if AttendanceServices.isTodayAttendanceDone() == true{ return}
