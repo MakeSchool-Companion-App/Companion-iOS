@@ -28,6 +28,11 @@
 	<string>This app needs access to your location. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app need access to your location description. </string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

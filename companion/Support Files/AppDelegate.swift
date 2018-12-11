@@ -56,25 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        switch environment {
-        case .development:
-            // set web service URL to development
-            // set API keys to development
-            print("It's for development")
-        case .production:
-            // set web service URL to production
-            // set API keys to production
-            print("It's for production")
-        }
-
-        
-        
         window = UIWindow()
         
         configureInitialRootViewController(for: window)
         
-        beaconManager.startMonitoring()
+        //beaconManager.startMonitoring()
         
         
         return true
@@ -88,75 +74,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     self.locationManager.delegate = self
+     //self.locationManager.delegate = self
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        self.locationManager.delegate = self
+       // self.locationManager.delegate = self
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     self.locationManager.delegate = self
+     //self.locationManager.delegate = self
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-     self.locationManager.delegate = self
+     //self.locationManager.delegate = self
     }
     }
 
 extension AppDelegate: CLLocationManagerDelegate{
-    
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        let identifier = region.identifier
-        
-        AttendanceController.shared.presentAlert(title: "did enter", message: "enter in the region")
-        
-        let att = Attendance.init(event: .onEntry, beaconId: "test", event_in: "test", event_out: "test", id: 0, user_id: 0)
-         self.attendanceNotification(attendance: att)
-        // check if the attendance was already taken to avoid double check in
-        if AttendanceServices.isTodayAttendanceDone() == true{ return}
-        
-        if identifier == Constants.makeSchoolRegionId {
-            let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
-            AttendanceServices.create(attendance) { (att) in
-                if let checkInAttendance = att{
-                    
-                    /// store the date and id of the last attendance for future verification
-                    UserDefaults.standard.set(checkInAttendance.id, forKey: Constants.attendanceId)
-                    
-                    UserDefaults.standard.set(checkInAttendance.event_in, forKey: Constants.eventId)
-                   
-                    
-                    /// local notification
-                    self.attendanceNotification(attendance: checkInAttendance)
-                    
-                    /// save today attendance
-                    AttendanceServices.markAttendance()
-                }
-            }
-        }
-    }
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-       
-    }
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-         AttendanceController.shared.presentAlert(title: "did Exit", message: "exiting the region")
-        if region.identifier == Constants.makeSchoolRegionId {
-            
-            //let id = UserDefaults.standard.value(forKey: Constants.attendanceId) as! Int
-            AttendanceServices.fetchLastAttendance { (lastAttendance) in
-                lastAttendance.event_out = Date().checkTime()
-                AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-                    self.attendanceNotification(attendance: updatedAttendance)
-                })
-            }
-           
-        }
-    }
-    
+
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
