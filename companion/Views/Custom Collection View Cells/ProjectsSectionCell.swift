@@ -24,7 +24,7 @@ class ProjectsSectionCell: UITableViewCell {
     typealias PassProjectViewModel = (ProjectViewModel) -> Void
     var tapCell: PassProjectViewModel?
     
-    var projectsViewModel: ProjectsViewModel? {
+    var projectsViewModel: ProjectsListViewModel? {
         didSet {
             DispatchQueue.main.async {
                 self.projectsCollectionView?.reloadData()
@@ -59,7 +59,7 @@ class ProjectsSectionCell: UITableViewCell {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 14
-        flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
+        
         projectsCollectionView = UICollectionView(frame: self.frame, collectionViewLayout: flowLayout)
         projectsCollectionView?.delegate = self
         projectsCollectionView?.dataSource = self

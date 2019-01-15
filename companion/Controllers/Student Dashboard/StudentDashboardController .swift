@@ -14,7 +14,7 @@ class StudentDashboardController: UITableViewController {
      // MARK: - Properties
     
     var userProfileViewModel = UserProfileViewModel()
-    var projectsViewModel = ProjectsViewModel()
+    var projectsViewModel = ProjectsListViewModel()
     
     
     var courses: [Course] = [

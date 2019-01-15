@@ -107,7 +107,7 @@
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		8074A69C21AE553000768398 /* ProjectsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074A69B21AE553000768398 /* ProjectsViewModelTests.swift */; };
 		8074A69F21AE5D9700768398 /* AttendanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074A69E21AE5D9700768398 /* AttendanceViewModel.swift */; };
-		8074A6A121AE651700768398 /* AttendancesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074A6A021AE651700768398 /* AttendancesViewModel.swift */; };
+		8074A6A121AE651700768398 /* AttendancesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8074A6A021AE651700768398 /* AttendancesListViewModel.swift */; };
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
 		80A386B521A948EA00536AC5 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A386B421A948EA00536AC5 /* UserViewModel.swift */; };
 		80A386B721A97A9200536AC5 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A386B621A97A9200536AC5 /* UserProfileViewModel.swift */; };
@@ -124,7 +124,7 @@
 		80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F2215EE10D008E98EF /* MainTabBarController.swift */; };
 		80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */; };
 		80FFE31021ADF8380028299E /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FFE30F21ADF8380028299E /* ProjectViewModel.swift */; };
-		80FFE31321ADFD610028299E /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FFE31221ADFD610028299E /* ProjectsViewModel.swift */; };
+		80FFE31321ADFD610028299E /* ProjectsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FFE31221ADFD610028299E /* ProjectsListViewModel.swift */; };
 		80FFE31721AE287D0028299E /* ProjectViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FFE31621AE287D0028299E /* ProjectViewModelTests.swift */; };
 		9224D480E4FF9A068F640F21 /* Pods_companionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4869445B8B1A39767B46C9 /* Pods_companionTests.framework */; };
 		D4119DD8C8EBD302FFF606C4 /* Pods_companion_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */; };
@@ -200,7 +200,7 @@
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		8074A69B21AE553000768398 /* ProjectsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModelTests.swift; sourceTree = "<group>"; };
 		8074A69E21AE5D9700768398 /* AttendanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewModel.swift; sourceTree = "<group>"; };
-		8074A6A021AE651700768398 /* AttendancesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendancesViewModel.swift; sourceTree = "<group>"; };
+		8074A6A021AE651700768398 /* AttendancesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendancesListViewModel.swift; sourceTree = "<group>"; };
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
 		80A386B421A948EA00536AC5 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		80A386B621A97A9200536AC5 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 		80DC39F2215EE10D008E98EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
 		80FFE30F21ADF8380028299E /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
-		80FFE31221ADFD610028299E /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
+		80FFE31221ADFD610028299E /* ProjectsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsListViewModel.swift; sourceTree = "<group>"; };
 		80FFE31621AE287D0028299E /* ProjectViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModelTests.swift; sourceTree = "<group>"; };
 		BE46A2D2E1719AF5EACDF5E6 /* Pods-companionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2DFC0FA15CCF60A251303A3 /* Pods-companionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -486,7 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				8074A69E21AE5D9700768398 /* AttendanceViewModel.swift */,
-				8074A6A021AE651700768398 /* AttendancesViewModel.swift */,
+				8074A6A021AE651700768398 /* AttendancesListViewModel.swift */,
 			);
 			path = "Attendance View Models";
 			sourceTree = "<group>";
@@ -553,7 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				80FFE30F21ADF8380028299E /* ProjectViewModel.swift */,
-				80FFE31221ADFD610028299E /* ProjectsViewModel.swift */,
+				80FFE31221ADFD610028299E /* ProjectsListViewModel.swift */,
 			);
 			path = "Projects View Models";
 			sourceTree = "<group>";
@@ -866,7 +866,7 @@
 				80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */,
 				802446C421A12117008B2100 /* UsefulLinksController.swift in Sources */,
 				80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */,
-				8074A6A121AE651700768398 /* AttendancesViewModel.swift in Sources */,
+				8074A6A121AE651700768398 /* AttendancesListViewModel.swift in Sources */,
 				80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */,
 				80A386B521A948EA00536AC5 /* UserViewModel.swift in Sources */,
 				80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */,
@@ -904,7 +904,7 @@
 				8074A69F21AE5D9700768398 /* AttendanceViewModel.swift in Sources */,
 				20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */,
 				80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */,
-				80FFE31321ADFD610028299E /* ProjectsViewModel.swift in Sources */,
+				80FFE31321ADFD610028299E /* ProjectsListViewModel.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
 				8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */,
 				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,

@@ -15,7 +15,7 @@ class AttendanceController: UIViewController {
     // MARK: - Properties
     let locationManager = CLLocationManager()
     
-    var attendancesViewModel = AttendancesViewModel()
+    var attendancesViewModel = AttendancesListViewModel()
     
     var onPost = false
     var onUpdate = false
