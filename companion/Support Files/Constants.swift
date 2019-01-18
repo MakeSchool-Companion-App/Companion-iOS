@@ -8,6 +8,7 @@
 
 import Foundation
 struct Constants {
+    
     static var current = "current"
     static var makeSchoolRegionId = "makeschool"
     static var attendanceNotificationId = "attendanceNotificationId"
@@ -16,6 +17,11 @@ struct Constants {
     static let savedAttendance = "savedAttendance"
     static let lastAttendanceId = "lastAttendanceId"
     static let eventOutEmptyFormat = "000-00-00+00:00:00"
-     static let eventOutEmptyFormatCheck = "000-00-00 00:00:00"
+    static let eventOutEmptyFormatCheck = "000-00-00 00:00:00"
+    static let userOnboardingCellID = "onboardingCellId"
+    
+    static let pages = [
+        Page(imageName: "makeschool", headerText: "Welcome to Companion", description: <#T##String#>)
+    ]
     
 }

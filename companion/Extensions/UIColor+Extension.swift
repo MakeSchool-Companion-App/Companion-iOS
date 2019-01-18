@@ -19,6 +19,8 @@ extension UIColor {
         self.init(red: r / 255, green: g / 255 , blue: b / 255, alpha: a)
     }
     
+    static var gloomyBule = UIColor(red: 20/255, green: 100/255, blue: 175/255, alpha: 1)
+    
     // Convert a hex string to a UIColor object.
     class func colorFromHex(hexString:String) -> UIColor {
         

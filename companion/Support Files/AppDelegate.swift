@@ -238,12 +238,20 @@ extension AppDelegate {
             User.setCurrent(user)
             initialViewController = MainTabBarController()
         } else {
+            
             initialViewController = LoginController()
         }
         
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     
+    }
+    
+    /// Renders the onboarding page when it's a first time user
+    func showOnboardingPage(){
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
     }
     
 }
