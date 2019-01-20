@@ -55,6 +55,7 @@ class ProfileCardView: UIView {
         textView.textAlignment = .left
         textView.backgroundColor = UIColor.clear
         textView.font = UIFont(name: "AvenirNext-Medium", size: 13)
+        textView.isEditable = false 
         return textView
     }()
     

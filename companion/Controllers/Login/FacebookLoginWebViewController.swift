@@ -11,6 +11,7 @@ import UIKit
 import WebKit
 import KeychainSwift
 
+
 class FacebookLoginWebViewController: UIViewController {
     
     // MARK: - Properties
@@ -28,15 +29,21 @@ class FacebookLoginWebViewController: UIViewController {
         return webView
     }()
     
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(cancelFacebookLogin), for: .touchUpInside)
+        return button
+    }()
+    
+
     // MARK: - View Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupAutoLayout()
-        
-//        view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//        view.setNeedsLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +58,6 @@ class FacebookLoginWebViewController: UIViewController {
         super.loadView()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-//        self.view = facebookWebView
         view.backgroundColor = UIColor.white
     }
     
@@ -72,6 +78,24 @@ class FacebookLoginWebViewController: UIViewController {
             height: 0,
             width: 0)
         
+        facebookWebView.addSubview(cancelButton)
+        cancelButton.anchor(
+            top: facebookWebView.topAnchor,
+            right: nil,
+            bottom: nil,
+            left: facebookWebView.leftAnchor,
+            topPadding: 7,
+            rightPadding: 0,
+            bottomPadding: 0,
+            leftPadding: 5,
+            height: 25,
+            width: 70)
+        
+    }
+    
+    @objc private func cancelFacebookLogin() {
+        print("Cancelling Facebook Login")
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -110,19 +134,19 @@ extension FacebookLoginWebViewController: WKNavigationDelegate {
                             keychain.set(cookie.value, forKey: "cookieValue")
                             keychain.set(cookie.domain, forKey: "cookieDomain")
                             keychain.set(cookie.name, forKey: "cookieName")
-                            HTTPCookieStorage.shared.setCookie(cookie)
+                            //HTTPCookieStorage.shared.setCookie(cookie)
                             
                             FacebookServices.showFacebookUserProfile(completionHandler: { (user, error) in
                                 if let user = user{
-                                    User.setCurrent(user)
+                                    User.setCurrent(user, writeToUserDefaults: true)
                                     // go to the nexr view controller
+                                
                                     let mainTabBarController = MainTabBarController()
                                     self.present(mainTabBarController, animated: true, completion: nil)
                                 }
                             })
                             return
                         }
-                        
                     })
                 }
             }
