@@ -13,7 +13,7 @@ class UserOnboardingViewController: UICollectionViewController{
     
     // - MARK: CLASS PROPERTIES
     
-    // creates and styles the button to go backward
+    // creates and styles the button to skip the onboarding
     let skipButton: UIButton = {
         
         let button = UIButton(type: .system)
@@ -55,6 +55,7 @@ class UserOnboardingViewController: UICollectionViewController{
         return pageController
     }()
     
+    
     // - MARK: VIEW CONTROLLER LIFECYCLE METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,12 +80,13 @@ class UserOnboardingViewController: UICollectionViewController{
         sender.pulsate()
     }
     
-    /// Skips to the user preferences page
+    /// Skips to the login page
     @objc private func handleSkipButton(_ sender: UIButton){
         
         sender.pulsate()
-        
+        AppDelegate.shared.showLoginPage()
     }
+    
     
     /// Configures and layout the skip, next button and the UIPager element
     private func setUpButtonControls(){
@@ -97,16 +99,9 @@ class UserOnboardingViewController: UICollectionViewController{
         
         NSLayoutConstraint.activate([
             bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             bottomControlsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomControlsStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
             bottomControlsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
-            //nextButton.widthAnchor.constraint(equalTo: bottomControlsStackView.widthAnchor, multiplier: 0.3),
-//            nextButton.centerXAnchor.constraint(equalTo: bottomControlsStackView.centerXAnchor)
-            //nextButton.heightAnchor.constraint(equalTo: bottomControlsStackView.heightAnchor, multiplier: 0.6),
-//            pageControll.widthAnchor.constraint(equalTo: bottomControlsStackView.widthAnchor, multiplier: 0.3),
-//            pageControll.heightAnchor.constraint(equalTo: bottomControlsStackView.heightAnchor, multiplier: 0.08)
             ])
     }
 }

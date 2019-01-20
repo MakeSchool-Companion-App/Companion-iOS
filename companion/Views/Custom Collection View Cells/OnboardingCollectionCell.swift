@@ -15,7 +15,7 @@ class OnboardingCollectionCell: UICollectionViewCell {
             
             guard let unwrappedPage = page else {return}
             
-            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 23)])
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 23),NSAttributedString.Key.foregroundColor: UIColor.gloomyBlue])
             
             attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.description)", attributes:
                 [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),

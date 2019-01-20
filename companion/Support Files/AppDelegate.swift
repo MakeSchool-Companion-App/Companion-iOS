@@ -81,10 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         
-        
-        window = UIWindow()
-        
-        configureInitialRootViewController(for: window)
+        configureInitialRootViewController()
         
         beaconManager.startMonitoring()
         
@@ -226,30 +223,24 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 extension AppDelegate {
     
-    func configureInitialRootViewController(for window: UIWindow?) {
-        let defualts = UserDefaults.standard
-        let initialViewController: UIViewController
+    func configureInitialRootViewController() {
         
-       
+        let defualts = UserDefaults.standard
+        
         if let _ = User.current,
            let userData = defualts.object(forKey: Constants.current) as? Data,
            let user = try? JSONDecoder().decode(User.self, from: userData) {
             
             User.setCurrent(user)
-            initialViewController = MainTabBarController()
+            showHomePage()
         } else {
             
-            //initialViewController = LoginController()
             showOnboardingPage()
         }
-        
-//        window?.rootViewController = initialViewController
-//        window?.makeKeyAndVisible()
-    
     }
     
-    /// Renders the onboarding page when it's a first time user
-    func showOnboardingPage(){
+    /// Renders the onboarding page
+    private func showOnboardingPage(){
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -261,6 +252,25 @@ extension AppDelegate {
             window.rootViewController = destinationVC
             window.makeKeyAndVisible()
         }
+    }
+    
+    /// Renders the homepage
+    private func showHomePage(){
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let destinationVC = MainTabBarController()
+        window?.rootViewController = destinationVC
+        window?.makeKeyAndVisible()
+    
+    }
+    
+    /// Shows the Login page
+    func showLoginPage(){
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let destinationVC = LoginController()
+        window?.rootViewController = destinationVC
+        window?.makeKeyAndVisible()
     }
     
 }
