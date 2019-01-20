@@ -17,7 +17,6 @@ class OnboardingController: UICollectionViewController {
         Page(image: "", headerText: "", bodyText: ""),
         Page(image: "", headerText: "", bodyText: "Companion uses an iBeacon and your location to keep track of your attendance. "),
         Page(image: "" , headerText: "", bodyText: "You will be able see when you walked inside and outside of school ")
-        
     ]
     
     // MARK: - UI Elements
