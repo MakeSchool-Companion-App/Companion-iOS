@@ -77,9 +77,9 @@ class OnboardingCollectionCell: UICollectionViewCell {
                                      stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
                                      stack.centerXAnchor.constraint(equalTo: centerXAnchor),
                                      stack.centerYAnchor.constraint(equalTo: centerYAnchor),
-                                     pageImageView.heightAnchor.constraint(equalTo: stack.heightAnchor, multiplier: 0.6),
-                                     pageImageView.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.4),
-                                     pageDescriptionTextView.heightAnchor.constraint(equalTo: stack.heightAnchor, multiplier: 0.3),
+                                     pageImageView.heightAnchor.constraint(equalTo: stack.heightAnchor, multiplier: 0.5),
+                                     pageImageView.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.65),
+                                     pageDescriptionTextView.heightAnchor.constraint(equalTo: stack.heightAnchor, multiplier: 0.5),
                                      pageDescriptionTextView.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 0.8)])
     }
     

@@ -34,6 +34,12 @@ class UserOnboardingViewController: UICollectionViewController{
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(handleNextSwipe(_:)), for: .touchUpInside)
+        button.backgroundColor = .gloomyBlue
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 25
+        button.clipsToBounds = true
+        button.layer.masksToBounds = true
+        button.layer.shadowRadius = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -56,7 +62,7 @@ class UserOnboardingViewController: UICollectionViewController{
         collectionView?.backgroundColor = .white
         collectionView?.isPagingEnabled =  true
         collectionView?.showsHorizontalScrollIndicator = false
-        self.collectionView!.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: Constant.onboardingViewCellIdentifier)
+        self.collectionView!.register(OnboardingCollectionCell.self, forCellWithReuseIdentifier: Constants.userOnboardingCellID)
         setUpButtonControls()
     }
     
@@ -66,7 +72,7 @@ class UserOnboardingViewController: UICollectionViewController{
     /// Swipes to the next page on the onboarding page
     @objc private func handleNextSwipe(_ sender: UIButton){
         
-        let nextIndex = min(pageControll.currentPage + 1, Constant.pages.count - 1)
+        let nextIndex = min(pageControll.currentPage + 1, Constants.pages.count - 1)
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControll.currentPage = nextIndex
         collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -77,23 +83,30 @@ class UserOnboardingViewController: UICollectionViewController{
     @objc private func handleSkipButton(_ sender: UIButton){
         
         sender.pulsate()
-        AppDelegate.shared.showUserPreferencesPage()
+        
     }
     
     /// Configures and layout the skip, next button and the UIPager element
     private func setUpButtonControls(){
         
-        let bottomControlsStackView = UIStackView(arrangedSubviews: [skipButton, pageControll, nextButton])
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [pageControll, nextButton, skipButton])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
-        bottomControlsStackView.axis = .horizontal
+        bottomControlsStackView.axis = .vertical
         bottomControlsStackView.distribution = .fillEqually
         view.addSubview(bottomControlsStackView)
         
         NSLayoutConstraint.activate([
             bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+//            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+//            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomControlsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            bottomControlsStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
+            bottomControlsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
+            //nextButton.widthAnchor.constraint(equalTo: bottomControlsStackView.widthAnchor, multiplier: 0.3),
+//            nextButton.centerXAnchor.constraint(equalTo: bottomControlsStackView.centerXAnchor)
+            //nextButton.heightAnchor.constraint(equalTo: bottomControlsStackView.heightAnchor, multiplier: 0.6),
+//            pageControll.widthAnchor.constraint(equalTo: bottomControlsStackView.widthAnchor, multiplier: 0.3),
+//            pageControll.heightAnchor.constraint(equalTo: bottomControlsStackView.heightAnchor, multiplier: 0.08)
             ])
     }
 }

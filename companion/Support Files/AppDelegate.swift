@@ -239,11 +239,12 @@ extension AppDelegate {
             initialViewController = MainTabBarController()
         } else {
             
-            initialViewController = LoginController()
+            //initialViewController = LoginController()
+            showOnboardingPage()
         }
         
-        window?.rootViewController = initialViewController
-        window?.makeKeyAndVisible()
+//        window?.rootViewController = initialViewController
+//        window?.makeKeyAndVisible()
     
     }
     
@@ -252,6 +253,14 @@ extension AppDelegate {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = window{
+            
+            let destinationVC = UserOnboardingViewController(collectionViewLayout: layout)
+            window.rootViewController = destinationVC
+            window.makeKeyAndVisible()
+        }
     }
     
 }

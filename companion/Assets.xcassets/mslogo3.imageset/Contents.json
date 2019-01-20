@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ibeacon.png",
+      "filename" : "mslogo3.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ibeacon-1.png",
+      "filename" : "mslogo3-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ibeacon-2.png",
+      "filename" : "mslogo3-2.png",
       "scale" : "3x"
     }
   ],
