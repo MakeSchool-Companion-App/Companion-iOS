@@ -131,7 +131,7 @@ class LoginController: UIViewController {
         emailTextField.delegate = self
         emailTextField.becomeFirstResponder()
         passwordTextField.delegate = self
-        self.hideKeyboard()
+        self.hideKeyboardWhenTappedAround()
     }
     
     // MARK: - Methods
