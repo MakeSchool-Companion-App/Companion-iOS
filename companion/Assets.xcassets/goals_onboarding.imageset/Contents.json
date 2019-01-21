@@ -2,17 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "portfolio.png",
+      "filename" : "goals_onboarding.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "portfolio-1.png",
+      "filename" : "goals_onboarding-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "portfolio-2.png",
       "scale" : "3x"
     }
   ],
