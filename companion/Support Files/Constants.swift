@@ -22,11 +22,11 @@ struct Constants {
     static let userOnboardingCellID = "onboardingCellId"
     
     static let pages = [
-        Page(imageName: "makeschool", headerText: "Welcome to Companion", description: "Companion is the iOS platform created for Make School in sync with the web applications."),
-        Page(imageName: "ibeacon_onboarding", headerText: "Attendance Tracking", description: "Automatically get marked in and out of the Make School HQ based on your location approximity."),
-        Page(imageName: "portfolio_onboarding", headerText: "Student Portfolio", description: "All your projects grouped within your grasp, accessible at all time."),
-        Page(imageName: "link_onboarding", headerText: "Usefull Links", description: "Find external links to the Student HandBook, ISAs on Venmo, Degree Path, and many more within the app."),
-        Page(imageName: "goals_onboarding", headerText: "Future Features", description: "Upcoming versions will allow you to register for classes, view upcoming calendar meetings, general college announcements, and more.")
+        Page(imageName: "makeschool", headerText: "Welcome to Companion", description: "Companion is a handy resource for Make School students."),
+        Page(imageName: "ibeacon_onboarding", headerText: "Attendance Tracking", description: "Automatically get marked in and out of Make School based on your location."),
+        Page(imageName: "portfolio_onboarding", headerText: "Student Portfolio", description: "All your projects viewable in one place, accessible at any time."),
+        Page(imageName: "link_onboarding", headerText: "Usefull Links", description: "Find external links to the Student HandBook, ISAs on Vemo, Degree Path, and many more."),
+        Page(imageName: "goals_onboarding", headerText: "Future Features", description: "Have any suggestions for future features? Post your ideas in the #makeschoolapp Slack channel.")
     ]
     
 }
