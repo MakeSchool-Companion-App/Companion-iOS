@@ -13,9 +13,9 @@ class ProjectsCollectionCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    static var projectsCollectionCellId = "projectsCollectionCellId"
+    static var cellId = "projectsCollectionCellId"
     
-    
+
     // MARK: - UI Elements
     
     lazy var projectImageView: UIImageView = {
@@ -46,6 +46,7 @@ class ProjectsCollectionCell: UICollectionViewCell {
         label.text = "Companion App"
         label.textColor = MakeSchoolDesignColor.darkGrey
         label.font = UIFont(name: "AvenirNext-Medium", size: 12)
+        label.numberOfLines = 2
         return label
     }()
     
@@ -128,7 +129,5 @@ class ProjectsCollectionCell: UICollectionViewCell {
             width: 0)
         
     }
-    
-    
     
 }

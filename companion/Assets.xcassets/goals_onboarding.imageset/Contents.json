@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ibeacon.png",
+      "filename" : "goals_onboarding.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "goals_onboarding-1.png",
       "scale" : "2x"
     },
     {

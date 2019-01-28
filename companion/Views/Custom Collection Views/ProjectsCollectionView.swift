@@ -30,11 +30,6 @@ class ProjectsCollectionView: UICollectionView {
     // MARK: - Methods
     
     private func setupCollectionViewCell() {
-        self.register(ProjectsCollectionCell.self, forCellWithReuseIdentifier: ProjectsCollectionCell.projectsCollectionCellId)
-        
+        self.register(ProjectsCollectionCell.self, forCellWithReuseIdentifier: ProjectsCollectionCell.cellId)
     }
-    
-    
-    
-    
 }

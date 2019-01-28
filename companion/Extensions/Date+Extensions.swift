@@ -48,6 +48,20 @@ extension Date{
     public func checkTime() -> String{
         return self.toString() + "+" + self.timeToString()
     }
+    
+    var timeToStringFormat: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        let stringDate = formatter.string(from: self)
+        return stringDate
+    }
+    
+    var dayAndMonthStringFormat: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, MMM d"//"yyyy-MM-dd"
+        let stringDate = formatter.string(from: self)
+        return stringDate
+    }
 }
 
 extension Calendar{

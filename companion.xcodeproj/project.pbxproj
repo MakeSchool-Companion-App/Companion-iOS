@@ -37,14 +37,13 @@
 		20828DFB218BF93300875599 /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		20828DFC218BF93300875599 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94A214B117200D81ABD /* Date+Extensions.swift */; };
 		20828DFD218BF93300875599 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CD6214AE00F004B60A2 /* Beacon.swift */; };
-		20828DFE218BF93300875599 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E9215E18C9008E98EF /* OnboardingController.swift */; };
 		20828DFF218BF93300875599 /* BeaconServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDF214AE3F8004B60A2 /* BeaconServices.swift */; };
 		20828E00218BF93300875599 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
 		20828E01218BF93300875599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BEA2141A19200E05465 /* AppDelegate.swift */; };
 		20828E02218BF93300875599 /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BBE7C214C29BD006E96CC /* BeaconView.swift */; };
 		20828E03218BF93300875599 /* StudentDashboardController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93C21770BA5007514D1 /* StudentDashboardController .swift */; };
 		20828E04218BF93300875599 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205EC0E8215AA6DE00B40141 /* Constants.swift */; };
-		20828E05218BF93300875599 /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A942217844ED007514D1 /* ProjectsCell.swift */; };
+		20828E05218BF93300875599 /* ProjectsSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A942217844ED007514D1 /* ProjectsSectionCell.swift */; };
 		20828E06218BF93300875599 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205055B1217A75F70005D207 /* Profile.swift */; };
 		20828E07218BF93300875599 /* LogHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806D9214CCE19009CC42B /* LogHistoryController.swift */; };
 		20828E08218BF93300875599 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D70217BE630007BC4C9 /* Course.swift */; };
@@ -58,7 +57,7 @@
 		20828E10218BF93300875599 /* ProjectsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94721784D01007514D1 /* ProjectsCollectionCell.swift */; };
 		20828E11218BF93300875599 /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EF215EDED3008E98EF /* AttendanceController.swift */; };
 		20828E12218BF93300875599 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205055B3217A77A60005D207 /* ProfileService.swift */; };
-		20828E13218BF93300875599 /* CoursesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94421784508007514D1 /* CoursesCell.swift */; };
+		20828E13218BF93300875599 /* CoursesSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94421784508007514D1 /* CoursesSectionCell.swift */; };
 		20828E14218BF93300875599 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDA214AE159004B60A2 /* Attendance.swift */; };
 		20828E15218BF93300875599 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */; };
 		20828E16218BF93300875599 /* CoursesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94921786295007514D1 /* CoursesCollectionCell.swift */; };
@@ -85,19 +84,25 @@
 		8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93C21770BA5007514D1 /* StudentDashboardController .swift */; };
 		8000A93F2177D841007514D1 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93E2177D841007514D1 /* ProfileCardView.swift */; };
 		8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */; };
-		8000A943217844ED007514D1 /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A942217844ED007514D1 /* ProjectsCell.swift */; };
-		8000A94521784508007514D1 /* CoursesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94421784508007514D1 /* CoursesCell.swift */; };
+		8000A943217844ED007514D1 /* ProjectsSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A942217844ED007514D1 /* ProjectsSectionCell.swift */; };
+		8000A94521784508007514D1 /* CoursesSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94421784508007514D1 /* CoursesSectionCell.swift */; };
 		8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94721784D01007514D1 /* ProjectsCollectionCell.swift */; };
 		8000A94A21786295007514D1 /* CoursesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A94921786295007514D1 /* CoursesCollectionCell.swift */; };
+		8005C8C221A2A19F00B24080 /* UserProfileSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8005C8C121A2A19F00B24080 /* UserProfileSectionCell.swift */; };
 		80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80074E2B2149BE7800AA684C /* ScanBeaconController.swift */; };
 		80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80074E2E2149CA6900AA684C /* UIView+Extension.swift */; };
 		800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BBE7C214C29BD006E96CC /* BeaconView.swift */; };
+		8016B69A219EAA1F007761EA /* ProjectDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016B699219EAA1F007761EA /* ProjectDetailsController.swift */; };
+		802446C421A12117008B2100 /* UsefulLinksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802446C321A12117008B2100 /* UsefulLinksController.swift */; };
+		802446C721A12276008B2100 /* StaticLinksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802446C621A12276008B2100 /* StaticLinksCell.swift */; };
 		80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D6B217AC6BD007BC4C9 /* ProjectsCollectionView.swift */; };
 		80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D6E217BDEA5007BC4C9 /* Project.swift */; };
 		80276D71217BE630007BC4C9 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D70217BE630007BC4C9 /* Course.swift */; };
 		80276D73217D3CC1007BC4C9 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */; };
 		802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806D9214CCE19009CC42B /* LogHistoryController.swift */; };
 		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
+		8032487D219D1E1F006B7D80 /* StaticLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487C219D1E1F006B7D80 /* StaticLink.swift */; };
+		8032487F219D20F0006B7D80 /* UsefulLinkSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487E219D20F0006B7D80 /* UsefulLinkSectionCell.swift */; };
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
 		80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
@@ -105,13 +110,16 @@
 		80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5653B2182514E0028CD18 /* FacebookServices.swift */; };
 		80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E5215DF92A008E98EF /* LoginController.swift */; };
 		80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */; };
-		80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E9215E18C9008E98EF /* OnboardingController.swift */; };
 		80DC39EC215E9AD4008E98EF /* OnboardingCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EB215E9AD4008E98EF /* OnboardingCollectionCell.swift */; };
 		80DC39EE215ECF02008E98EF /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39ED215ECF02008E98EF /* Page.swift */; };
 		80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EF215EDED3008E98EF /* AttendanceController.swift */; };
 		80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F2215EE10D008E98EF /* MainTabBarController.swift */; };
 		80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */; };
 		9224D480E4FF9A068F640F21 /* Pods_companionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4869445B8B1A39767B46C9 /* Pods_companionTests.framework */; };
+		B807E1E621F1B08100DE57CD /* CustomUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B807E1E521F1B08100DE57CD /* CustomUIElements.swift */; };
+		B82F0B8821F41A7400A6FDCB /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F0B8721F41A7400A6FDCB /* UIButton+Extension.swift */; };
+		B88C73C721F1947900FBED2F /* UserOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */; };
+		B88C73C921F1966300FBED2F /* UserOnboardingVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C73C821F1966300FBED2F /* UserOnboardingVC+Extensions.swift */; };
 		D4119DD8C8EBD302FFF606C4 /* Pods_companion_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */; };
 		E9846D02033D1A2DDFA95DD9 /* Pods_companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E6F6578E0712191F3EFB1 /* Pods_companion.framework */; };
 /* End PBXBuildFile section */
@@ -160,22 +168,31 @@
 		3E3E6F6578E0712191F3EFB1 /* Pods_companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F76F715A640129E78F9C09 /* Pods-companion Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev.release.xcconfig"; sourceTree = "<group>"; };
+		53928009D4349C2DD54350D4 /* Pods-companion.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.dev.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.dev.xcconfig"; sourceTree = "<group>"; };
+		5A1155117DCF929F616B336A /* Pods-companionTests.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.dev.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.dev.xcconfig"; sourceTree = "<group>"; };
+		7B143BCB1E8FE03946250643 /* Pods-companion Dev.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion Dev.dev.xcconfig"; path = "Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev.dev.xcconfig"; sourceTree = "<group>"; };
 		8000A93C21770BA5007514D1 /* StudentDashboardController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentDashboardController .swift"; sourceTree = "<group>"; };
 		8000A93E2177D841007514D1 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeSchoolDesignColor.swift; sourceTree = "<group>"; };
-		8000A942217844ED007514D1 /* ProjectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
-		8000A94421784508007514D1 /* CoursesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCell.swift; sourceTree = "<group>"; };
+		8000A942217844ED007514D1 /* ProjectsSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSectionCell.swift; sourceTree = "<group>"; };
+		8000A94421784508007514D1 /* CoursesSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesSectionCell.swift; sourceTree = "<group>"; };
 		8000A94721784D01007514D1 /* ProjectsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCollectionCell.swift; sourceTree = "<group>"; };
 		8000A94921786295007514D1 /* CoursesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesCollectionCell.swift; sourceTree = "<group>"; };
+		8005C8C121A2A19F00B24080 /* UserProfileSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSectionCell.swift; sourceTree = "<group>"; };
 		80074E2B2149BE7800AA684C /* ScanBeaconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBeaconController.swift; sourceTree = "<group>"; };
 		80074E2E2149CA6900AA684C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		800BBE7C214C29BD006E96CC /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
+		8016B699219EAA1F007761EA /* ProjectDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsController.swift; sourceTree = "<group>"; };
+		802446C321A12117008B2100 /* UsefulLinksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulLinksController.swift; sourceTree = "<group>"; };
+		802446C621A12276008B2100 /* StaticLinksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticLinksCell.swift; sourceTree = "<group>"; };
 		80276D6B217AC6BD007BC4C9 /* ProjectsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCollectionView.swift; sourceTree = "<group>"; };
 		80276D6E217BDEA5007BC4C9 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		80276D70217BE630007BC4C9 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		802806D9214CCE19009CC42B /* LogHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryController.swift; sourceTree = "<group>"; };
 		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
+		8032487C219D1E1F006B7D80 /* StaticLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticLink.swift; sourceTree = "<group>"; };
+		8032487E219D20F0006B7D80 /* UsefulLinkSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulLinkSectionCell.swift; sourceTree = "<group>"; };
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
 		80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginWebViewController.swift; sourceTree = "<group>"; };
@@ -183,12 +200,15 @@
 		80D5653B2182514E0028CD18 /* FacebookServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookServices.swift; sourceTree = "<group>"; };
 		80DC39E5215DF92A008E98EF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		80DC39E9215E18C9008E98EF /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		80DC39EB215E9AD4008E98EF /* OnboardingCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionCell.swift; sourceTree = "<group>"; };
 		80DC39ED215ECF02008E98EF /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		80DC39EF215EDED3008E98EF /* AttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceController.swift; sourceTree = "<group>"; };
 		80DC39F2215EE10D008E98EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
+		B807E1E521F1B08100DE57CD /* CustomUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIElements.swift; sourceTree = "<group>"; };
+		B82F0B8721F41A7400A6FDCB /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingViewController.swift; sourceTree = "<group>"; };
+		B88C73C821F1966300FBED2F /* UserOnboardingVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserOnboardingVC+Extensions.swift"; sourceTree = "<group>"; };
 		BE46A2D2E1719AF5EACDF5E6 /* Pods-companionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2DFC0FA15CCF60A251303A3 /* Pods-companionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.release.xcconfig"; sourceTree = "<group>"; };
 		C7C51834B7A84C776E5DC45C /* Pods-companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.release.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +253,9 @@
 				49F76F715A640129E78F9C09 /* Pods-companion Dev.release.xcconfig */,
 				BE46A2D2E1719AF5EACDF5E6 /* Pods-companionTests.debug.xcconfig */,
 				C2DFC0FA15CCF60A251303A3 /* Pods-companionTests.release.xcconfig */,
+				53928009D4349C2DD54350D4 /* Pods-companion.dev.xcconfig */,
+				7B143BCB1E8FE03946250643 /* Pods-companion Dev.dev.xcconfig */,
+				5A1155117DCF929F616B336A /* Pods-companionTests.dev.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -343,8 +366,12 @@
 			isa = PBXGroup;
 			children = (
 				8000A94721784D01007514D1 /* ProjectsCollectionCell.swift */,
+				8000A942217844ED007514D1 /* ProjectsSectionCell.swift */,
 				8000A94921786295007514D1 /* CoursesCollectionCell.swift */,
+				8000A94421784508007514D1 /* CoursesSectionCell.swift */,
 				80DC39EB215E9AD4008E98EF /* OnboardingCollectionCell.swift */,
+				8032487E219D20F0006B7D80 /* UsefulLinkSectionCell.swift */,
+				8005C8C121A2A19F00B24080 /* UserProfileSectionCell.swift */,
 			);
 			path = "Custom Collection View Cells";
 			sourceTree = "<group>";
@@ -352,13 +379,14 @@
 		80074E272149BD2500AA684C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				802446C521A12128008B2100 /* Attendance */,
 				80D56535218243590028CD18 /* Login */,
-				80DC39EF215EDED3008E98EF /* AttendanceController.swift */,
+				802446C221A120CB008B2100 /* Student Dashboard */,
 				802806D9214CCE19009CC42B /* LogHistoryController.swift */,
-				80DC39E9215E18C9008E98EF /* OnboardingController.swift */,
 				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
 				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
 				80DC39F1215EE0E9008E98EF /* TabBarController */,
+				B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +401,8 @@
 				209DB94B214B117200D81ABD /* UIViewControllers+Extension.swift */,
 				80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */,
 				80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */,
+				B88C73C821F1966300FBED2F /* UserOnboardingVC+Extensions.swift */,
+				B82F0B8721F41A7400A6FDCB /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -388,6 +418,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		802446C221A120CB008B2100 /* Student Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
+				8016B699219EAA1F007761EA /* ProjectDetailsController.swift */,
+				802446C321A12117008B2100 /* UsefulLinksController.swift */,
+			);
+			path = "Student Dashboard";
+			sourceTree = "<group>";
+		};
+		802446C521A12128008B2100 /* Attendance */ = {
+			isa = PBXGroup;
+			children = (
+				80DC39EF215EDED3008E98EF /* AttendanceController.swift */,
+				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
+			);
+			path = Attendance;
+			sourceTree = "<group>";
+		};
 		80276D6A217AC651007BC4C9 /* Custom Collection Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +450,7 @@
 			children = (
 				80276D6E217BDEA5007BC4C9 /* Project.swift */,
 				80276D70217BE630007BC4C9 /* Course.swift */,
+				8032487C219D1E1F006B7D80 /* StaticLink.swift */,
 			);
 			path = DummyData;
 			sourceTree = "<group>";
@@ -412,6 +462,7 @@
 				803E476E216294F0004C62DF /* LeftPaddedTextField.swift */,
 				8000A93E2177D841007514D1 /* ProfileCardView.swift */,
 				80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */,
+				B807E1E521F1B08100DE57CD /* CustomUIElements.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -421,8 +472,7 @@
 			children = (
 				802806DB214CD020009CC42B /* LogHistoryCell.swift */,
 				80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */,
-				8000A942217844ED007514D1 /* ProjectsCell.swift */,
-				8000A94421784508007514D1 /* CoursesCell.swift */,
+				802446C621A12276008B2100 /* StaticLinksCell.swift */,
 			);
 			path = "Custom Table View Cells";
 			sourceTree = "<group>";
@@ -545,6 +595,11 @@
 				TargetAttributes = {
 					20AC1BE62141A19200E05465 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					20AC1BFA2141A19200E05465 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -668,7 +723,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
@@ -679,7 +734,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		81865E557AE1951F2CA58E19 /* [CP] Embed Pods Frameworks */ = {
@@ -688,7 +743,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
@@ -699,7 +754,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -728,14 +783,13 @@
 				20828DFB218BF93300875599 /* LeftPaddedTextField.swift in Sources */,
 				20828DFC218BF93300875599 /* Date+Extensions.swift in Sources */,
 				20828DFD218BF93300875599 /* Beacon.swift in Sources */,
-				20828DFE218BF93300875599 /* OnboardingController.swift in Sources */,
 				20828DFF218BF93300875599 /* BeaconServices.swift in Sources */,
 				20828E00218BF93300875599 /* FacebookLoginWebViewController.swift in Sources */,
 				20828E01218BF93300875599 /* AppDelegate.swift in Sources */,
 				20828E02218BF93300875599 /* BeaconView.swift in Sources */,
 				20828E03218BF93300875599 /* StudentDashboardController .swift in Sources */,
 				20828E04218BF93300875599 /* Constants.swift in Sources */,
-				20828E05218BF93300875599 /* ProjectsCell.swift in Sources */,
+				20828E05218BF93300875599 /* ProjectsSectionCell.swift in Sources */,
 				20828E06218BF93300875599 /* Profile.swift in Sources */,
 				20828E07218BF93300875599 /* LogHistoryController.swift in Sources */,
 				20828E08218BF93300875599 /* Course.swift in Sources */,
@@ -749,7 +803,7 @@
 				20828E10218BF93300875599 /* ProjectsCollectionCell.swift in Sources */,
 				20828E11218BF93300875599 /* AttendanceController.swift in Sources */,
 				20828E12218BF93300875599 /* ProfileService.swift in Sources */,
-				20828E13218BF93300875599 /* CoursesCell.swift in Sources */,
+				20828E13218BF93300875599 /* CoursesSectionCell.swift in Sources */,
 				20828E14218BF93300875599 /* Attendance.swift in Sources */,
 				20828E15218BF93300875599 /* UITextField+Extension.swift in Sources */,
 				20828E16218BF93300875599 /* CoursesCollectionCell.swift in Sources */,
@@ -761,6 +815,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8032487D219D1E1F006B7D80 /* StaticLink.swift in Sources */,
+				8032487F219D20F0006B7D80 /* UsefulLinkSectionCell.swift in Sources */,
 				80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */,
 				802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */,
 				209DB950214B117300D81ABD /* UIViewControllers+Extension.swift in Sources */,
@@ -768,9 +824,12 @@
 				20587CDE214AE35F004B60A2 /* NetworkManager.swift in Sources */,
 				20587CD9214AE0D0004B60A2 /* User.swift in Sources */,
 				80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */,
+				802446C421A12117008B2100 /* UsefulLinksController.swift in Sources */,
 				80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */,
 				80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */,
 				80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */,
+				B88C73C921F1966300FBED2F /* UserOnboardingVC+Extensions.swift in Sources */,
+				B88C73C721F1947900FBED2F /* UserOnboardingViewController.swift in Sources */,
 				209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */,
 				8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */,
 				80DC39EC215E9AD4008E98EF /* OnboardingCollectionCell.swift in Sources */,
@@ -778,20 +837,23 @@
 				80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */,
 				209DB954214B117300D81ABD /* String+Extensions.swift in Sources */,
 				803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */,
+				8005C8C221A2A19F00B24080 /* UserProfileSectionCell.swift in Sources */,
 				209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */,
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,
-				80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */,
 				20587CE0214AE3F8004B60A2 /* BeaconServices.swift in Sources */,
 				80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */,
+				B807E1E621F1B08100DE57CD /* CustomUIElements.swift in Sources */,
 				20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */,
 				800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */,
 				8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */,
+				802446C721A12276008B2100 /* StaticLinksCell.swift in Sources */,
 				205EC0E9215AA6DE00B40141 /* Constants.swift in Sources */,
-				8000A943217844ED007514D1 /* ProjectsCell.swift in Sources */,
+				8000A943217844ED007514D1 /* ProjectsSectionCell.swift in Sources */,
 				205055D6217EDD4B0005D207 /* Profile.swift in Sources */,
 				802806DA214CCE19009CC42B /* LogHistoryController.swift in Sources */,
 				80276D71217BE630007BC4C9 /* Course.swift in Sources */,
 				80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */,
+				8016B69A219EAA1F007761EA /* ProjectDetailsController.swift in Sources */,
 				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
 				80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */,
 				207FBFB12192A6F400E1646B /* ProjectServices.swift in Sources */,
@@ -800,9 +862,10 @@
 				80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
 				8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */,
+				B82F0B8821F41A7400A6FDCB /* UIButton+Extension.swift in Sources */,
 				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,
 				205055B4217A77A60005D207 /* ProfileService.swift in Sources */,
-				8000A94521784508007514D1 /* CoursesCell.swift in Sources */,
+				8000A94521784508007514D1 /* CoursesSectionCell.swift in Sources */,
 				20587CDB214AE159004B60A2 /* Attendance.swift in Sources */,
 				80276D73217D3CC1007BC4C9 /* UITextField+Extension.swift in Sources */,
 				8000A94A21786295007514D1 /* CoursesCollectionCell.swift in Sources */,
@@ -964,12 +1027,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1147,12 +1211,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1170,12 +1235,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/companion/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

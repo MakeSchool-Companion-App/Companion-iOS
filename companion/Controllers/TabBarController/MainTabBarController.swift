@@ -39,6 +39,7 @@ class MainTabBarController: UITabBarController {
             selectedImageName: UIImage(named: "profile_selected"),
             rootViewController: StudentDashboardController())
         
+        
         // Add each controller in the view controllers array
         viewControllers = [attendanceNavController, studentDashboardNavController]
         
