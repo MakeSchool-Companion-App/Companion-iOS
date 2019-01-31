@@ -9,7 +9,10 @@
 import Foundation
 
 struct ProjectServices {
+    
+    /// Fetche and decode projects from the user from the make school's website
     static func show(slug: String, completion: @escaping(Any?)->()){
+        
      let link = "https://www.makeschool.com/portfolios/\(slug)/projects.json"
         let url = URL(string: link)!
         do{

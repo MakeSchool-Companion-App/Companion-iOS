@@ -30,7 +30,7 @@ struct User: Codable{
         
     }
     
-    // MARK: - Class Methods
+    // MARK: - Struct Methods
     
     static func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
         if writeToUserDefaults {

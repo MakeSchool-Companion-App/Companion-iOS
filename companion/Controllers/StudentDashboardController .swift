@@ -27,7 +27,7 @@ class StudentDashboardController: UITableViewController {
     
     var courses: [Course] = [
         Course(name: "DS 1.1", description: "Data Analysis & Visualization", color: UIColor.purple),
-        Course(name: "MOB 1.1", description: "Concurrency & Parallelism ", color: UIColor.red),
+        Course(name: "MOB 2.3", description: "Concurrency & Parallelism ", color: UIColor.red),
         Course(name: "CS 1.1", description: "Intro to Python & OOP", color: UIColor.blue)
     ]
     
