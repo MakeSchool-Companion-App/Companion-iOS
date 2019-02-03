@@ -22,15 +22,25 @@ class ProjectsSectionCell: UITableViewCell {
     
     var projects = [Project]() {
         didSet {
+            
             DispatchQueue.main.async {
+                
                 self.projectsCollectionView?.reloadData()
+                
             }
+            
         }
     }
 
     // MARK: - UI Elements
     
     var projectsCollectionView: UICollectionView?
+    
+    private let activityIndicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.activityIndicatorViewStyle = .gray
+        return view
+    }()
     
     
     // MARK: - Initializers
@@ -43,6 +53,7 @@ class ProjectsSectionCell: UITableViewCell {
         super.layoutSubviews()
         setupCollectionView()
         setupAutoLayout()
+        startActivityIndicator()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -75,6 +86,26 @@ class ProjectsSectionCell: UITableViewCell {
         
     }
     
+    private func startActivityIndicator() {
+        DispatchQueue.main.async {
+            guard let view = self.projectsCollectionView else { return }
+            view.addSubview(self.activityIndicatorView)
+            self.activityIndicatorView.frame = view.bounds
+            self.activityIndicatorView.center = view.center
+            self.activityIndicatorView.hidesWhenStopped = true
+            self.activityIndicatorView.startAnimating()
+            //            UIApplication.shared.beginIgnoringInteractionEvents()
+        }
+    }
+    
+    private func stopActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.removeFromSuperview()
+            //            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+    }
+    
 
 }
 
@@ -88,6 +119,8 @@ extension ProjectsSectionCell:  UICollectionViewDelegateFlowLayout, UICollection
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProjectsCollectionCell.cellId, for: indexPath) as? ProjectsCollectionCell else { fatalError("ProjectsSectionCell: failed to create a collectionViewCell") }
         let project = projects[indexPath.row]
         print("Project Image URL: \(project.img_url)")
+        
+        
         DispatchQueue.main.async {
             cell.projectNameLabel.text = project.name
             cell.technologiesLabel.text = project.technologies
@@ -100,6 +133,8 @@ extension ProjectsSectionCell:  UICollectionViewDelegateFlowLayout, UICollection
                     }
                 }
             }
+            self.stopActivityIndicator()
+            
         }
         
         return cell

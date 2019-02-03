@@ -31,6 +31,8 @@ class StudentDashboardController: UITableViewController {
         Course(name: "CS 1.1", description: "Intro to Python & OOP", color: UIColor.blue)
     ]
     
+    
+    
     // MARK: - View Life Cycle Methods
     
     override func viewDidLoad() {
@@ -74,6 +76,8 @@ class StudentDashboardController: UITableViewController {
         }
         
     }
+    
+
     
 }
 
