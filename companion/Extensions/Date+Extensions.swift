@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension Date{
-    func dayOfWeak() -> String{
+    func dayOfWeek() -> String{
         let day =  Calendar.current.dateComponents([.weekday], from: self).weekday!
         let dayName = DateFormatter().weekdaySymbols[(day-1) % 7]
         return dayName
