@@ -123,16 +123,14 @@ class LoginController: UIViewController {
     // MARK: - View Life Cycle Methods
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = MakeSchoolDesignColor.faintBlue
         setupAutoLayout()
         
         emailTextField.delegate = self
         emailTextField.becomeFirstResponder()
-        
-        passwordTextField.delegate = self 
-        
-        // dismiss keyboard on touch
+        passwordTextField.delegate = self
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -150,9 +148,6 @@ class LoginController: UIViewController {
         textFieldStackView.distribution = .equalSpacing
         textFieldStackView.axis = .vertical
         textFieldStackView.spacing = 16
-        
-        
-        
         
         view.addSubviews(views: companionLabel, textFieldStackView, loginButton, facebookLoginButton)
         

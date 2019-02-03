@@ -56,11 +56,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        window = UIWindow()
+//        // Anything that accesses NavigationBar will contain these default parameters
+//        UINavigationBar.appearance().tintColor = .white
+//        // This will set the nav bar color to a light red color
+//        UINavigationBar.appearance().barTintColor = UIColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1)
+//        // This will disable the navbar's translucency
+//        UINavigationBar.appearance().isTranslucent = false
+//        // When the tablview is scrolled, this will resize the title text
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
+//        // This will make nav bar's font bold
+//        UINavigationBar.appearance().prefersLargeTitles = true
+//        // Set the color of the font to white
+//        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
         
-        configureInitialRootViewController(for: window)
+        switch environment {
+        case .development:
+            // set web service URL to development
+            // set API keys to development
+            print("It's for development")
+        case .production:
+            // set web service URL to production
+            // set API keys to production
+            print("It's for production")
+        }
+
         
-        //beaconManager.startMonitoring()
+        configureInitialRootViewController()
+        
+        beaconManager.startMonitoring()
         
         
         return true
@@ -136,24 +159,54 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 extension AppDelegate {
     
-    func configureInitialRootViewController(for window: UIWindow?) {
-        let defualts = UserDefaults.standard
-        let initialViewController: UIViewController
+    func configureInitialRootViewController() {
         
-       
+        let defualts = UserDefaults.standard
+        
         if let _ = User.current,
            let userData = defualts.object(forKey: Constants.current) as? Data,
            let user = try? JSONDecoder().decode(User.self, from: userData) {
             
             User.setCurrent(user)
-            initialViewController = MainTabBarController()
+            showHomePage()
         } else {
-            initialViewController = LoginController()
+            
+            showOnboardingPage()
         }
+    }
+    
+    /// Renders the onboarding page
+    private func showOnboardingPage(){
         
-        window?.rootViewController = initialViewController
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = window{
+            
+            let destinationVC = UserOnboardingViewController(collectionViewLayout: layout)
+            window.rootViewController = destinationVC
+            window.makeKeyAndVisible()
+        }
+    }
+    
+    /// Renders the homepage
+    private func showHomePage(){
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let destinationVC = MainTabBarController()
+        window?.rootViewController = destinationVC
         window?.makeKeyAndVisible()
     
+    }
+    
+    /// Shows the Login page
+    func showLoginPage(){
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let destinationVC = LoginController()
+        window?.rootViewController = destinationVC
+        window?.makeKeyAndVisible()
     }
     
 }

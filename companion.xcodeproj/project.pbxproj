@@ -37,7 +37,6 @@
 		20828DFB218BF93300875599 /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		20828DFC218BF93300875599 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94A214B117200D81ABD /* Date+Extensions.swift */; };
 		20828DFD218BF93300875599 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CD6214AE00F004B60A2 /* Beacon.swift */; };
-		20828DFE218BF93300875599 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E9215E18C9008E98EF /* OnboardingController.swift */; };
 		20828DFF218BF93300875599 /* BeaconServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20587CDF214AE3F8004B60A2 /* BeaconServices.swift */; };
 		20828E00218BF93300875599 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
 		20828E01218BF93300875599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BEA2141A19200E05465 /* AppDelegate.swift */; };
@@ -111,13 +110,16 @@
 		80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5653B2182514E0028CD18 /* FacebookServices.swift */; };
 		80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E5215DF92A008E98EF /* LoginController.swift */; };
 		80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */; };
-		80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E9215E18C9008E98EF /* OnboardingController.swift */; };
 		80DC39EC215E9AD4008E98EF /* OnboardingCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EB215E9AD4008E98EF /* OnboardingCollectionCell.swift */; };
 		80DC39EE215ECF02008E98EF /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39ED215ECF02008E98EF /* Page.swift */; };
 		80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EF215EDED3008E98EF /* AttendanceController.swift */; };
 		80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F2215EE10D008E98EF /* MainTabBarController.swift */; };
 		80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */; };
 		9224D480E4FF9A068F640F21 /* Pods_companionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4869445B8B1A39767B46C9 /* Pods_companionTests.framework */; };
+		B807E1E621F1B08100DE57CD /* CustomUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B807E1E521F1B08100DE57CD /* CustomUIElements.swift */; };
+		B82F0B8821F41A7400A6FDCB /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F0B8721F41A7400A6FDCB /* UIButton+Extension.swift */; };
+		B88C73C721F1947900FBED2F /* UserOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */; };
+		B88C73C921F1966300FBED2F /* UserOnboardingVC+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C73C821F1966300FBED2F /* UserOnboardingVC+Extensions.swift */; };
 		D4119DD8C8EBD302FFF606C4 /* Pods_companion_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */; };
 		E9846D02033D1A2DDFA95DD9 /* Pods_companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E6F6578E0712191F3EFB1 /* Pods_companion.framework */; };
 /* End PBXBuildFile section */
@@ -166,6 +168,9 @@
 		3E3E6F6578E0712191F3EFB1 /* Pods_companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F76F715A640129E78F9C09 /* Pods-companion Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev.release.xcconfig"; sourceTree = "<group>"; };
+		53928009D4349C2DD54350D4 /* Pods-companion.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.dev.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.dev.xcconfig"; sourceTree = "<group>"; };
+		5A1155117DCF929F616B336A /* Pods-companionTests.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.dev.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.dev.xcconfig"; sourceTree = "<group>"; };
+		7B143BCB1E8FE03946250643 /* Pods-companion Dev.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion Dev.dev.xcconfig"; path = "Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev.dev.xcconfig"; sourceTree = "<group>"; };
 		8000A93C21770BA5007514D1 /* StudentDashboardController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentDashboardController .swift"; sourceTree = "<group>"; };
 		8000A93E2177D841007514D1 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeSchoolDesignColor.swift; sourceTree = "<group>"; };
@@ -195,12 +200,15 @@
 		80D5653B2182514E0028CD18 /* FacebookServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookServices.swift; sourceTree = "<group>"; };
 		80DC39E5215DF92A008E98EF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		80DC39E9215E18C9008E98EF /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		80DC39EB215E9AD4008E98EF /* OnboardingCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionCell.swift; sourceTree = "<group>"; };
 		80DC39ED215ECF02008E98EF /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		80DC39EF215EDED3008E98EF /* AttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceController.swift; sourceTree = "<group>"; };
 		80DC39F2215EE10D008E98EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
+		B807E1E521F1B08100DE57CD /* CustomUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIElements.swift; sourceTree = "<group>"; };
+		B82F0B8721F41A7400A6FDCB /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnboardingViewController.swift; sourceTree = "<group>"; };
+		B88C73C821F1966300FBED2F /* UserOnboardingVC+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserOnboardingVC+Extensions.swift"; sourceTree = "<group>"; };
 		BE46A2D2E1719AF5EACDF5E6 /* Pods-companionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2DFC0FA15CCF60A251303A3 /* Pods-companionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-companionTests/Pods-companionTests.release.xcconfig"; sourceTree = "<group>"; };
 		C7C51834B7A84C776E5DC45C /* Pods-companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.release.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +253,9 @@
 				49F76F715A640129E78F9C09 /* Pods-companion Dev.release.xcconfig */,
 				BE46A2D2E1719AF5EACDF5E6 /* Pods-companionTests.debug.xcconfig */,
 				C2DFC0FA15CCF60A251303A3 /* Pods-companionTests.release.xcconfig */,
+				53928009D4349C2DD54350D4 /* Pods-companion.dev.xcconfig */,
+				7B143BCB1E8FE03946250643 /* Pods-companion Dev.dev.xcconfig */,
+				5A1155117DCF929F616B336A /* Pods-companionTests.dev.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -372,8 +383,10 @@
 				80D56535218243590028CD18 /* Login */,
 				802446C221A120CB008B2100 /* Student Dashboard */,
 				802806D9214CCE19009CC42B /* LogHistoryController.swift */,
-				80DC39E9215E18C9008E98EF /* OnboardingController.swift */,
+				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
+				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
 				80DC39F1215EE0E9008E98EF /* TabBarController */,
+				B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -388,6 +401,8 @@
 				209DB94B214B117200D81ABD /* UIViewControllers+Extension.swift */,
 				80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */,
 				80276D72217D3CC1007BC4C9 /* UITextField+Extension.swift */,
+				B88C73C821F1966300FBED2F /* UserOnboardingVC+Extensions.swift */,
+				B82F0B8721F41A7400A6FDCB /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -447,6 +462,7 @@
 				803E476E216294F0004C62DF /* LeftPaddedTextField.swift */,
 				8000A93E2177D841007514D1 /* ProfileCardView.swift */,
 				80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */,
+				B807E1E521F1B08100DE57CD /* CustomUIElements.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -707,7 +723,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
@@ -718,7 +734,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		81865E557AE1951F2CA58E19 /* [CP] Embed Pods Frameworks */ = {
@@ -727,7 +743,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
@@ -738,7 +754,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -767,7 +783,6 @@
 				20828DFB218BF93300875599 /* LeftPaddedTextField.swift in Sources */,
 				20828DFC218BF93300875599 /* Date+Extensions.swift in Sources */,
 				20828DFD218BF93300875599 /* Beacon.swift in Sources */,
-				20828DFE218BF93300875599 /* OnboardingController.swift in Sources */,
 				20828DFF218BF93300875599 /* BeaconServices.swift in Sources */,
 				20828E00218BF93300875599 /* FacebookLoginWebViewController.swift in Sources */,
 				20828E01218BF93300875599 /* AppDelegate.swift in Sources */,
@@ -813,6 +828,8 @@
 				80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */,
 				80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */,
 				80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */,
+				B88C73C921F1966300FBED2F /* UserOnboardingVC+Extensions.swift in Sources */,
+				B88C73C721F1947900FBED2F /* UserOnboardingViewController.swift in Sources */,
 				209DB952214B117300D81ABD /* UIColor+Extension.swift in Sources */,
 				8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */,
 				80DC39EC215E9AD4008E98EF /* OnboardingCollectionCell.swift in Sources */,
@@ -823,9 +840,9 @@
 				8005C8C221A2A19F00B24080 /* UserProfileSectionCell.swift in Sources */,
 				209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */,
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,
-				80DC39EA215E18C9008E98EF /* OnboardingController.swift in Sources */,
 				20587CE0214AE3F8004B60A2 /* BeaconServices.swift in Sources */,
 				80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */,
+				B807E1E621F1B08100DE57CD /* CustomUIElements.swift in Sources */,
 				20AC1BEB2141A19200E05465 /* AppDelegate.swift in Sources */,
 				800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */,
 				8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */,
@@ -845,6 +862,7 @@
 				80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
 				8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */,
+				B82F0B8821F41A7400A6FDCB /* UIButton+Extension.swift in Sources */,
 				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,
 				205055B4217A77A60005D207 /* ProfileService.swift in Sources */,
 				8000A94521784508007514D1 /* CoursesSectionCell.swift in Sources */,
@@ -1009,7 +1027,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1193,7 +1211,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1217,7 +1235,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9V3JAM5FPH;
+				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
