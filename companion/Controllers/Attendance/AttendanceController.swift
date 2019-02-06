@@ -61,12 +61,13 @@ class AttendanceController: UIViewController {
         GeoFenceServices.startMonitoringMakeschool { (started) in
             if started {
                 self.locationManager.requestAlwaysAuthorization()
-                self.locationManager.delegate = self
+                //self.locationManager.delegate = self
                 self.locationManager.startUpdatingLocation()
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                //self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 self.locationManager.pausesLocationUpdatesAutomatically = false
                 self.locationManager.allowsBackgroundLocationUpdates = true
                 self.locationManager.activityType = .fitness
+                self.locationManager.desiredAccuracy = 5
             }
         }
         
@@ -213,10 +214,19 @@ extension AttendanceController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first{
 
+            print(location.coordinate)
             let msCoordinate = CLLocation(latitude: 37.787689, longitude: -122.410929)
            // let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
             let bestEstimateLocation = CLLocation(latitude: 37.787675, longitude: -122.410973)
-          
+          let squareRegion = CKSquareRegion.init(regionWithCenter: msCoordinate.coordinate, sideLength: 90, identifier: Constants.makeSchoolRegionId)
+
+            if (squareRegion?.contains(location.coordinate))!{
+                print("waked in makeschool")
+                //let distance = location.distance(from: squareRegion?.center)
+            }
+            else{
+                print("walking out makeschool")
+            }
             let distance = location.distance(from: bestEstimateLocation)
 
             if distance < 90 {

@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     let locationManager = CLLocationManager()
+
     
     // Local Notification
     let center = UNUserNotificationCenter.current()
@@ -82,8 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         configureInitialRootViewController()
-        
-        beaconManager.startMonitoring()
+        locationManager.delegate = self
+        //beaconManager.startMonitoring()
         
         
         return true
@@ -118,6 +119,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: CLLocationManagerDelegate{
 
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+
+    }
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+
+    }
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print(region.identifier)
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

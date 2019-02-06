@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2014AF5F220B734400890F8B /* walk in and out makeschool.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 2014AF5E220B734400890F8B /* walk in and out makeschool.gpx */; };
+		2014AF60220B734A00890F8B /* walk on post street.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 2014AF5D220B71D000890F8B /* walk on post street.gpx */; };
 		2019D7592163E6D500F8AB25 /* GeofenceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2019D7582163E6D500F8AB25 /* GeofenceServices.swift */; };
 		205055B4217A77A60005D207 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205055B3217A77A60005D207 /* ProfileService.swift */; };
 		205055D5217D74050005D207 /* ParseHtml.js in Resources */ = {isa = PBXBuildFile; fileRef = 205055D4217D74050005D207 /* ParseHtml.js */; };
@@ -81,6 +83,9 @@
 		20AC1BF22141A19200E05465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BF12141A19200E05465 /* Assets.xcassets */; };
 		20AC1BF52141A19200E05465 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BF32141A19200E05465 /* LaunchScreen.storyboard */; };
 		20AC1C002141A19200E05465 /* companionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BFF2141A19200E05465 /* companionTests.swift */; };
+		20F2E2B92208D644001D22AE /* CKSquareRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F2E2B72208D644001D22AE /* CKSquareRegion.m */; };
+		20F2E2BB2208E3D8001D22AE /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 20F2E2BA2208E3D8001D22AE /* America.gpx */; };
+		20F2E2BC2208E3D8001D22AE /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 20F2E2BA2208E3D8001D22AE /* America.gpx */; };
 		8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93C21770BA5007514D1 /* StudentDashboardController .swift */; };
 		8000A93F2177D841007514D1 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93E2177D841007514D1 /* ProfileCardView.swift */; };
 		8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */; };
@@ -136,6 +141,8 @@
 
 /* Begin PBXFileReference section */
 		14CAA19930392C11E1B2DAC7 /* Pods-companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.debug.xcconfig"; sourceTree = "<group>"; };
+		2014AF5D220B71D000890F8B /* walk on post street.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "walk on post street.gpx"; sourceTree = "<group>"; };
+		2014AF5E220B734400890F8B /* walk in and out makeschool.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "walk in and out makeschool.gpx"; sourceTree = "<group>"; };
 		2019D7582163E6D500F8AB25 /* GeofenceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceServices.swift; sourceTree = "<group>"; };
 		205055B1217A75F70005D207 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		205055B3217A77A60005D207 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
@@ -165,6 +172,10 @@
 		20AC1BFB2141A19200E05465 /* companionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = companionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AC1BFF2141A19200E05465 /* companionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companionTests.swift; sourceTree = "<group>"; };
 		20AC1C012141A19200E05465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20F2E2B62208D644001D22AE /* companion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "companion-Bridging-Header.h"; sourceTree = "<group>"; };
+		20F2E2B72208D644001D22AE /* CKSquareRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSquareRegion.m; sourceTree = "<group>"; };
+		20F2E2B82208D644001D22AE /* CKSquareRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSquareRegion.h; sourceTree = "<group>"; };
+		20F2E2BA2208E3D8001D22AE /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = America.gpx; sourceTree = "<group>"; };
 		3E3E6F6578E0712191F3EFB1 /* Pods_companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F76F715A640129E78F9C09 /* Pods-companion Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +271,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2014AF5C220B718300890F8B /* gpx file */ = {
+			isa = PBXGroup;
+			children = (
+				2014AF5D220B71D000890F8B /* walk on post street.gpx */,
+				2014AF5E220B734400890F8B /* walk in and out makeschool.gpx */,
+			);
+			path = "gpx file";
+			sourceTree = "<group>";
+		};
 		205055D3217D73890005D207 /* JavaScript Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,10 +291,10 @@
 		20587CD4214ADFED004B60A2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				20F2E2B52208D60A001D22AE /* Geofence Services */,
 				20A0E5D42152EB4B00F0F049 /* UserServices.swift */,
 				20587CDF214AE3F8004B60A2 /* BeaconServices.swift */,
 				209DB946214B0FDB00D81ABD /* AttendanceServices.swift */,
-				2019D7582163E6D500F8AB25 /* GeofenceServices.swift */,
 				205055B3217A77A60005D207 /* ProfileService.swift */,
 				80D5653B2182514E0028CD18 /* FacebookServices.swift */,
 				207FBFB02192A6F400E1646B /* ProjectServices.swift */,
@@ -352,6 +372,19 @@
 			path = companionTests;
 			sourceTree = "<group>";
 		};
+		20F2E2B52208D60A001D22AE /* Geofence Services */ = {
+			isa = PBXGroup;
+			children = (
+				2014AF5C220B718300890F8B /* gpx file */,
+				2019D7582163E6D500F8AB25 /* GeofenceServices.swift */,
+				20F2E2B82208D644001D22AE /* CKSquareRegion.h */,
+				20F2E2B72208D644001D22AE /* CKSquareRegion.m */,
+				20F2E2BA2208E3D8001D22AE /* America.gpx */,
+				20F2E2B62208D644001D22AE /* companion-Bridging-Header.h */,
+			);
+			path = "Geofence Services";
+			sourceTree = "<group>";
+		};
 		324719210C778BE21253E9D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,7 +454,6 @@
 		802446C221A120CB008B2100 /* Student Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
 				8016B699219EAA1F007761EA /* ProjectDetailsController.swift */,
 				802446C321A12117008B2100 /* UsefulLinksController.swift */,
 			);
@@ -432,7 +464,6 @@
 			isa = PBXGroup;
 			children = (
 				80DC39EF215EDED3008E98EF /* AttendanceController.swift */,
-				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -595,6 +626,7 @@
 				TargetAttributes = {
 					20AC1BE62141A19200E05465 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -644,9 +676,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2014AF5F220B734400890F8B /* walk in and out makeschool.gpx in Resources */,
+				20F2E2BB2208E3D8001D22AE /* America.gpx in Resources */,
 				20AC1BF52141A19200E05465 /* LaunchScreen.storyboard in Resources */,
 				20AC1BF22141A19200E05465 /* Assets.xcassets in Resources */,
 				20828E2A218C083700875599 /* Dev.xcconfig in Resources */,
+				2014AF60220B734A00890F8B /* walk on post street.gpx in Resources */,
 				20AC1BF02141A19200E05465 /* Main.storyboard in Resources */,
 				205055D5217D74050005D207 /* ParseHtml.js in Resources */,
 			);
@@ -656,6 +691,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F2E2BC2208E3D8001D22AE /* America.gpx in Resources */,
 				20828E2B218C083700875599 /* Dev.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,6 +873,7 @@
 				80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */,
 				209DB954214B117300D81ABD /* String+Extensions.swift in Sources */,
 				803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */,
+				20F2E2B92208D644001D22AE /* CKSquareRegion.m in Sources */,
 				8005C8C221A2A19F00B24080 /* UserProfileSectionCell.swift in Sources */,
 				209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */,
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,
@@ -1026,6 +1063,7 @@
 			baseConfigurationReference = 20828E29218C083700875599 /* Dev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1040,6 +1078,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.companion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "companion/Services/Geofence Services/companion-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1210,6 +1250,7 @@
 			baseConfigurationReference = 14CAA19930392C11E1B2DAC7 /* Pods-companion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1224,6 +1265,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.companion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "companion/Services/Geofence Services/companion-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1234,6 +1277,7 @@
 			baseConfigurationReference = C7C51834B7A84C776E5DC45C /* Pods-companion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 966X5T4Q98;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1248,6 +1292,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.companion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "companion/Services/Geofence Services/companion-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
