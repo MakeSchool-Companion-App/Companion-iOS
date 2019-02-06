@@ -187,77 +187,6 @@ extension AttendanceController: CLLocationManagerDelegate{
             let squareRegion = CKSquareRegion.init(regionWithCenter: msCoordinate.coordinate, sideLength: 0.030, identifier: Constants.makeSchoolRegionId)
 
             self.squareRegionDelegate.updateRegion(region: squareRegion!, location: location, squareRegionDelegate: self.squareRegionProtocol)
-
-
-            // let natomaCoordinate = CLLocation(latitude: 37.767343, longitude:  -122.418581)
-            //            let bestEstimateLocation = CLLocation(latitude: 37.787675, longitude: -122.410973)
-            //          let squareRegion = CKSquareRegion.init(regionWithCenter: msCoordinate.coordinate, sideLength: 90, identifier: Constants.makeSchoolRegionId)
-            //
-            //            if (squareRegion?.contains(location.coordinate))!{
-            //                print("waked in makeschool")
-            //                //let distance = location.distance(from: squareRegion?.center)
-            //            }
-            //            else{
-            //                print("walking out makeschool")
-            //            }
-            //            let distance = location.distance(from: bestEstimateLocation)
-            //
-            //            if distance < 90 {
-            //
-            //                // check if the attendance was already taken to avoid double check in
-            //                if AttendanceServices.isTodayAttendanceDone() == true{ return}
-            //
-            //                if onPost == false{
-            //                    onPost = true
-            //
-            //                    let attendance = Attendance.init(event: .onEntry, beaconId: Constants.makeSchoolRegionId, event_in: Date().checkTime(), event_out: Constants.eventOutEmptyFormat, id: 0, user_id: 0)
-            //
-            //                    AttendanceServices.create(attendance) { (att) in
-            //                        if let checkInAttendance = att{
-            //                            AttendanceServices.fetchLastAttendance(id: String(checkInAttendance.id!), completion: { (attendance) in
-            //
-            //                                /// store the date and id of the last attendance for future verification
-            //                                UserDefaults.standard.set(attendance.id, forKey: Constants.attendanceId)
-            //
-            //                                UserDefaults.standard.set(attendance.event_in, forKey: Constants.eventId)
-            //
-            //
-            //
-            //                                AttendanceServices.markAttendance()
-            //                                self.presentAlert(title: "Check in", message: "You enter Make School at \(attendance.checkInTime ?? "") ")
-            //                                self.reloadTable()
-            //                                AppDelegate.shared.attendanceNotification(attendance: attendance)
-            //                            })
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            else
-            //                {
-            //                    // addition: Adding the method of attendance service isTodayAttendance checkout to save when the checkout was done
-            //
-            //                    if AttendanceServices.isTodayAttendanceDone() == false {return}
-            //                        if AttendanceServices.isTodayAttendanceCheckOut() == true {return}
-            //                    if onUpdate == false {
-            //                        onUpdate = true
-            //                        AttendanceServices.fetchLastAttendance { (lastAttendance) in
-            //                            lastAttendance.event_out = Date().checkTime()
-            //                            lastAttendance.event_in = lastAttendance.event_in!.replacingOccurrences(of: " ", with: "+",
-            //                                                                                                    options: NSString.CompareOptions.literal, range:nil)
-            //
-            //                            lastAttendance.event = EventType.onExit.rawValue
-            //                            AttendanceServices.update(attendance: lastAttendance, completion: { (updatedAttendance) in
-            //                                self.presentAlert(title: "Check out", message: "You left Make School at \(updatedAttendance.checkOutTime ?? "") ")
-            //                                AttendanceServices.fetchLastAttendance(completion: { (lastAttendance) in
-            //                                    lastAttendance.event = "Exit"
-            //                                    AppDelegate.shared.attendanceNotification(attendance: lastAttendance)
-            //                                    self.reloadTable()
-            //                                    AttendanceServices.markCheckoutDone()
-            //                                })
-            //                            })
-            //                        }
-            //               }
-            //            }
         }
     }
 
@@ -318,5 +247,4 @@ extension AttendanceController: RegionProtocol , RegionDelegateProtocol, UNUserN
             })
         }
     }
-
 }
