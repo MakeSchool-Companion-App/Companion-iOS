@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         configureInitialRootViewController()
-        locationManager.delegate = self
+        //locationManager.delegate = self
         //beaconManager.startMonitoring()
         
         

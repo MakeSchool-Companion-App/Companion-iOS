@@ -101,10 +101,9 @@
 - (BOOL)containsCoordinate:(CLLocationCoordinate2D)coordinate
 {
     BOOL inLatRange;
-    BOOL inLngRange;
+    BOOL inLngRange = false;
     
-    if ((coordinate.latitude <= self.maxLat) && (coordinate.latitude >= self.minLat))
-        inLatRange = YES;
+    inLatRange = YES;
     
     if ((coordinate.longitude <= self.maxLng) && (coordinate.longitude >= self.minLng))
         inLngRange = YES;
