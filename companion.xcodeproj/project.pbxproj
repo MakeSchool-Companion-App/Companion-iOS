@@ -86,8 +86,6 @@
 		20AC1BF52141A19200E05465 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AC1BF32141A19200E05465 /* LaunchScreen.storyboard */; };
 		20AC1C002141A19200E05465 /* companionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC1BFF2141A19200E05465 /* companionTests.swift */; };
 		20F2E2B92208D644001D22AE /* CKSquareRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F2E2B72208D644001D22AE /* CKSquareRegion.m */; };
-		20F2E2BB2208E3D8001D22AE /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 20F2E2BA2208E3D8001D22AE /* America.gpx */; };
-		20F2E2BC2208E3D8001D22AE /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 20F2E2BA2208E3D8001D22AE /* America.gpx */; };
 		8000A93D21770BA5007514D1 /* StudentDashboardController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93C21770BA5007514D1 /* StudentDashboardController .swift */; };
 		8000A93F2177D841007514D1 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A93E2177D841007514D1 /* ProfileCardView.swift */; };
 		8000A9412177DE4E007514D1 /* MakeSchoolDesignColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */; };
@@ -147,6 +145,7 @@
 		2014AF5E220B734400890F8B /* walk in and out makeschool.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "walk in and out makeschool.gpx"; sourceTree = "<group>"; };
 		2014AF6E220B993800890F8B /* RegionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionProtocol.swift; sourceTree = "<group>"; };
 		2014AF70220B997700890F8B /* RegionDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDelegateProtocol.swift; sourceTree = "<group>"; };
+		2014AF72220BB75100890F8B /* Walk on Makeschool Edges.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Walk on Makeschool Edges.gpx"; sourceTree = "<group>"; };
 		2019D7582163E6D500F8AB25 /* GeofenceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceServices.swift; sourceTree = "<group>"; };
 		205055B1217A75F70005D207 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		205055B3217A77A60005D207 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
@@ -179,7 +178,6 @@
 		20F2E2B62208D644001D22AE /* companion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "companion-Bridging-Header.h"; sourceTree = "<group>"; };
 		20F2E2B72208D644001D22AE /* CKSquareRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSquareRegion.m; sourceTree = "<group>"; };
 		20F2E2B82208D644001D22AE /* CKSquareRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKSquareRegion.h; sourceTree = "<group>"; };
-		20F2E2BA2208E3D8001D22AE /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = America.gpx; sourceTree = "<group>"; };
 		3E3E6F6578E0712191F3EFB1 /* Pods_companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41450B9433C0D5395EBD6606 /* Pods_companion_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F76F715A640129E78F9C09 /* Pods-companion Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +278,7 @@
 			children = (
 				2014AF5D220B71D000890F8B /* walk on post street.gpx */,
 				2014AF5E220B734400890F8B /* walk in and out makeschool.gpx */,
+				2014AF72220BB75100890F8B /* Walk on Makeschool Edges.gpx */,
 			);
 			path = "gpx file";
 			sourceTree = "<group>";
@@ -393,7 +392,6 @@
 				2019D7582163E6D500F8AB25 /* GeofenceServices.swift */,
 				20F2E2B82208D644001D22AE /* CKSquareRegion.h */,
 				20F2E2B72208D644001D22AE /* CKSquareRegion.m */,
-				20F2E2BA2208E3D8001D22AE /* America.gpx */,
 				20F2E2B62208D644001D22AE /* companion-Bridging-Header.h */,
 			);
 			path = "Geofence Services";
@@ -691,7 +689,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2014AF5F220B734400890F8B /* walk in and out makeschool.gpx in Resources */,
-				20F2E2BB2208E3D8001D22AE /* America.gpx in Resources */,
 				20AC1BF52141A19200E05465 /* LaunchScreen.storyboard in Resources */,
 				20AC1BF22141A19200E05465 /* Assets.xcassets in Resources */,
 				20828E2A218C083700875599 /* Dev.xcconfig in Resources */,
@@ -705,7 +702,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20F2E2BC2208E3D8001D22AE /* America.gpx in Resources */,
 				20828E2B218C083700875599 /* Dev.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

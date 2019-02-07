@@ -184,7 +184,7 @@ extension AttendanceController: CLLocationManagerDelegate{
 
 
             let msCoordinate =  CLLocation(latitude: 37.787689, longitude: -122.410929)
-            let squareRegion = CKSquareRegion.init(regionWithCenter: msCoordinate.coordinate, sideLength: 0.030, identifier: Constants.makeSchoolRegionId)
+            let squareRegion = CKSquareRegion.init(regionWithCenter: msCoordinate.coordinate, sideLength: 0.035, identifier: Constants.makeSchoolRegionId)
 
             self.squareRegionDelegate.updateRegion(region: squareRegion!, location: location, squareRegionDelegate: self.squareRegionProtocol)
         }
