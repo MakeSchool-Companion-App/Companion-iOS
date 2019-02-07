@@ -6,6 +6,7 @@
 def dev_pods
     pod 'iBeaconManager', '0.1.0'
     pod 'KeychainSwift', '~> 13.0'
+    pod 'NVActivityIndicatorView'
 end
 
  # Pods for companion
@@ -23,4 +24,5 @@ target 'companion Dev' do
     
      pod 'iBeaconManager', '0.1.0'
      pod 'KeychainSwift', '~> 13.0'
+     pod 'NVActivityIndicatorView'
     end

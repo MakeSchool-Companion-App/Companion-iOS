@@ -1,20 +1,26 @@
 PODS:
   - iBeaconManager (0.1.0)
   - KeychainSwift (13.0.0)
+  - NVActivityIndicatorView (4.5.1):
+    - NVActivityIndicatorView/Presenter (= 4.5.1)
+  - NVActivityIndicatorView/Presenter (4.5.1)
 
 DEPENDENCIES:
   - iBeaconManager (= 0.1.0)
   - KeychainSwift (~> 13.0)
+  - NVActivityIndicatorView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - iBeaconManager
     - KeychainSwift
+    - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   iBeaconManager: 24b93a45f18271574877074faa64eacb4ad6349e
   KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
+  NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
 
-PODFILE CHECKSUM: 0c076dc1f54b0c3ae1c8cc018390dfd4a68c1258
+PODFILE CHECKSUM: 5d85b71b02dd0679d67c8a504d0c3b0958120e7e
 
 COCOAPODS: 1.6.0.beta.2

@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import UserNotifications
+import NVActivityIndicatorView
 
 
 class AttendanceController: UIViewController {
@@ -47,6 +48,8 @@ class AttendanceController: UIViewController {
     
     // method to fetch data and reload table
     func reloadTable(){
+        
+        configureActivityIndicator()
         AttendanceServices.show { (att) in
             if let attendance = att{
                 self.attendance = attendance
@@ -111,6 +114,15 @@ class AttendanceController: UIViewController {
             height: 0,
             width: 0)
         
+    }
+    
+    // Sets up the positions and adds the activity indicator on the screen
+    private func configureActivityIndicator() {
+        
+        Constants.indicatorView = NVActivityIndicatorView(frame: CGRect(x: view.frame.midX, y: view.frame.midY, width: view.frame.width/8, height: view.frame.height/8), type: .lineScale, color: .gloomyBlue, padding: 0)
+        Constants.indicatorView.center = view.center
+        view.addSubview(Constants.indicatorView)
+        Constants.indicatorView.startAnimating()
     }
     
     private func setupNotificationCenter() {
