@@ -8,6 +8,7 @@
 
 
 import UIKit
+import NVActivityIndicatorView
 
 class StudentDashboardController: UITableViewController {
     
@@ -23,6 +24,12 @@ class StudentDashboardController: UITableViewController {
         }
     }
     
+//    private let activityIndicatorView: UIActivityIndicatorView = {
+//        let view = UIActivityIndicatorView()
+//        view.activityIndicatorViewStyle = .gray
+//        return view
+//    }()
+    
     var project: Project?
     
     var courses: [Course] = [
@@ -36,6 +43,8 @@ class StudentDashboardController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //configureActivityIndicator()
         setupTableView()
         fetchUserProfileAndProjects()
     }
@@ -56,14 +65,26 @@ class StudentDashboardController: UITableViewController {
 
     }
     
+    // Sets up the positions and adds the activity indicator on the screen
+    private func configureActivityIndicator() {
+
+        Constants.indicatorView = NVActivityIndicatorView(frame: CGRect(x: view.frame.midX, y: view.frame.midY, width: view.frame.width/8, height: view.frame.height/8), type: .lineScale, color: .gloomyBlue, padding: 0)
+        Constants.indicatorView.center = view.center
+        view.addSubview(Constants.indicatorView)
+        Constants.indicatorView.startAnimating()
+    }
+    
+    
     fileprivate func fetchUserProfileAndProjects() {
         
+        configureActivityIndicator()
         ProfileService.show(user_id: Int(User.current?.user_id ?? "0")) { (profile) in
-            
+
             DispatchQueue.global().async {
                 self.profile = profile
             }
             
+
             DispatchQueue.global().async {
                 ProjectServices.show(slug: profile.slug, completion: { (projects) in
                     if let projects = projects as? [Project] {
@@ -72,7 +93,8 @@ class StudentDashboardController: UITableViewController {
                 })
             }
         }
-        
+
+
     }
     
 }
