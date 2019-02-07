@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 struct Constants {
     
     static var current = "current"
+    static let currentStudentProfile = "currentStudentProfileIdentifier"
     static var makeSchoolRegionId = "makeschool"
     static var attendanceNotificationId = "attendanceNotificationId"
     static let attendanceId = "attendance_id"

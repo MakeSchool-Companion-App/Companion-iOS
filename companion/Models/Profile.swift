@@ -29,4 +29,31 @@ struct Profile: Codable {
     var publication_description: String?
     var public_view: Bool?
     var employment_status: String?
+    
+
+    private static var _current: Profile?
+    
+    static var current: Profile?{
+        if let currentProfile = _current {
+            return currentProfile
+        }
+        else{
+            guard let data = UserDefaults.standard.value(forKey: Constants.currentStudentProfile) as? Data,
+                let profile = try? JSONDecoder().decode(Profile.self, from: data) else
+            {return nil}
+            
+            return profile
+        }
+    }
+    
+    /// Set the current user profile
+    static func setCurrentProfile(for profile: Profile, writeToUserDefaults: Bool = false){
+        
+        if writeToUserDefaults{
+            if let data = try? JSONEncoder().encode(profile){
+                UserDefaults.standard.set(data, forKey: Constants.currentStudentProfile)
+            }
+        }
+        _current = profile
+    }
 }
