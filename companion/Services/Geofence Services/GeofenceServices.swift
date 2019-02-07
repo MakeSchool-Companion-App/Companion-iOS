@@ -26,32 +26,42 @@ struct GeoFenceServices{
             let lon = placemark?.location?.coordinate.longitude
             guard let longitude = lon, let latitutde = lat else {return completion(nil)}
             print("location: lat: \(latitutde) lon: \(longitude)")
-            
+
             return completion(CLLocationCoordinate2D(latitude: latitutde, longitude: longitude))
             
         }
     }
     /// Mehtod to start monitoring region
     static func startMonitoringMakeschool( completion: @escaping (Bool)->()){
-        let address = "555 post street, San Francisco, CA"
+        //let address = "555 post street, San Francisco, CA"
        // let testAddress = "1368 natoma street, San Francisco, CA"
-        addressToCoordinate(address) { (center) in
+        //addressToCoordinate(address) { (center) in
             
-            guard let center = center else {return completion(false)}
-            
+            let center = CLLocationCoordinate2D.init(latitude: 37.787690, longitude: -122.410930)
+
+            let testCenter = CLLocationCoordinate2D.init(latitude: 37.703026, longitude: -121.759735)
+        
+            let squareRegion = CKSquareRegion.init(regionWithCenter: testCenter, sideLength: 50, identifier: Constants.makeSchoolRegionId)
+                //squareRegion?.notifyOnExit = true
+                //squareRegion?.notifyOnEntry = true
+
+
             let region = CLCircularRegion(center: center, radius: 30, identifier: Constants.makeSchoolRegionId)
             region.notifyOnExit = true
             region.notifyOnEntry = true
             let manager = AppDelegate.shared.locationManager//CLLocationManager()
+            //manager.startMonitoring(for: squareRegion!)
             manager.startMonitoring(for: region)
             return completion(true)
-        }
+        //}
         
        
        
     }
     
 }
+
+
 
 
 
