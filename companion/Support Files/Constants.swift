@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import NVActivityIndicatorView
 struct Constants {
     
     static var current = "current"
+    static let currentStudentProfile = "currentStudentProfileIdentifier"
     static var makeSchoolRegionId = "makeschool"
     static var attendanceNotificationId = "attendanceNotificationId"
     static let attendanceId = "attendance_id"
@@ -21,6 +23,10 @@ struct Constants {
     static let checkoutDate = "checkoutDate"
     static let userOnboardingCellID = "onboardingCellId"
     
+    // THIS IS THE ONLY INDICATOR VIEW OBJECT USED FOR DIFFERENT SCREENS THROUGHOUT THE APP
+    public static var indicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), type: .ballPulseSync, color: .gloomyBlue, padding: 0)
+    
+    // PAGES THAT ARE DISPLAYED IN THE ONBOARDING VIEW
     static let pages = [
         Page(imageName: "makeschool", headerText: "Welcome to Companion", description: "Companion is a handy resource for Make School students."),
         Page(imageName: "ibeacon_onboarding", headerText: "Attendance Tracking", description: "Automatically get marked in and out of Make School based on your location."),

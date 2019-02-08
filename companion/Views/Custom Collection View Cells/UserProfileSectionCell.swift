@@ -17,8 +17,8 @@ class UserProfileSectionCell: UITableViewCell {
     var profile: Profile? {
         didSet {
             nameLabel.text = "\(profile?.first_name ?? "") \(profile?.last_name ?? "")"
-            biographyTextView.text = profile?.about_description
-            concentrationLabel.text = profile?.professional_title
+            biographyTextView.text = profile?.about_description ?? ""
+            concentrationLabel.text = profile?.professional_title ?? ""
 
             guard let imageUrl = URL(string: profile?.profile_img_url ?? "") else { return }
 
