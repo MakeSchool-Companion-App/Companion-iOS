@@ -103,6 +103,7 @@
 		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
 		8032487D219D1E1F006B7D80 /* StaticLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487C219D1E1F006B7D80 /* StaticLink.swift */; };
 		8032487F219D20F0006B7D80 /* UsefulLinkSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487E219D20F0006B7D80 /* UsefulLinkSectionCell.swift */; };
+		8038B1E92211389B00A4E0B5 /* NetworkStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038B1E82211389B00A4E0B5 /* NetworkStatusManager.swift */; };
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
 		80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
@@ -193,6 +194,7 @@
 		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
 		8032487C219D1E1F006B7D80 /* StaticLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticLink.swift; sourceTree = "<group>"; };
 		8032487E219D20F0006B7D80 /* UsefulLinkSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulLinkSectionCell.swift; sourceTree = "<group>"; };
+		8038B1E82211389B00A4E0B5 /* NetworkStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusManager.swift; sourceTree = "<group>"; };
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
 		80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginWebViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				20587CDD214AE35F004B60A2 /* NetworkManager.swift */,
+				8038B1E82211389B00A4E0B5 /* NetworkStatusManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -421,7 +424,6 @@
 		802446C221A120CB008B2100 /* Student Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
 				8016B699219EAA1F007761EA /* ProjectDetailsController.swift */,
 				802446C321A12117008B2100 /* UsefulLinksController.swift */,
 			);
@@ -432,7 +434,6 @@
 			isa = PBXGroup;
 			children = (
 				80DC39EF215EDED3008E98EF /* AttendanceController.swift */,
-				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -723,18 +724,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iBeaconManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		81865E557AE1951F2CA58E19 /* [CP] Embed Pods Frameworks */ = {
@@ -743,7 +746,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
@@ -754,7 +757,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -837,6 +840,7 @@
 				80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */,
 				209DB954214B117300D81ABD /* String+Extensions.swift in Sources */,
 				803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */,
+				8038B1E92211389B00A4E0B5 /* NetworkStatusManager.swift in Sources */,
 				8005C8C221A2A19F00B24080 /* UserProfileSectionCell.swift in Sources */,
 				209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */,
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,
