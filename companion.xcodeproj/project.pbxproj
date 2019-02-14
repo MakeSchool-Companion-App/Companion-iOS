@@ -93,6 +93,8 @@
 		80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80074E2E2149CA6900AA684C /* UIView+Extension.swift */; };
 		800BBE7D214C29BD006E96CC /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BBE7C214C29BD006E96CC /* BeaconView.swift */; };
 		8016B69A219EAA1F007761EA /* ProjectDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8016B699219EAA1F007761EA /* ProjectDetailsController.swift */; };
+		801A1828221359E300FAA657 /* ConnectionOfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801A1827221359E300FAA657 /* ConnectionOfflineViewController.swift */; };
+		801A182A2213C04D00FAA657 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801A18292213C04D00FAA657 /* CustomAlertView.swift */; };
 		802446C421A12117008B2100 /* UsefulLinksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802446C321A12117008B2100 /* UsefulLinksController.swift */; };
 		802446C721A12276008B2100 /* StaticLinksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802446C621A12276008B2100 /* StaticLinksCell.swift */; };
 		80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D6B217AC6BD007BC4C9 /* ProjectsCollectionView.swift */; };
@@ -103,6 +105,7 @@
 		802806DC214CD020009CC42B /* LogHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802806DB214CD020009CC42B /* LogHistoryCell.swift */; };
 		8032487D219D1E1F006B7D80 /* StaticLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487C219D1E1F006B7D80 /* StaticLink.swift */; };
 		8032487F219D20F0006B7D80 /* UsefulLinkSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8032487E219D20F0006B7D80 /* UsefulLinkSectionCell.swift */; };
+		8038B1E92211389B00A4E0B5 /* NetworkStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038B1E82211389B00A4E0B5 /* NetworkStatusManager.swift */; };
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
 		80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
@@ -183,6 +186,8 @@
 		80074E2E2149CA6900AA684C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		800BBE7C214C29BD006E96CC /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
 		8016B699219EAA1F007761EA /* ProjectDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsController.swift; sourceTree = "<group>"; };
+		801A1827221359E300FAA657 /* ConnectionOfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionOfflineViewController.swift; sourceTree = "<group>"; };
+		801A18292213C04D00FAA657 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		802446C321A12117008B2100 /* UsefulLinksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulLinksController.swift; sourceTree = "<group>"; };
 		802446C621A12276008B2100 /* StaticLinksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticLinksCell.swift; sourceTree = "<group>"; };
 		80276D6B217AC6BD007BC4C9 /* ProjectsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCollectionView.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 		802806DB214CD020009CC42B /* LogHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHistoryCell.swift; sourceTree = "<group>"; };
 		8032487C219D1E1F006B7D80 /* StaticLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticLink.swift; sourceTree = "<group>"; };
 		8032487E219D20F0006B7D80 /* UsefulLinkSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulLinkSectionCell.swift; sourceTree = "<group>"; };
+		8038B1E82211389B00A4E0B5 /* NetworkStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusManager.swift; sourceTree = "<group>"; };
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
 		80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginWebViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				20587CDD214AE35F004B60A2 /* NetworkManager.swift */,
+				8038B1E82211389B00A4E0B5 /* NetworkStatusManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -387,6 +394,7 @@
 				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
 				80DC39F1215EE0E9008E98EF /* TabBarController */,
 				B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */,
+				801A1827221359E300FAA657 /* ConnectionOfflineViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -421,7 +429,6 @@
 		802446C221A120CB008B2100 /* Student Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				8000A93C21770BA5007514D1 /* StudentDashboardController .swift */,
 				8016B699219EAA1F007761EA /* ProjectDetailsController.swift */,
 				802446C321A12117008B2100 /* UsefulLinksController.swift */,
 			);
@@ -432,7 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				80DC39EF215EDED3008E98EF /* AttendanceController.swift */,
-				80074E2B2149BE7800AA684C /* ScanBeaconController.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				8000A93E2177D841007514D1 /* ProfileCardView.swift */,
 				80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */,
 				B807E1E521F1B08100DE57CD /* CustomUIElements.swift */,
+				801A18292213C04D00FAA657 /* CustomAlertView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -723,18 +730,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iBeaconManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion/Pods-companion-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		81865E557AE1951F2CA58E19 /* [CP] Embed Pods Frameworks */ = {
@@ -743,7 +752,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/iBeaconManager/iBeaconManager.framework",
 			);
@@ -754,7 +763,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -837,6 +846,7 @@
 				80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */,
 				209DB954214B117300D81ABD /* String+Extensions.swift in Sources */,
 				803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */,
+				8038B1E92211389B00A4E0B5 /* NetworkStatusManager.swift in Sources */,
 				8005C8C221A2A19F00B24080 /* UserProfileSectionCell.swift in Sources */,
 				209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */,
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,
@@ -857,10 +867,12 @@
 				80074E2F2149CA6900AA684C /* UIView+Extension.swift in Sources */,
 				80074E2C2149BE7800AA684C /* ScanBeaconController.swift in Sources */,
 				207FBFB12192A6F400E1646B /* ProjectServices.swift in Sources */,
+				801A1828221359E300FAA657 /* ConnectionOfflineViewController.swift in Sources */,
 				80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */,
 				20A0E5D52152EB4B00F0F049 /* UserServices.swift in Sources */,
 				80276D6C217AC6BD007BC4C9 /* ProjectsCollectionView.swift in Sources */,
 				209DB947214B0FDB00D81ABD /* AttendanceServices.swift in Sources */,
+				801A182A2213C04D00FAA657 /* CustomAlertView.swift in Sources */,
 				8000A94821784D01007514D1 /* ProjectsCollectionCell.swift in Sources */,
 				B82F0B8821F41A7400A6FDCB /* UIButton+Extension.swift in Sources */,
 				80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */,
@@ -1027,7 +1039,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 966X5T4Q98;
+				DEVELOPMENT_TEAM = 9V3JAM5FPH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1211,7 +1223,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 966X5T4Q98;
+				DEVELOPMENT_TEAM = 9V3JAM5FPH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
@@ -1235,7 +1247,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 966X5T4Q98;
+				DEVELOPMENT_TEAM = 9V3JAM5FPH;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",

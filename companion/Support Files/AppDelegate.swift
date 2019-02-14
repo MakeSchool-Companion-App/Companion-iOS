@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // set API keys to production
             print("It's for production")
         }
-
+        
         
         configureInitialRootViewController()
         
@@ -164,13 +164,12 @@ extension AppDelegate {
         let defualts = UserDefaults.standard
         
         if let _ = User.current,
-           let userData = defualts.object(forKey: Constants.current) as? Data,
-           let user = try? JSONDecoder().decode(User.self, from: userData) {
-            
+            let userData = defualts.object(forKey: Constants.current) as? Data,
+            let user = try? JSONDecoder().decode(User.self, from: userData) {
             User.setCurrent(user)
-            showHomePage()
-        } else {
+            self.showHomePage()
             
+        } else {
             showOnboardingPage()
         }
     }
@@ -209,5 +208,24 @@ extension AppDelegate {
         window?.makeKeyAndVisible()
     }
     
+    func showOfflinePage() {
+        
+    }
+    
+    func showTopLevelAlert() {
+        let alertController = UIAlertController(title: "Could Not Connect", message: "Please check your connection and try again.", preferredStyle: .alert)
+        
+        let okayAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        
+        alertController.addAction(okayAction)
+        
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        
+        alertWindow.rootViewController = MainTabBarController().selectedViewController
+        alertWindow.windowLevel = UIWindowLevelAlert + 1
+        alertWindow.makeKeyAndVisible()
+        
+        alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
 }
 
