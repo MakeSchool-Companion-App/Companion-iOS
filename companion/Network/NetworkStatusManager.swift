@@ -9,6 +9,7 @@
 import Foundation
 import Reachability
 
+
 class NetworkStatusManager {
     
     // MARK:- Properties
@@ -43,7 +44,11 @@ class NetworkStatusManager {
             print("Reachable via cellular")
         case .none:
             print("Network not reachable")
+        
         }
+        
+//        self.reachability.stopNotifier()
+//        NotificationCenter.default.removeObserver(self)
     }
     
     static func stopNotifier() {
@@ -51,13 +56,14 @@ class NetworkStatusManager {
     }
     
     typealias IsDeviceConnected = (_ isConnected: Bool) -> Void
-    static func checkDevicesConnection(completion: @escaping IsDeviceConnected) {
+    static func checkDevicesConnection(completion: IsDeviceConnected) {
         let connection = NetworkStatusManager.shared.reachability.connection
         if connection == .cellular || connection == .wifi {
             completion(true)
         } else {
             completion(false)
         }
+        
     }
     
     
