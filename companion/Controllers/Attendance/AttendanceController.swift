@@ -86,8 +86,6 @@ class AttendanceController: UIViewController {
                     self.customAlertView.show(animated: true)
                 }
             }
-            
-            
         }
         
         // If the wifi or cellular service is connected then dimiss the alert view
@@ -102,9 +100,6 @@ class AttendanceController: UIViewController {
         }
         
         reloadTable()
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
