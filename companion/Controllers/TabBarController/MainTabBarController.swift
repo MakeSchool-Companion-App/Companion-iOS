@@ -41,7 +41,7 @@ class MainTabBarController: UITabBarController {
         
         
         // Add each controller in the view controllers array
-        viewControllers = [attendanceNavController, studentDashboardNavController]
+        viewControllers = [studentDashboardNavController, attendanceNavController]
         
         
         // modify tab bar item insets

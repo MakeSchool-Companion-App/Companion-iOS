@@ -78,7 +78,7 @@ class AttendanceCell: UITableViewCell {
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 15)
         view.layer.shadowRadius = 8
-        view.layer.shouldRasterize = true
+        view.layer.shouldRasterize = false
         view.layer.cornerRadius = 5
         return view
     }()
