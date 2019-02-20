@@ -25,11 +25,19 @@ class UserProfileSectionCell: UITableViewCell {
             guard let imageData = try? Data(contentsOf: imageUrl) else { return }
             DispatchQueue.main.async {
                 self.profilePictureImageView.image = UIImage(data: imageData)
+                self.stopActivityIndicator()
             }
+            
         }
     }
 
     // MARK: - UI Elements
+    
+    private let activityIndicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.activityIndicatorViewStyle = .gray
+        return view
+    }()
     
     let profilePictureImageView: UIImageView = {
         let imageView = UIImageView()
@@ -95,6 +103,7 @@ class UserProfileSectionCell: UITableViewCell {
     override func layoutSubviews() {
         setupAutoLayout()
         backgroundColor = MakeSchoolDesignColor.faintBlue
+        startActivityIndicator()
     }
     
     // MARK: - Methods
@@ -128,5 +137,25 @@ class UserProfileSectionCell: UITableViewCell {
         
         
         
-    }    
+    }
+    
+    
+    private func startActivityIndicator() {
+        DispatchQueue.main.async {
+            self.contentView.addSubview(self.activityIndicatorView)
+            self.activityIndicatorView.frame = self.contentView.bounds
+            self.activityIndicatorView.center = self.contentView.center
+            self.activityIndicatorView.hidesWhenStopped = true
+            self.activityIndicatorView.startAnimating()
+            //            UIApplication.shared.beginIgnoringInteractionEvents()
+        }
+    }
+    
+    private func stopActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.removeFromSuperview()
+            //            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+    }
 }

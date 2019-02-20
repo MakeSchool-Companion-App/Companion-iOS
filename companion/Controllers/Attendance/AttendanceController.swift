@@ -46,7 +46,13 @@ class AttendanceController: UIViewController {
         return tableView
     }()
     
-    // method to fetch data and reload table
+    var customAlertView: CustomAlertView = {
+        let view = CustomAlertView(title: "Could Not Connect", message: "Please check your connection and try again.")
+        return view
+    }()
+    
+   // method to fetch data and reload table
+
     func reloadTable(){
         
         configureActivityIndicator()
@@ -78,6 +84,31 @@ class AttendanceController: UIViewController {
 
                 self.squareRegionDelegate = self
                 self.squareRegionProtocol = self
+            }
+        }
+        
+
+        // If the wifi or cellular service is disconnected then show the alert view
+        NetworkStatusManager.shared.reachability.whenUnreachable = { reachability in
+            
+            // this is called on a background thread, but UI updates must
+            // be on the main thread:
+            
+            if reachability.connection == .none || (reachability.connection != .wifi && reachability.connection != .cellular) {
+                DispatchQueue.main.async {
+                    self.customAlertView.show(animated: true)
+                }
+            }
+        }
+        
+        // If the wifi or cellular service is connected then dimiss the alert view
+        NetworkStatusManager.shared.reachability.whenReachable = { reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread:
+            if reachability.connection == .wifi || reachability.connection == .cellular {
+                DispatchQueue.main.async {
+                    self.customAlertView.dismiss(animated: true)
+                }
             }
         }
         
