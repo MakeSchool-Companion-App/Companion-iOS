@@ -106,10 +106,6 @@ class AttendanceController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
-        
-        NetworkStatusManager.shared.reachability.whenUnreachable = { _ in
-            self.customAlertView.show(animated: true)
-        }
     }
     
     // MARK: - UI Setup Methods
