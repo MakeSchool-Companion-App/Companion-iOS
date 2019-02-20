@@ -8,20 +8,22 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 class LoginController: UIViewController {
     
     // MARK: - Properties
     
     var user: User?
+    var activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: .ballPulseSync, color: .gloomyBlue, padding: 0)
     
     // MARK: - UI Elements
     
-    private let activityIndicatorView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
-        view.activityIndicatorViewStyle = .gray
-        return view
-    }()
+//    private let activityIndicatorView: UIActivityIndicatorView = {
+//        let view = UIActivityIndicatorView()
+//        view.activityIndicatorViewStyle = .gray
+//        return view
+//    }()
     
     private let companionLabel: UILabel = {
         let label = UILabel()
@@ -221,26 +223,23 @@ class LoginController: UIViewController {
         
     }
     
-    private func startActivityIndicator() {
-        DispatchQueue.main.async {
-            self.view.addSubview(self.activityIndicatorView)
-            self.activityIndicatorView.frame = self.view.bounds
-            self.activityIndicatorView.center = self.view.center
-            self.activityIndicatorView.hidesWhenStopped = true
-            self.activityIndicatorView.startAnimating()
-//            UIApplication.shared.beginIgnoringInteractionEvents()
-        }
+//    private func configureActivityIndicator() {
+//
+//        let screenSize = UIScreen.main.bounds
+//
+//        activityIndicator = NVActivityIndicatorView(frame: CGRect(x: screenSize.width/2.45, y: screenSize.height/2.5, width: 50, height: 50), type: .ballPulseSync, color: .gloomyBlue, padding: 0)
+//        view.addSubview(activityIndicator)
+//        activityIndicator.startAnimating()
+//    }
+//
+    // Sets up the positions and adds the activity indicator on the screen
+    private func configureActivityIndicator() {
+        
+        Constants.indicatorView = NVActivityIndicatorView(frame: CGRect(x: view.frame.midX, y: view.frame.midY, width: view.frame.width/8, height: view.frame.height/8), type: .lineScale, color: .gloomyBlue, padding: 0)
+        Constants.indicatorView.center = view.center
+        view.addSubview(Constants.indicatorView)
+        Constants.indicatorView.startAnimating()
     }
-    
-    private func stopActivityIndicator() {
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-            self.activityIndicatorView.removeFromSuperview()
-//            UIApplication.shared.endIgnoringInteractionEvents()
-        }
-    }
-    
-    
     
     // MARK: Methods with @objc
     
@@ -251,11 +250,11 @@ class LoginController: UIViewController {
               let password = passwordTextField.text
         else { return }
         
-        startActivityIndicator()
+        configureActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
-            self.stopActivityIndicator()
-            
+//            self.stopActivityIndicator()
+            self.activityIndicator.stopAnimating()
             if let user = user as? User {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
@@ -270,8 +269,9 @@ class LoginController: UIViewController {
                 }
                 
             } else {
-                self.stopActivityIndicator()
-                self.presentAlert(title: "", message: "Incorrect email or password")
+                self.activityIndicator.stopAnimating()
+//                self.stopActivityIndicator()
+//                self.presentAlert(title: "", message: "Incorrect email or password")
             }
             
         }

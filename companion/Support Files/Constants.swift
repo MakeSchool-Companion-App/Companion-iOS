@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import NVActivityIndicatorView
 struct Constants {
     
     static var current = "current"
+    static let currentStudentProfile = "currentStudentProfileIdentifier"
     static var makeSchoolRegionId = "makeschool"
     static var attendanceNotificationId = "attendanceNotificationId"
     static let attendanceId = "attendance_id"
@@ -21,12 +23,16 @@ struct Constants {
     static let checkoutDate = "checkoutDate"
     static let userOnboardingCellID = "onboardingCellId"
     
+    // THIS IS THE ONLY INDICATOR VIEW OBJECT USED FOR DIFFERENT SCREENS THROUGHOUT THE APP
+    public static var indicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), type: .ballPulseSync, color: .gloomyBlue, padding: 0)
+    
+    // PAGES THAT ARE DISPLAYED IN THE ONBOARDING VIEW
     static let pages = [
-        Page(imageName: "makeschool", headerText: "Welcome to Companion", description: "Companion is the iOS platform created for Make School in sync with the web applications."),
-        Page(imageName: "ibeacon_onboarding", headerText: "Attendance Tracking", description: "Automatically get marked in and out of the Make School HQ based on your location approximity."),
-        Page(imageName: "portfolio_onboarding", headerText: "Student Portfolio", description: "All your projects grouped within your grasp, accessible at all time."),
-        Page(imageName: "link_onboarding", headerText: "Usefull Links", description: "Find external links to the Student HandBook, ISAs on Venmo, Degree Path, and many more within the app."),
-        Page(imageName: "goals_onboarding", headerText: "Future Features", description: "Upcoming versions will allow you to register for classes, view upcoming calendar meetings, general college announcements, and more.")
+        Page(imageName: "makeschool", headerText: "Welcome to Companion", description: "Companion is a handy resource for Make School students."),
+        Page(imageName: "ibeacon_onboarding", headerText: "Attendance Tracking", description: "Automatically get marked in and out of Make School based on your location."),
+        Page(imageName: "portfolio_onboarding", headerText: "Student Portfolio", description: "All your projects viewable in one place, accessible at any time."),
+        Page(imageName: "link_onboarding", headerText: "Usefull Links", description: "Find external links to the Student HandBook, ISAs on Vemo, Degree Path, and many more."),
+        Page(imageName: "goals_onboarding", headerText: "Future Features", description: "Have any suggestions for future features? Post your ideas in the #makeschoolapp Slack channel.")
     ]
     
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 protocol ProjectsSectionCellDelegate: class {
     func displayProject(project: Project)
@@ -125,13 +125,13 @@ extension ProjectsSectionCell:  UICollectionViewDelegateFlowLayout, UICollection
             cell.projectNameLabel.text = project.name
             cell.technologiesLabel.text = project.technologies
 
-            DispatchQueue.global().async {
-                if let url = URL(string: project.img_url),
-                    let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        cell.projectImageView.image = UIImage(data: data)
-                    }
-                }
+            // Yves note: change the loading image code from hard-coded to kingfisher, the activity indicator can be change with a custom one.
+            if let url = URL.init(string: project.img_url){
+                cell.projectImageView.kf.indicatorType = .activity
+                cell.projectImageView.kf.setImage(with: url)
+            }
+            else {
+                cell.projectImageView.image = UIImage.init(named: "portfolio_onboarding")
             }
             self.stopActivityIndicator()
             

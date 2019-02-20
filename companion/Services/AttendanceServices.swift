@@ -30,6 +30,10 @@ struct AttendanceServices{
             guard let att = attendance as? [Attendance] else {return completion (nil)}
             print("Attendance: \(att)")
             
+            DispatchQueue.main.async {
+                Constants.indicatorView.stopAnimating()
+            }
+            
             return completion(att)
         }
     }

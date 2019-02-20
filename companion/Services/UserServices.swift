@@ -21,6 +21,12 @@ struct UserServices{
             
             guard let user = user as? User else { return completion(error) }
             User.setCurrent(user, writeToUserDefaults: true)
+            
+            // Stops the  activity indicator when the user object has been fetched
+            DispatchQueue.main.async {
+                Constants.indicatorView.stopAnimating()
+            }
+            
             return completion(user)
         }
     }
