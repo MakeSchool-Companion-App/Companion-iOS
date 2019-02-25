@@ -268,11 +268,12 @@ class LoginController: UIViewController {
                 }
                 
             } else {
-                    self.activityIndicator.stopAnimating()
-//                self.stopActivityIndicator()
-//                self.presentAlert(title: "", message: "Incorrect email or password")
+                DispatchQueue.main.async {
+                    Constants.indicatorView.stopAnimating()
+                    self.presentAlert(title: "Bad credentails", message: "Incorrect email or password. Please try again.")
+                }
+
             }
-            
         }
     }
     
