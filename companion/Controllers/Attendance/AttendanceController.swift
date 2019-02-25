@@ -90,6 +90,13 @@ class AttendanceController: UIViewController {
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stops the animation if the user quickly switches tab
+        Constants.indicatorView.stopAnimating()
+    }
     // MARK: - UI Setup Methods
     
     private func setupNavbarItem() {

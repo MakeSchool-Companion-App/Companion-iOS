@@ -253,7 +253,6 @@ class LoginController: UIViewController {
         configureActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
-//            self.stopActivityIndicator()
             self.activityIndicator.stopAnimating()
             if let user = user as? User {
                 // handle existing user
@@ -269,7 +268,7 @@ class LoginController: UIViewController {
                 }
                 
             } else {
-                self.activityIndicator.stopAnimating()
+                    self.activityIndicator.stopAnimating()
 //                self.stopActivityIndicator()
 //                self.presentAlert(title: "", message: "Incorrect email or password")
             }
