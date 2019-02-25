@@ -24,12 +24,6 @@ class StudentDashboardController: UITableViewController {
         }
     }
     
-//    private let activityIndicatorView: UIActivityIndicatorView = {
-//        let view = UIActivityIndicatorView()
-//        view.activityIndicatorViewStyle = .gray
-//        return view
-//    }()
-    
     var project: Project?
     
     var courses: [Course] = [
@@ -49,6 +43,12 @@ class StudentDashboardController: UITableViewController {
         fetchUserProfileAndProjects()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stops the animation if the user quickly switches tab
+        Constants.indicatorView.stopAnimating()
+    }
     
     // MARK: - Methods
     
