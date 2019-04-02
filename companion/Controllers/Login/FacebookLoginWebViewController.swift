@@ -42,17 +42,20 @@ class FacebookLoginWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let url = "https://www.makeschool.com/users/auth/facebook"
+        let request = URLRequest(url: URL(string: url)!)
+        facebookWebView.load(request)
         
         setupAutoLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let url = "https://www.makeschool.com/users/auth/facebook"
-        let request = URLRequest(url: URL(string: url)!)
-        facebookWebView.load(request)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        let url = "https://www.makeschool.com/users/auth/facebook"
+//        let request = URLRequest(url: URL(string: url)!)
+//        facebookWebView.load(request)
+//    }
     
     override func loadView() {
         super.loadView()
@@ -139,7 +142,7 @@ extension FacebookLoginWebViewController: WKNavigationDelegate {
                             FacebookServices.showFacebookUserProfile(completionHandler: { (user, error) in
                                 if let user = user{
                                     User.setCurrent(user, writeToUserDefaults: true)
-                                    // go to the nexr view controller
+                                    // go to the next view controller
                                 
                                     let mainTabBarController = MainTabBarController()
                                     self.present(mainTabBarController, animated: true, completion: nil)

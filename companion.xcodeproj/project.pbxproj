@@ -31,7 +31,6 @@
 		20828DF1218BF93300875599 /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */; };
 		20828DF2218BF93300875599 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F2215EE10D008E98EF /* MainTabBarController.swift */; };
 		20828DF3218BF93300875599 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80276D6E217BDEA5007BC4C9 /* Project.swift */; };
-		20828DF4218BF93300875599 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56539218250E70028CD18 /* HelperFunctions.swift */; };
 		20828DF5218BF93300875599 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209DB94C214B117200D81ABD /* UIColor+Extension.swift */; };
 		20828DF6218BF93300875599 /* MakeSchoolDesignColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000A9402177DE4E007514D1 /* MakeSchoolDesignColor.swift */; };
 		20828DF7218BF93300875599 /* OnboardingCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EB215E9AD4008E98EF /* OnboardingCollectionCell.swift */; };
@@ -115,7 +114,6 @@
 		803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E476E216294F0004C62DF /* LeftPaddedTextField.swift */; };
 		80780A6D217EE12700D27FD2 /* CirclesLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */; };
 		80D56537218243810028CD18 /* FacebookLoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */; };
-		80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D56539218250E70028CD18 /* HelperFunctions.swift */; };
 		80D5653C2182514E0028CD18 /* FacebookServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D5653B2182514E0028CD18 /* FacebookServices.swift */; };
 		80DC39E6215DF92A008E98EF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E5215DF92A008E98EF /* LoginController.swift */; };
 		80DC39E8215DFCA0008E98EF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */; };
@@ -124,6 +122,7 @@
 		80DC39F0215EDED3008E98EF /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39EF215EDED3008E98EF /* AttendanceController.swift */; };
 		80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F2215EE10D008E98EF /* MainTabBarController.swift */; };
 		80DC39F5215EE7B0008E98EF /* AttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */; };
+		80F31B88222F86F1003843EB /* ItemOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F31B87222F86F1003843EB /* ItemOptionsViewController.swift */; };
 		B807E1E621F1B08100DE57CD /* CustomUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B807E1E521F1B08100DE57CD /* CustomUIElements.swift */; };
 		B82F0B8821F41A7400A6FDCB /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F0B8721F41A7400A6FDCB /* UIButton+Extension.swift */; };
 		B87550102207B0B90015F879 /* CustomActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875500F2207B0B90015F879 /* CustomActivityIndicator.swift */; };
@@ -214,7 +213,6 @@
 		803E476E216294F0004C62DF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		80780A6C217EE12700D27FD2 /* CirclesLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesLoadingView.swift; sourceTree = "<group>"; };
 		80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLoginWebViewController.swift; sourceTree = "<group>"; };
-		80D56539218250E70028CD18 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		80D5653B2182514E0028CD18 /* FacebookServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookServices.swift; sourceTree = "<group>"; };
 		80DC39E5215DF92A008E98EF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		80DC39E7215DFCA0008E98EF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
@@ -223,6 +221,7 @@
 		80DC39EF215EDED3008E98EF /* AttendanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceController.swift; sourceTree = "<group>"; };
 		80DC39F2215EE10D008E98EF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		80DC39F4215EE7B0008E98EF /* AttendanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCell.swift; sourceTree = "<group>"; };
+		80F31B87222F86F1003843EB /* ItemOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemOptionsViewController.swift; sourceTree = "<group>"; };
 		81918368851D8032F7598E83 /* Pods_companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B12D62AED964263AAC33F7 /* Pods-companion Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-companion Dev/Pods-companion Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		AE4BC9CC2DC4B2774AD8B8EB /* Pods-companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-companion.release.xcconfig"; path = "Pods/Target Support Files/Pods-companion/Pods-companion.release.xcconfig"; sourceTree = "<group>"; };
@@ -360,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				2014AF69220B98C400890F8B /* Protocol */,
-				80D56538218250AA0028CD18 /* Helpers Functions */,
 				205055D3217D73890005D207 /* JavaScript Code */,
 				80074E272149BD2500AA684C /* Controllers */,
 				80074E2D2149CA2700AA684C /* Extensions */,
@@ -423,6 +421,7 @@
 				80DC39F1215EE0E9008E98EF /* TabBarController */,
 				B88C73C621F1947900FBED2F /* UserOnboardingViewController.swift */,
 				801A1827221359E300FAA657 /* ConnectionOfflineViewController.swift */,
+				80F31B87222F86F1003843EB /* ItemOptionsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -520,14 +519,6 @@
 				80D56536218243810028CD18 /* FacebookLoginWebViewController.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		80D56538218250AA0028CD18 /* Helpers Functions */ = {
-			isa = PBXGroup;
-			children = (
-				80D56539218250E70028CD18 /* HelperFunctions.swift */,
-			);
-			path = "Helpers Functions";
 			sourceTree = "<group>";
 		};
 		80DC39F1215EE0E9008E98EF /* TabBarController */ = {
@@ -833,7 +824,6 @@
 				20828DF1218BF93300875599 /* AttendanceCell.swift in Sources */,
 				20828DF2218BF93300875599 /* MainTabBarController.swift in Sources */,
 				20828DF3218BF93300875599 /* Project.swift in Sources */,
-				20828DF4218BF93300875599 /* HelperFunctions.swift in Sources */,
 				20828DF5218BF93300875599 /* UIColor+Extension.swift in Sources */,
 				20828DF6218BF93300875599 /* MakeSchoolDesignColor.swift in Sources */,
 				20828DF7218BF93300875599 /* OnboardingCollectionCell.swift in Sources */,
@@ -887,7 +877,6 @@
 				802446C421A12117008B2100 /* UsefulLinksController.swift in Sources */,
 				80DC39F3215EE10D008E98EF /* MainTabBarController.swift in Sources */,
 				80276D6F217BDEA5007BC4C9 /* Project.swift in Sources */,
-				80D5653A218250E70028CD18 /* HelperFunctions.swift in Sources */,
 				B87550102207B0B90015F879 /* CustomActivityIndicator.swift in Sources */,
 				B88C73C921F1966300FBED2F /* UserOnboardingVC+Extensions.swift in Sources */,
 				B88C73C721F1947900FBED2F /* UserOnboardingViewController.swift in Sources */,
@@ -900,6 +889,7 @@
 				803E476F216294F0004C62DF /* LeftPaddedTextField.swift in Sources */,
 				8038B1E92211389B00A4E0B5 /* NetworkStatusManager.swift in Sources */,
 				20F2E2B92208D644001D22AE /* CKSquareRegion.m in Sources */,
+				80F31B88222F86F1003843EB /* ItemOptionsViewController.swift in Sources */,
 				8005C8C221A2A19F00B24080 /* UserProfileSectionCell.swift in Sources */,
 				209DB94E214B117300D81ABD /* Date+Extensions.swift in Sources */,
 				20587CD7214AE00F004B60A2 /* Beacon.swift in Sources */,

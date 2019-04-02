@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 import NVActivityIndicatorView
+import AuthenticationServices
+import SafariServices
+
+
 
 class LoginController: UIViewController {
     
@@ -19,11 +23,10 @@ class LoginController: UIViewController {
     
     // MARK: - UI Elements
     
-//    private let activityIndicatorView: UIActivityIndicatorView = {
-//        let view = UIActivityIndicatorView()
-//        view.activityIndicatorViewStyle = .gray
-//        return view
-//    }()
+    let customAlertView: CustomAlertView = {
+        let view = CustomAlertView()
+        return view
+    }()
     
     private let companionLabel: UILabel = {
         let label = UILabel()
@@ -37,19 +40,8 @@ class LoginController: UIViewController {
     
     private let emailTextField: UITextField = {
         // MARK: TODO - Add padding to the image
-//        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-//        leftView.backgroundColor = MakeSchoolDesignColor.faintBlue
-//        
-//        let imageView = UIImageView(frame: CGRect(x: 10, y: 0, width: 24, height: 24))
-//        imageView.image = #imageLiteral(resourceName: "Frame").withRenderingMode(.alwaysTemplate)
-//        imageView.tintColor = MakeSchoolDesignColor.darkBlue
-//        
-//        leftView.addSubview(imageView)
         
         let textField = LeftPaddedTextField()
-//        textField.leftView = leftView
-//        textField.setLeftPaddingPoints()
-//        textField.leftView?.frame = CGRect(x: 20, y: 5, width: 24, height: 24)
         textField.leftViewMode = .always
         textField.textColor = MakeSchoolDesignColor.darkBlue
         textField.layer.cornerRadius = 6
@@ -80,7 +72,6 @@ class LoginController: UIViewController {
         
         let textField = LeftPaddedTextField()
         textField.leftViewMode = .always
-//        textField.leftView = leftView
         
         textField.textAlignment = .left
         textField.textColor = MakeSchoolDesignColor.darkBlue
@@ -207,31 +198,9 @@ class LoginController: UIViewController {
             height: 46,
             width: 206)
         
-//        loginButton.anchor(
-//            centerX: view.centerXAnchor,
-//            centerY: nil,
-//            top: textFieldStackView.bottomAnchor,
-//            right: nil,
-//            bottom: nil,
-//            left: nil,
-//            topPadding: 80,
-//            rightPadding: 0,
-//            bottomPadding: 0,
-//            leftPadding: 0,
-//            height: 50,
-//            width: 180)
-        
     }
     
-//    private func configureActivityIndicator() {
-//
-//        let screenSize = UIScreen.main.bounds
-//
-//        activityIndicator = NVActivityIndicatorView(frame: CGRect(x: screenSize.width/2.45, y: screenSize.height/2.5, width: 50, height: 50), type: .ballPulseSync, color: .gloomyBlue, padding: 0)
-//        view.addSubview(activityIndicator)
-//        activityIndicator.startAnimating()
-//    }
-//
+
     // Sets up the positions and adds the activity indicator on the screen
     private func configureActivityIndicator() {
         
@@ -253,8 +222,6 @@ class LoginController: UIViewController {
         configureActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
-//            self.stopActivityIndicator()
-            self.activityIndicator.stopAnimating()
             if let user = user as? User {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
@@ -270,10 +237,8 @@ class LoginController: UIViewController {
                 
             } else {
                 self.activityIndicator.stopAnimating()
-//                self.stopActivityIndicator()
-//                self.presentAlert(title: "", message: "Incorrect email or password")
+                self.customAlertView.show(animated: true)
             }
-            
         }
     }
     
@@ -292,12 +257,15 @@ class LoginController: UIViewController {
             view.window?.rootViewController = initialViewController
             view.window?.makeKeyAndVisible()
         } else {
-
-            self.present(FacebookLoginWebViewController(), animated: true, completion: nil)
+//            let navController = UINavigationController(rootViewController: FacebookLoginWebViewController())
+            let facebookVC = FacebookLoginWebViewController()
+            facebookVC.modalPresentationStyle = .currentContext
+            self.present(facebookVC, animated: true, completion: nil)
         }
         
     }
 }
+
 
 extension LoginController: UITextFieldDelegate {
     
