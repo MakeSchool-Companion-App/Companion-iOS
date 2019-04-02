@@ -45,8 +45,9 @@ struct AttendanceServices{
         }
         
          NetworkManager.network(.attendance, .get, id ?? attendanceId) { (attendance, error) in
-            
-            return completion(attendance as! Attendance)
+            if let attendance = attendance as? Attendance {
+                return completion(attendance)
+            }
         }
     }
     

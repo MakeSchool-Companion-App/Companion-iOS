@@ -1,14 +1,17 @@
 PODS:
   - iBeaconManager (0.1.0)
   - KeychainSwift (13.0.0)
+  - ReachabilitySwift (4.3.0)
   - Kingfisher (4.10.1)
   - NVActivityIndicatorView (4.5.1):
     - NVActivityIndicatorView/Presenter (= 4.5.1)
   - NVActivityIndicatorView/Presenter (4.5.1)
 
+
 DEPENDENCIES:
   - iBeaconManager (= 0.1.0)
   - KeychainSwift (~> 13.0)
+  - ReachabilitySwift
   - Kingfisher (~> 4.10.1)
   - NVActivityIndicatorView
 
@@ -16,15 +19,19 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - iBeaconManager
     - KeychainSwift
+    - ReachabilitySwift
     - Kingfisher
     - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   iBeaconManager: 24b93a45f18271574877074faa64eacb4ad6349e
   KeychainSwift: 23d6c16cbc33f20fafa30c3d783241b4b87d998c
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+
+PODFILE CHECKSUM: e5b58f639207ed01432cfd659b79d7f1b577f06b
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
 
 PODFILE CHECKSUM: 4aebefb94c3abc8edf969196fa087ca33730684b
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.5.3
