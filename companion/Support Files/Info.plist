@@ -25,9 +25,9 @@
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>gotta get it baby</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs access to your location. </string>
+	<string>Companion ONLY checks your location in the background to see when you are within feet from Make School.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app need access to your location description. </string>
+	<string>Companion ONLY checks your location in the background to see when you are within feet from Make School.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

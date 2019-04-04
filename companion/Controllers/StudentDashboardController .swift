@@ -32,12 +32,6 @@ class StudentDashboardController: UITableViewController {
         }
     }
     
-//    private let activityIndicatorView: UIActivityIndicatorView = {
-//        let view = UIActivityIndicatorView()
-//        view.activityIndicatorViewStyle = .gray
-//        return view
-//    }()
-    
     var project: Project?
     
     var courses: [Course] = [
@@ -56,6 +50,16 @@ class StudentDashboardController: UITableViewController {
         setupNavbarItem()
         setupTableView()
         fetchUserProfileAndProjects()
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Stops the animation if the user quickly switches tab
+        Constants.indicatorView.stopAnimating()
+    }
+
         
         // If the wifi or cellular service is disconnected then show the alert view
         NetworkStatusManager.shared.reachability.whenUnreachable = { reachability in
@@ -82,6 +86,7 @@ class StudentDashboardController: UITableViewController {
                 }
             }
         }
+
     
     }
     
