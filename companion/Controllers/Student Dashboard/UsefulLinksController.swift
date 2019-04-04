@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class UsefulLinksController: UITableViewController {
     
@@ -55,7 +56,13 @@ extension UsefulLinksController {
         
         let staticLink = staticLinks[indexPath.row]
         guard let url = URL(string: staticLink.url) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
+        let configuration = SFSafariViewController.Configuration()
+        configuration.entersReaderIfAvailable = true
+        
+        let safariVC = SFSafariViewController(url: url, configuration: configuration)
+        self.present(safariVC, animated: true, completion: nil)
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

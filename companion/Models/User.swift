@@ -40,5 +40,12 @@ struct User: Codable{
         }
         _current = user
     }
+    
+    static func removeCurrent(_ removeFromUserDefualts: Bool = false) {
+        if removeFromUserDefualts {
+            UserDefaults.standard.removeObject(forKey: Constants.current)
+        }
+        _current = nil
+    }
 }
 

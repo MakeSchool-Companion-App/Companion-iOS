@@ -13,7 +13,9 @@ import NVActivityIndicatorView
 
 
 class AttendanceController: UIViewController {
+    
     // MARK: - Properties
+    
     let locationManager = AppDelegate.shared.locationManager
 
     var attendance = [Attendance]() {
@@ -62,6 +64,8 @@ class AttendanceController: UIViewController {
             }
         }
     }
+    
+    
     // MARK: - View Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +136,7 @@ class AttendanceController: UIViewController {
     
     private func setupNavbarItem() {
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "beaconNavItem"), style: .plain, target: self, action: #selector(tapBeaconNavItem))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "beaconNavItem").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(tapBeaconNavItem))
 
     }
     
@@ -245,7 +249,6 @@ extension AttendanceController: CLLocationManagerDelegate{
 extension AttendanceController: RegionProtocol , RegionDelegateProtocol, UNUserNotificationCenterDelegate {
 
     func didEnterRegion(region: CKSquareRegion) {
-        print("enter")
 
         if AttendanceServices.isTodayAttendanceDone() == true{ return}
 
@@ -273,7 +276,6 @@ extension AttendanceController: RegionProtocol , RegionDelegateProtocol, UNUserN
     }
 
     func didExitRegion(region: CKSquareRegion) {
-        print("exit")
 
         // addition: Adding the method of attendance service isTodayAttendance checkout to save when the checkout was done
 

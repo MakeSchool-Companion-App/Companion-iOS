@@ -47,6 +47,7 @@ class StudentDashboardController: UITableViewController {
         
         
         //configureActivityIndicator()
+        setupNavbarItem()
         setupTableView()
         fetchUserProfileAndProjects()
 
@@ -87,6 +88,12 @@ class StudentDashboardController: UITableViewController {
         }
 
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintAdjustmentMode = .normal
+        self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
 
     // MARK: - Methods
@@ -132,8 +139,20 @@ class StudentDashboardController: UITableViewController {
                 })
             }
         }
+    }
+    
+    fileprivate func setupNavbarItem() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.rightBarButtonItem?.tintColor = .white 
+        
+    }
 
-
+    @objc private func handleLogout() {
+        let loginController = LoginController()
+        User.removeCurrent(true)
+        self.view.window?.rootViewController = loginController
+        self.view.window?.makeKeyAndVisible()
     }
     
 }
