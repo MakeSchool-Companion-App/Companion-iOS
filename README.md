@@ -1,7 +1,6 @@
 # Companion
 
 Companion is a student attendance tracking platform currently in development by students at Make School Product College in San Francisco, CA.
-Lofti's mission is to connect people and nearby working spaces based on their preferences. I believe that your productivity can be tremendously boosted if you are working on a comfortable environtment. With Lofti, you can select your optimum preferences of a working/study spot ranging from public libraries to shared offices such as WeWork. you can <bold>download</bold> it <a href="https://itunes.apple.com/us/app/lofti-study-space-finder/id1446711696?mt=8">here</a> 
 
 ### Engineer(s)
 
