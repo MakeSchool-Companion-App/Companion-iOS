@@ -4,9 +4,9 @@ Companion is a student attendance tracking platform currently in development by 
 
 ### Engineer(s)
 
-* **<a href="https://github.com/yveslym">* **Yves Songolo* **</a> - * Lead iOS Engineer
-* **<a href="https://github.com/uch1">* **Uchenna Aguocha* **</a> - * iOS Engineer & UI/UX Deisgner
-* **<a href="https://github.com/MediBoss">* **Medi Assumani* **</a> - * iOS Engineer
+* <a href="https://github.com/yveslym">Yves Songolo</a> - Lead iOS Engineer
+* <a href="https://github.com/uch1">Uchenna Aguocha</a> - iOS Engineer & UI/UX Deisgner
+* <a href="https://github.com/MediBoss">Medi Assumani</a> - iOS Engineer
 
 ### Project Built With
 
