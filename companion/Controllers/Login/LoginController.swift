@@ -222,6 +222,8 @@ class LoginController: UIViewController {
         configureActivityIndicator()
         UserServices.login(email: email, password: password) { (user) in
             
+            self.activityIndicator.stopAnimating()
+
             if let user = user as? User {
                 // handle existing user
                 User.setCurrent(user, writeToUserDefaults: true)
@@ -236,8 +238,14 @@ class LoginController: UIViewController {
                 }
                 
             } else {
+
                 self.activityIndicator.stopAnimating()
                 self.customAlertView.show(animated: true)
+
+                DispatchQueue.main.async {
+                    Constants.indicatorView.stopAnimating()
+                    self.presentAlert(title: "Bad credentails", message: "Incorrect email or password. Please try again.")
+                }
             }
         }
     }

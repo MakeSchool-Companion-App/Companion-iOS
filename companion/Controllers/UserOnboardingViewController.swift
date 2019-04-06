@@ -73,11 +73,17 @@ class UserOnboardingViewController: UICollectionViewController{
     /// Swipes to the next page on the onboarding page
     @objc private func handleNextSwipe(_ sender: UIButton){
         
+        if nextButton.titleLabel?.text == "LOGIN"{
+            self.handleSkipButton(sender)
+        }
+        if pageControll.currentPage == 3 {
+            nextButton.setTitle("LOGIN", for: .normal)
+        }
+        
         let nextIndex = min(pageControll.currentPage + 1, Constants.pages.count - 1)
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControll.currentPage = nextIndex
         collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        sender.pulsate()
     }
     
     /// Skips to the login page
