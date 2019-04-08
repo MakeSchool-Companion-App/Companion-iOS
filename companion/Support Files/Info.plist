@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.makeschool.companion</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>9</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -25,9 +25,9 @@
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>gotta get it baby</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Companion ONLY checks your location in the background to see when you are within feet from Make School.</string>
+	<string>This app needs access to your location to keep track of your class attendance. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Companion ONLY checks your location in the background to see when you are within feet from Make School.</string>
+	<string>This app need access to your location to keep track of your class attendance. </string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
